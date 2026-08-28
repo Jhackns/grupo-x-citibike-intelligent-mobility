@@ -1,0 +1,14 @@
+site_name: CitiBike Intelligent Mobility - Big Data
+site_description: Brief Técnico-Analítico del Proyecto Sello
+site_author: Data Geniuses
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: light blue
+
+nav:
+  - Inicio: index.md
+  - Proyecto Sello:
+      - Brief Técnico-Analítico: proyecto-sello/brief.md

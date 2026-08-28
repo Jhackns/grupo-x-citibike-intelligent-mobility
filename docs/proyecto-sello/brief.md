@@ -1,3 +1,7 @@
+> **Hito S2.** Documento elaborado siguiendo la estructura de la plantilla oficial del Proyecto Sello.
+
+---
+
 * **Nombre del equipo:** Data Geniuses
 * **Sección:** S1
 * **Repositorio (URL):** `____________________________`

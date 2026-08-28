@@ -1,7 +1,12 @@
+# BRIEF TÉCNICO-ANALÍTICO DEL PROYECTO SELLO
+
+## Data Geniuses - CitiBike Intelligent Mobility
+
 > **Hito S2.** Documento elaborado siguiendo la estructura de la plantilla oficial del Proyecto Sello.
 
 ---
 
+## 1. Datos del equipo
 * **Nombre del equipo:** Data Geniuses
 * **Sección:** S1
 * **Repositorio (URL):** `____________________________`

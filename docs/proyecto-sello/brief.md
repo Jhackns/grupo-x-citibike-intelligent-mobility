@@ -9,9 +9,9 @@
 ## 1. Datos del equipo
 * **Nombre del equipo:** Data Geniuses
 * **Sección:** S1
-* **Repositorio (URL):** `https://github.com/Jhackns/grupo-x-citibike-intelligent-mobility.git`
-* **Topics del repositorio configurados (sí/no):** No, pendiente de creación del repositorio
-* **Topic requerido:** `grupo-____-citibike-intelligent-mobility`
+* **Repositorio (URL):** `https://github.com/Jhackns/grupo-x-citibike-intelligent-mobility`
+* **Topics del repositorio configurados (sí/no):** Si
+* **Topic requerido:** `grupo-x-citibike-intelligent-mobility`
 
 ### Integrantes:
 

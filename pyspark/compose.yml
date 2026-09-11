@@ -10,6 +10,7 @@ services:
       - "4487:8888"
       - "4043:4040"
     volumes:
-      - ./sesiones:/opt
+      - ./jupyter:/opt
+    
     environment:
       - JUPYTER_TOKEN=${JUPYTER_TOKEN}

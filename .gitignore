@@ -1,27 +1,34 @@
-.ipynb_checkpoints/
-*.parquet/
-*.zip
+# Datos masivos y archivos pesados
 *.csv
-.env
+*.parquet
+**/data/
+*.zip
 
-# --- Salidas del pipeline (se regeneran corriendo el notebook) ---
+# Capa analítica Gold (salidas de los cuadernos)
+**/gold/
 data/gold/
 data/bronze/
 data/silver/
-
-# --- Spark ---
-spark-warehouse/
-metastore_db/
-derby.log
 *.crc
 _SUCCESS
 
-# --- MkDocs (se genera con mkdocs build) ---
-site/
+# Archivos temporales de Jupyter
+**/.ipynb_checkpoints/
+.ipynb_checkpoints/
 
-# --- Python / SO ---
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Python / SO
 __pycache__/
+*.pyc
 .venv/
 .vscode/
 .DS_Store
 Thumbs.db
+.env
+
+# --- MkDocs (se genera con mkdocs build) ---
+site/

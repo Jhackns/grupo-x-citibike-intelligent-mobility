@@ -1,0 +1,16 @@
+name: lambda26-pyspark
+
+services:
+  pyspark:
+    container_name: lambda26-pyspark
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "4487:8888"
+      - "4043:4040"
+    volumes:
+      - ./jupyter:/opt
+    
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN}

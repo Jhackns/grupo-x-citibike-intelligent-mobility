@@ -8,7 +8,7 @@ services:
       - "4041:4041"
     environment:
       - JUPYTER_TOKEN=citibike
-      - SPARK_LOCAL_IP=127.0.0.1
+      - TZ=America/Lima
       - PYSPARK_PYTHON=python3
       - PYSPARK_DRIVER_PYTHON=python3
     volumes:

@@ -1,0 +1,23 @@
+services:
+  jupyter-spark:
+    image: quay.io/jupyter/pyspark-notebook:spark-3.5.0
+    container_name: citibike-lab
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+      - "4041:4041"
+    environment:
+      - JUPYTER_TOKEN=citibike
+      - SPARK_LOCAL_IP=127.0.0.1
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON=python3
+    volumes:
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./data:/home/jovyan/work/data
+      - ./models:/home/jovyan/work/models
+      - ./evidencias:/home/jovyan/work/evidencias
+      - ./docs:/home/jovyan/work/docs
+    working_dir: /home/jovyan/work
+    mem_limit: 8g
+    shm_size: 1g
+    restart: unless-stopped

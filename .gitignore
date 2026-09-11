@@ -3,3 +3,25 @@
 *.zip
 *.csv
 .env
+
+# --- Salidas del pipeline (se regeneran corriendo el notebook) ---
+data/gold/
+data/bronze/
+data/silver/
+
+# --- Spark ---
+spark-warehouse/
+metastore_db/
+derby.log
+*.crc
+_SUCCESS
+
+# --- MkDocs (se genera con mkdocs build) ---
+site/
+
+# --- Python / SO ---
+__pycache__/
+.venv/
+.vscode/
+.DS_Store
+Thumbs.db

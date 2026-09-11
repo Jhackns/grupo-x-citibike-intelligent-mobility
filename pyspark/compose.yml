@@ -7,8 +7,8 @@ services:
       context: .
     restart: unless-stopped
     ports:
-      - "4488:8888"
-      - "4042:4040"
+      - "4487:8888"
+      - "4043:4040"
     volumes:
       - ./sesiones:/opt
     environment:

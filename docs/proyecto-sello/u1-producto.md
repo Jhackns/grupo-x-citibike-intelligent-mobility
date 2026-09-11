@@ -165,23 +165,135 @@ MÉTRICAS DE CALIDAD DEL MODELO (Capa Silver/Gold)
 
 ---
 
-## 3. Dimensiones Pendientes de los Integrantes (Placeholders)
+## 3. Dimensión 2: Utilización Histórica de Estaciones (Grimaldo Arredondo Martinez)
 
-### 3.1 Dimensión 2: Utilización Histórica de Estaciones
+### 3.1 Pregunta de negocio
 
-* **Responsable:** Grimaldo Arredondo Martinez
-* **Estado:** Pendiente de completar.
+> ¿Qué estaciones concentran históricamente la mayor demanda y cuáles presentan mayor
+> probabilidad de registrar niveles elevados de utilización?
 
-<!-- SECCIÓN PENDIENTE DE COMPLETAR POR GRIMALDO ARREDONDO: Incluir metodología de clasificación de estaciones, matriz de confusión y métricas del modelo -->
+Esta dimensión mira la pregunta central del equipo desde los puntos físicos de origen y
+destino de los viajes: identifica qué estaciones son críticas hoy (ranking descriptivo) y
+cuáles tienen mayor probabilidad de tener un **día de alta demanda** en el futuro
+(clasificación), para apoyar la asignación de cuadrillas de rebalanceo y la planificación
+operativa.
 
-### 3.2 Dimensión 3: Análisis y Modelado de Duración de Viajes
+### 3.2 Ingeniería de características y variable objetivo
+
+Los viajes se agregan a granularidad **estación-día** (no estación-viaje), porque la
+decisión operativa relevante es diaria:
+
+| Feature | Descripción | Tipo |
+| :--- | :--- | :--- |
+| `day_of_week` | Día de la semana (1–7) | Categórica (OHE) |
+| `is_weekend` | Binario (1 = fin de semana) | Binaria |
+| `member_ratio` | Proporción de viajes de socios (`member`) ese día en esa estación | Numérica |
+| `electric_ratio` | Proporción de viajes en bicicleta eléctrica ese día en esa estación | Numérica |
+
+* **Variable objetivo (`es_alta_demanda`):** binaria; 1 si `viajes_totales_dia` de esa
+  estación-día está en el **cuartil superior** (percentil 75), 0 en caso contrario.
+* **Umbral estadístico y reproducible:** el percentil 75 se calcula con
+  `percentile_approx` **únicamente sobre el período de entrenamiento** (primeros 24 de
+  32 días del rango disponible) y se aplica igual al conjunto de prueba, evitando fuga
+  de información desde el futuro hacia la definición de la etiqueta.
+* **Sin circularidad:** el modelo no usa el propio conteo de viajes como predictor —
+  predice la probabilidad de un día de alta demanda a partir del *patrón* de uso
+  (día, fin de semana, mezcla de usuario y de bicicleta), información conocida con
+  antelación.
+* Total estaciones con viajes iniciados: **2,305**. Filas del dataset estación-día:
+  **70,388** (52,285 entrenamiento / 18,103 prueba, split temporal).
+* Umbral de alta demanda (P75 en train): **93 viajes/día**. Balance de clases:
+  18,362 días de alta demanda vs. 52,026 de demanda regular.
+
+### 3.3 Calidad de datos aplicada
+
+| Control | Resultado |
+| :--- | ---: |
+| Filas Bronze ingeridas | 4,993,137 |
+| Filas tras filtrar `start_station_id` nulo | 4,990,109 |
+| Duplicados por `ride_id` eliminados | 0 (verificado con `dropDuplicates`) |
+| Nulos en `end_station_id` / `end_station_name` descartados | 14,702 / 13,727 |
+| Filas Silver finales (sin nulos de estación) | 4,975,407 |
+
+El conteo de viajes iniciados por estación se calculó por dos caminos independientes —
+`groupBy().agg()` sobre DataFrame y `map`/`reduceByKey` sobre el RDD subyacente— y
+ambos coincidieron exactamente (4,990,109 viajes), confirmando la correctitud de la
+agregación distribuida.
+
+### 3.4 Pipeline de Machine Learning en Spark MLlib
+
+* `StringIndexer` + `OneHotEncoder` sobre `day_of_week` (variable cíclica, no ordinal).
+* `VectorAssembler` combina `day_of_week_ohe`, `is_weekend`, `member_ratio` y
+  `electric_ratio` en `features`.
+* **Split temporal** (no aleatorio): entrenamiento con los primeros 24 días, prueba con
+  los últimos 8 — el modelo nunca ve datos del futuro al entrenar.
+* Tres configuraciones comparadas con las mismas tres métricas
+  (`areaUnderROC`, `f1`, `accuracy`):
+
+```python
+lr_base = LogisticRegression(featuresCol="features", labelCol="es_alta_demanda", regParam=0.0)
+lr_reg  = LogisticRegression(featuresCol="features", labelCol="es_alta_demanda", regParam=0.1)
+rf      = RandomForestClassifier(featuresCol="features", labelCol="es_alta_demanda", numTrees=50, maxDepth=6)
+```
+
+### 3.5 Resultados cuantitativos y métricas formales
+
+| Modelo | AUC | F1 | Accuracy |
+| :--- | ---: | ---: | ---: |
+| LogisticRegression (sin regularización) | 0.6386 | 0.5894 | 0.7026 |
+| LogisticRegression (L2, regParam=0.1) | 0.6352 | 0.5932 | 0.7109 |
+| **RandomForestClassifier (50 árboles)** | **0.7861** | **0.5947** | **0.7139** |
+
+```text
+Modelo ganador: RandomForestClassifier (50 arboles)
+  AUC      : 0.7861
+  F1       : 0.5947
+  Accuracy : 0.7139
+```
+
+El modelo ganador se persistió en `/opt/UNIDAD1/gold/modelo_estaciones_alta_demanda` y
+se verificó recargándolo desde disco: el AUC recalculado (0.7861) coincide exactamente
+con el de la evaluación original.
+
+### 3.6 Análisis crítico de negocio
+
+* El **RandomForestClassifier supera claramente a ambas regresiones logísticas en AUC**
+  (0.7861 vs. ~0.64), lo que indica que la relación entre el patrón de uso diario
+  (día de la semana, mezcla de usuario/bicicleta) y la probabilidad de alta demanda es
+  **no lineal** — el bosque captura interacciones (p. ej. fin de semana × alta
+  proporción de bicicleta eléctrica) que un modelo lineal no puede.
+* **Accuracy ≈ 71%** con clases desbalanceadas (26% de días son de alta demanda) es un
+  resultado razonable pero mejorable; el F1 (~0.59) muestra que aún hay margen para
+  reducir falsos negativos, relevante porque el costo operativo de *no* anticipar un
+  día de alta demanda (estación vacía, usuarios varados) suele ser mayor que el de una
+  alerta de más.
+* **Limitación reconocida:** el modelo usa solo señales propias del histórico de la
+  estación; no incorpora clima ni eventos especiales (fuera de alcance del Brief S2).
+* **Utilidad operativa:** el ranking de estaciones (Top 1: *Pier 61 at Chelsea Piers*,
+  18,220 viajes iniciados, 0.37% de participación) y la clasificación de alta demanda
+  permiten priorizar qué estaciones monitorear primero para rebalanceo.
+
+### 3.7 Artefactos persistidos (Capa Gold)
+
+* `pyspark/jupyter/UNIDAD1/gold/estaciones_utilizacion/` — Parquet particionado por
+  `es_alta_demanda` (70,388 filas escritas y reconciliadas al leer de vuelta;
+  `PartitionFilters` confirmado en el plan físico).
+* `pyspark/jupyter/UNIDAD1/gold/estaciones_ranking/` — ranking descriptivo por estación.
+* `pyspark/jupyter/UNIDAD1/gold/modelo_estaciones_alta_demanda/` — `PipelineModel`
+  ganador (RandomForestClassifier), guardado con `.write().overwrite().save(...)`.
+* Notebook: `pyspark/jupyter/UNIDAD1/Dim-Estaciones/utilizacion_estaciones.ipynb`,
+  ejecutado de punta a punta sin errores sobre el dataset completo (4,993,137 registros).
+
+### 3.8 Dimensiones Pendientes de los Integrantes (Placeholders)
+
+#### Dimensión 3: Análisis y Modelado de Duración de Viajes
 
 * **Responsable:** Jose Miguel Condo Huamani
 * **Estado:** Pendiente de completar.
 
 <!-- SECCIÓN PENDIENTE DE COMPLETAR POR JOSE MIGUEL CONDO: Incluir regresión de duration_minutes, distribuciones y métricas de error -->
 
-### 3.3 Dimensión 4: Patrones Espaciales y Concentración
+#### Dimensión 4: Patrones Espaciales y Concentración
 
 * **Responsable:** Cristhian Chuquitarqui Chura
 * **Estado:** Pendiente de completar.

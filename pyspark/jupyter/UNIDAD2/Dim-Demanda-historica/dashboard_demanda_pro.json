@@ -1,0 +1,373 @@
+{
+  "id": null,
+  "uid": "citibike-u2-demanda-harry",
+  "title": "Proyecto Sello > U2 Demanda - Harry (CitiBike Intelligent Mobility)",
+  "tags": [
+    "citibike",
+    "u2",
+    "demanda"
+  ],
+  "timezone": "browser",
+  "refresh": "5s",
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Hora Operativa Activa",
+      "type": "stat",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 3,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_hora_actual",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "none"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Demanda Real Observada (t)",
+      "type": "stat",
+      "gridPos": {
+        "x": 3,
+        "y": 0,
+        "w": 3,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_demanda_real",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Pron\u00f3stico Demanda Siguiente (t+1)",
+      "type": "stat",
+      "gridPos": {
+        "x": 6,
+        "y": 0,
+        "w": 3,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_demanda_predicha",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "steps": [
+              {
+                "color": "orange",
+                "value": null
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Error Absoluto (MAE Producci\u00f3n)",
+      "type": "gauge",
+      "gridPos": {
+        "x": 9,
+        "y": 0,
+        "w": 5,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_mae_stream",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 1000,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 300
+              },
+              {
+                "color": "red",
+                "value": 600
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Alerta de Capacidad",
+      "type": "stat",
+      "gridPos": {
+        "x": 14,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_alerta_sobredemanda",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "NORMAL",
+                  "color": "green"
+                },
+                "1": {
+                  "text": "CR\u00cdTICA",
+                  "color": "red"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Calidad Offline (R\u00b2 / RMSE)",
+      "type": "stat",
+      "gridPos": {
+        "x": 18,
+        "y": 0,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "vector(0.2903)",
+          "refId": "A"
+        },
+        {
+          "expr": "vector(1777.65)",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Pron\u00f3stico Din\u00e1mico: Viajes Reales (t) vs Demanda Esperada (t+1)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 16,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_demanda_real",
+          "legendFormat": "Viajes Reales (t)",
+          "refId": "A"
+        },
+        {
+          "expr": "lambda26_citibike_demanda_predicha",
+          "legendFormat": "Predicci\u00f3n t+1 (Spark MLlib)",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "pointSize": 5,
+            "showPoints": "always"
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "Demanda por Segmento: Suscrito vs Ocasional",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 16,
+        "y": 4,
+        "w": 8,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_usuarios_member",
+          "legendFormat": "Member (Suscritos)",
+          "refId": "A"
+        },
+        {
+          "expr": "lambda26_citibike_usuarios_casual",
+          "legendFormat": "Casual (Ocasionales)",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "bars",
+            "fillOpacity": 80
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "title": "Composici\u00f3n de Flota: El\u00e9ctricas vs Cl\u00e1sicas",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 16,
+        "y": 8,
+        "w": 8,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_ebikes",
+          "legendFormat": "Bicicletas El\u00e9ctricas",
+          "refId": "A"
+        },
+        {
+          "expr": "lambda26_citibike_classic_bikes",
+          "legendFormat": "Bicicletas Mec\u00e1nicas",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth"
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "Monitoreo de Desviaci\u00f3n Residual en Vivo (MAE)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 10,
+        "h": 6
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_mae_stream",
+          "legendFormat": "Error Absoluto Instant\u00e1neo",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "fillOpacity": 30,
+            "lineColor": "#e74c3c"
+          }
+        }
+      }
+    },
+    {
+      "id": 11,
+      "title": "Proporci\u00f3n Acumulada de Usuarios",
+      "type": "piechart",
+      "gridPos": {
+        "x": 10,
+        "y": 12,
+        "w": 6,
+        "h": 6
+      },
+      "targets": [
+        {
+          "expr": "lambda26_citibike_usuarios_member",
+          "legendFormat": "Suscritos (Member)",
+          "refId": "A"
+        },
+        {
+          "expr": "lambda26_citibike_usuarios_casual",
+          "legendFormat": "Ocasionales (Casual)",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Auditor\u00eda de M\u00e9tricas de Negocio (Telemetr\u00eda Prometheus)",
+      "type": "table",
+      "gridPos": {
+        "x": 16,
+        "y": 12,
+        "w": 8,
+        "h": 6
+      },
+      "targets": [
+        {
+          "expr": "{__name__=~\"lambda26_citibike_.*\"}",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 2
+}

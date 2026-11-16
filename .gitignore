@@ -33,3 +33,12 @@ Thumbs.db
 
 # --- MkDocs (se genera con mkdocs build) ---
 site/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos comprimidos de datos
+*.json.gz
+*.csv.gz

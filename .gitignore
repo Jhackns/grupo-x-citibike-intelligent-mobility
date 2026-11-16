@@ -1,20 +1,51 @@
-# Datos masivos y archivos pesados
+# ===================================
+# DATOS MASIVOS Y ARCHIVOS PESADOS
+# ===================================
 *.csv
 *.parquet
+*.zip
+*.csv.gz
+*.json.gz
 **/data/
 
-# Capa analítica Gold (salidas de los cuadernos)
+# ===================================
+# RESULTADOS GENERADOS POR SPARK
+# ===================================
 **/gold/
 *.crc
+_SUCCESS
+spark-warehouse/
+metastore_db/
+derby.log
 
-# Archivos temporales de Jupyter
+# ===================================
+# JUPYTER NOTEBOOK
+# ===================================
 **/.ipynb_checkpoints/
+**/.Trash-*/
 
-# Python cache
+# ===================================
+# PYTHON
+# ===================================
 __pycache__/
 *.pyc
+.venv/
 
-# Archivos del sistema
+# ===================================
+# VARIABLES DE ENTORNO
+# ===================================
 .env
-*.zip
+.env.*
+!.env.example
+
+# ===================================
+# SISTEMA Y EDITORES
+# ===================================
 .DS_Store
+Thumbs.db
+.vscode/
+
+# ===================================
+# DOCUMENTACIÓN GENERADA
+# ===================================
+site/

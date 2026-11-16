@@ -1,0 +1,11 @@
+services:
+  pyspark:
+    networks:
+      - default
+      - lambda26-kafka-net
+
+networks:
+  lambda26-kafka-net:
+    external: true
+    name: lambda26-kafka-net
+    

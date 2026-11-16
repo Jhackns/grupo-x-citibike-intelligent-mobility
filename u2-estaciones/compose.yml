@@ -1,0 +1,35 @@
+name: lambda26-u2-estaciones
+
+# Proyecto Sello - CitiBike Intelligent Mobility (Data Geniuses)
+# U2 - Dimension Estaciones (Grimaldo Arredondo)
+# Mismo patron que uso-citibike: contenedor dormido, cada productor se lanza con exec -d.
+
+services:
+  u2-estaciones:
+    build: .
+    container_name: lambda26-u2-estaciones
+    working_dir: /app
+    command: sleep infinity
+    volumes:
+      - ./app:/app
+      # data/ (CSV de U1) y artifacts/ (estaciones_top.json del notebook 01)
+      - ../pyspark/jupyter/UNIDAD2/Dim-Estaciones:/work
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC_RIDES: citibike-rides
+      KAFKA_TOPIC_ESTACIONES: citibike-estaciones
+      RIDES_CSV_GLOB: /work/data/*.csv
+      ESTACIONES_TOP_JSON: /work/artifacts/estaciones_top.json
+      REPLAY_DATE: "2026-07-28"     # dia del periodo de prueba (>= 2026-07-24, corte de U1)
+      REPLAY_START_HOUR: "6"
+      SPEEDUP: "60"                 # 1 minuto historico por segundo real
+      REPLAY_LOOP: "true"
+      GBFS_INTERVAL_S: "30"
+      GBFS_NUM_ESTACIONES: "20"
+    networks:
+      - lambda26-kafka-net
+
+networks:
+  lambda26-kafka-net:
+    external: true
+    name: lambda26-kafka-net

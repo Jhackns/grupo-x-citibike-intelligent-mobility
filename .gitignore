@@ -33,3 +33,7 @@ Thumbs.db
 
 # --- MkDocs (se genera con mkdocs build) ---
 site/
+
+# --- U2 Estaciones: logs de productores y salidas de notebooks ---
+u2-estaciones/app/logs/
+**/artifacts/

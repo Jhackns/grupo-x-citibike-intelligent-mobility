@@ -1,0 +1,38 @@
+{
+  "runId": "20261120T140627Z",
+  "dimension": "A - Demanda",
+  "compuertas": {
+    "Dataset CSV existe": true,
+    "Modelo U2 existe": true,
+    "Pushgateway listo": true,
+    "Prometheus listo": true,
+    "Grafana saludable": true,
+    "Kafka (citibike-viajes-eventos)": true
+  },
+  "batch": {
+    "filasValidas": 4987477,
+    "ratioValidos": 0.9989,
+    "p50Min": 9.48,
+    "p95Min": 34.23,
+    "advertencias": [
+      "p95 > 30 min: presencia de cola larga recreativa"
+    ]
+  },
+  "streaming": {
+    "duracionS": 45,
+    "filas": 30,
+    "maeProduccion": 21.44
+  },
+  "observabilidad": {
+    "metricas": {
+      "lambda26_int_demanda_validos_ratio": "0.9989",
+      "lambda26_int_demanda_duracion_p50": "9.48",
+      "lambda26_int_demanda_duracion_p95": "34.23",
+      "lambda26_int_demanda_stream_filas": "30",
+      "lambda26_int_demanda_stream_mae": "21.44",
+      "lambda26_int_demanda_ultima_ejecucion_ts": "1795183800"
+    },
+    "verificado": true
+  },
+  "duracionTotalS": 237.3
+}

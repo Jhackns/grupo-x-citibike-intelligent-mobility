@@ -1,0 +1,298 @@
+{
+  "id": null,
+  "uid": "citibike-u3-dataops-v2",
+  "title": "Proyecto Sello > U3 DataOps Demanda v2 - Harry (CitiBike Intelligent Mobility)",
+  "tags": [
+    "citibike",
+    "u3",
+    "dataops",
+    "demanda"
+  ],
+  "timezone": "browser",
+  "refresh": "5s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Compuertas DataOps OK",
+      "description": "6 compuertas previas + 5 de calidad batch = 11/11",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 0, "w": 3, "h": 4 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_compuertas_ok_total", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 11 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Viajes Válidos (Batch)",
+      "description": "Volumen histórico procesado en capa Silver",
+      "type": "stat",
+      "gridPos": { "x": 3, "y": 0, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_batch_filas_validas", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "blue", "value": null }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Ratio Calidad Batch",
+      "description": "Compuerta S13: >= 95%",
+      "type": "gauge",
+      "gridPos": { "x": 7, "y": 0, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_validos_ratio", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1,
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 0.95 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Duración: p50 vs. p95",
+      "description": "Plausibilidad (p50 < 20m) y Cola Larga (p95 > 30m)",
+      "type": "stat",
+      "gridPos": { "x": 11, "y": 0, "w": 5, "h": 4 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_duracion_p50", "legendFormat": "p50 Mediana", "refId": "A" },
+        { "expr": "lambda26_int_demanda_duracion_p95", "legendFormat": "p95 Cola Larga", "refId": "B" }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"] },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "value"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "m",
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 20 },
+              { "color": "red", "value": 30 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Error MAE en Vivo",
+      "description": "Error absoluto medio en ventana Kafka 45s",
+      "type": "gauge",
+      "gridPos": { "x": 16, "y": 0, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_stream_mae", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 60,
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 25 },
+              { "color": "red", "value": 40 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Antigüedad Última Corrida",
+      "description": "S13 3.9: Frescura de los datos en Pushgateway",
+      "type": "stat",
+      "gridPos": { "x": 20, "y": 0, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "time() - lambda26_int_demanda_ultima_ejecucion_ts", "legendFormat": "Edad", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 0,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 600 },
+              { "color": "red", "value": 3600 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Streaming & ML: Demanda Real Observada vs. Demanda Predicha (Ventana 45s)",
+      "description": "Comparación entre demanda promedio real y predicha en streaming Kafka",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 4, "w": 14, "h": 8 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_stream_real_prom", "legendFormat": "Demanda Real Promedio (trip_count)", "refId": "A" },
+        { "expr": "lambda26_int_demanda_stream_pred_prom", "legendFormat": "Demanda Predicha Promedio (ML U2)", "refId": "B" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "fillOpacity": 18,
+            "showPoints": "always",
+            "pointSize": 5
+          }
+        },
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "Demanda Real Promedio (trip_count)" },
+            "properties": [{ "id": "color", "value": { "fixedColor": "blue", "mode": "fixed" } }]
+          },
+          {
+            "matcher": { "id": "byName", "options": "Demanda Predicha Promedio (ML U2)" },
+            "properties": [{ "id": "color", "value": { "fixedColor": "orange", "mode": "fixed" } }]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Hallazgo S13 (Batch): Promedio vs. p50 (Mediana) vs. p95 (Cola Larga)",
+      "description": "Demuestra por qué el promedio engaña frente a la mediana y el p95",
+      "type": "bargauge",
+      "gridPos": { "x": 14, "y": 4, "w": 10, "h": 8 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_duracion_p50", "legendFormat": "p50 Mediana (Viaje Típico)", "refId": "A" },
+        { "expr": "lambda26_int_demanda_batch_duracion_prom", "legendFormat": "Promedio (Sesgado por Cola)", "refId": "B" },
+        { "expr": "lambda26_int_demanda_duracion_p95", "legendFormat": "p95 (Cola Larga Recreativa)", "refId": "C" }
+      ],
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "m",
+          "min": 0,
+          "max": 45,
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 12 },
+              { "color": "red", "value": 30 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "title": "Streaming: Filas Procesadas (45s) y Error Residual (MAE)",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 12, "w": 12, "h": 7 },
+      "targets": [
+        { "expr": "lambda26_int_demanda_stream_filas", "legendFormat": "Filas en 45s", "refId": "A" },
+        { "expr": "lambda26_int_demanda_stream_mae", "legendFormat": "MAE en Vivo", "refId": "B" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "always"
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "DataOps: Antigüedad de Ejecución (Pushgateway)",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 12, "w": 12, "h": 7 },
+      "targets": [
+        { "expr": "time() - lambda26_int_demanda_ultima_ejecucion_ts", "legendFormat": "Segundos desde última corrida", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "opacity"
+          }
+        }
+      }
+    },
+    {
+      "id": 11,
+      "title": "Auditoría Completa de Métricas Integradas U3 (Prometheus / Pushgateway)",
+      "type": "table",
+      "gridPos": { "x": 0, "y": 19, "w": 24, "h": 7 },
+      "targets": [
+        {
+          "expr": "{__name__=~\"lambda26_int_demanda_.*\"}",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    }
+  ]
+}

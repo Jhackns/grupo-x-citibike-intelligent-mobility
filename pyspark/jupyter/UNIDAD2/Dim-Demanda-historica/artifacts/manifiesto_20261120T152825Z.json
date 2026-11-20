@@ -1,0 +1,64 @@
+{
+  "runId": "20261120T152825Z",
+  "dimension": "A - Demanda",
+  "sparkVersion": "4.2.0",
+  "python": "3.10.22",
+  "compuertas": {
+    "Dataset CSV existe": true,
+    "Modelo U2 existe": true,
+    "Pushgateway listo": true,
+    "Prometheus listo": true,
+    "Grafana saludable": true,
+    "Kafka (citibike-viajes-eventos)": true
+  },
+  "batch": {
+    "filasRaw": 4993137,
+    "filasValidas": 4987477,
+    "ratioValidos": 0.9989,
+    "promMin": 12.99,
+    "p50Min": 9.48,
+    "p95Min": 34.23,
+    "maxMin": 179.98,
+    "fraccionMayor30Min": 0.0709,
+    "calidad": {
+      "Existen filas válidas": true,
+      "Completitud: dur_min sin nulos": true,
+      "Rango: ratio calidad en [0.95, 1.0]": true,
+      "Dominio: duración en [1, 180] min": true,
+      "Plausibilidad: p50 < 20 min": true
+    },
+    "advertencias": [
+      "p95 > 30 min: presencia de cola larga recreativa"
+    ]
+  },
+  "streaming": {
+    "duracionS": 45,
+    "filas": 30,
+    "microlotesConDatos": 30,
+    "maeProduccion": 20.99
+  },
+  "observabilidad": {
+    "metricas": {
+      "lambda26_int_demanda_validos_ratio": "0.9989",
+      "lambda26_int_demanda_duracion_p50": "9.48",
+      "lambda26_int_demanda_duracion_p95": "34.23",
+      "lambda26_int_demanda_stream_filas": "30",
+      "lambda26_int_demanda_stream_mae": "20.99",
+      "lambda26_int_demanda_ultima_ejecucion_ts": "1795188668"
+    },
+    "verificado": true
+  },
+  "graficos": [
+    "./artifacts/graf01_batch_distribucion_percentiles.png",
+    "./artifacts/graf02_streaming_real_vs_predicho.png",
+    "./artifacts/graf03_dataops_salud_compuertas.png",
+    "./artifacts/graf02_streaming_real_vs_predicho.png",
+    "./artifacts/graf03_dataops_salud_compuertas.png"
+  ],
+  "kafkaFilasTopic": 3202,
+  "pruebaFalloControlado": {
+    "simulado": "Pushgateway listo",
+    "bloqueoVerificado": true
+  },
+  "duracionTotalS": 170.6
+}

@@ -1,0 +1,2 @@
+Copia aqui los 5 CSV de Citi Bike de julio 2026 (202607-citibike-tripdata_1.csv ... _5.csv).
+Descarga: https://s3.amazonaws.com/tripdata/202607-citibike-tripdata.zip

@@ -1,0 +1,92 @@
+{
+  "run_id": "20261120-002306",
+  "estado": "DETENIDA",
+  "inicio_utc": "2026-11-20T00:23:06+00:00",
+  "fin_utc": "2026-11-20T00:23:11+00:00",
+  "parametros": {
+    "duracion_streaming_s": 240,
+    "forzar_fallo": true,
+    "ventana_min": 15,
+    "watermark": "10 minutes",
+    "topic": "citibike-rides"
+  },
+  "versiones": {
+    "spark": null,
+    "python": "3.12.3"
+  },
+  "compuertas": [
+    {
+      "nombre": "datos CSV",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "5 CSV en datos/ (se esperan 5)"
+    },
+    {
+      "nombre": "kafka",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "conexión a kafka:9092"
+    },
+    {
+      "nombre": "pushgateway",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "http://pushgateway:9091/-/ready"
+    },
+    {
+      "nombre": "prometheus",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": false,
+      "detalle": "http://prometheus:9090/-/ready"
+    },
+    {
+      "nombre": "artefactos U1",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "ok"
+    },
+    {
+      "nombre": "artefactos U2",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "ok"
+    },
+    {
+      "nombre": "prueba de fallo (--forzar-fallo)",
+      "etapa": "previa",
+      "ok": false,
+      "detiene": true,
+      "detalle": "se pide un archivo que no existe para demostrar que la compuerta detiene la corrida"
+    },
+    {
+      "nombre": "KPI publicados en Pushgateway",
+      "etapa": "bi",
+      "ok": true,
+      "detiene": false,
+      "detalle": "5 métricas"
+    },
+    {
+      "nombre": "Prometheus tiene los KPI de ESTA corrida",
+      "etapa": "bi",
+      "ok": true,
+      "detiene": false,
+      "detalle": "run_id=20261120-002306"
+    }
+  ],
+  "resumen_compuertas": {
+    "ok": 8,
+    "total": 9,
+    "detienen_fallidas": [
+      "prueba de fallo (--forzar-fallo)"
+    ]
+  },
+  "kpis": {
+    "duracion_total_s": 0.0
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "run_id": "20261120-002509",
+  "estado": "OK",
+  "inicio_utc": "2026-11-20T00:25:09+00:00",
+  "fin_utc": "2026-11-20T00:28:42+00:00",
+  "parametros": {
+    "duracion_streaming_s": 200,
+    "forzar_fallo": false,
+    "ventana_min": 15,
+    "watermark": "10 minutes",
+    "topic": "citibike-rides"
+  },
+  "versiones": {
+    "spark": "4.2.0",
+    "python": "3.12.3"
+  },
+  "compuertas": [
+    {
+      "nombre": "datos CSV",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "5 CSV en datos/ (se esperan 5)"
+    },
+    {
+      "nombre": "kafka",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "conexión a kafka:9092"
+    },
+    {
+      "nombre": "pushgateway",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "http://pushgateway:9091/-/ready"
+    },
+    {
+      "nombre": "prometheus",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": false,
+      "detalle": "http://prometheus:9090/-/ready"
+    },
+    {
+      "nombre": "artefactos U1",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "ok"
+    },
+    {
+      "nombre": "artefactos U2",
+      "etapa": "previa",
+      "ok": true,
+      "detiene": true,
+      "detalle": "ok"
+    },
+    {
+      "nombre": "existencia",
+      "etapa": "batch",
+      "ok": true,
+      "detiene": true,
+      "detalle": "73,953 filas zona-hora en 99 zonas"
+    },
+    {
+      "nombre": "completitud",
+      "etapa": "batch",
+      "ok": true,
+      "detiene": true,
+      "detalle": "0 filas sin zona u hora"
+    },
+    {
+      "nombre": "rango",
+      "etapa": "batch",
+      "ok": true,
+      "detiene": true,
+      "detalle": "0 filas con salidas o llegadas negativas"
+    },
+    {
+      "nombre": "plausibilidad: Silver conserva >= 95 % de Bronze",
+      "etapa": "batch",
+      "ok": true,
+      "detiene": true,
+      "detalle": "99.57 %"
+    },
+    {
+      "nombre": "plausibilidad: Gold cuadra con Silver",
+      "etapa": "batch",
+      "ok": true,
+      "detiene": true,
+      "detalle": "actividad Gold 9,943,694 vs 2 x Silver 9,943,694"
+    },
+    {
+      "nombre": "sin errores en las consultas",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": true,
+      "detalle": "ok"
+    },
+    {
+      "nombre": "hay eventos en Kafka",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": true,
+      "detalle": "67,194 eventos leídos (si es 0: ¿corre cbe-productor-viajes?)"
+    },
+    {
+      "nombre": "ventanas cerradas >= 3",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": true,
+      "detalle": "12 ventanas de 15 min"
+    },
+    {
+      "nombre": "evento inválido detectado",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": false,
+      "detalle": "1 inválido(s)"
+    },
+    {
+      "nombre": "viaje tardío descartado por watermark",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": false,
+      "detalle": "1 fila(s)"
+    },
+    {
+      "nombre": "ratio de válidos >= 99 %",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": false,
+      "detalle": "0.99999"
+    },
+    {
+      "nombre": "latencia p95 < 60 s",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": false,
+      "detalle": "p50 2527.0 ms · p95 4776.0 ms"
+    },
+    {
+      "nombre": "MAE en vivo <= 2 x MAE de test",
+      "etapa": "streaming",
+      "ok": true,
+      "detiene": false,
+      "detalle": "en vivo 33.3972 vs test 18.2092"
+    },
+    {
+      "nombre": "KPI publicados en Pushgateway",
+      "etapa": "bi",
+      "ok": true,
+      "detiene": false,
+      "detalle": "24 métricas"
+    },
+    {
+      "nombre": "Prometheus tiene los KPI de ESTA corrida",
+      "etapa": "bi",
+      "ok": true,
+      "detiene": false,
+      "detalle": "run_id=20261120-002509"
+    }
+  ],
+  "resumen_compuertas": {
+    "ok": 21,
+    "total": 21,
+    "detienen_fallidas": []
+  },
+  "kpis": {
+    "batch_gold_filas": 73953,
+    "batch_zonas": 99,
+    "batch_silver_conservado_pct": 99.57,
+    "batch_duracion_s": 3.3,
+    "eventos_leidos": 67194,
+    "eventos_validos": 67193,
+    "eventos_invalidos": 1,
+    "ratio_validos": 0.99999,
+    "descartados_por_watermark": 1,
+    "ventanas_cerradas": 12,
+    "predicciones_evaluadas": 150,
+    "mae_en_vivo": 33.3972,
+    "mae_test": 18.2092,
+    "latencia_p50_ms": 2527.0,
+    "latencia_p95_ms": 4776.0,
+    "latencia_promedio_ms": 2525.0,
+    "microlote_p50_ms": 340.0,
+    "microlote_p95_ms": 660.0500000000001,
+    "ultima_ventana_nyc": "2026-07-28 10:45",
+    "duracion_s": 200.1,
+    "duracion_total_s": 208.1
+  }
+}

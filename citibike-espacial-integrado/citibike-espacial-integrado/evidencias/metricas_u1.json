@@ -1,0 +1,77 @@
+{
+  "bronze_filas": 4993137,
+  "silver_filas": 4971847,
+  "perfil_calidad": {
+    "filas": 4993137,
+    "ride_id_unicos": 4993137,
+    "sin_estacion": 17730,
+    "sin_fecha": 0,
+    "duracion_fuera_1_180_min": 5660,
+    "coordenadas_fuera_nyc": 0,
+    "duplicados_ride_id": 0
+  },
+  "estaciones": 2418,
+  "zonas": 99,
+  "top10_participacion_pct": 52.76,
+  "corte": "2026-07-24",
+  "resultados": [
+    {
+      "modelo": "Baseline media histórica",
+      "RMSE": 78.937,
+      "MAE": 28.8327,
+      "R2": 0.9413
+    },
+    {
+      "modelo": "LinearRegression",
+      "RMSE": 75.7215,
+      "MAE": 30.5797,
+      "R2": 0.946
+    },
+    {
+      "modelo": "GBTRegressor",
+      "RMSE": 71.287,
+      "MAE": 25.3602,
+      "R2": 0.9522
+    }
+  ],
+  "ganador": "GBTRegressor",
+  "umbral_alta_actividad": 152.0,
+  "alta_actividad": {
+    "precision": 0.9366,
+    "recall": 0.9459,
+    "f1": 0.9413,
+    "accuracy": 0.9743
+  },
+  "top5_zonas": [
+    {
+      "zona": "Z11-15",
+      "estacion_ejemplo": "Rivington St & Chrystie St",
+      "actividad": 1096249,
+      "participacion_pct": 11.02
+    },
+    {
+      "zona": "Z12-15",
+      "estacion_ejemplo": "Lexington Ave & E 26 St",
+      "actividad": 862202,
+      "participacion_pct": 8.67
+    },
+    {
+      "zona": "Z13-15",
+      "estacion_ejemplo": "Broadway & W 48 St",
+      "actividad": 515073,
+      "participacion_pct": 5.18
+    },
+    {
+      "zona": "Z12-16",
+      "estacion_ejemplo": "55 Ave & Center Blvd",
+      "actividad": 481767,
+      "participacion_pct": 4.84
+    },
+    {
+      "zona": "Z11-14",
+      "estacion_ejemplo": "Grand St & Greene St",
+      "actividad": 449875,
+      "participacion_pct": 4.52
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+apiVersion: 1
+
+# Provisiona los dashboards JSON de esta carpeta al arrancar Grafana (obs/compose.yml ya monta ./grafana/provisioning)
+providers:
+  - name: lambda26-proyecto-sello
+    folder: Proyecto Sello
+    type: file
+    allowUiUpdates: true
+    updateIntervalSeconds: 30
+    options:
+      path: /etc/grafana/provisioning/dashboards/json

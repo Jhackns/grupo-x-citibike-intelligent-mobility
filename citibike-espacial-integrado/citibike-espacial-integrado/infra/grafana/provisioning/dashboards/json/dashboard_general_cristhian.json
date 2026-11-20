@@ -1,0 +1,2858 @@
+{
+  "uid": "citibike-general-cristhian",
+  "title": "CitiBike Intelligent Mobility — Cristhian Chuquitarqui · Análisis espacial (U1 · U2 · U3)",
+  "description": "Análisis histórico, predicción espacial en tiempo real e integración de un sistema Big Data para anticipar la actividad de Citi Bike NYC.",
+  "tags": [
+    "citibike",
+    "espacial",
+    "U1",
+    "U2",
+    "U3",
+    "cristhian"
+  ],
+  "editable": true,
+  "graphTooltip": 1,
+  "style": "dark",
+  "schemaVersion": 39,
+  "version": 1,
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "refresh": "5s",
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Fuente de datos",
+        "type": "datasource",
+        "query": "prometheus",
+        "current": {
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "hide": 0
+      },
+      {
+        "name": "zona",
+        "label": "Zona (U2)",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds}"
+        },
+        "query": {
+          "query": "label_values(lambda26_u2esp_actividad_observada, zona)",
+          "refId": "zona"
+        },
+        "definition": "label_values(lambda26_u2esp_actividad_observada, zona)",
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "text": [
+            "Z11-15",
+            "Z12-15",
+            "Z13-15",
+            "Z12-16",
+            "Z11-14"
+          ],
+          "value": [
+            "Z11-15",
+            "Z12-15",
+            "Z13-15",
+            "Z12-16",
+            "Z11-14"
+          ]
+        },
+        "refresh": 2,
+        "sort": 1,
+        "hide": 0
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "type": "text",
+      "id": 1,
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style='padding:4px 8px'><div style='font-size:26px;font-weight:700;letter-spacing:.5px'>CitiBike Intelligent Mobility</div><div style='font-size:15px;font-weight:600;color:#5794F2;margin-top:2px'>CRISTHIAN CHUQUITARQUI CHURA | ANÁLISIS ESPACIAL</div><div style='font-size:13px;opacity:.8;margin-top:6px'>Análisis histórico, predicción espacial en tiempo real e integración de un sistema Big Data para anticipar la actividad de Citi Bike NYC.</div><div style='font-size:13px;margin-top:6px'><b style='color:#5794F2'>ANALIZAR EL PASADO</b> (U1 · batch) &nbsp;→&nbsp; <b style='color:#FADE2A'>ANTICIPAR EL FUTURO</b> (U2 · streaming) &nbsp;→&nbsp; <b style='color:#73BF69'>COMPROBAR EL FUNCIONAMIENTO</b> (U3 · integración)</div></div>"
+      }
+    },
+    {
+      "type": "row",
+      "id": 2,
+      "title": "01 · UNIDAD I — ANÁLISIS HISTÓRICO (BATCH) · ¿Qué zonas concentran la actividad de Citi Bike?",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "panels": []
+    },
+    {
+      "type": "geomap",
+      "id": 3,
+      "title": "Mapa de calor de actividad por zonas (cuadrícula 0,02° × 0,02°)",
+      "description": "Fuente: salidas/u1/gold_ranking_zonas (notebook U1, julio 2026). Cada punto es el CENTRO EXACTO de la celda de 0,02° × 0,02° calculado con la misma fórmula del notebook (zona_de: lat0=40.5, lon0=-74.3). Color y tamaño = actividad histórica (salidas + llegadas, la misma definición del notebook: cada viaje cuenta en su zona de origen y en la de destino). La capa de calor resalta dónde se concentra. Pasa el cursor sobre un punto para ver zona, actividad, puesto en el ranking y periodo. Este panel no depende del selector de tiempo.",
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "u1-batch"
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 14,
+        "x": 0,
+        "y": 5
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "u1-batch"
+          },
+          "refId": "A",
+          "scenarioId": "csv_content",
+          "csvContent": "zona,estacion_ejemplo,puesto,actividad,salidas,llegadas,participacion_pct,n_estaciones,lat_centro,lon_centro,lat,lon,periodo\nZ11-15,E 2 St & Ave B,1,1096249,547658,548591,11.02,83,40.73,-73.99,40.7296,-73.98961,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-15,Lexington Ave & E 26 St,2,862202,432684,429518,8.67,65,40.75,-73.99,40.74998,-73.99012,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-15,W 44 St & 11 Ave,3,515073,259630,255443,5.18,37,40.77,-73.99,40.76694,-73.98734,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-16,55 Ave & Center Blvd,4,481767,242701,239066,4.84,44,40.75,-73.97,40.75272,-73.9726,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-14,Grand St & Greene St,5,449875,224063,225812,4.52,37,40.73,-74.01,40.73004,-74.00595,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-14,South St & Broad St,6,419666,208096,211570,4.22,56,40.71,-74.01,40.71084,-74.00912,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-15,Adams St & Prospect St,7,412703,205725,206978,4.15,48,40.71,-73.99,40.71106,-73.99006,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-16,E 65 St & 2 Ave,8,351883,176254,175629,3.54,32,40.77,-73.97,40.76872,-73.97001,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-15,President St & Hoyt St,9,334637,167005,167632,3.37,53,40.69,-73.99,40.68943,-73.99018,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-14,8 Ave & W 16 St,10,323265,161287,161978,3.25,21,40.75,-74.01,40.74664,-74.00391,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-17,Union Ave & Wallabout St,11,285963,142591,143372,2.88,43,40.71,-73.95,40.71149,-73.94962,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-16,Carlton Ave & Dean St,12,278047,139241,138806,2.8,39,40.69,-73.97,40.6906,-73.97202,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-17,N 10 St & Berry St,13,253163,126160,127003,2.55,32,40.73,-73.95,40.72736,-73.95161,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-16,Lincoln Rd & Ocean Ave,14,230948,115993,114955,2.32,37,40.67,-73.97,40.6716,-73.96955,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-16,Bedford Ave & S 9 St,15,220300,109752,110548,2.22,25,40.71,-73.97,40.71295,-73.96553,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ14-16,Amsterdam Ave & W 79 St,16,213128,106855,106273,2.14,27,40.79,-73.97,40.7907,-73.97064,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-17,Motorgate,17,201026,100338,100688,2.02,23,40.77,-73.95,40.77264,-73.95281,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-16,Ave D & E 3 St,18,177888,89280,88608,1.79,22,40.73,-73.97,40.72884,-73.97575,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ14-17,E 89 St & 3 Ave,19,163005,81237,81768,1.64,33,40.79,-73.95,40.78885,-73.94925,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-17,Brevoort Pl & Bedford Ave,20,162414,81309,81105,1.63,36,40.69,-73.95,40.68867,-73.95034,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-15,7 Ave & 17 St,21,159405,79331,80074,1.6,37,40.67,-73.99,40.6701,-73.98904,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-17,Brooklyn Ave & Lefferts Ave,22,150111,75830,74281,1.51,44,40.67,-73.95,40.66972,-73.95043,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ15-17,Frederick Douglass Blvd & W 112 St,23,149149,74213,74936,1.5,40,40.81,-73.95,40.81064,-73.9502,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-18,Marcus Garvey Blvd & Macon St,24,138535,69705,68830,1.39,43,40.69,-73.93,40.68934,-73.93024,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-17,5 St & 51 Ave,25,134429,66941,67488,1.35,30,40.75,-73.95,40.74809,-73.94985,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-18,Crescent St & Broadway,26,107812,53866,53946,1.08,33,40.77,-73.93,40.76833,-73.92964,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-18,Morgan HCT Charging,27,101606,50606,51000,1.02,35,40.71,-73.93,40.70734,-73.93142,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-19,50 St & 30 Ave,28,86877,43354,43523,0.87,40,40.77,-73.91,40.77014,-73.91071,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-19,MacDougal St & Rockaway Ave,29,85119,42865,42254,0.86,43,40.69,-73.91,40.69138,-73.91053,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-18,33 St & 47 Ave,30,75340,37816,37524,0.76,39,40.75,-73.93,40.74926,-73.93002,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-19,47 Ave & 48 St,31,74060,37384,36676,0.74,46,40.75,-73.91,40.74983,-73.91069,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-16,Cortelyou Rd & Argyle Rd,32,70248,34814,35434,0.71,42,40.65,-73.97,40.64838,-73.97003,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ15-18,Bronx Shore Comfort Station,33,69036,34375,34661,0.69,34,40.81,-73.93,40.81032,-73.93144,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-19,Madison St & Seneca Ave,34,65317,32601,32716,0.66,41,40.71,-73.91,40.70938,-73.90943,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ15-16,Riverside Dr & W 104 St,35,64745,32431,32314,0.65,11,40.81,-73.97,40.80668,-73.96459,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-20,69 St & 43 Ave,36,60996,30538,30458,0.61,51,40.75,-73.89,40.74984,-73.89006,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ16-17,Broadway & W 138 St,37,55650,28066,27584,0.56,31,40.83,-73.95,40.82825,-73.94694,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ16-18,Morris Ave & E 153 St,38,55357,27595,27762,0.56,42,40.83,-73.93,40.82975,-73.93036,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ16-19,E 158 St & Melrose Ave,39,50461,25210,25251,0.51,45,40.83,-73.91,40.83056,-73.91017,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-18,Rutland Rd & E 45 St,40,45752,23055,22697,0.46,47,40.67,-73.93,40.66988,-73.92997,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ17-19,Sheridan Ave & E 172 St,41,40964,20420,20544,0.41,46,40.85,-73.91,40.84963,-73.91042,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-17,New York Ave & Snyder Ave,42,37798,18696,19102,0.38,34,40.65,-73.95,40.65157,-73.94976,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ15-19,Willow Ave & E 133 St,43,36752,18278,18474,0.37,35,40.81,-73.91,40.81143,-73.91206,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-14,46 St & 7 Ave,44,36520,18262,18258,0.37,34,40.65,-74.01,40.64911,-74.00912,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-14,Dwight St & Dikeman St,45,36256,17334,18922,0.36,17,40.67,-74.01,40.67627,-74.0094,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ17-18,W 171 St & St Nicholas Ave,46,35765,18117,17648,0.36,28,40.85,-73.93,40.85068,-73.93168,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ14-18,E 106 St & 1 Ave,47,31821,15868,15953,0.32,10,40.79,-73.93,40.79376,-73.93424,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ14-15,Riverside Dr & W 72 St,48,30713,15605,15108,0.31,4,40.79,-73.99,40.78383,-73.98287,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ17-20,E 179 St & Daly Ave,49,28741,14316,14425,0.29,38,40.85,-73.89,40.85045,-73.89086,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-21,Corona Ave & 90 St,50,27775,13962,13813,0.28,44,40.75,-73.87,40.75058,-73.86993,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ16-20,E 163 St & Tiffany St,51,26294,13162,13132,0.26,34,40.83,-73.89,40.83044,-73.89158,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ18-20,E 188 St & Creston Ave,52,25936,12908,13028,0.26,39,40.87,-73.89,40.87044,-73.88953,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-14,12 Ave & W 40 St,53,23541,11767,11774,0.24,1,40.77,-74.01,40.76088,-74.00278,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-22,71 Ave & 110 St,54,21513,10677,10836,0.22,35,40.73,-73.85,40.72897,-73.84978,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ18-19,Grand Ave & W Fordham Rd,55,20643,10158,10485,0.21,34,40.87,-73.91,40.86984,-73.90863,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-14,Columbia St & Degraw St,56,20456,10168,10288,0.21,6,40.69,-74.01,40.68624,-74.00814,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ06-13,5 Ave & 88 St,57,19201,9500,9701,0.19,37,40.63,-74.03,40.63014,-74.02937,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-15,12 Ave & 36 St,58,19060,9546,9514,0.19,15,40.65,-73.99,40.6512,-73.98691,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-18,Morgan Ave & Lombardy St,59,15771,7957,7814,0.16,9,40.73,-73.93,40.73452,-73.93043,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-20,Myrtle Ave & 65 St,60,13699,6833,6866,0.14,14,40.71,-73.89,40.7055,-73.89457,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-21,Austin St & 63 Dr,61,13372,6624,6748,0.13,21,40.73,-73.87,40.73522,-73.86739,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ08-19,Legion St & Blake Ave,62,12956,6498,6458,0.13,22,40.67,-73.91,40.67375,-73.91168,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ14-19,20 Ave & 31 St,63,11827,5925,5902,0.12,9,40.79,-73.91,40.78421,-73.9142,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-22,Martense Ave & 108 St,64,11680,5737,5943,0.12,21,40.75,-73.85,40.74891,-73.85453,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ18-18,10 Ave & W 202 St,65,11660,5718,5942,0.12,14,40.87,-73.93,40.86439,-73.92531,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-19,Fresh Pond Rd & Flushing Ave,66,10938,5417,5521,0.11,20,40.73,-73.91,40.72893,-73.90545,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-20,82 St & 30 Ave,67,10203,5083,5120,0.1,19,40.77,-73.89,40.76652,-73.89045,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ17-17,Cabrini Blvd & W 177 St,68,7988,4063,3925,0.08,6,40.85,-73.95,40.84595,-73.94168,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ19-19,Bailey Ave & W 234 St,69,7680,3788,3892,0.08,16,40.89,-73.91,40.88477,-73.90866,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ19-20,Post Rd & W 251 St,70,7160,3537,3623,0.07,14,40.89,-73.89,40.88609,-73.89238,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ13-21,31 Ave & 103 St,71,7035,3547,3488,0.07,18,40.77,-73.87,40.76467,-73.87164,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-18,Cortelyou Rd & Albany Ave,72,5518,2657,2861,0.06,18,40.65,-73.93,40.65282,-73.93318,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ15-20,Hunts Point Ave & Bryant Ave,73,5514,2749,2765,0.06,9,40.81,-73.89,40.81747,-73.89344,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ06-14,7 Ave & 62 St,74,5253,2629,2624,0.05,9,40.63,-74.01,40.63645,-74.01552,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-13,65 St & 2 Ave,75,4453,2210,2243,0.04,7,40.65,-74.03,40.64449,-74.02431,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ18-21,Hull Ave & E 209 St,76,4030,1991,2039,0.04,7,40.87,-73.87,40.87493,-73.87669,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-20,Cooper Ave & 65 Pl,77,3646,1807,1839,0.04,5,40.69,-73.89,40.69774,-73.89553,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ06-16,Ditmas Ave & McDonald Ave,78,3566,1752,1814,0.04,4,40.63,-73.97,40.63804,-73.97336,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ05-13,Fort Hamilton Pkwy & 95 St,79,3214,1569,1645,0.03,10,40.61,-74.03,40.6151,-74.033,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-23,Queens Blvd N & 78 Ave,80,2896,1435,1461,0.03,5,40.71,-73.83,40.7165,-73.835,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ17-21,Vyse Ave & E 181 St,81,2450,1232,1218,0.02,3,40.85,-73.87,40.84332,-73.87902,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-20,St James Ave & 51 Ave,82,1868,927,941,0.02,3,40.73,-73.89,40.73341,-73.88875,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ20-19,Riverdale Ave & W 254 St,83,1356,676,680,0.01,5,40.91,-73.91,40.90703,-73.90338,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ09-13,Picnic Point,84,1238,622,616,0.01,1,40.69,-74.03,40.68513,-74.02535,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ19-21,Bainbridge Ave & E 211 St,85,1156,566,590,0.01,3,40.89,-73.87,40.8829,-73.87779,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-23,72 Rd & 113 St,86,680,321,359,0.01,3,40.73,-73.83,40.72341,-73.83866,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ20-20,David Sheridan Plaza & Broadway,87,653,322,331,0.01,2,40.91,-73.89,40.90726,-73.89658,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ06-12,Shore Rd & Narrows Ave,88,452,218,234,0.0,2,40.63,-74.05,40.62391,-74.04054,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ05-12,Shore Rd & Oliver St,89,256,120,136,0.0,1,40.61,-74.05,40.61919,-74.0402,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ06-15,15 Ave & 37 St,90,232,117,115,0.0,1,40.63,-73.99,40.63899,-73.98074,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-13,Clinton St & 7 St,91,159,0,159,0.0,18,40.75,-74.03,40.74795,-74.0311,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-13,Paulus Hook,92,82,0,82,0.0,7,40.71,-74.03,40.71553,-74.03663,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-12,Van Vorst Park,93,36,0,36,0.0,9,40.71,-74.05,40.71623,-74.04828,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-12,Hilltop,94,23,0,23,0.0,7,40.73,-74.05,40.72857,-74.04747,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-13,River St & Newark St,95,21,0,21,0.0,11,40.73,-74.03,40.73324,-74.03333,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ12-12,Heights Elevator,96,7,0,7,0.0,2,40.75,-74.05,40.74652,-74.04222,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ11-11,Dey St,97,5,0,5,0.0,2,40.73,-74.07,40.73068,-74.06556,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ07-19,Riverdale Ave & E 98 St,98,3,1,2,0.0,1,40.65,-73.91,40.65984,-73.91685,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\nZ10-11,Lafayette Park,99,2,0,2,0.0,2,40.71,-74.07,40.71241,-74.06265,julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00)\n"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlRd"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "zona"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zona"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "estacion_ejemplo"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Estación de referencia"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "puesto"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Puesto en el ranking"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "actividad"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actividad (salidas + llegadas)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "salidas"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Salidas"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "llegadas"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Llegadas"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "participacion_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Participación (%)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "n_estaciones"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Estaciones en la zona"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lat_centro"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Latitud centro de la celda"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lon_centro"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Longitud centro de la celda"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lat"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Latitud media de las estaciones"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lon"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Longitud media de las estaciones"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "periodo"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Periodo analizado"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "participacion_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "view": {
+          "id": "coords",
+          "lat": 40.735,
+          "lon": -73.955,
+          "zoom": 11.4,
+          "allLayers": true
+        },
+        "controls": {
+          "showZoom": true,
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showScale": true,
+          "showMeasure": false,
+          "showDebug": false
+        },
+        "basemap": {
+          "type": "xyz",
+          "name": "Mapa base (Esri Dark Gray)",
+          "config": {
+            "url": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+            "attribution": "Tiles © Esri"
+          }
+        },
+        "layers": [
+          {
+            "type": "heatmap",
+            "name": "Calor (actividad)",
+            "tooltip": false,
+            "location": {
+              "mode": "coords",
+              "latitude": "lat_centro",
+              "longitude": "lon_centro"
+            },
+            "config": {
+              "blur": 22,
+              "radius": 14,
+              "weight": {
+                "field": "actividad",
+                "fixed": 1,
+                "min": 0,
+                "max": 1
+              }
+            }
+          },
+          {
+            "type": "markers",
+            "name": "Zonas U1",
+            "tooltip": true,
+            "location": {
+              "mode": "coords",
+              "latitude": "lat_centro",
+              "longitude": "lon_centro"
+            },
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "actividad",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.8,
+                "size": {
+                  "field": "actividad",
+                  "fixed": 6,
+                  "min": 5,
+                  "max": 22
+                },
+                "symbol": {
+                  "mode": "fixed",
+                  "fixed": "img/icons/marker/square.svg"
+                },
+                "rotation": {
+                  "fixed": 0,
+                  "mode": "mod",
+                  "min": -360,
+                  "max": 360
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            }
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        }
+      }
+    },
+    {
+      "type": "barchart",
+      "id": 4,
+      "title": "Ranking histórico — top 10 zonas más activas",
+      "description": "Fuente: salidas/u1/gold_ranking_zonas. Actividad = salidas + llegadas en julio 2026 (viajes del 2026-07-01 al 2026-07-31; Gold incluye llegadas hasta 2026-08-01 03:00). Las 10 zonas suman el 52.8 % de la actividad total (9,943,694 registros zona-evento). Pasa el cursor sobre una barra para ver la participación. No depende del selector de tiempo.",
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "u1-batch"
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 10,
+        "x": 14,
+        "y": 5
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "u1-batch"
+          },
+          "refId": "A",
+          "scenarioId": "csv_content",
+          "csvContent": "zona_nombre,actividad,participacion_pct,zona\n01 · Z11-15 · E 2 St & Ave B,1096249,11.02,Z11-15\n02 · Z12-15 · Lexington Ave & E 26 St,862202,8.67,Z12-15\n03 · Z13-15 · W 44 St & 11 Ave,515073,5.18,Z13-15\n04 · Z12-16 · 55 Ave & Center Blvd,481767,4.84,Z12-16\n05 · Z11-14 · Grand St & Greene St,449875,4.52,Z11-14\n06 · Z10-14 · South St & Broad St,419666,4.22,Z10-14\n07 · Z10-15 · Adams St & Prospect St,412703,4.15,Z10-15\n08 · Z13-16 · E 65 St & 2 Ave,351883,3.54,Z13-16\n09 · Z09-15 · President St & Hoyt St,334637,3.37,Z09-15\n10 · Z12-14 · 8 Ave & W 16 St,323265,3.25,Z12-14\n"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlRd"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale",
+          "decimals": 0,
+          "custom": {
+            "fillOpacity": 85,
+            "gradientMode": "none",
+            "lineWidth": 0,
+            "axisLabel": "Actividad (salidas + llegadas)",
+            "axisPlacement": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "actividad"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actividad (salidas + llegadas)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "participacion_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Participación"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "viz": true,
+                  "legend": true,
+                  "tooltip": false
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "zona"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "viz": true,
+                  "legend": true,
+                  "tooltip": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "orientation": "horizontal",
+        "xField": "zona_nombre",
+        "showValue": "always",
+        "colorByField": "actividad",
+        "barWidth": 0.8,
+        "groupWidth": 0.7,
+        "stacking": "none",
+        "xTickLabelRotation": 0,
+        "xTickLabelMaxLength": 40,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "text": {
+          "valueSize": 13
+        }
+      }
+    },
+    {
+      "type": "row",
+      "id": 5,
+      "title": "02 · UNIDAD II — PREDICCIÓN EN TIEMPO REAL (STREAMING) · ¿Qué zonas concentrarán más actividad en la siguiente ventana de 15 min?",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "id": 6,
+      "title": "A · Actividad actual (última ventana cerrada de 15 min)",
+      "description": "lambda26_u2esp_actividad_total_ventana: salidas + llegadas de TODAS las zonas en la última ventana cerrada por el watermark. El texto indica la ventana (hora de NYC del día reproducido).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 21
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_actividad_total_ventana * on(job, instance) group_left(ventana) lambda26_u2esp_ventana_actual_info",
+          "legendFormat": "Ventana {{ventana}}",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "locale",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value_and_name",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 7,
+      "title": "B · Pronóstico de la siguiente ventana (15 zonas top)",
+      "description": "lambda26_u2esp_pronostico_total_siguiente_top: suma del pronóstico t+1 del modelo (LinearRegression de U2_01) para las 15 zonas que modela el proyecto (65,6 % de la actividad).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 21
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_pronostico_total_siguiente_top",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "locale",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 8,
+      "title": "C · Zonas en alerta (siguiente ventana)",
+      "description": "lambda26_u2esp_zonas_en_alerta_siguiente. Criterio del notebook U2_02: una zona está en alerta si su pronóstico t+1 es ≥ 1,5 × la media histórica de la misma franja. Verde = 0, amarillo = 1-2, rojo = 3 o más.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 21
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_zonas_en_alerta_siguiente",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 3
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 9,
+      "title": "D · MAE en producción vs. MAE de prueba",
+      "description": "Producción: lambda26_u2esp_mae_online (error absoluto medio de las predicciones ya evaluadas en vivo). Prueba: lambda26_u2esp_modelo_mae_test del modelo ganador (notebook U2_01, MAE = 18.21). Colores: verde < 1,5 × MAE de prueba, amarillo hasta 2 ×, rojo > 2 × (misma compuerta que U3).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 21
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_mae_online",
+          "legendFormat": "Producción",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_modelo_mae_test and on(modelo) lambda26_u2esp_modelo_ganador_info",
+          "legendFormat": "Prueba ({{modelo}})",
+          "instant": true,
+          "range": false,
+          "refId": "B",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 27.31
+              },
+              {
+                "color": "red",
+                "value": 36.42
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value_and_name",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "timeseries",
+      "id": 10,
+      "title": "Actividad real vs. actividad predicha por zona",
+      "description": "Real: lambda26_u2esp_actividad_observada (línea continua). Predicho: lambda26_u2esp_actividad_predicha_para_ventana (línea discontinua), es decir, lo que el modelo pronosticó para esa misma ventana una ventana antes. Filtra con el selector Zona (por defecto las 5 zonas top: Z11-15, Z12-15, Z13-15, Z12-16, Z11-14).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 14,
+        "x": 0,
+        "y": 26
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_actividad_observada{zona=~\"$zona\"}",
+          "legendFormat": "{{nombre}} · real",
+          "instant": false,
+          "range": true,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_actividad_predicha_para_ventana{zona=~\"$zona\"}",
+          "legendFormat": "{{nombre}} · predicho",
+          "instant": false,
+          "range": true,
+          "refId": "B",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "pointSize": 4,
+            "showPoints": "auto",
+            "axisLabel": "Viajes por ventana de 15 min",
+            "spanNulls": true,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*predicho"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash",
+                  "dash": [
+                    8,
+                    6
+                  ]
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "bargauge",
+      "id": 11,
+      "title": "Pronóstico por zona — top 10 siguiente ventana (⚠ = en alerta)",
+      "description": "lambda26_u2esp_actividad_pronostico_siguiente, ordenado de mayor a menor. Las zonas en alerta (pronóstico ≥ 1,5 × media histórica de la franja, criterio del notebook) aparecen primero en ROJO con el prefijo ⚠.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 14,
+        "y": 26
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "sort_desc(lambda26_u2esp_actividad_pronostico_siguiente >= 1.5 * clamp_min(lambda26_u2esp_actividad_media_historica_siguiente, 1))",
+          "legendFormat": "⚠ {{nombre}}",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "sort_desc(topk(10, lambda26_u2esp_actividad_pronostico_siguiente) unless on(zona) (lambda26_u2esp_actividad_pronostico_siguiente >= 1.5 * clamp_min(lambda26_u2esp_actividad_media_historica_siguiente, 1)))",
+          "legendFormat": "{{nombre}}",
+          "instant": true,
+          "range": false,
+          "refId": "B",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "min": 0
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "valueMode": "color",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "sizing": "manual",
+        "minVizHeight": 18,
+        "maxVizHeight": 26,
+        "minVizWidth": 8,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "id": 12,
+      "title": "Pronóstico t+1 vs. promedio histórico de la franja",
+      "description": "Pronóstico: lambda26_u2esp_actividad_pronostico_siguiente (línea continua). Promedio histórico: lambda26_u2esp_actividad_media_historica_siguiente (media de train para la misma zona, franja horaria y tipo de día; línea discontinua). Si el pronóstico queda muy por encima de la media, la zona se mueve más de lo habitual.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_actividad_pronostico_siguiente{zona=~\"$zona\"}",
+          "legendFormat": "{{nombre}} · pronóstico",
+          "instant": false,
+          "range": true,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_actividad_media_historica_siguiente{zona=~\"$zona\"}",
+          "legendFormat": "{{nombre}} · media histórica",
+          "instant": false,
+          "range": true,
+          "refId": "B",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "pointSize": 4,
+            "showPoints": "auto",
+            "axisLabel": "Viajes por ventana de 15 min",
+            "spanNulls": true,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*media histórica"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash",
+                  "dash": [
+                    8,
+                    6
+                  ]
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "bargauge",
+      "id": 13,
+      "title": "Ocupación de bicicletas por zona (IoT · GBFS en vivo)",
+      "description": "lambda26_u2esp_iot_ocupacion_zona_pct = 100 × bicis disponibles / (bicis + docks libres) de las estaciones en servicio de la zona, calculado en U2_02 con el feed GBFS de Citi Bike. Ordenado de mayor a menor (desplázate para ver todas).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "sort_desc(lambda26_u2esp_iot_ocupacion_zona_pct)",
+          "legendFormat": "{{nombre}}",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 20
+              },
+              {
+                "color": "green",
+                "value": 40
+              },
+              {
+                "color": "yellow",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 95
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "min": 0,
+          "max": 100
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "valueMode": "color",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "sizing": "manual",
+        "minVizHeight": 18,
+        "maxVizHeight": 26,
+        "minVizWidth": 8,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "type": "barchart",
+      "id": 14,
+      "title": "Bicicletas disponibles por zona — 10 con más y 10 con menos (IoT)",
+      "description": "lambda26_u2esp_iot_bicis_zona (sensores GBFS en vivo). Se muestran las 10 zonas con MÁS bicicletas y las 10 con MENOS, ordenadas de mayor a menor.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "topk(10, lambda26_u2esp_iot_bicis_zona) or bottomk(10, lambda26_u2esp_iot_bicis_zona)",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "instance": true,
+              "job": true,
+              "zona": true,
+              "__name__": true
+            },
+            "renameByName": {
+              "nombre": "Zona",
+              "Value": "Bicis disponibles"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "sort": [
+              {
+                "field": "Bicis disponibles",
+                "desc": true
+              }
+            ]
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale",
+          "decimals": 0,
+          "custom": {
+            "fillOpacity": 85,
+            "lineWidth": 0,
+            "axisLabel": "Bicicletas disponibles"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "xField": "Zona",
+        "showValue": "always",
+        "colorByField": "Bicis disponibles",
+        "barWidth": 0.8,
+        "stacking": "none",
+        "xTickLabelMaxLength": 36,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      }
+    },
+    {
+      "type": "bargauge",
+      "id": 15,
+      "title": "Estaciones vacías por zona (sin bicicletas) — candidatas a redistribución",
+      "description": "lambda26_u2esp_iot_estaciones_vacias_zona: estaciones en servicio con 0 bicis disponibles, agrupadas por zona (GBFS en vivo). Solo zonas con al menos una estación vacía, de mayor a menor.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "sort_desc(topk(15, lambda26_u2esp_iot_estaciones_vacias_zona > 0))",
+          "legendFormat": "{{nombre}}",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 3
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "min": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "valueMode": "color",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "sizing": "manual",
+        "minVizHeight": 18,
+        "maxVizHeight": 26,
+        "minVizWidth": 8,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "type": "row",
+      "id": 16,
+      "title": "03 · UNIDAD III — INTEGRACIÓN Y OBSERVABILIDAD · ¿El sistema completo funciona, procesa los eventos y se puede comprobar?",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "id": 17,
+      "title": "Última ejecución integrada (run_id · estado)",
+      "description": "lambda26_u3_run_info{run_id, estado}, publicado por scripts/U3_ejecucion_integrada.py. Verde = OK, rojo = la corrida se detuvo (DETENIDA) en alguna compuerta.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "(lambda26_u3_run_info{estado=\"OK\"} * 1) or (lambda26_u3_run_info * 0)",
+          "legendFormat": "run_id {{run_id}}",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "1": {
+                  "text": "OK",
+                  "color": "green"
+                },
+                "0": {
+                  "text": "ERROR / DETENIDA",
+                  "color": "red"
+                }
+              }
+            }
+          ],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value_and_name",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 18,
+      "title": "Fecha y hora de la ejecución",
+      "description": "lambda26_u3_run_timestamp_seconds (hora local del navegador).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 6,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_run_timestamp_seconds * 1000",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "dateTimeAsLocal",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 19,
+      "title": "Duración total",
+      "description": "lambda26_u3_duracion_total_s / 60 (compuertas + batch + streaming + publicación).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 11,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_duracion_total_s / 60",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "m",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 20,
+      "title": "Compuertas aprobadas",
+      "description": "lambda26_u3_compuertas_ok",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 15,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_compuertas_ok",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 21,
+      "title": "Compuertas totales",
+      "description": "lambda26_u3_compuertas_total",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 18,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_compuertas_total",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 22,
+      "title": "Compuertas fallidas",
+      "description": "lambda26_u3_compuertas_total - lambda26_u3_compuertas_ok",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 58
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_compuertas_total - lambda26_u3_compuertas_ok",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "bargauge",
+      "id": 23,
+      "title": "Cumplimiento de compuertas",
+      "description": "100 × lambda26_u3_compuertas_ok / lambda26_u3_compuertas_total. Incluye las 2 compuertas de BI: el script re-publica el conteo final después de evaluarlas, así que coincide con salidas/u3/manifiestos/manifiesto_<run_id>.json.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "100 * lambda26_u3_compuertas_ok / lambda26_u3_compuertas_total",
+          "legendFormat": "Compuertas aprobadas",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 90
+              },
+              {
+                "color": "green",
+                "value": 100
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "min": 0,
+          "max": 100
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "basic",
+        "valueMode": "color",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "sizing": "manual",
+        "minVizHeight": 18,
+        "maxVizHeight": 26,
+        "minVizWidth": 8,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "id": 24,
+      "title": "Eventos leídos de Kafka",
+      "description": "lambda26_u3_eventos_leidos (topic citibike-rides durante la corrida U3).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 6,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_eventos_leidos",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "locale",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 25,
+      "title": "Eventos válidos",
+      "description": "lambda26_u3_ratio_validos (eventos que cumplen el contrato / eventos leídos).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 10,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_ratio_validos",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.95
+              },
+              {
+                "color": "green",
+                "value": 0.99
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 3
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 26,
+      "title": "Ventanas cerradas",
+      "description": "lambda26_u3_ventanas_cerradas (ventanas de 15 min cerradas por el watermark).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 14,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_ventanas_cerradas",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 3
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 27,
+      "title": "Descartados por watermark",
+      "description": "lambda26_u3_descartados_por_watermark (viaje tardío inyectado a propósito).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 18,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_descartados_por_watermark",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 28,
+      "title": "Eventos inválidos",
+      "description": "lambda26_u3_eventos_invalidos (evento inválido inyectado a propósito y detectado).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 63
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_eventos_invalidos",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 29,
+      "title": "Latencia p50 (corrida U3)",
+      "description": "lambda26_u3_latencia_p50_ms: percentil 50 de publishedAt → Spark.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 68
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_latencia_p50_ms",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 30000
+              },
+              {
+                "color": "red",
+                "value": 60000
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "stat",
+      "id": 30,
+      "title": "Latencia p95 (corrida U3)",
+      "description": "lambda26_u3_latencia_p95_ms: percentil 95. Compuerta U3: p95 < 60 s.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 73
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u3_latencia_p95_ms",
+          "legendFormat": "",
+          "instant": true,
+          "range": false,
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 30000
+              },
+              {
+                "color": "red",
+                "value": 60000
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "type": "timeseries",
+      "id": 31,
+      "title": "Latencia de ingesta en vivo (publishedAt → Spark)",
+      "description": "Streaming U2_02: lambda26_u2esp_calidad_latencia_prom_ms (promedio) y lambda26_u2esp_calidad_latencia_p95_ms (p95) por topic. El streaming en vivo publica promedio y p95; el p50 lo calcula la corrida U3 (tarjeta de la izquierda).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 4,
+        "y": 68
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_calidad_latencia_prom_ms",
+          "legendFormat": "{{topic}} · promedio",
+          "instant": false,
+          "range": true,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_calidad_latencia_p95_ms",
+          "legendFormat": "{{topic}} · p95",
+          "instant": false,
+          "range": true,
+          "refId": "B",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "pointSize": 4,
+            "showPoints": "auto",
+            "axisLabel": "Latencia",
+            "spanNulls": true,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*p95"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*promedio"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "blue"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "id": 32,
+      "title": "Duración del micro-lote (u2z_actividad) vs. trigger de 5 s",
+      "description": "Percentiles móviles de 5 min sobre lambda26_u2esp_spark_batch_duration_ms{query=\"u2z_actividad\"} (quantile_over_time 0,50 y 0,95). La línea/zona roja marca el trigger de 5 s: por encima, Spark no alcanza a procesar cada micro-lote dentro de su intervalo. Corrida U3: micro-lote p50/p95 = lambda26_u3_microlote_p50_ms / _p95_ms.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 68
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "quantile_over_time(0.5, lambda26_u2esp_spark_batch_duration_ms{query=\"u2z_actividad\"}[5m])",
+          "legendFormat": "p50 (5 min)",
+          "instant": false,
+          "range": true,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "quantile_over_time(0.95, lambda26_u2esp_spark_batch_duration_ms{query=\"u2z_actividad\"}[5m])",
+          "legendFormat": "p95 (5 min)",
+          "instant": false,
+          "range": true,
+          "refId": "B",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_spark_batch_duration_ms{query=\"u2z_actividad\"}",
+          "legendFormat": "micro-lote",
+          "instant": false,
+          "range": true,
+          "refId": "C",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5000
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "pointSize": 4,
+            "showPoints": "auto",
+            "axisLabel": "Duración",
+            "spanNulls": true,
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "p50 (5 min)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "p95 (5 min)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "micro-lote"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "blue"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 1
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "id": 33,
+      "title": "Rendimiento del pipeline: Kafka → Spark",
+      "description": "Spark: lambda26_u2esp_spark_input_rows_per_s y _processed_rows_per_s por consulta (filas/s). Kafka: rate(kafka_topic_partition_current_offset[1m]) por topic (mensajes/s, kafka-exporter). Retraso (eje derecho): lambda26_u2esp_spark_offsets_behind_latest_max, offsets que Spark aún no ha leído.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 78
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_spark_processed_rows_per_s",
+          "legendFormat": "Spark procesadas · {{query}}",
+          "instant": false,
+          "range": true,
+          "refId": "A",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_spark_input_rows_per_s",
+          "legendFormat": "Spark entrada · {{query}}",
+          "instant": false,
+          "range": true,
+          "refId": "B",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "sum by (topic) (rate(kafka_topic_partition_current_offset{topic=~\"citibike-rides|citibike-estaciones\"}[1m]))",
+          "legendFormat": "Kafka ingesta · {{topic}}",
+          "instant": false,
+          "range": true,
+          "refId": "C",
+          "format": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds}"
+          },
+          "expr": "lambda26_u2esp_spark_offsets_behind_latest_max",
+          "legendFormat": "Retraso offsets · {{query}}",
+          "instant": false,
+          "range": true,
+          "refId": "D",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "pointSize": 4,
+            "showPoints": "auto",
+            "axisLabel": "Filas / mensajes por segundo",
+            "spanNulls": true,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "Retraso.*"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Offsets pendientes"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash",
+                  "dash": [
+                    6,
+                    4
+                  ]
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "Kafka.*"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqps"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    }
+  ]
+}

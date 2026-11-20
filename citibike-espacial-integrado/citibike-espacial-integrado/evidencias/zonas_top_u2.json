@@ -1,0 +1,126 @@
+{
+  "criterio": "top 15 zonas por actividad (salidas+llegadas) en train (< 2026-07-24)",
+  "participacion_pct": 65.57,
+  "zonas": [
+    {
+      "zona": "Z11-15",
+      "actividad_train": 791068,
+      "lat": 40.7296,
+      "lon": -73.98961,
+      "n_estaciones": 83,
+      "estacion_ejemplo": "Rivington St & Chrystie St"
+    },
+    {
+      "zona": "Z12-15",
+      "actividad_train": 626952,
+      "lat": 40.74998,
+      "lon": -73.99012,
+      "n_estaciones": 65,
+      "estacion_ejemplo": "Lexington Ave & E 26 St"
+    },
+    {
+      "zona": "Z13-15",
+      "actividad_train": 374516,
+      "lat": 40.76694,
+      "lon": -73.98734,
+      "n_estaciones": 37,
+      "estacion_ejemplo": "Broadway & W 48 St"
+    },
+    {
+      "zona": "Z12-16",
+      "actividad_train": 350178,
+      "lat": 40.75272,
+      "lon": -73.9726,
+      "n_estaciones": 44,
+      "estacion_ejemplo": "55 Ave & Center Blvd"
+    },
+    {
+      "zona": "Z11-14",
+      "actividad_train": 323222,
+      "lat": 40.73004,
+      "lon": -74.00595,
+      "n_estaciones": 37,
+      "estacion_ejemplo": "Grand St & Greene St"
+    },
+    {
+      "zona": "Z10-14",
+      "actividad_train": 301844,
+      "lat": 40.71084,
+      "lon": -74.00912,
+      "n_estaciones": 56,
+      "estacion_ejemplo": "Bus Slip & State St"
+    },
+    {
+      "zona": "Z10-15",
+      "actividad_train": 297992,
+      "lat": 40.71106,
+      "lon": -73.99006,
+      "n_estaciones": 48,
+      "estacion_ejemplo": "Adams St & Prospect St"
+    },
+    {
+      "zona": "Z13-16",
+      "actividad_train": 253086,
+      "lat": 40.76872,
+      "lon": -73.97001,
+      "n_estaciones": 32,
+      "estacion_ejemplo": "E 56 St & Madison Ave"
+    },
+    {
+      "zona": "Z09-15",
+      "actividad_train": 242582,
+      "lat": 40.68943,
+      "lon": -73.99018,
+      "n_estaciones": 53,
+      "estacion_ejemplo": "President St & Hoyt St"
+    },
+    {
+      "zona": "Z12-14",
+      "actividad_train": 234549,
+      "lat": 40.74664,
+      "lon": -74.00391,
+      "n_estaciones": 21,
+      "estacion_ejemplo": "8 Ave & W 16 St"
+    },
+    {
+      "zona": "Z10-17",
+      "actividad_train": 209537,
+      "lat": 40.71149,
+      "lon": -73.94962,
+      "n_estaciones": 43,
+      "estacion_ejemplo": "Union Ave & Wallabout St"
+    },
+    {
+      "zona": "Z09-16",
+      "actividad_train": 201942,
+      "lat": 40.6906,
+      "lon": -73.97202,
+      "n_estaciones": 39,
+      "estacion_ejemplo": "Carlton Ave & Dean St"
+    },
+    {
+      "zona": "Z11-17",
+      "actividad_train": 184155,
+      "lat": 40.72736,
+      "lon": -73.95161,
+      "n_estaciones": 32,
+      "estacion_ejemplo": "Manhattan Ave & Leonard St"
+    },
+    {
+      "zona": "Z08-16",
+      "actividad_train": 163946,
+      "lat": 40.6716,
+      "lon": -73.96955,
+      "n_estaciones": 37,
+      "estacion_ejemplo": "Flatbush Ave & Lincoln Rd"
+    },
+    {
+      "zona": "Z10-16",
+      "actividad_train": 159784,
+      "lat": 40.71295,
+      "lon": -73.96553,
+      "n_estaciones": 25,
+      "estacion_ejemplo": "Taylor St & Bedford Ave"
+    }
+  ]
+}

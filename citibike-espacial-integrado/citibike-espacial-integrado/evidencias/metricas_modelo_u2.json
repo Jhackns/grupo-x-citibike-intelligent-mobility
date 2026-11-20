@@ -1,0 +1,43 @@
+{
+  "ventana_min": 15,
+  "top_k": 15,
+  "corte": "2026-07-24",
+  "features": [
+    "a_t",
+    "a_t1",
+    "a_t2",
+    "a_t3",
+    "neto_t",
+    "hora_sin",
+    "hora_cos",
+    "finde_obj",
+    "media_slot_obj"
+  ],
+  "ganador": "LinearRegression",
+  "resultados": [
+    {
+      "modelo": "Baseline persistencia",
+      "RMSE": 30.7977,
+      "MAE": 20.1174,
+      "R2": 0.9605
+    },
+    {
+      "modelo": "Baseline media histórica",
+      "RMSE": 54.716,
+      "MAE": 34.3748,
+      "R2": 0.8753
+    },
+    {
+      "modelo": "LinearRegression",
+      "RMSE": 27.7417,
+      "MAE": 18.2092,
+      "R2": 0.968
+    },
+    {
+      "modelo": "GBTRegressor (60 árboles)",
+      "RMSE": 28.9577,
+      "MAE": 17.5998,
+      "R2": 0.9651
+    }
+  ]
+}

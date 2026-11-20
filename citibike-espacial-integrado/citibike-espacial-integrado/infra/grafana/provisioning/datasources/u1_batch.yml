@@ -1,0 +1,10 @@
+apiVersion: 1
+
+# Datasource para los resultados históricos de U1 (batch). Los resultados del notebook U1 no se publican en Prometheus;
+# infra/grafana/generar_dashboard_general.py los lee de salidas/u1/ y los incrusta como CSV en el dashboard general.
+datasources:
+  - name: U1 Batch (resultados del notebook)
+    uid: u1-batch
+    type: grafana-testdata-datasource
+    access: proxy
+    isDefault: false

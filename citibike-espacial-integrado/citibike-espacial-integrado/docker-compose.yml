@@ -1,0 +1,166 @@
+# CitiBike Intelligent Mobility · Dimension Espacial (Cristhian Chuquitarqui) · Data Geniuses
+# U3 · TODO el sistema con UN comando:   docker compose up -d --build --wait
+#
+#   Capa batch (U1)      -> spark (Jupyter) · notebook/CitiBike_Integrado_U1_U2_U3.ipynb (sección U1)
+#   Capa velocidad (U2)  -> productor-viajes + productor-estaciones -> kafka -> spark (mismo notebook, sección U2)
+#   Capa servicio (BI)   -> pushgateway -> prometheus -> grafana
+#   DataOps (U3)         -> versiones fijas, healthchecks, depends_on: service_healthy, credenciales en .env
+name: citibike-espacial
+
+x-red: &red
+  networks: [citibike-net]
+
+services:
+  kafka:
+    image: apache/kafka:4.3.1
+    container_name: cbe-kafka
+    restart: unless-stopped
+    ports: ["49092:49092"]
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:49092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:49092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: 3            # citibike-rides y citibike-estaciones nacen con 3 particiones
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 > /dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 20s
+    <<: *red
+
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:v1.10.0
+    container_name: cbe-kafka-exporter
+    restart: unless-stopped
+    command: ["--kafka.server=kafka:9092"]
+    ports: ["49308:9308"]
+    depends_on:
+      kafka: {condition: service_healthy}
+    <<: *red
+
+  kafka-ui:
+    image: ghcr.io/kafbat/kafka-ui:v1.5.0
+    container_name: cbe-kafka-ui
+    restart: unless-stopped
+    ports: ["48085:8080"]
+    environment:
+      KAFKA_CLUSTERS_0_NAME: citibike
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    depends_on:
+      kafka: {condition: service_healthy}
+    <<: *red
+
+  prometheus:
+    image: prom/prometheus:v3.14.0
+    container_name: cbe-prometheus
+    restart: unless-stopped
+    ports: ["49090:9090"]
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9090/-/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    <<: *red
+
+  pushgateway:
+    image: prom/pushgateway:v1.11.1
+    container_name: cbe-pushgateway
+    restart: unless-stopped
+    ports: ["49091:9091"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9091/-/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    <<: *red
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: cbe-grafana
+    restart: unless-stopped
+    ports: ["43000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      prometheus: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    <<: *red
+
+  spark:
+    build: ./infra/spark
+    image: citibike-espacial/spark:1.0
+    container_name: cbe-spark
+    restart: unless-stopped
+    ports: ["4488:8888", "4042:4040"]
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-sintoken}
+    volumes:
+      - ./:/opt/proyecto              # todo el proyecto: notebooks, datos/ y salidas/
+    depends_on:
+      kafka: {condition: service_healthy}
+      pushgateway: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8888/api', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    <<: *red
+
+  productor-viajes:                    # U2 · eventos empresariales -> topic citibike-rides
+    build: ./productores
+    image: citibike-espacial/productores:1.0
+    container_name: cbe-productor-viajes
+    restart: unless-stopped
+    command: ["python", "-u", "productor_viajes.py"]
+    volumes:
+      - ./datos:/work/data:ro
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC_RIDES: citibike-rides
+      RIDES_CSV_GLOB: /work/data/*.csv
+      REPLAY_DATE: ${REPLAY_DATE:-2026-07-28}   # dia de PRUEBA (>= corte 2026-07-24): el modelo no lo vio
+      REPLAY_START_HOUR: "6"
+      SPEEDUP: ${SPEEDUP:-60}
+      REPLAY_LOOP: "true"
+    depends_on:
+      kafka: {condition: service_healthy}
+    <<: *red
+
+  productor-estaciones:                # U2 · eventos IoT (feed GBFS en vivo) -> topic citibike-estaciones
+    build: ./productores
+    image: citibike-espacial/productores:1.0
+    container_name: cbe-productor-estaciones
+    restart: unless-stopped
+    command: ["python", "-u", "productor_estaciones_gbfs.py"]
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC_ESTACIONES: citibike-estaciones
+      GBFS_BASE: https://gbfs.citibikenyc.com/gbfs/en
+      GBFS_TODAS: "true"
+      GBFS_INTERVAL_S: "30"
+    depends_on:
+      kafka: {condition: service_healthy}
+    <<: *red
+
+networks:
+  citibike-net:
+    name: citibike-net

@@ -1,0 +1,71 @@
+{
+  "id": "20261117T191621979673Z",
+  "estado": "completada",
+  "modo": "reutilizada",
+  "ejecucion_fuente": "20261117T171917344468Z",
+  "inicio_utc": "2026-11-17T19:16:21.979928+00:00",
+  "fin_utc": "2026-11-17T19:17:48.099756+00:00",
+  "duracion_s": 84.66655899400212,
+  "versiones": {
+    "integracion": "u1-integrado-v2-historico",
+    "silver": "silver-v2-tipos-gbfs",
+    "gold": "gold-v3-emparejamiento-estrecho",
+    "modelado": "modelado-v2-regularizacion-interpretacion",
+    "spark": "4.2.0",
+    "python": "3.10.22",
+    "java": "21.0.13",
+    "docker_imagen_id": "sha256:776b7bfde33a05e845392e5bf9cc88be81167c0b328f40142de729def297120d"
+  },
+  "huella_compatibilidad": "9d01147f6981b5c53819d635fb9a60a84d75a0cf8211cfef7d7d4b92d0ac74f8",
+  "recarga_verificada": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.07996534806326551
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.14172652648810524
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.19407588412626214
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.18320924966548874
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.3052861634837306
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.4034366386342407
+    }
+  ],
+  "errores": []
+}

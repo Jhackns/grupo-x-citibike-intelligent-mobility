@@ -1,0 +1,12 @@
+{
+  "u1_archivos_mismo_tamano_y_mtime": 10169,
+  "u1_sin_altas_bajas": true,
+  "codigo_etapa2_dockerfile_y_compose_equipo_sha256_sin_cambios": {
+    "pyspark/Dockerfile": "d6f1215e29a26f5dd0320c581bfaefe3b088cf8719d1426aa72086e4c7c85bb0",
+    "pyspark/compose.yml": "9ce265e82408adeebaaa6090a652ed46028ba77052dd957dc487796538903589",
+    "pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/ejecutar_streaming.py": "a8d7e73f877b6349b17b743065118f1d26de9c9cb6f884a63b0ac7b952de01b7",
+    "pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/src/disponibilidad_u2/calidad_streaming.py": "c15c574f75e93fe84d938ced0d5aac10ce7eb984cc4fc8bcd45fd7cbf3a5b613",
+    "pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/src/disponibilidad_u2/predictor_streaming.py": "e9d470932d11179d7983f5d206e17fda3352876620c2f8e6ceadf2eb44e36cc6",
+    "pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/src/disponibilidad_u2/salidas_streaming.py": "9fa0194a8b0d78801bee5baffe6c409dcd6d801df985df008f9cf314d0c501e3"
+  }
+}

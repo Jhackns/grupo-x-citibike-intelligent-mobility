@@ -1,0 +1,36 @@
+{
+  "pruebas": 13,
+  "errores": 0,
+  "fallos": 0,
+  "omitidas": 0,
+  "evidencia": {
+    "banda_y_empate": {
+      "cierre_anterior_sin_evaluar": true,
+      "extremo_inclusivo_s": -30,
+      "desempate": "anterior",
+      "mae": 3,
+      "rmse": 3,
+      "sesgo": -3
+    },
+    "tardios": {
+      "objetivo_recibido_antes_cierre": "seleccionado",
+      "revaluacion_cerrada": false,
+      "sin_avance": "pendiente"
+    },
+    "transacciones": {
+      "colision_contenido": "rechazada",
+      "rollback_sin_filas_parciales": true,
+      "reintento_misma_identidad_no_duplica": true
+    },
+    "sink_real": {
+      "observaciones": 9,
+      "predicciones": 18,
+      "repetir_batch_id_sin_cambios": true
+    },
+    "concurrencia": {
+      "carga_bloqueada": "evaluacion_aplazada_sin_error",
+      "liberar_carga": "evaluacion_completada"
+    }
+  },
+  "nota": "SQL real sobre fixtures y reloj simulado; flow_id fixture-* independientes del flujo API."
+}

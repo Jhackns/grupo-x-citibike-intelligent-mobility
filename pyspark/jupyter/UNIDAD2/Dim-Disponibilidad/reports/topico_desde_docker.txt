@@ -1,0 +1,4 @@
+Topic: citibike-disponibilidad-estaciones-v1	TopicId: Tcx721V7RXG2ra3W8hENFA	PartitionCount: 3	ReplicationFactor: 1	Configs: min.insync.replicas=1,cleanup.policy=delete,retention.ms=86400000,retention.bytes=1073741824
+	Topic: citibike-disponibilidad-estaciones-v1	Partition: 0	Leader: 1	Replicas: 1	Isr: 1	Elr: 	LastKnownElr: 
+	Topic: citibike-disponibilidad-estaciones-v1	Partition: 1	Leader: 1	Replicas: 1	Isr: 1	Elr: 	LastKnownElr: 
+	Topic: citibike-disponibilidad-estaciones-v1	Partition: 2	Leader: 1	Replicas: 1	Isr: 1	Elr: 	LastKnownElr: 

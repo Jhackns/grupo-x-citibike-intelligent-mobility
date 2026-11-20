@@ -1,0 +1,39 @@
+{
+  "estado": "verificado",
+  "tablas_y_contenidos_iguales": {
+    "lotes": {
+      "n": 27,
+      "hash": "53217bbfe5c62c7f32ea07dd23d30d96"
+    },
+    "rechazos": {
+      "n": 2113,
+      "hash": "4b7fcb753fb007ee0958b49327eadfd7"
+    },
+    "evaluaciones": {
+      "n": 410514,
+      "hash": "37693c486c97d3ae8358c1cfb8dd54fd"
+    },
+    "predicciones": {
+      "n": 410514,
+      "hash": "c7a5f3eb6850248bd41e6804bc829a27"
+    },
+    "observaciones": {
+      "n": 70532,
+      "hash": "094863b9ad7b2ecc6a93b8552cdd89c9"
+    },
+    "rondas_evaluacion": {
+      "n": 28,
+      "hash": "1176e7afbc42b1ba31fe61eab4ebdf36"
+    }
+  },
+  "sin_nuevas_entradas": true,
+  "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+  "run_id_antes": "1b760e4c-a73f-4c0d-a641-38450ea08385",
+  "run_id_despues": "dd2dfbfa-ce80-479d-80ac-81759ada60e7",
+  "baseline_finalizado_utc": "2026-11-19T04:26:55.486Z",
+  "reinicio_inicio_utc": "2026-11-19T04:29:26.000Z",
+  "reinicio_fin_utc": "2026-11-19T04:29:47.198Z",
+  "snapshot_despues_inicio_utc": "2026-11-19T04:31:39.922Z",
+  "snapshot_despues_fin_utc": "2026-11-19T04:36:04.036Z",
+  "nota": "Hashes MD5 del contenido completo serializado por fila, ordenado por PK; mismos conteos y marcas de commit. No es una garant\u00eda distribuida exactly-once."
+}

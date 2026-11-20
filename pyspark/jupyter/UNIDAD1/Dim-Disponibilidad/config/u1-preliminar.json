@@ -1,0 +1,14 @@
+{
+  "desde": "2026-11-10",
+  "hasta": "2026-11-10",
+  "corte_validacion_utc": "2026-11-10 16:00:00",
+  "corte_prueba_utc": "2026-11-10 20:00:00",
+  "fin_exclusivo_utc": "2026-11-11 00:00:00",
+  "inicio_modelado_utc": null,
+  "max_edad_s": 450,
+  "hueco_max_s": 450,
+  "tolerancia_s": 30,
+  "cores": 2,
+  "driver_memory": "3g",
+  "shuffle_partitions": 8
+}

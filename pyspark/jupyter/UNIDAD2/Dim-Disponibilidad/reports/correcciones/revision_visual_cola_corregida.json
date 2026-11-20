@@ -1,0 +1,27 @@
+{
+  "antecedentes": [
+    "revision_visual_inicial.json",
+    "revision_visual_intermedia.json"
+  ],
+  "inicio_utc": "2026-11-20T00:29:33.665Z",
+  "metodo": "Firefox real headless, perfil aislado; imágenes técnicas, no capturas personales",
+  "muestras": [
+    {
+      "nombre": "03-cola-fin-vs-ahora",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T23:16:04.412Z&to=2026-11-19T23:16:04.413Z&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=6",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\n2026-11-19 23:16:04 to 2026-11-19 23:16:04\nUTC\nRefresh\n1h\nCobertura madura — fin de prueba y auditoría actual\nmomento\nnumerador\ndenominador\ncobertura_pct\npredicciones\nevaluadas\nvencidas\npendientes\npendientes_inmaduras\npendientes_flujo_finalizado\npendientes_sin_avance_no_atribuido\npendientes_cerrables\npendientes_sin_avance\nvencidas_sin_captura\nvencidas_objetivo_no_elegible\nvencidas_trayecto\nvencidas_ambiguas\nvencidas_otras\norigen_inicio_utc\norigen_fin_utc\nevaluadas_origen_inicio_utc\nevaluadas_origen_fin_utc\nevaluadas_objetivo_inicio_utc\nevaluadas_objetivo_fin_utc\ninstante_corte_utc\ntipo\nhorizonte_min\nflujo\nauditoria_actual\n0\n2451\n0.00%\n2451\n0\n0\n2451\n0\n2451\n0\n0\n2451\n0\n0\n0\n0\n0\n2026-11-19 23:16:04\n2026-11-19 23:16:04\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\n2026-11-20 00:29:39\nconvencionales\n5\ndisponibilidad-correcciones-20261119-v1\nfin_prueba\n0\n0\nSin datos / sin muestras\n2451\n0\n0\n2451\n2451\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2026-11-19 23:16:04\n2026-11-19 23:16:04\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\n2026-11-19 23:17:26\nconvencionales\n5\ndisponibilidad-correcciones-20261119-v1",
+      "archivo": "03-cola-fin-vs-ahora.png",
+      "fecha_utc": "2026-11-20T00:29:54.952Z"
+    },
+    {
+      "nombre": "06-flujo-detenido",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=now-2d&to=now&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=1",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\nLast 2 days\nUTC\nRefresh\n1h\nEstado actual del flujo y relojes UTC\nflujo\nultima_captura_utc\nultima_actualizacion_utc\nedad_ultima_captura_s\nedad_fuente_ahora_s\nestado_flujo\nejecucion_u1\ndisponibilidad-correcciones-20261119-v1\n2026-11-19 23:16:04\n2026-11-19 23:15:06\n4432\n4490\nTELEMETRIA ANTIGUA\n20261117T171917344468Z",
+      "archivo": "06-flujo-detenido.png",
+      "fecha_utc": "2026-11-20T00:30:11.739Z"
+    }
+  ],
+  "browser": "160.0",
+  "estado": "capturas_realizadas",
+  "fin_utc": "2026-11-20T00:30:11.739Z"
+}

@@ -1,0 +1,12 @@
+{
+  "grafana_url": "http://127.0.0.1:13000",
+  "prometheus_url": "http://127.0.0.1:19090",
+  "exporter_url": "http://127.0.0.1:19108/metrics",
+  "flow_historico": "disponibilidad-etapa3-vivo-20261119-v1",
+  "flow_vivo": "disponibilidad-etapa4-vivo-20261119-v1",
+  "registro": "data/observabilidad/registro.json",
+  "metricas": "data/observabilidad/metricas/metricas.prom",
+  "periodo_sondeo_s": 5,
+  "margen_antiguedad_s": 30,
+  "topic": "citibike-disponibilidad-estaciones-v1"
+}

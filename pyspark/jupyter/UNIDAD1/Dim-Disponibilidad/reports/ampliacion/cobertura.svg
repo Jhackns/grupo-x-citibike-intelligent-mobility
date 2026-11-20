@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360">
+<rect width="100%" height="100%" fill="white"/>
+<text x="30" y="25" font-size="17">Cobertura UTC: originales y elegibles</text>
+<rect x="55.0" y="50.077386710320695" width="36.5" height="239.9226132896793" fill="#2563eb"/>
+<rect x="92.5" y="56.08610098304271" width="36.5" height="233.9138990169573" fill="#d97706"/>
+<text x="55.0" y="310" font-size="10">2026-11-12</text>
+<rect x="167.5" y="50.077386710320695" width="36.5" height="239.9226132896793" fill="#2563eb"/>
+<rect x="205.0" y="57.398367934122064" width="36.5" height="232.60163206587794" fill="#d97706"/>
+<text x="167.5" y="310" font-size="10">2026-11-14</text>
+<rect x="280.0" y="215.82781456953643" width="36.5" height="74.17218543046359" fill="#2563eb"/>
+<rect x="317.5" y="217.57133053881324" width="36.5" height="72.42866946118676" fill="#d97706"/>
+<text x="280.0" y="310" font-size="10">2026-11-09</text>
+<rect x="392.5" y="50.077386710320695" width="36.5" height="239.9226132896793" fill="#2563eb"/>
+<rect x="430.0" y="58.49104182685551" width="36.5" height="231.5089581731445" fill="#d97706"/>
+<text x="392.5" y="310" font-size="10">2026-11-15</text>
+<rect x="505.0" y="50.077386710320695" width="36.5" height="239.9226132896793" fill="#2563eb"/>
+<rect x="542.5" y="57.96289406453852" width="36.5" height="232.03710593546148" fill="#d97706"/>
+<text x="505.0" y="310" font-size="10">2026-11-16</text>
+<rect x="617.5" y="50.0" width="36.5" height="240.0" fill="#2563eb"/>
+<rect x="655.0" y="55.93430397433673" width="36.5" height="234.06569602566327" fill="#d97706"/>
+<text x="617.5" y="310" font-size="10">2026-11-10</text>
+<rect x="730.0" y="50.077386710320695" width="36.5" height="239.9226132896793" fill="#2563eb"/>
+<rect x="767.5" y="56.6999032666121" width="36.5" height="233.3000967333879" fill="#d97706"/>
+<text x="730.0" y="310" font-size="10">2026-11-11</text>
+<rect x="842.5" y="50.03902406759761" width="36.5" height="239.9609759324024" fill="#2563eb"/>
+<rect x="880.0" y="56.370844391530454" width="36.5" height="233.62915560846955" fill="#d97706"/>
+<text x="842.5" y="310" font-size="10">2026-11-13</text>
+<text x="30" y="345" font-size="12">Máximo eje: 725706.00; azul: observaciones; naranja: aceptados</text>
+</svg>

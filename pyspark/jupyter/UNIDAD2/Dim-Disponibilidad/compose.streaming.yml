@@ -1,0 +1,26 @@
+name: citibike-disponibilidad-streaming
+services:
+  streaming-disponibilidad:
+    image: lambda26-pyspark-pyspark
+    user: "${DISP_UID:-1000}:${DISP_GID:-1000}"
+    entrypoint: [spark-submit]
+    working_dir: /opt/UNIDAD2/Dim-Disponibilidad
+    environment:
+      PYTHONPATH: /opt/UNIDAD2/Dim-Disponibilidad/src
+      SPARK_USER: disponibilidad
+      SPARK_SUBMIT_OPTS: -Dlog4j.configurationFile=file:/opt/UNIDAD2/Dim-Disponibilidad/config/streaming-log4j2.properties
+    volumes:
+      - ../..:/opt:ro
+      - .:/opt/UNIDAD2/Dim-Disponibilidad
+      - ./data/streaming/sistema/passwd:/etc/passwd:ro
+      - ./data/streaming/sistema/group:/etc/group:ro
+    networks:
+      - kafka-propio
+    mem_limit: 3g
+    cpus: 4.0
+    restart: "no"
+    stop_grace_period: 90s
+networks:
+  kafka-propio:
+    external: true
+    name: citibike-disponibilidad_default

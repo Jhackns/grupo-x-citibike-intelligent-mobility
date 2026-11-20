@@ -1,0 +1,6 @@
+{
+  "spark_master": "local[2]",
+  "shuffle_partitions": 2,
+  "output_dir": "data/streaming/verificacion_etapa3/salidas",
+  "checkpoint_dir": "data/streaming/verificacion_etapa3/checkpoints"
+}

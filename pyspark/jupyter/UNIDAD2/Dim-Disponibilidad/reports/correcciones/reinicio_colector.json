@@ -1,0 +1,18 @@
+{
+  "anterior": {
+    "inicio_utc": "2026-11-19T22:47:03.752Z",
+    "pid": 134257,
+    "sondeos": 157,
+    "errores_sql": 0,
+    "ultimo_sondeo_utc": "2026-11-19T23:00:59.244Z"
+  },
+  "cierre": {
+    "inicio_utc": "2026-11-19T22:47:03.752Z",
+    "pid": 134257,
+    "sondeos": 157,
+    "errores_sql": 0,
+    "ultimo_sondeo_utc": "2026-11-19T23:00:59.244Z",
+    "fin_utc": "2026-11-19T23:01:01.654Z"
+  },
+  "motivo": "cargar m\u00e9tricas de umbral/volumen para reglas, sin reiniciar negocio"
+}

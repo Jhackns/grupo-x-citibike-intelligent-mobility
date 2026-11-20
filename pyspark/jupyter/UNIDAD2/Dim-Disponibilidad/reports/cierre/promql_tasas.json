@@ -1,0 +1,14 @@
+{
+  "rate(disponibilidad_productor_eventos_confirmados_total[2m])": {
+    "muestras": 177,
+    "minimo": -43.80869565217392,
+    "maximo": 43.80869565217392,
+    "negativas": 3
+  },
+  "rate(disponibilidad_productor_consultas_total[2m])": {
+    "muestras": 177,
+    "minimo": -0.017391304347826087,
+    "maximo": 0.017391304347826087,
+    "negativas": 3
+  }
+}

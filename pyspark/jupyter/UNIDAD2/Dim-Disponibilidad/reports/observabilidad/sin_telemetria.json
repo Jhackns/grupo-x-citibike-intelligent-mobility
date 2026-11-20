@@ -1,0 +1,17 @@
+{
+  "estado": "verificada",
+  "fecha_utc": "2026-11-19T15:35:49.022Z",
+  "exporter_http": 503,
+  "grafana": [
+    {
+      "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+      "ultima_captura_utc": 1795101790874,
+      "ultima_actualizacion_utc": 1795101786000,
+      "edad_ultima_captura_s": 758.146184,
+      "edad_fuente_ahora_s": 763.020219,
+      "estado_flujo": "TELEMETRIA ANTIGUA",
+      "ejecucion_u1": "20261117T171917344468Z"
+    }
+  ],
+  "nota": "El colector acotado terminó; el exportador continúa vivo, pero rechaza datos métricos antiguos."
+}

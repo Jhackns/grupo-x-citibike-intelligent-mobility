@@ -1,0 +1,45 @@
+{
+  "estado": "verificada",
+  "targets": [
+    {
+      "job": "disponibilidad-aplicaciones",
+      "health": "up"
+    },
+    {
+      "job": "disponibilidad-batch",
+      "health": "up"
+    },
+    {
+      "job": "disponibilidad-grafana",
+      "health": "up"
+    },
+    {
+      "job": "disponibilidad-kafka",
+      "health": "up"
+    }
+  ],
+  "snapshot_series": [
+    {
+      "metric": {
+        "__name__": "disponibilidad_batch_bicicletas_media",
+        "job": "disponibilidad_batch",
+        "tipo": "convencionales"
+      },
+      "value": [
+        1795132362.66,
+        "7.470012239902081"
+      ]
+    },
+    {
+      "metric": {
+        "__name__": "disponibilidad_batch_bicicletas_media",
+        "job": "disponibilidad_batch",
+        "tipo": "electricas"
+      },
+      "value": [
+        1795132362.66,
+        "5.73765809873521"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+name: citibike-disponibilidad-postgres
+services:
+  postgres-disponibilidad:
+    image: postgres@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b
+    container_name: citibike-disponibilidad-postgres
+    restart: "no"
+    environment:
+      POSTGRES_DB: disponibilidad_u2
+      POSTGRES_USER: disponibilidad_owner
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    ports:
+      - "127.0.0.1:15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      kafka-propio:
+        aliases: [postgres-disponibilidad]
+    mem_limit: 768m
+    cpus: 1.0
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U disponibilidad_owner -d disponibilidad_u2 >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+secrets:
+  postgres_password:
+    file: ./data/secretos/postgres_password
+volumes:
+  postgres_data:
+networks:
+  kafka-propio:
+    external: true
+    name: citibike-disponibilidad_default

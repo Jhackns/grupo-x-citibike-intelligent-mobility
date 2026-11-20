@@ -1,0 +1,17 @@
+site_name: Citi Bike — Disponibilidad U2
+site_author: Jose Miguel Condo Huamani
+docs_dir: documentacion
+site_dir: data/publicacion/site
+theme:
+  name: mkdocs
+  locale: es
+nav:
+  - Inicio: index.md
+  - Producto U2: producto-u2.md
+  - Operación: operacion.md
+  - Resultados: resultados.md
+  - Observabilidad: observabilidad.md
+  - Costos: costos.md
+  - Cumplimiento: cumplimiento.md
+  - Propuesta de brief: propuesta-brief.md
+  - Evidencia personal: evidencia-personal.md

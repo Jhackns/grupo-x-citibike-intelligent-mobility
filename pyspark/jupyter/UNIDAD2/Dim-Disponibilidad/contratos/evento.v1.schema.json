@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:citibike:disponibilidad:v1",
+  "title": "Disponibilidad reportada por estación y captura",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_id",
+    "capture_id",
+    "station_id",
+    "captured_at_utc",
+    "last_updated_original",
+    "last_updated_utc",
+    "last_reported_original",
+    "last_reported_utc",
+    "source",
+    "station",
+    "catalogs",
+    "vehicle_types_catalog",
+    "u1_catalog_compatible",
+    "ingestion_issues"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "citibike.disponibilidad.v1"
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "capture_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "station_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "captured_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "last_updated_original": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "last_updated_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "last_reported_original": {},
+    "last_reported_utc": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "system",
+        "gbfs_index_url",
+        "feed_url",
+        "gbfs_version"
+      ],
+      "properties": {
+        "system": {
+          "const": "citibike"
+        },
+        "gbfs_version": {
+          "const": "2.3"
+        },
+        "gbfs_index_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "feed_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "station": {
+      "type": "object",
+      "required": [
+        "station_id"
+      ],
+      "properties": {
+        "station_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "catalogs": {
+      "type": "object",
+      "required": [
+        "station_information",
+        "vehicle_types"
+      ],
+      "properties": {
+        "station_information": {
+          "$ref": "#/$defs/catalog"
+        },
+        "vehicle_types": {
+          "$ref": "#/$defs/catalog"
+        }
+      }
+    },
+    "vehicle_types_catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "vehicle_type_id",
+          "form_factor",
+          "propulsion_type"
+        ],
+        "properties": {
+          "vehicle_type_id": {
+            "type": "string"
+          },
+          "form_factor": {
+            "type": "string"
+          },
+          "propulsion_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "u1_catalog_compatible": {
+      "type": "boolean"
+    },
+    "ingestion_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "catalog": {
+      "type": "object",
+      "required": [
+        "catalog_id",
+        "feed_url",
+        "gbfs_version",
+        "captured_at_utc",
+        "last_updated_original",
+        "last_updated_utc",
+        "ttl",
+        "archivo_relativo"
+      ],
+      "properties": {
+        "catalog_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "feed_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "gbfs_version": {
+          "const": "2.3"
+        },
+        "captured_at_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_updated_original": {
+          "type": "integer"
+        },
+        "last_updated_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ttl": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "archivo_relativo": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

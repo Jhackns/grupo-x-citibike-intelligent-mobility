@@ -1,0 +1,9 @@
+{
+  "u1_archivos_mismos_tamanos_y_mtime": 10169,
+  "u1_sin_archivos_nuevos_o_eliminados": true,
+  "otros_sha256_sin_cambios": {
+    "pyspark/Dockerfile": "d6f1215e29a26f5dd0320c581bfaefe3b088cf8719d1426aa72086e4c7c85bb0",
+    "pyspark/compose.yml": "9ce265e82408adeebaaa6090a652ed46028ba77052dd957dc487796538903589",
+    "pyspark/jupyter/UNIDAD2/Dim-Demanda-historica/producers/producer_citibike_demanda.py": "d428afcc29c5a98c91c946da36678cc6e5cf89c17e5b5052ef256db0173fb42d"
+  }
+}

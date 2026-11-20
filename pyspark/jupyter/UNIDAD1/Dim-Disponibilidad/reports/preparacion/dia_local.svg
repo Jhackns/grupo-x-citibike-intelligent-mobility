@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360">
+<rect width="100%" height="100%" fill="white"/>
+<text x="30" y="25" font-size="17">Medias por fecha local: cobertura parcial, sin generalización semanal</text>
+<rect x="55.0" y="50.0" width="149.0" height="240.0" fill="#2563eb"/>
+<rect x="205.0" y="86.96933480106932" width="149.0" height="203.03066519893068" fill="#d97706"/>
+<text x="55.0" y="310" font-size="10">2026-11-09</text>
+<rect x="505.0" y="51.920880806950834" width="149.0" height="238.07911919304917" fill="#2563eb"/>
+<rect x="655.0" y="94.13660842720253" width="149.0" height="195.86339157279747" fill="#d97706"/>
+<text x="505.0" y="310" font-size="10">2026-11-10</text>
+<text x="30" y="345" font-size="12">Máximo eje: 7.75; azul: convencionales_media; naranja: electricas_media</text>
+</svg>

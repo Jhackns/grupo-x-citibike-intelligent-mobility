@@ -1,0 +1,34 @@
+{
+  "observaciones/batch-00000000000000000000/part-00000-81d42af9-071e-42dc-9756-084847a7c78a-c000.snappy.parquet": {
+    "bytes": 990388,
+    "sha256": "895e01ac30e72ef594d97efc0cd6ec39c4d098bfee252a78739e77cd591b5f25"
+  },
+  "observaciones/batch-00000000000000000000/part-00001-81d42af9-071e-42dc-9756-084847a7c78a-c000.snappy.parquet": {
+    "bytes": 962129,
+    "sha256": "873e17e6c29930d84e022727f29a33ad06b53f36ab492adf9fbf7e23ffd6f913"
+  },
+  "rechazados/part-00000-773c55d6-81e7-4b01-b979-82422a5bda8a-c000.snappy.parquet": {
+    "bytes": 67547,
+    "sha256": "7247bd9fba7f7d738ab0730a9ee0a4779c14217af465c46620c89fe0b7066730"
+  },
+  "rechazados/part-00001-a4493bdf-b453-4306-ac39-de1aed747b8c-c000.snappy.parquet": {
+    "bytes": 68635,
+    "sha256": "913690d2170e8f65afa2032121639fc1bf9ed58f1324335981c3c39867077d30"
+  },
+  "predicciones/part-00000-2d61997c-298f-48c0-a0fc-5ba44e0b9361-c000.snappy.parquet": {
+    "bytes": 1205618,
+    "sha256": "4d5b555e85149b8c8120b3a042db16a3a28d880d6ff767503deff88ece9427d6"
+  },
+  "predicciones/part-00001-c4642b55-340e-4fd0-89b8-84f42cb880d3-c000.snappy.parquet": {
+    "bytes": 1170810,
+    "sha256": "2bac797e55a1b3d877259210d818a4f7c780a621adabcdcd4f84bd7c2063b281"
+  },
+  "metricas/part-00000-33ce1749-aa4d-465e-a15e-55c011b91e5d-c000.snappy.parquet": {
+    "bytes": 1190,
+    "sha256": "322728ea9495202eeeffa4d38f9f4d63e6217369a97c5683bf15d4ee0fa32dcb"
+  },
+  "metricas/part-00000-893fed17-3156-4091-8e09-905b3094bec0-c000.snappy.parquet": {
+    "bytes": 1190,
+    "sha256": "322728ea9495202eeeffa4d38f9f4d63e6217369a97c5683bf15d4ee0fa32dcb"
+  }
+}

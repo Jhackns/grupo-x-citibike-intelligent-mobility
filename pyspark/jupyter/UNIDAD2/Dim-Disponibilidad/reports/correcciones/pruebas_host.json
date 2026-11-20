@@ -1,0 +1,17 @@
+{
+  "fecha_utc": "2026-11-20T00:25:52.705233+00:00",
+  "comando": ".venv/bin/python -m unittest discover -s pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/tests -v",
+  "ejecutadas_suite": 47,
+  "aprobadas_en_host": 30,
+  "omitidas_en_host": 17,
+  "fallos": 0,
+  "errores": 0,
+  "duracion_s": 0.143,
+  "omisiones": "13 SQL y 4 Spark requieren Docker; no son fallos ni se presentan como ejecutadas en host. Evidencia Docker anterior válida en reports/cierre/pruebas_omitidas.md y pruebas_streaming_actuales.json; núcleo protegido sin cambios en conservacion.json. Se añadieron verificaciones SQL reales de cobertura, exportador y replay controlado de Spark en esta fase.",
+  "evidencias_nuevas": [
+    "verificacion.json",
+    "reinicio_exportador.json",
+    "replay_s8.json",
+    "promql_en_vivo.json"
+  ]
+}

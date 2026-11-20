@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "flujo": "disponibilidad-correcciones-20261119-v1",
+  "config_streaming": "config/streaming-correcciones.json",
+  "config_sql": "config/postgres-correcciones.json",
+  "seleccion_u1": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+  "ejecucion_u1": "20261117T171917344468Z",
+  "cohorte_capture_id": "8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a",
+  "informe_ejecucion": "reports/correcciones/ejecucion_viva.json",
+  "informe_resultados": "reports/correcciones/resultados.json",
+  "nota": "Referencia explícita; no escoger carpetas recientes. El ensayo antiguo etapa4 y etapa3 se conserva histórico."
+}

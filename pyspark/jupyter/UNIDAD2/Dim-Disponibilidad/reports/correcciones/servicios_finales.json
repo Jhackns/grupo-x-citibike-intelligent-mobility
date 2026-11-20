@@ -1,0 +1,119 @@
+{
+  "inicio_utc": "2026-11-20T00:37:19.787698+00:00",
+  "pasos": [
+    {
+      "compose": "compose.observabilidad.yml",
+      "accion": "stop",
+      "exit_code": 0
+    },
+    {
+      "compose": "compose.kafka.yml",
+      "accion": "stop",
+      "exit_code": 0
+    },
+    {
+      "compose": "compose.postgres.yml",
+      "accion": "stop",
+      "exit_code": 0
+    }
+  ],
+  "cloud": {
+    "solo_estimacion_documental_usd_mes": 144,
+    "recursos_creados_contratados_desplegados": false,
+    "servicios_pago_activados": false
+  },
+  "componentes": [
+    {
+      "nombre": "citibike-disponibilidad-kafka",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 143,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:22.123672003Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-postgres",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:22.702255907Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-grafana",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:20.008243804Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-prometheus",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:19.989755129Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-kafka-exporter",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 2,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:19.970525846Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-pushgateway",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:19.974652466Z"
+    },
+    {
+      "nombre": "citibike-disponibilidad-metricas",
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "FinishedAt": "2026-11-20T00:37:20.130399323Z"
+    }
+  ],
+  "otros_servicios_observados": [
+    {
+      "nombre": "lambda26-pyspark",
+      "estado": "running"
+    },
+    {
+      "nombre": "cloudshield-web-1",
+      "estado": "running"
+    },
+    {
+      "nombre": "cloudshield-backend-1",
+      "estado": "running"
+    },
+    {
+      "nombre": "cloudshield-db-1",
+      "estado": "running"
+    }
+  ],
+  "temporales_propios_activos": [],
+  "volumenes_propios_conservados": [
+    "citibike-disponibilidad-observabilidad_grafana_data",
+    "citibike-disponibilidad-observabilidad_prometheus_data",
+    "citibike-disponibilidad-observabilidad_pushgateway_data",
+    "citibike-disponibilidad-postgres_postgres_data",
+    "citibike-disponibilidad_kafka_data"
+  ],
+  "checkpoints_conservados": {
+    "data/streaming/correcciones_u2": true,
+    "data/sql/correcciones_u2/checkpoint": true
+  },
+  "fin_utc": "2026-11-20T00:37:23.617758+00:00",
+  "notas_salida": {
+    "http_propio": "Salida0 con SIGTERM; prueba de reinicio previa también verificada.",
+    "kafka": "Salida143 compatible con SIGTERM; OOMKilled=false.",
+    "kafka_exporter_tercero": "Salida2 al stop de Compose, OOMKilled=false. Últimos logs muestran sondeos normales hasta00:37:15Z, sin explicación terminal. Causa exacta del código2 no confirmada; no se presenta como salida0 ni OOM. No quedó ejecutándose."
+  }
+}

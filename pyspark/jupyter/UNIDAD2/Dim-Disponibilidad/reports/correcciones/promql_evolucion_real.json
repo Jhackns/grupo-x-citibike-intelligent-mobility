@@ -1,0 +1,40 @@
+{
+  "estado": "verificada",
+  "modo": "Consulta retrospectiva de muestras capturadas en vivo; no son dos capturas personales durante el flujo",
+  "consultas": [
+    {
+      "instante_datos_utc": "2026-11-19T22:50:00Z",
+      "consulta_efectuada_utc": "2026-11-19T23:52:42.657195+00:00",
+      "resultado": [
+        {
+          "metric": {
+            "__name__": "disponibilidad_productor_eventos_confirmados_total",
+            "instance": "exporter-disponibilidad:9108",
+            "job": "disponibilidad-aplicaciones"
+          },
+          "value": [
+            1795128600,
+            "5038"
+          ]
+        }
+      ]
+    },
+    {
+      "instante_datos_utc": "2026-11-19T23:10:00Z",
+      "consulta_efectuada_utc": "2026-11-19T23:52:42.658950+00:00",
+      "resultado": [
+        {
+          "metric": {
+            "__name__": "disponibilidad_productor_eventos_confirmados_total",
+            "instance": "exporter-disponibilidad:9108",
+            "job": "disponibilidad-aplicaciones"
+          },
+          "value": [
+            1795129800,
+            "52899"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "output_dir": "data/streaming/verificacion_etapa4/salidas",
+  "checkpoint_dir": "data/streaming/verificacion_etapa4/checkpoints"
+}

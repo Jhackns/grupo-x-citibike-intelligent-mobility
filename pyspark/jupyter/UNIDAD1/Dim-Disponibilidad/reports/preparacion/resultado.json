@@ -1,0 +1,1240 @@
+{
+  "version": "gold-v1-conteos-reportados",
+  "ejecucion": "20261117T044523230826Z",
+  "destino": "/opt/UNIDAD1/Dim-Disponibilidad/data/gold/20261117T044523230826Z",
+  "silver_fuente": "/opt/UNIDAD1/Dim-Disponibilidad/data/silver/20261117T040700694357Z",
+  "configuracion": {
+    "gold_version": "gold-v1-conteos-reportados",
+    "silver_version": "silver-v2-tipos-gbfs",
+    "silver_ejecucion": "20261117T040700694357Z",
+    "silver_ruta": "/opt/UNIDAD1/Dim-Disponibilidad/data/silver/20261117T040700694357Z",
+    "silver_conteos": {
+      "entrada": 725706,
+      "aceptados": 707762,
+      "excluidos": 17944,
+      "schema_verificado": true,
+      "multiconjunto_reconciliado": true
+    },
+    "corte_validacion_utc": "2026-11-10 16:00:00",
+    "corte_prueba_utc": "2026-11-10 20:00:00",
+    "fin_exclusivo_utc": "2026-11-11 00:00:00",
+    "horizontes_min": [
+      5,
+      10,
+      15
+    ],
+    "tolerancia_s": 30,
+    "hueco_max_s": 450,
+    "timezone_calendario": "America/New_York",
+    "politica_objetivo": "conteo reportado por tipo GBFS; exactitud física no confirmada",
+    "politica_evaluacion": "mismas predicciones por tipo/horizonte/partición: todos, sin discrepancias, con discrepancias; desconocidos por separado",
+    "git_head": "6504cdefe80166342212d5c3b2a421f7d8d9571d"
+  },
+  "feature_numericas": [
+    "convencionales_actual",
+    "convencionales_lag5",
+    "convencionales_cambio5",
+    "convencionales_lag10",
+    "convencionales_cambio10",
+    "convencionales_lag15",
+    "convencionales_cambio15",
+    "convencionales_media15",
+    "convencionales_min15",
+    "convencionales_max15",
+    "convencionales_std15",
+    "convencionales_n15",
+    "electricas_actual",
+    "electricas_lag5",
+    "electricas_cambio5",
+    "electricas_lag10",
+    "electricas_cambio10",
+    "electricas_lag15",
+    "electricas_cambio15",
+    "electricas_media15",
+    "electricas_min15",
+    "electricas_max15",
+    "electricas_std15",
+    "electricas_n15",
+    "hora_local",
+    "minuto_local",
+    "dia_semana_iso",
+    "fin_semana",
+    "hora_seno",
+    "hora_coseno"
+  ],
+  "feature_categoricas": [
+    "station_id"
+  ],
+  "filas_candidatas": 2177118,
+  "filas_gold": 2078519,
+  "filas_excluidas": 98599,
+  "conteos_por_tipo": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": true,
+      "count": 469669
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": true,
+      "count": 467147
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": true,
+      "count": 464635
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": true,
+      "count": 112896
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": true,
+      "count": 110431
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": true,
+      "count": 115267
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": true,
+      "count": 110321
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": true,
+      "count": 115361
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": true,
+      "count": 112792
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": false,
+      "count": 5687
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": false,
+      "count": 16693
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": false,
+      "count": 10633
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": false,
+      "count": 19205
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "elegible_gold_convencionales": false,
+      "count": 14171
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "elegible_gold_convencionales": false,
+      "count": 8162
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": false,
+      "count": 8016
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": false,
+      "count": 5551
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "elegible_gold_convencionales": false,
+      "count": 10481
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": true,
+      "count": 469669
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": true,
+      "count": 467147
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": true,
+      "count": 464635
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": true,
+      "count": 112896
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": true,
+      "count": 110431
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": true,
+      "count": 115267
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": true,
+      "count": 110321
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": true,
+      "count": 115361
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": true,
+      "count": 112792
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": false,
+      "count": 5687
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": false,
+      "count": 16693
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": false,
+      "count": 10633
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": false,
+      "count": 19205
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "elegible_gold_electricas": false,
+      "count": 14171
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "elegible_gold_electricas": false,
+      "count": 8162
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": false,
+      "count": 8016
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": false,
+      "count": 5551
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "elegible_gold_electricas": false,
+      "count": 10481
+    }
+  ],
+  "estratos_evaluacion": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24542
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24508
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 440199
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24436
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 445127
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 442639
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 8790
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14520
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 106054
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14294
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 98376
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 100502
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 9213
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 101531
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 96137
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14859
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 103741
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 9051
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24542
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24508
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 440199
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 24436
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 445127
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "train",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 442639
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 8790
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14520
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 106054
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14294
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 98376
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 100502
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 9213
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 101531
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 96137
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "particion_temporal": "prueba",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 14859
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "sin_discrepancias",
+      "count": 103741
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "particion_temporal": "validacion",
+      "estrato_discrepancia": "con_discrepancias",
+      "count": 9051
+    }
+  ],
+  "incidencias_no_aditivas": {
+    "convencionales": [
+      {
+        "motivo": "objetivo_cruza_corte_temporal",
+        "count": 30234
+      },
+      {
+        "motivo": "inicial_no_elegible",
+        "count": 53832
+      },
+      {
+        "motivo": "objetivo_no_elegible",
+        "count": 53495
+      },
+      {
+        "motivo": "hueco_o_inactividad_en_trayecto",
+        "count": 54036
+      },
+      {
+        "motivo": "sin_captura_objetivo_en_tolerancia",
+        "count": 15120
+      }
+    ],
+    "electricas": [
+      {
+        "motivo": "objetivo_cruza_corte_temporal",
+        "count": 30234
+      },
+      {
+        "motivo": "inicial_no_elegible",
+        "count": 53832
+      },
+      {
+        "motivo": "objetivo_no_elegible",
+        "count": 53495
+      },
+      {
+        "motivo": "hueco_o_inactividad_en_trayecto",
+        "count": 54036
+      },
+      {
+        "motivo": "sin_captura_objetivo_en_tolerancia",
+        "count": 15120
+      }
+    ]
+  },
+  "limites_verificados": [
+    {
+      "particion_temporal": "train",
+      "horizonte_min": 5,
+      "primera_emision": "2026-11-10 00:00:02.493000",
+      "ultima_emision": "2026-11-10 15:50:01.878000",
+      "ultimo_objetivo": "2026-11-10 15:55:02.404000",
+      "horizonte_min_s": 295.933,
+      "horizonte_max_s": 304.289,
+      "max_error_s": 4.288999999999987
+    },
+    {
+      "particion_temporal": "train",
+      "horizonte_min": 10,
+      "primera_emision": "2026-11-10 00:00:02.493000",
+      "ultima_emision": "2026-11-10 15:45:01.737000",
+      "ultimo_objetivo": "2026-11-10 15:55:02.404000",
+      "horizonte_min_s": 595.783,
+      "horizonte_max_s": 603.683,
+      "max_error_s": 4.2169999999999845
+    },
+    {
+      "particion_temporal": "train",
+      "horizonte_min": 15,
+      "primera_emision": "2026-11-10 00:00:02.493000",
+      "ultima_emision": "2026-11-10 15:40:02.316000",
+      "ultimo_objetivo": "2026-11-10 15:55:02.404000",
+      "horizonte_min_s": 895.877,
+      "horizonte_max_s": 903.816,
+      "max_error_s": 4.123000000000047
+    },
+    {
+      "particion_temporal": "prueba",
+      "horizonte_min": 5,
+      "primera_emision": "2026-11-10 20:00:02.141000",
+      "ultima_emision": "2026-11-10 23:50:02.513000",
+      "ultimo_objetivo": "2026-11-10 23:55:01.713000",
+      "horizonte_min_s": 297.061,
+      "horizonte_max_s": 301.695,
+      "max_error_s": 2.9390000000000214
+    },
+    {
+      "particion_temporal": "prueba",
+      "horizonte_min": 15,
+      "primera_emision": "2026-11-10 20:00:02.141000",
+      "ultima_emision": "2026-11-10 23:40:02.604000",
+      "ultimo_objetivo": "2026-11-10 23:55:01.713000",
+      "horizonte_min_s": 897.811,
+      "horizonte_max_s": 902.82,
+      "max_error_s": 2.82000000000005
+    },
+    {
+      "particion_temporal": "prueba",
+      "horizonte_min": 10,
+      "primera_emision": "2026-11-10 20:00:02.141000",
+      "ultima_emision": "2026-11-10 23:45:01.665000",
+      "ultimo_objetivo": "2026-11-10 23:55:01.713000",
+      "horizonte_min_s": 597.579,
+      "horizonte_max_s": 601.965,
+      "max_error_s": 2.421000000000049
+    },
+    {
+      "particion_temporal": "validacion",
+      "horizonte_min": 10,
+      "primera_emision": "2026-11-10 16:00:03.446000",
+      "ultima_emision": "2026-11-10 19:45:02.323000",
+      "ultimo_objetivo": "2026-11-10 19:55:02.041000",
+      "horizonte_min_s": 597.658,
+      "horizonte_max_s": 602.537,
+      "max_error_s": 2.5370000000000346
+    },
+    {
+      "particion_temporal": "validacion",
+      "horizonte_min": 5,
+      "primera_emision": "2026-11-10 16:00:03.446000",
+      "ultima_emision": "2026-11-10 19:50:02.415000",
+      "ultimo_objetivo": "2026-11-10 19:55:02.041000",
+      "horizonte_min_s": 297.94,
+      "horizonte_max_s": 302.74,
+      "max_error_s": 2.740000000000009
+    },
+    {
+      "particion_temporal": "validacion",
+      "horizonte_min": 15,
+      "primera_emision": "2026-11-10 16:00:03.446000",
+      "ultima_emision": "2026-11-10 19:40:02.858000",
+      "ultimo_objetivo": "2026-11-10 19:55:02.041000",
+      "horizonte_min_s": 898.177,
+      "horizonte_max_s": 901.528,
+      "max_error_s": 1.822999999999979
+    }
+  ],
+  "nulos_features": {
+    "convencionales_actual": 0,
+    "convencionales_lag5": 7634,
+    "convencionales_cambio5": 7634,
+    "convencionales_lag10": 15252,
+    "convencionales_cambio10": 15252,
+    "convencionales_lag15": 22861,
+    "convencionales_cambio15": 22861,
+    "convencionales_media15": 7634,
+    "convencionales_min15": 7634,
+    "convencionales_max15": 7634,
+    "convencionales_std15": 7634,
+    "convencionales_n15": 0,
+    "electricas_actual": 0,
+    "electricas_lag5": 7634,
+    "electricas_cambio5": 7634,
+    "electricas_lag10": 15252,
+    "electricas_cambio10": 15252,
+    "electricas_lag15": 22861,
+    "electricas_cambio15": 22861,
+    "electricas_media15": 7634,
+    "electricas_min15": 7634,
+    "electricas_max15": 7634,
+    "electricas_std15": 7634,
+    "electricas_n15": 0,
+    "hora_local": 0,
+    "minuto_local": 0,
+    "dia_semana_iso": 0,
+    "fin_semana": 0,
+    "hora_seno": 0,
+    "hora_coseno": 0
+  },
+  "eda": {
+    "cobertura_fecha": [
+      {
+        "fecha_captura_utc": "2026-11-10",
+        "observaciones": 725706,
+        "archivos": 288,
+        "estaciones": 2520,
+        "aceptados": 707762,
+        "discrepancia_total": 27067,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      }
+    ],
+    "cobertura_estaciones": {
+      "estaciones": 2520,
+      "min_capturas": 234,
+      "max_capturas": 288,
+      "min_elegibles": 0,
+      "p50_p95_elegibles": [
+        288,
+        288
+      ]
+    },
+    "estaciones_menor_cobertura": [
+      {
+        "station_id": "2100948436010992354",
+        "capturas": 234,
+        "elegibles": 163,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 19:25:01.660000"
+      },
+      {
+        "station_id": "00284700-9d22-42ce-8485-113fed9879c1",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "00967b8f-1a4d-4131-a65a-17fa8ca89e28",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "0096fecb-3a56-4585-9204-aa9554f7bc49",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "00d3e65e-b614-4408-aaa9-939ed96ce645",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "00d94dfc-3695-47e1-aba6-7f319dd2eb08",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "0109f17a-2378-4500-9648-88bdb31ec612",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "0138452a-b9f4-4aee-80b0-7fae9a122ffe",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      },
+      {
+        "station_id": "014a931b-8e1c-438a-8a22-f267ddd1e0d2",
+        "capturas": 288,
+        "elegibles": 288,
+        "primera_utc": "2026-11-10 00:00:02.493000",
+        "ultima_utc": "2026-11-10 23:55:01.713000"
+      }
+    ],
+    "cadencia": {
+      "delta_archivo_s_min": 295.93299984931946,
+      "delta_archivo_s_max": 304.2890000343323,
+      "delta_archivo_s_p50_p95": [
+        300.07100009918213,
+        301.3619999885559
+      ],
+      "delta_feed_s_min": 284,
+      "delta_feed_s_max": 321,
+      "delta_feed_s_p50_p95": [
+        300,
+        302
+      ]
+    },
+    "huecos": {
+      "huecos_interiores_gt450s": 0,
+      "max_intervalo_s": 304.289
+    },
+    "por_hora": [
+      {
+        "hora_local": 0,
+        "convencionales_media": 7.831533331076277,
+        "electricas_media": 6.804110099197617,
+        "convencionales_fraccion_cero": 0.1583437722178962,
+        "electricas_fraccion_cero": 0.15841148390154722
+      },
+      {
+        "hora_local": 1,
+        "convencionales_media": 7.855372740199066,
+        "electricas_media": 6.870336515674724,
+        "convencionales_fraccion_cero": 0.158541539711558,
+        "electricas_fraccion_cero": 0.1543774121470648
+      },
+      {
+        "hora_local": 2,
+        "convencionales_media": 7.855338457891707,
+        "electricas_media": 6.894449900104974,
+        "convencionales_fraccion_cero": 0.1566150824557245,
+        "electricas_fraccion_cero": 0.15377061393112323
+      },
+      {
+        "hora_local": 3,
+        "convencionales_media": 7.872168229995598,
+        "electricas_media": 6.904473265382141,
+        "convencionales_fraccion_cero": 0.15414310385696386,
+        "electricas_fraccion_cero": 0.15492194642917612
+      },
+      {
+        "hora_local": 4,
+        "convencionales_media": 7.877442514138643,
+        "electricas_media": 6.902570354566697,
+        "convencionales_fraccion_cero": 0.15215550814453588,
+        "electricas_fraccion_cero": 0.15046225744183683
+      },
+      {
+        "hora_local": 5,
+        "convencionales_media": 7.866072940300024,
+        "electricas_media": 6.873048660729403,
+        "convencionales_fraccion_cero": 0.14923300937997358,
+        "electricas_fraccion_cero": 0.13670380278351563
+      },
+      {
+        "hora_local": 6,
+        "convencionales_media": 7.825547915043528,
+        "electricas_media": 6.7675552996172215,
+        "convencionales_fraccion_cero": 0.14355882253311203,
+        "electricas_fraccion_cero": 0.12174384336573964
+      },
+      {
+        "hora_local": 7,
+        "convencionales_media": 7.723722602972111,
+        "electricas_media": 6.4858180090927595,
+        "convencionales_fraccion_cero": 0.14735020696206827,
+        "electricas_fraccion_cero": 0.13812173440998846
+      },
+      {
+        "hora_local": 8,
+        "convencionales_media": 7.543346705650371,
+        "electricas_media": 6.005167607261848,
+        "convencionales_fraccion_cero": 0.1631536003263752,
+        "electricas_fraccion_cero": 0.21017202692595363
+      },
+      {
+        "hora_local": 9,
+        "convencionales_media": 7.542468548112887,
+        "electricas_media": 6.02754165249915,
+        "convencionales_fraccion_cero": 0.18636518191091467,
+        "electricas_fraccion_cero": 0.2823189391363482
+      },
+      {
+        "hora_local": 10,
+        "convencionales_media": 7.608230256898192,
+        "electricas_media": 6.176940328938426,
+        "convencionales_fraccion_cero": 0.19063476960717685,
+        "electricas_fraccion_cero": 0.2987970640206606
+      },
+      {
+        "hora_local": 11,
+        "convencionales_media": 7.637370853724851,
+        "electricas_media": 6.202215878194671,
+        "convencionales_fraccion_cero": 0.1898110386079391,
+        "electricas_fraccion_cero": 0.3017604676454595
+      },
+      {
+        "hora_local": 12,
+        "convencionales_media": 7.633438657289437,
+        "electricas_media": 6.164984880915979,
+        "convencionales_fraccion_cero": 0.18621954948527164,
+        "electricas_fraccion_cero": 0.29089797166445824
+      },
+      {
+        "hora_local": 13,
+        "convencionales_media": 7.633568856579931,
+        "electricas_media": 6.110095794551261,
+        "convencionales_fraccion_cero": 0.18041307154018615,
+        "electricas_fraccion_cero": 0.28276377471295605
+      },
+      {
+        "hora_local": 14,
+        "convencionales_media": 7.599511019049883,
+        "electricas_media": 6.046181534177731,
+        "convencionales_fraccion_cero": 0.17328262419776563,
+        "electricas_fraccion_cero": 0.2794661957961221
+      },
+      {
+        "hora_local": 15,
+        "convencionales_media": 7.57439446366782,
+        "electricas_media": 5.9056923807585315,
+        "convencionales_fraccion_cero": 0.1754189565099396,
+        "electricas_fraccion_cero": 0.2683017843815727
+      },
+      {
+        "hora_local": 16,
+        "convencionales_media": 7.542543085900394,
+        "electricas_media": 5.769066359071787,
+        "convencionales_fraccion_cero": 0.17024019541321753,
+        "electricas_fraccion_cero": 0.24060252408739313
+      },
+      {
+        "hora_local": 17,
+        "convencionales_media": 7.473231877165568,
+        "electricas_media": 5.544398396630206,
+        "convencionales_fraccion_cero": 0.17127522250152863,
+        "electricas_fraccion_cero": 0.2083361641415857
+      },
+      {
+        "hora_local": 18,
+        "convencionales_media": 7.518906064209275,
+        "electricas_media": 5.660234414812298,
+        "convencionales_fraccion_cero": 0.1647358586716494,
+        "electricas_fraccion_cero": 0.18858501783590964
+      },
+      {
+        "hora_local": 19,
+        "convencionales_media": 7.673140034509592,
+        "electricas_media": 6.333491220353893,
+        "convencionales_fraccion_cero": 0.15969144365125013,
+        "electricas_fraccion_cero": 0.15698480901309333
+      },
+      {
+        "hora_local": 20,
+        "convencionales_media": 7.719087431878956,
+        "electricas_media": 6.476965778695461,
+        "convencionales_fraccion_cero": 0.1591916866939715,
+        "electricas_fraccion_cero": 0.15424973767051417
+      },
+      {
+        "hora_local": 21,
+        "convencionales_media": 7.750490893086871,
+        "electricas_media": 6.5811158507685015,
+        "convencionales_fraccion_cero": 0.16013271040693344,
+        "electricas_fraccion_cero": 0.15647640327713455
+      },
+      {
+        "hora_local": 22,
+        "convencionales_media": 7.781041659616231,
+        "electricas_media": 6.655758232089072,
+        "convencionales_fraccion_cero": 0.15462452198043927,
+        "electricas_fraccion_cero": 0.1521202071136079
+      },
+      {
+        "hora_local": 23,
+        "convencionales_media": 7.812043301759134,
+        "electricas_media": 6.721650879566982,
+        "convencionales_fraccion_cero": 0.15635994587280108,
+        "electricas_fraccion_cero": 0.1568335588633288
+      }
+    ],
+    "por_dia_local": [
+      {
+        "fecha_nueva_york": "2026-11-09",
+        "dia_semana_iso": 1,
+        "observaciones": 151200,
+        "convencionales_media": 7.747162378931552,
+        "electricas_media": 6.553798046660846
+      },
+      {
+        "fecha_nueva_york": "2026-11-10",
+        "dia_semana_iso": 2,
+        "observaciones": 574506,
+        "convencionales_media": 7.685156647589797,
+        "electricas_media": 6.322439577511316
+      }
+    ],
+    "distribuciones": {
+      "convencionales": {
+        "n": 707762,
+        "min": 0,
+        "max": 82,
+        "media": 7.698100491408129,
+        "p25_p50_p75_p95": [
+          1,
+          5,
+          11,
+          25
+        ]
+      },
+      "electricas": {
+        "n": 707762,
+        "min": 0,
+        "max": 98,
+        "media": 6.370736207934305,
+        "p25_p50_p75_p95": [
+          1,
+          3,
+          8,
+          24
+        ]
+      }
+    },
+    "ceros": {
+      "convencionales": {
+        "observaciones_cero": 116812,
+        "estaciones_con_cero": 1096
+      },
+      "electricas": {
+        "observaciones_cero": 141408,
+        "estaciones_con_cero": 1835
+      }
+    },
+    "episodios_cero": {
+      "convencionales": {
+        "resumen": {
+          "episodios": 3634,
+          "max_s": 86099.22000002861,
+          "p50_p95_s": [
+            2100.6610000133514,
+            53700.34599995613
+          ]
+        },
+        "ejemplos": [
+          {
+            "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+            "segmento_convencionales": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "0197e9da-ae03-40a7-8270-fe500bfc9e18",
+            "segmento_convencionales": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "023cf549-bd85-4f9a-abd8-70ba29d7e86b",
+            "segmento_convencionales": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "068b919c-f649-4091-8e12-ccf37191cad5",
+            "segmento_convencionales": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "0df3a035-5a38-4ec2-826a-0a5376e8d8a0",
+            "segmento_convencionales": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          }
+        ]
+      },
+      "electricas": {
+        "resumen": {
+          "episodios": 10227,
+          "max_s": 86099.22000002861,
+          "p50_p95_s": [
+            1199.9290001392365,
+            17999.94099998474
+          ]
+        },
+        "ejemplos": [
+          {
+            "station_id": "1817432434869846072",
+            "segmento_electricas": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "1828966490867110420",
+            "segmento_electricas": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "1838999521825487230",
+            "segmento_electricas": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "1851999409149780880",
+            "segmento_electricas": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          },
+          {
+            "station_id": "2157737368545384190",
+            "segmento_electricas": 1,
+            "_episodio": 1,
+            "inicio": "2026-11-10 00:00:02.493000",
+            "fin": "2026-11-10 23:55:01.713000",
+            "capturas": 288,
+            "duracion_observada_s": 86099.22000002861
+          }
+        ]
+      }
+    },
+    "exclusiones_silver": [
+      {
+        "tipo_registro": "activo",
+        "aceptado_silver": true,
+        "count": 707762
+      },
+      {
+        "tipo_registro": "inactivo",
+        "aceptado_silver": false,
+        "count": 17913
+      },
+      {
+        "tipo_registro": "activo",
+        "aceptado_silver": false,
+        "count": 31
+      }
+    ]
+  },
+  "verificaciones": {
+    "schema": true,
+    "multiconjunto": true,
+    "unicidad": true,
+    "tiempos": true,
+    "purga_cortes": true,
+    "partition_filters": true
+  },
+  "software": {
+    "spark": "4.2.0",
+    "python": "3.10.22"
+  },
+  "codigo_sha256": {
+    "src/__init__.py": "8b497d385ae7e3b31fd90a73a2a9129cf2fdcf0e93d02a8735167767b45ed766",
+    "src/configuracion.py": "58dd4d6322df18744c9381d607d25bfb4bffb1a5231a481c7453394630353f1a",
+    "src/extraccion.py": "0eb58a694a3722d0f071b5223ba69ef51de61235eff0d04087e5d85f447c68ad",
+    "src/lectura.py": "bd3941389cceca014256a4681814584b0628b53ad76e5719d351115cfd337278",
+    "src/diagnostico.py": "b70c83863b907a3d62ba8b300f159b7ad588d4db4abe5ec596c637f2f373fa74",
+    "src/calidad.py": "6667bbc0f40d484d23268788dc918c635c36f3aec9b940d2b3fab5401b309e3a",
+    "src/ampliacion.py": "b01129456eee65b651732ddda2e4560b18a54530864481c783ac125adf3d91f4",
+    "src/preparacion.py": "e5b31066ed05d4592e83c85ecdcd1638577a8dbe3233c6cb2ae528e8c9194370"
+  }
+}

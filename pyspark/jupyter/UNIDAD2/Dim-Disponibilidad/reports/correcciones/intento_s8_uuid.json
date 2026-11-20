@@ -1,0 +1,5 @@
+{
+  "estado": "fallida",
+  "error": "UUID de StreamingQueryProgress de Spark 4.2 no serializable mediante json.dumps sin default=str",
+  "correccion": "Solo serializaci\u00f3n del informe; eventos y timestamps no se modificaron. Reejecuci\u00f3n necesaria verificada en replay_s8.json."
+}

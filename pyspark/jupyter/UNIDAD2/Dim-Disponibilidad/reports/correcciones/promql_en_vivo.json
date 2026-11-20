@@ -1,0 +1,59 @@
+{
+  "inicio_utc": "2026-11-19T23:57:02.737Z",
+  "flujo": "disponibilidad-promql-comprobacion-v1",
+  "muestras": [
+    {
+      "consulta_utc": "2026-11-19T23:58:11.926Z",
+      "promql": "disponibilidad_productor_eventos_confirmados_total",
+      "confirmados": 2519,
+      "prometheus": [
+        {
+          "metric": {
+            "__name__": "disponibilidad_productor_eventos_confirmados_total",
+            "instance": "exporter-disponibilidad:9108",
+            "job": "disponibilidad-aplicaciones"
+          },
+          "value": [
+            1795132691.816,
+            "2519"
+          ]
+        }
+      ],
+      "grafana_sql": [
+        {
+          "predicciones": 0,
+          "ultimo_origen_utc": null,
+          "ultimo_objetivo_utc": null
+        }
+      ]
+    },
+    {
+      "consulta_utc": "2026-11-19T23:59:12.645Z",
+      "promql": "disponibilidad_productor_eventos_confirmados_total",
+      "confirmados": 5038,
+      "prometheus": [
+        {
+          "metric": {
+            "__name__": "disponibilidad_productor_eventos_confirmados_total",
+            "instance": "exporter-disponibilidad:9108",
+            "job": "disponibilidad-aplicaciones"
+          },
+          "value": [
+            1795132751.999,
+            "5038"
+          ]
+        }
+      ],
+      "grafana_sql": [
+        {
+          "predicciones": 14688,
+          "ultimo_origen_utc": 1795132680450,
+          "ultimo_objetivo_utc": 1795133580450
+        }
+      ]
+    }
+  ],
+  "estado": "verificada",
+  "fin_utc": "2026-11-20T00:01:00.775Z",
+  "alcance": "Dos consultas durante el ensayo del flujo API/Kafka/Spark/SQL, con productor finito de dos capturas. Al último ACK el productor puede haber terminado; los consumidores siguen drenando. No es evaluación de precisión."
+}

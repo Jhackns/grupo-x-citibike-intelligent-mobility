@@ -1,0 +1,59 @@
+{
+  "fecha_utc": "2026-11-19T17:21:35.409031+00:00",
+  "estado": "verificada",
+  "propios": [
+    {
+      "contenedor": "citibike-disponibilidad-kafka",
+      "estado": "exited",
+      "exit_code": 143,
+      "oom_killed": false
+    },
+    {
+      "contenedor": "citibike-disponibilidad-postgres",
+      "estado": "exited",
+      "exit_code": 0,
+      "oom_killed": false
+    },
+    {
+      "contenedor": "citibike-disponibilidad-grafana",
+      "estado": "exited",
+      "exit_code": 0,
+      "oom_killed": false
+    },
+    {
+      "contenedor": "citibike-disponibilidad-prometheus",
+      "estado": "exited",
+      "exit_code": 0,
+      "oom_killed": false
+    },
+    {
+      "contenedor": "citibike-disponibilidad-metricas",
+      "estado": "exited",
+      "exit_code": 137,
+      "oom_killed": false
+    },
+    {
+      "contenedor": "citibike-disponibilidad-kafka-exporter",
+      "estado": "exited",
+      "exit_code": 2,
+      "oom_killed": false
+    }
+  ],
+  "activos_ajenos_conservados": [
+    "lambda26-pyspark",
+    "cloudshield-web-1",
+    "cloudshield-backend-1",
+    "cloudshield-db-1"
+  ],
+  "volumenes_conservados": [
+    "citibike-disponibilidad_kafka_data",
+    "citibike-disponibilidad-postgres_postgres_data",
+    "citibike-disponibilidad-observabilidad_grafana_data",
+    "citibike-disponibilidad-observabilidad_prometheus_data"
+  ],
+  "colector_fin_utc": "2026-11-19T16:51:48.461Z",
+  "checkpoint_sql_etapa3": true,
+  "checkpoint_sql_etapa4": true,
+  "checkpoint_stream_etapa4": true,
+  "procesos_temporales_auditoria": "colectores, Node y Firefox cerrados"
+}

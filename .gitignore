@@ -49,3 +49,17 @@ Thumbs.db
 # DOCUMENTACIÓN GENERADA
 # ===================================
 site/
+
+# Disponibilidad: inventarios de descarga, entradas locales y ejecuciones parciales
+pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/descargas/
+pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/preparacion/entradas.json
+pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/modelado/en_curso.json
+
+# Disponibilidad: métricas agregadas pequeñas; no abrir data/ ni todos los CSV
+!pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/ampliacion/comparacion_validacion.csv
+!pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/ampliacion/comparacion_prueba.csv
+!pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/reports/ampliacion/subgrupos_prueba.csv
+
+# Temporales
+*.part
+*.tmp

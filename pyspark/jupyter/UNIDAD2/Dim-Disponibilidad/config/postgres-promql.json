@@ -1,0 +1,4 @@
+{
+  "flow_id": "disponibilidad-promql-comprobacion-v1",
+  "checkpoint_dir": "data/sql/comprobacion_promql/checkpoint"
+}

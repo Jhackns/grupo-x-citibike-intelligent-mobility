@@ -1,0 +1,2040 @@
+{
+  "inicio_utc": "2026-11-19T22:47:03.408Z",
+  "estado": "completada",
+  "flujo": "disponibilidad-correcciones-20261119-v1",
+  "registro": "data/observabilidad/registro.json",
+  "configuracion_stream": {
+    "spark_version": "4.2.0",
+    "scala_version": "2.13.18",
+    "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0",
+    "spark_master": "local[2]",
+    "driver_memory": "2g",
+    "shuffle_partitions": 4,
+    "trigger": "10 seconds",
+    "watermark": "10 minutes",
+    "window": "5 minutes",
+    "max_offsets_per_trigger": 10000,
+    "max_files_per_trigger": 4,
+    "bootstrap_servers": "kafka-disponibilidad:9092",
+    "topic": "citibike-disponibilidad-estaciones-v1",
+    "starting_offsets": "latest",
+    "output_dir": "data/streaming/correcciones_u2/salidas",
+    "checkpoint_dir": "data/streaming/correcciones_u2/checkpoints",
+    "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+    "max_catalogs_per_batch": 16,
+    "max_future_clock_seconds": 300
+  },
+  "configuracion_sql": {
+    "flow_id": "disponibilidad-correcciones-20261119-v1",
+    "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+    "user": "disponibilidad_owner",
+    "password_file": "/run/secrets/postgres_password",
+    "jdbc_package": "org.postgresql:postgresql:42.7.14",
+    "checkpoint_dir": "data/sql/correcciones_u2/checkpoint",
+    "trigger": "10 seconds",
+    "batch_rows": 500,
+    "evaluation_poll_seconds": 10,
+    "evaluation_limit": 4000,
+    "late_seconds": 600,
+    "tolerance_seconds": 30,
+    "gap_seconds": 450,
+    "retries": 3
+  },
+  "errores": [],
+  "cohorte": {
+    "grupos": [
+      {
+        "n": 2451,
+        "tipo": "convencionales",
+        "vencidas": 1,
+        "evaluadas": 2450,
+        "pendientes": 0,
+        "horizonte_min": 5
+      },
+      {
+        "n": 2451,
+        "tipo": "convencionales",
+        "vencidas": 2451,
+        "evaluadas": 0,
+        "pendientes": 0,
+        "horizonte_min": 10
+      },
+      {
+        "n": 2451,
+        "tipo": "convencionales",
+        "vencidas": 1,
+        "evaluadas": 2450,
+        "pendientes": 0,
+        "horizonte_min": 15
+      },
+      {
+        "n": 2451,
+        "tipo": "electricas",
+        "vencidas": 1,
+        "evaluadas": 2450,
+        "pendientes": 0,
+        "horizonte_min": 5
+      },
+      {
+        "n": 2451,
+        "tipo": "electricas",
+        "vencidas": 2451,
+        "evaluadas": 0,
+        "pendientes": 0,
+        "horizonte_min": 10
+      },
+      {
+        "n": 2451,
+        "tipo": "electricas",
+        "vencidas": 1,
+        "evaluadas": 2450,
+        "pendientes": 0,
+        "horizonte_min": 15
+      }
+    ],
+    "capture_id": "8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a",
+    "estaciones": 2519,
+    "origen_utc": "2026-11-19T22:48:04.779+00:00",
+    "reloj_maduro": true,
+    "plazo_minimo_utc": "2026-11-19T23:13:34.779+00:00",
+    "avance_suficiente": true,
+    "ultima_captura_utc": "2026-11-19T23:14:57.753+00:00",
+    "predicciones_esperadas": 14706
+  },
+  "produccion": {
+    "version": "u2-ingesta-1.0.0",
+    "inicio_utc": "2026-11-19T22:47:57.080Z",
+    "estado": "detenida",
+    "accion": "producir",
+    "errores": [],
+    "id": "2026-11-19T22-47-57.080Z-0e05d1a7",
+    "configuracion": {
+      "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+      "bootstrap_servers": "127.0.0.1:19092",
+      "topic": "citibike-disponibilidad-estaciones-v1",
+      "partitions": 3,
+      "replication_factor": 1,
+      "retention_ms": 86400000,
+      "retention_bytes": 1073741824,
+      "poll_seconds": 60.0,
+      "information_refresh_seconds": 3600,
+      "types_refresh_seconds": 21600,
+      "index_refresh_seconds": 21600,
+      "http_timeout_seconds": 15,
+      "http_attempts": 3,
+      "retry_backoff_seconds": 0.5,
+      "publish_attempts": 3,
+      "confirmation_timeout_seconds": 40,
+      "kafka_retries": 3,
+      "kafka_request_timeout_ms": 10000,
+      "kafka_delivery_timeout_ms": 30000,
+      "kafka_max_block_ms": 10000,
+      "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json"
+    },
+    "software": {
+      "python": "3.14.10",
+      "kafka_python": "3.0.11"
+    },
+    "codigo_sha256": {
+      "ejecutar_u2.py": "a0f55afb0303229eefa3b2096b0937824e3fd1004363fa5e285a96dfad14c82d",
+      "src/disponibilidad_u2/__init__.py": "e8a2af2e0853ef13019a66b78fde85786bc93178336b6cb9a5bfd1f784bd62c7",
+      "src/disponibilidad_u2/calidad_streaming.py": "c15c574f75e93fe84d938ced0d5aac10ce7eb984cc4fc8bcd45fd7cbf3a5b613",
+      "src/disponibilidad_u2/config_streaming.py": "6fd8e21ef7fa294c8a4813ca75617d8bb54cab1893b3e06d84cfc0cfea72ecea",
+      "src/disponibilidad_u2/configuracion.py": "2715960a1aa4508e1032e5e24284e9390a3d9f704e51503201debd756c5536d4",
+      "src/disponibilidad_u2/consultas_evaluacion.py": "74555795b5292e1f51f48b12df97e4badeaece6af3c96647c41d4bd0f49cfc79",
+      "src/disponibilidad_u2/contrato.py": "dceca35b6ffe6c6b3c100c7754f236777101adfe0aa13b787ec7abfca6de8bb6",
+      "src/disponibilidad_u2/gbfs.py": "4eb9284eff741a390edba4da03d9cdb381822a955d0b09c3c11ed10b4e27a59f",
+      "src/disponibilidad_u2/grafana_api.py": "d13c050ecc936f2056e3bee570cd5544f380fd95bfed45c5a75cdd2978c5d2be",
+      "src/disponibilidad_u2/kafka_io.py": "76b3f6ff9f208f6f932ea2f0a851705688b40ba6c3a988aebc5450dc167ef4fd",
+      "src/disponibilidad_u2/observabilidad_sql.py": "ad25662f9be1ea03bfd2d1fcf3ba3fff17042c57296b61507593bdb5f562d7c0",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "src/disponibilidad_u2/predictor_streaming.py": "e9d470932d11179d7983f5d206e17fda3352876620c2f8e6ceadf2eb44e36cc6",
+      "src/disponibilidad_u2/productor.py": "130638b4a28383584b1bc8178b63e5cc0f6c616686029469fccbc6a7be5b2060",
+      "src/disponibilidad_u2/referencia_u1.py": "628723056809823409c99a0fabe18539c6a71b9f0ea58e2ffdae864712a071ee",
+      "src/disponibilidad_u2/salidas_streaming.py": "9fa0194a8b0d78801bee5baffe6c409dcd6d801df985df008f9cf314d0c501e3",
+      "src/disponibilidad_u2/telemetria.py": "33c733d7a4dd5b5394e6f6745fb91b78a42776253cbd95fb3ce70c346cff79c0",
+      "src/disponibilidad_u2/utilidades.py": "66826b2bd88112658bf06ee99457b1781066aee59e0e7311e223fee9f158f62f",
+      "src/disponibilidad_u2/verificacion.py": "76b0cdce51844c37802b3c7fdb1bb829d3bc13b30f1311adce2768112164ff4e",
+      "src/disponibilidad_u2/verificacion_cohorte.py": "b1239049a73a9d3dda51400d414980481a945510053c630f89e8fff352010374",
+      "src/disponibilidad_u2/verificacion_sql.py": "19c20dce2f606dd54986f2a67911f2938a94ec136dccf100788070c470ea4f30"
+    },
+    "u1": {
+      "ejecucion_id": "20261117T171917344468Z",
+      "referencia": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+      "contratos_originales_verificados": 6,
+      "contratos": [
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 5,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_5min/contrato.json",
+          "candidato": "persistencia"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 10,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_10min/contrato.json",
+          "candidato": "persistencia"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 15,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_15min/contrato.json",
+          "candidato": "persistencia"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 5,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_5min/contrato.json",
+          "candidato": "persistencia"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 10,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_10min/contrato.json",
+          "candidato": "persistencia"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 15,
+          "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_15min/contrato.json",
+          "candidato": "persistencia"
+        }
+      ],
+      "inferencia_implementada": false
+    },
+    "topic": {
+      "topic": "citibike-disponibilidad-estaciones-v1",
+      "partitions": 3,
+      "replication_factor": 1,
+      "config": {
+        "retention.ms": "86400000",
+        "retention.bytes": "1073741824",
+        "cleanup.policy": "delete",
+        "min.insync.replicas": "1"
+      },
+      "created": false,
+      "bootstrap_servers": "127.0.0.1:19092"
+    },
+    "capturas": [
+      {
+        "capture_id": "8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a",
+        "captured_at_utc": "2026-11-19T22:48:04.779Z",
+        "last_updated_original": 1795128426,
+        "last_updated_utc": "2026-11-19T22:47:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 4,
+          "capturas": 1,
+          "eventos_confirmados": 2519,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "ad03581e-2aad-442b-b935-e89aec773b1a",
+        "captured_at_utc": "2026-11-19T22:49:06.475Z",
+        "last_updated_original": 1795128488,
+        "last_updated_utc": "2026-11-19T22:48:08.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 5,
+          "capturas": 2,
+          "eventos_confirmados": 5038,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "db5c2b79-b05d-4ef6-b588-b2d171333a39",
+        "captured_at_utc": "2026-11-19T22:50:10.085Z",
+        "last_updated_original": 1795128606,
+        "last_updated_utc": "2026-11-19T22:50:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 6,
+          "capturas": 3,
+          "eventos_confirmados": 7557,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "40da3536-e18d-4d60-941b-239c139cae15",
+        "captured_at_utc": "2026-11-19T22:51:13.971Z",
+        "last_updated_original": 1795128666,
+        "last_updated_utc": "2026-11-19T22:51:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 7,
+          "capturas": 4,
+          "eventos_confirmados": 10076,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "0b9dd793-aab7-4282-899f-1185d8473888",
+        "captured_at_utc": "2026-11-19T22:52:17.475Z",
+        "last_updated_original": 1795128726,
+        "last_updated_utc": "2026-11-19T22:52:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 8,
+          "capturas": 5,
+          "eventos_confirmados": 12595,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "4747a1ad-a447-4c0b-95e5-95e69b8bb249",
+        "captured_at_utc": "2026-11-19T22:53:22.394Z",
+        "last_updated_original": 1795128786,
+        "last_updated_utc": "2026-11-19T22:53:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 9,
+          "capturas": 6,
+          "eventos_confirmados": 15114,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "c2359377-b42f-4ca7-9658-de8512c75b6a",
+        "captured_at_utc": "2026-11-19T22:54:24.648Z",
+        "last_updated_original": 1795128846,
+        "last_updated_utc": "2026-11-19T22:54:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 10,
+          "capturas": 7,
+          "eventos_confirmados": 17633,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "90c5c221-2015-4cd3-a9c8-08caa98869d2",
+        "captured_at_utc": "2026-11-19T22:55:29.763Z",
+        "last_updated_original": 1795128906,
+        "last_updated_utc": "2026-11-19T22:55:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 11,
+          "capturas": 8,
+          "eventos_confirmados": 20152,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "cc0a7816-7c90-4def-80f6-4e721186c71f",
+        "captured_at_utc": "2026-11-19T22:56:33.067Z",
+        "last_updated_original": 1795128966,
+        "last_updated_utc": "2026-11-19T22:56:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 12,
+          "capturas": 9,
+          "eventos_confirmados": 22671,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "4f2019dc-9821-4ef8-be42-c7b809584fd8",
+        "captured_at_utc": "2026-11-19T22:57:34.695Z",
+        "last_updated_original": 1795129026,
+        "last_updated_utc": "2026-11-19T22:57:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 13,
+          "capturas": 10,
+          "eventos_confirmados": 25190,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "288dfb8e-d022-4e48-87f9-09f4b53c83f8",
+        "captured_at_utc": "2026-11-19T22:58:39.300Z",
+        "last_updated_original": 1795129087,
+        "last_updated_utc": "2026-11-19T22:58:07.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 14,
+          "capturas": 11,
+          "eventos_confirmados": 27709,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "a6956081-8fda-4a73-9bb3-0901d58eed2d",
+        "captured_at_utc": "2026-11-19T22:59:42.752Z",
+        "last_updated_original": 1795129146,
+        "last_updated_utc": "2026-11-19T22:59:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 15,
+          "capturas": 12,
+          "eventos_confirmados": 30228,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "97169a49-34c3-4249-80b5-c11441a6f40d",
+        "captured_at_utc": "2026-11-19T23:00:46.002Z",
+        "last_updated_original": 1795129208,
+        "last_updated_utc": "2026-11-19T23:00:08.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 16,
+          "capturas": 13,
+          "eventos_confirmados": 32747,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "83cb82c3-204c-45e1-8bfc-54b67cf0285a",
+        "captured_at_utc": "2026-11-19T23:01:50.034Z",
+        "last_updated_original": 1795129266,
+        "last_updated_utc": "2026-11-19T23:01:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 17,
+          "capturas": 14,
+          "eventos_confirmados": 35266,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "4faf7c82-57e4-4f69-a1e5-5f8441004d69",
+        "captured_at_utc": "2026-11-19T23:02:57.410Z",
+        "last_updated_original": 1795129326,
+        "last_updated_utc": "2026-11-19T23:02:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 18,
+          "capturas": 15,
+          "eventos_confirmados": 37785,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "0a693651-5c6b-4ffc-a537-98921d0cf256",
+        "captured_at_utc": "2026-11-19T23:04:02.997Z",
+        "last_updated_original": 1795129386,
+        "last_updated_utc": "2026-11-19T23:03:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 19,
+          "capturas": 16,
+          "eventos_confirmados": 40304,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "cc93cfff-125e-448d-8812-491553991ea0",
+        "captured_at_utc": "2026-11-19T23:05:07.096Z",
+        "last_updated_original": 1795129446,
+        "last_updated_utc": "2026-11-19T23:04:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 20,
+          "capturas": 17,
+          "eventos_confirmados": 42823,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "818abe35-1368-4a02-a0f3-89dff515858a",
+        "captured_at_utc": "2026-11-19T23:06:10.607Z",
+        "last_updated_original": 1795129566,
+        "last_updated_utc": "2026-11-19T23:06:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 21,
+          "capturas": 18,
+          "eventos_confirmados": 45342,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "53bad546-e064-4679-82d7-1b4d900256da",
+        "captured_at_utc": "2026-11-19T23:07:18.370Z",
+        "last_updated_original": 1795129626,
+        "last_updated_utc": "2026-11-19T23:07:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 22,
+          "capturas": 19,
+          "eventos_confirmados": 47861,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "849f1dd9-1326-44ff-b677-28f3f2481635",
+        "captured_at_utc": "2026-11-19T23:08:22.072Z",
+        "last_updated_original": 1795129686,
+        "last_updated_utc": "2026-11-19T23:08:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 23,
+          "capturas": 20,
+          "eventos_confirmados": 50380,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "01d112f4-8a49-415b-bd15-a9539f5b6af7",
+        "captured_at_utc": "2026-11-19T23:09:25.935Z",
+        "last_updated_original": 1795129746,
+        "last_updated_utc": "2026-11-19T23:09:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 24,
+          "capturas": 21,
+          "eventos_confirmados": 52899,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "eac6b469-d645-403c-9731-1f3a2e37b142",
+        "captured_at_utc": "2026-11-19T23:10:33.549Z",
+        "last_updated_original": 1795129807,
+        "last_updated_utc": "2026-11-19T23:10:07.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 25,
+          "capturas": 22,
+          "eventos_confirmados": 55418,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "b0079a9f-e80e-4c99-90f0-bf725d979753",
+        "captured_at_utc": "2026-11-19T23:11:40.822Z",
+        "last_updated_original": 1795129867,
+        "last_updated_utc": "2026-11-19T23:11:07.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 26,
+          "capturas": 23,
+          "eventos_confirmados": 57937,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "c06cf034-448f-41d3-8e3b-46c4ee3f406b",
+        "captured_at_utc": "2026-11-19T23:12:47.517Z",
+        "last_updated_original": 1795129927,
+        "last_updated_utc": "2026-11-19T23:12:07.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 27,
+          "capturas": 24,
+          "eventos_confirmados": 60456,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "b606abb1-d979-4741-94c8-afd7da6804a4",
+        "captured_at_utc": "2026-11-19T23:13:53.573Z",
+        "last_updated_original": 1795129986,
+        "last_updated_utc": "2026-11-19T23:13:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 28,
+          "capturas": 25,
+          "eventos_confirmados": 62975,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "7d11e46a-8c11-4b49-afe0-bc8bc8574273",
+        "captured_at_utc": "2026-11-19T23:14:57.753Z",
+        "last_updated_original": 1795130046,
+        "last_updated_utc": "2026-11-19T23:14:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 29,
+          "capturas": 26,
+          "eventos_confirmados": 65494,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      },
+      {
+        "capture_id": "b7b0a48a-5857-4f18-8742-6ce7249f1fe8",
+        "captured_at_utc": "2026-11-19T23:16:04.412Z",
+        "last_updated_original": 1795130106,
+        "last_updated_utc": "2026-11-19T23:15:06.000Z",
+        "ttl": 60,
+        "source": {
+          "system": "citibike",
+          "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+          "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+          "gbfs_version": "2.3"
+        },
+        "expected_events": 2519,
+        "station_ids_sha256": "e5e5652a8dc0db7315cccfc0981a3928d05248a74546f55a5b98d9b833628b2c",
+        "catalogs": {
+          "station_information": {
+            "catalog_id": "b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:00.616Z",
+            "last_updated_original": 1795128424,
+            "last_updated_utc": "2026-11-19T22:47:04.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/station_information/b3a1fa1bc424f721a0b82f1ad347e984b42c3f2a3b5e0d8478e656e8148fc528.json"
+          },
+          "vehicle_types": {
+            "catalog_id": "59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b",
+            "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+            "gbfs_version": "2.3",
+            "captured_at_utc": "2026-11-19T22:48:01.823Z",
+            "last_updated_original": 1795128423,
+            "last_updated_utc": "2026-11-19T22:47:03.000Z",
+            "ttl": 60,
+            "archivo_relativo": "catalogos/vehicle_types/59192ffa6fc5e2b90d24abc1c7eba6caee14c79c9207a05e0edaea2f8a7d746b.json"
+          }
+        },
+        "vehicle_types_catalog": [
+          {
+            "vehicle_type_id": "1",
+            "form_factor": "bicycle",
+            "propulsion_type": "human"
+          },
+          {
+            "vehicle_type_id": "2",
+            "form_factor": "bicycle",
+            "propulsion_type": "electric_assist"
+          }
+        ],
+        "u1_catalog_compatible": true,
+        "events_with_ingestion_issues": 0,
+        "confirmed_events": 2519,
+        "unconfirmed_events": 0,
+        "complete": true,
+        "kafka_topic": "citibike-disponibilidad-estaciones-v1",
+        "key": "station_id",
+        "counters": {
+          "consultas": 30,
+          "capturas": 27,
+          "eventos_confirmados": 68013,
+          "fallos_http": 0,
+          "fallos_captura": 0,
+          "fallos_publicacion": 0,
+          "reintentos_http": 0,
+          "reintentos_publicacion": 0
+        }
+      }
+    ],
+    "verificaciones": [],
+    "fin_utc": "2026-11-19T23:16:34.280Z",
+    "duracion_s": 1717.2003986680002,
+    "contadores": {
+      "consultas": 30,
+      "capturas": 27,
+      "eventos_confirmados": 68013,
+      "fallos_http": 0,
+      "fallos_captura": 0,
+      "fallos_publicacion": 0,
+      "reintentos_http": 0,
+      "reintentos_publicacion": 0
+    }
+  },
+  "observaciones_sql": 68013,
+  "fin_utc": "2026-11-19T23:17:26.702Z",
+  "procesos": {
+    "spark": {
+      "pid": 134270,
+      "inicio_ticks": "1023356",
+      "log": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/observabilidad/ejecuciones/efbff35a-de7f-4298-80ea-42b2b55f6557/spark.jsonl",
+      "runtime": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/streaming/ejecuciones/64a974d2-d983-4614-9f0f-2c0b59549158.json",
+      "contenedor": "citibike-disponibilidad-streaming-streaming-disponibilidad-run-17353daa79ed"
+    },
+    "sql": {
+      "pid": 137198,
+      "inicio_ticks": "1026673",
+      "log": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/observabilidad/ejecuciones/efbff35a-de7f-4298-80ea-42b2b55f6557/sql.jsonl",
+      "runtime": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/sql/ejecuciones/cb837781-73c0-4275-a4b2-81429760be7f.json",
+      "contenedor": "citibike-disponibilidad-streaming-streaming-disponibilidad-run-686f4c5d2ef2"
+    },
+    "productor": {
+      "pid": 138830,
+      "inicio_ticks": "1028684",
+      "log": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/observabilidad/ejecuciones/efbff35a-de7f-4298-80ea-42b2b55f6557/productor.jsonl"
+    }
+  },
+  "fase_final": "detenido"
+}

@@ -1,0 +1,22 @@
+{
+  "consulta_precios_fecha": "2026-11-19",
+  "fuente": "https://aws.amazon.com/lightsail/pricing/",
+  "escenario": "Linux/Unix General Purpose IPv4, US East N.Virginia como supuesto, sin contratación",
+  "vm_usd_mes": 84,
+  "ram_gb_tarifa": 16,
+  "vcpu": 4,
+  "ssd_gb_incluidos": 320,
+  "transfer_tb_incluidos": 6,
+  "bloque_gb_supuestos": 500,
+  "bloque_usd_gb_mes": 0.1,
+  "snapshot_gb_supuestos": 200,
+  "snapshot_usd_gb_mes": 0.05,
+  "total_usd_mes_escenario": 144.0,
+  "gasto_cloud_nuevo_real": 0,
+  "incremento_sql_mib_por_captura_medido": 53.238136574074076,
+  "sql_gib_dia_a_300s_estimado": 14.973225911458334,
+  "sql_gib_dia_a_60s_estimado": 74.86612955729167,
+  "sql_gib_7dias_300s_estimado": 104.81258138020834,
+  "parquet_y_checkpoints_bytes_logicos_medido": 78258719,
+  "supuestos": "Carga constante y patrón físico similar; no incluye WAL en medición SQL; retención7d presupuestaria no aplicada, margen2x, tráfico supuesto100GB/mes, impuestos/operación extra. No es factura ni SLA."
+}

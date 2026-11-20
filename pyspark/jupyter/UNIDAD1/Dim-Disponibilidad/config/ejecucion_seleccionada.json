@@ -1,0 +1,412 @@
+{
+  "version_referencia": 1,
+  "dimension": "Dim-Disponibilidad",
+  "ejecucion_id": "20261117T171917344468Z",
+  "raiz_rutas_desde_repositorio": "pyspark/jupyter/UNIDAD1/Dim-Disponibilidad",
+  "directorio_ejecucion": "data/ejecuciones/20261117T171917344468Z",
+  "manifiesto_origen": {
+    "ruta": "data/ejecuciones/20261117T171917344468Z/manifiesto.json",
+    "sha256": "bb95d6a8b9b4a10d519ebd61924c45882c7b568045260b4e4751229edff017f5"
+  },
+  "seleccion_congelada": {
+    "ruta": "data/ejecuciones/20261117T171917344468Z/modelos/seleccion_congelada.json",
+    "sha256": "55a9849595397cbaaddacfe3329ab122ab73567fe870955c1e34278b54365077"
+  },
+  "criterio_seleccion": "MAE_validacion",
+  "horizontes_min": [
+    5,
+    10,
+    15
+  ],
+  "horizonte_definitivo_seleccionado": false,
+  "spark_master_ejecucion": "local[2]",
+  "versiones_origen": {
+    "integracion": "u1-integrado-v2-historico",
+    "silver": "silver-v2-tipos-gbfs",
+    "gold": "gold-v3-emparejamiento-estrecho",
+    "modelado": "modelado-v2-regularizacion-interpretacion",
+    "spark": "4.2.0",
+    "python": "3.10.22",
+    "java": "21.0.13",
+    "docker_imagen_id": "sha256:776b7bfde33a05e845392e5bf9cc88be81167c0b328f40142de729def297120d"
+  },
+  "configuracion_origen": {
+    "desde": "2026-11-09",
+    "hasta": "2026-11-16",
+    "inicio_modelado_utc": "2026-11-10 00:00:00",
+    "corte_validacion_utc": "2026-11-14 00:00:00",
+    "corte_prueba_utc": "2026-11-15 00:00:00",
+    "fin_exclusivo_utc": "2026-11-17 00:00:00",
+    "max_edad_s": 450,
+    "hueco_max_s": 450,
+    "tolerancia_s": 30,
+    "cores": 2,
+    "driver_memory": "4g",
+    "shuffle_partitions": 32
+  },
+  "notebook_evidencia": {
+    "ruta": "notebooks/archivo/01_historico_ampliado_20261117T171917344468Z.ipynb",
+    "sha256": "b3f2bfe830d02d2823dd2ffa9ecde0cb783c8451e88c924ab769ff7e28ac7c5f"
+  },
+  "contratos": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_5min/contrato.json",
+      "sha256_original": "171a65a28918dc36d707e2a20d4de30b76a75723a60dd3e012a6a897a2940243",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "convencionales",
+        "horizonte_min": 5,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "convencionales_actual",
+        "campos_requeridos": [
+          "convencionales_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "convencionales",
+          "horizonte_min": 5,
+          "candidato": "persistencia",
+          "n": 700836,
+          "invalidas": 0,
+          "MAE": 0.0723236249279432,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.32078246842958574,
+          "R2": 0.9987751278962532,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2824097,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.6732416869999724
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_10min/contrato.json",
+      "sha256_original": "564c15442dcc5e908d94a3c4e0e30cac580ed2d630263ff4bb90160629dc2cdc",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "convencionales",
+        "horizonte_min": 10,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "convencionales_actual",
+        "campos_requeridos": [
+          "convencionales_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "convencionales",
+          "horizonte_min": 10,
+          "candidato": "persistencia",
+          "n": 698340,
+          "invalidas": 0,
+          "MAE": 0.12950568490992925,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.4548475903429186,
+          "R2": 0.9975372676367944,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2821248,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.404022579001321
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_15min/contrato.json",
+      "sha256_original": "75a037fd56f953a7f4c8808c7b4eee9e2eb8f9ef68fac5e42d7e623768567355",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "convencionales",
+        "horizonte_min": 15,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "convencionales_actual",
+        "campos_requeridos": [
+          "convencionales_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "convencionales",
+          "horizonte_min": 15,
+          "candidato": "persistencia",
+          "n": 695847,
+          "invalidas": 0,
+          "MAE": 0.1782331460795261,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.5586400101765108,
+          "R2": 0.9962849339290968,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2818438,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.5515116000024136
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_5min/contrato.json",
+      "sha256_original": "6601634346427d936172c1005524b25c63016f6fa923d747ef3a5d1d0a5c0330",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "electricas",
+        "horizonte_min": 5,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "electricas_actual",
+        "campos_requeridos": [
+          "electricas_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "electricas",
+          "horizonte_min": 5,
+          "candidato": "persistencia",
+          "n": 700836,
+          "invalidas": 0,
+          "MAE": 0.1821809952685079,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.5548945703274586,
+          "R2": 0.996467249174636,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2824097,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.36910482800158206
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_10min/contrato.json",
+      "sha256_original": "5726314ae438125820b30c7d03bc326a9c0591e05c6e68af0bf736a6f5b6409c",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "electricas",
+        "horizonte_min": 10,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "electricas_actual",
+        "campos_requeridos": [
+          "electricas_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "electricas",
+          "horizonte_min": 10,
+          "candidato": "persistencia",
+          "n": 698340,
+          "invalidas": 0,
+          "MAE": 0.3046023426983991,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.7784305490984662,
+          "R2": 0.9930481314444141,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2821248,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.3234690019962727
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_15min/contrato.json",
+      "sha256_original": "eeeed9bc71ffd1240537f36eed64a21dee506b3487e2d6a4fc58b5831a8e6bd1",
+      "contrato": {
+        "version": "modelado-v2-regularizacion-interpretacion",
+        "tipo": "electricas",
+        "horizonte_min": 15,
+        "candidato": "persistencia",
+        "entrenamiento_necesario": false,
+        "politica": {
+          "criterio": "MAE_validacion",
+          "tolerancia_empate_absoluta": 1e-06,
+          "prioridad_empate": [
+            "persistencia",
+            "lr_ridge_001",
+            "lr_ridge_01",
+            "lr_sin_regularizar",
+            "rf_8_depth4",
+            "rf_16_depth6"
+          ],
+          "negativas": "max(0,prediccion_raw); no cota superior ni redondeo a enteros",
+          "nulos": "mediana train por variable + indicador de ausencia; columna completamente nula en train se omite",
+          "station_id": "solo trazabilidad/evaluacion; no predictor de alta cardinalidad en este experimento",
+          "r2_constante": "null cuando la varianza del objetivo es cero",
+          "prueba": "lectura y evaluación después de guardar seleccion_congelada.json; no refit ni elección de horizonte"
+        },
+        "columna_actual": "electricas_actual",
+        "campos_requeridos": [
+          "electricas_actual"
+        ],
+        "preprocesamiento": null,
+        "orden_vector": [],
+        "parametros": {},
+        "metricas_validacion": {
+          "tipo": "electricas",
+          "horizonte_min": 15,
+          "candidato": "persistencia",
+          "n": 695847,
+          "invalidas": 0,
+          "MAE": 0.40273220981048996,
+          "predicciones_negativas_raw": 0,
+          "RMSE": 0.9489102687438922,
+          "R2": 0.9896703543187613,
+          "familia": "persistencia",
+          "parametros": {},
+          "n_train": 2818438,
+          "duracion_ajuste_s": 0.0,
+          "duracion_validacion_s": 0.37895587300590705
+        },
+        "spark_version": "4.2.0",
+        "restricciones_entrada": "actual numérico no nulo y >=0; resto nullable con mediana aprendida en train; sin campos futuros",
+        "objetivo": "conteo reportado por tipo; exactitud física no confirmada"
+      }
+    }
+  ],
+  "metricas_publicadas": [
+    {
+      "ruta": "reports/ampliacion/comparacion_validacion.csv",
+      "sha256": "e5777a6563cae1688708c7220a46bd5380a108107ac69114fb3ebee62efa4e77",
+      "bytes": 9260,
+      "filas_agregadas": 36
+    },
+    {
+      "ruta": "reports/ampliacion/comparacion_prueba.csv",
+      "sha256": "f414d55b81ea42cfdcf053802ab4081ca6194b62491f559442a451e98a8c1892",
+      "bytes": 4646,
+      "filas_agregadas": 36
+    },
+    {
+      "ruta": "reports/ampliacion/subgrupos_prueba.csv",
+      "sha256": "f9b0252b8373e569af14dfda01c0021673cba0bffb0455a3d404f7c9af9bec94",
+      "bytes": 18858,
+      "filas_agregadas": 144
+    }
+  ],
+  "uso": "Referencia explícita para futura U2; no implementa streaming ni integración.",
+  "politica_resolucion": "Leer este archivo y elegir tipo/horizonte explícitos. No buscar la carpeta más reciente. Los contratos incluidos son copias de los originales de esta ejecución; las rutas originales requieren artefactos locales y su SHA-256 debe coincidir.",
+  "objetivo": "Conteos reportados por tipo; exactitud física no confirmada. Elegibilidad no garantiza exactitud."
+}

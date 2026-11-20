@@ -1,0 +1,863 @@
+[
+  {
+    "ejecucion": "11a350b2-9830-47ce-ad45-9fa2b46256c6",
+    "ruta_local": "data/streaming/ejecuciones/11a350b2-9830-47ce-ad45-9fa2b46256c6.json",
+    "estado": "completada",
+    "inicio_utc": "2026-11-19T03:03:33.292Z",
+    "fin_utc": "2026-11-19T03:04:16.962Z",
+    "software": {
+      "spark": "4.2.0",
+      "scala": "2.13.18",
+      "master": "local[2]",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0"
+    },
+    "configuracion": {
+      "spark_version": "4.2.0",
+      "scala_version": "2.13.18",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0",
+      "spark_master": "local[2]",
+      "driver_memory": "2g",
+      "shuffle_partitions": 2,
+      "trigger": "10 seconds",
+      "watermark": "1 minutes",
+      "window": "1 minutes",
+      "max_offsets_per_trigger": 10000,
+      "max_files_per_trigger": 4,
+      "bootstrap_servers": "kafka-disponibilidad:9092",
+      "topic": "citibike-disponibilidad-estaciones-v1",
+      "starting_offsets": {
+        "citibike-disponibilidad-estaciones-v1": {
+          "0": 3480,
+          "1": 3264,
+          "2": 3332
+        }
+      },
+      "output_dir": "data/streaming/verificacion_etapa2_v2/salidas",
+      "checkpoint_dir": "data/streaming/verificacion_etapa2_v2/checkpoints",
+      "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+      "max_catalogs_per_batch": 16,
+      "max_future_clock_seconds": 300
+    },
+    "u1": {
+      "ejecucion": "20261117T171917344468Z",
+      "referencia_sha256": "d77e574e70e56cc3de1f9a48f6fc3a51910731738dcb46d07e2f658c50e2d2e7",
+      "contratos": [
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 5,
+          "sha256": "171a65a28918dc36d707e2a20d4de30b76a75723a60dd3e012a6a897a2940243"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 10,
+          "sha256": "564c15442dcc5e908d94a3c4e0e30cac580ed2d630263ff4bb90160629dc2cdc"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 15,
+          "sha256": "75a037fd56f953a7f4c8808c7b4eee9e2eb8f9ef68fac5e42d7e623768567355"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 5,
+          "sha256": "6601634346427d936172c1005524b25c63016f6fa923d747ef3a5d1d0a5c0330"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 10,
+          "sha256": "5726314ae438125820b30c7d03bc326a9c0591e05c6e68af0bf736a6f5b6409c"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 15,
+          "sha256": "eeeed9bc71ffd1240537f36eed64a21dee506b3487e2d6a4fc58b5831a8e6bd1"
+        }
+      ]
+    },
+    "consultas": {
+      "disponibilidad_metricas": {
+        "id": "40688d6a-48e0-4e9d-9d1e-89dfeaaed11e",
+        "runId": "122dc11f-48fc-4cae-98d7-40732c1f231b",
+        "microbatches": [
+          {
+            "batchId": 0,
+            "numInputRows": 5038,
+            "eventTime": {
+              "avg": "2026-11-19T02:54:08.487Z",
+              "max": "2026-11-19T02:54:43.655Z",
+              "min": "2026-11-19T02:53:33.321Z",
+              "watermark": "1970-01-01T00:00:00.000Z"
+            },
+            "durationMs": {
+              "addBatch": 992,
+              "commitOffsets": 57,
+              "getBatch": 17,
+              "latestOffset": 58,
+              "queryPlanning": 295,
+              "triggerExecution": 1485,
+              "walCommit": 61
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "null",
+                "endOffset": "{\"logOffset\": 0}",
+                "latestOffset": "null",
+                "numInputRows": 5038,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 3392.6,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "stateStoreSave",
+                "numRowsTotal": 2,
+                "numRowsUpdated": 2,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 99,
+                "allRemovalsTimeMs": 106,
+                "commitTimeMs": 96,
+                "memoryUsedBytes": 1232,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 0,
+                  "loadedMapCacheMissCount": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 944
+                }
+              }
+            ]
+          },
+          {
+            "batchId": 1,
+            "numInputRows": 0,
+            "eventTime": {
+              "watermark": "2026-11-19T02:53:43.655Z"
+            },
+            "durationMs": {
+              "addBatch": 449,
+              "commitOffsets": 54,
+              "getBatch": 0,
+              "latestOffset": 1,
+              "queryPlanning": 44,
+              "triggerExecution": 613,
+              "walCommit": 60
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "{\"logOffset\": 0}",
+                "endOffset": "{\"logOffset\": 0}",
+                "latestOffset": "null",
+                "numInputRows": 0,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 0.0,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "stateStoreSave",
+                "numRowsTotal": 2,
+                "numRowsUpdated": 0,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 7,
+                "allRemovalsTimeMs": 47,
+                "commitTimeMs": 112,
+                "memoryUsedBytes": 1680,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 4,
+                  "loadedMapCacheMissCount": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 832
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "disponibilidad_predicciones": {
+        "id": "7caa122a-9806-4d11-97b9-d490c42f660f",
+        "runId": "35a2c49d-3edb-4337-a374-244c4ab78281",
+        "microbatches": [
+          {
+            "batchId": 0,
+            "numInputRows": 5038,
+            "eventTime": {},
+            "durationMs": {
+              "addBatch": 950,
+              "commitOffsets": 50,
+              "getBatch": 20,
+              "latestOffset": 55,
+              "queryPlanning": 111,
+              "triggerExecution": 1246,
+              "walCommit": 51
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "null",
+                "endOffset": "{\"logOffset\": 0}",
+                "latestOffset": "null",
+                "numInputRows": 5038,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 4043.3,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": []
+          }
+        ]
+      },
+      "disponibilidad_rechazados": {
+        "id": "1eb523c2-b734-42bc-8fba-a16574686b9d",
+        "runId": "580f06bc-3733-4d17-a835-be347f09bf41",
+        "microbatches": [
+          {
+            "batchId": 0,
+            "numInputRows": 5038,
+            "eventTime": {},
+            "durationMs": {
+              "addBatch": 1298,
+              "commitOffsets": 64,
+              "getBatch": 47,
+              "latestOffset": 58,
+              "queryPlanning": 84,
+              "triggerExecution": 1631,
+              "walCommit": 64
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "null",
+                "endOffset": "{\"logOffset\": 0}",
+                "latestOffset": "null",
+                "numInputRows": 5038,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 3087.0,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": []
+          }
+        ]
+      },
+      "disponibilidad_observaciones": {
+        "id": "8e549878-3f69-439b-9d63-db5e3bc38235",
+        "runId": "543a68f2-82cc-482b-a5dd-08e3768761c3",
+        "microbatches": [
+          {
+            "batchId": 0,
+            "numInputRows": 5038,
+            "eventTime": {
+              "avg": "2026-11-19T02:54:08.488Z",
+              "max": "2026-11-19T02:54:43.655Z",
+              "min": "2026-11-19T02:53:33.321Z",
+              "watermark": "1970-01-01T00:00:00.000Z"
+            },
+            "durationMs": {
+              "addBatch": 17489,
+              "commitOffsets": 60,
+              "getBatch": 15,
+              "latestOffset": 731,
+              "queryPlanning": 452,
+              "triggerExecution": 18884,
+              "walCommit": 78
+            },
+            "sources": [
+              {
+                "description": "KafkaV2[Subscribe[citibike-disponibilidad-estaciones-v1]]",
+                "startOffset": "null",
+                "endOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "latestOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "numInputRows": 5038,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 266.7,
+                "metrics": {
+                  "avgOffsetsBehindLatest": "0.0",
+                  "maxOffsetsBehindLatest": "0",
+                  "minOffsetsBehindLatest": "0"
+                }
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "dedupeWithinWatermark",
+                "numRowsTotal": 15114,
+                "numRowsUpdated": 15114,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 2502,
+                "allRemovalsTimeMs": 16,
+                "commitTimeMs": 296,
+                "memoryUsedBytes": 3310632,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 6,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 0,
+                  "loadedMapCacheMissCount": 0,
+                  "numDroppedDuplicateRows": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 3309768
+                }
+              }
+            ]
+          },
+          {
+            "batchId": 1,
+            "numInputRows": 0,
+            "eventTime": {
+              "watermark": "2026-11-19T02:53:43.655Z"
+            },
+            "durationMs": {
+              "addBatch": 340,
+              "commitOffsets": 61,
+              "getBatch": 0,
+              "latestOffset": 1,
+              "queryPlanning": 50,
+              "triggerExecution": 539,
+              "walCommit": 62
+            },
+            "sources": [
+              {
+                "description": "KafkaV2[Subscribe[citibike-disponibilidad-estaciones-v1]]",
+                "startOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "endOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "latestOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "numInputRows": 0,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 0.0,
+                "metrics": {
+                  "avgOffsetsBehindLatest": "0.0",
+                  "maxOffsetsBehindLatest": "0",
+                  "minOffsetsBehindLatest": "0"
+                }
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "dedupeWithinWatermark",
+                "numRowsTotal": 5038,
+                "numRowsUpdated": 0,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 0,
+                "allRemovalsTimeMs": 2,
+                "commitTimeMs": 147,
+                "memoryUsedBytes": 2024152,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 2,
+                  "loadedMapCacheMissCount": 0,
+                  "numDroppedDuplicateRows": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 952512
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "errores": []
+  },
+  {
+    "ejecucion": "beba4bd6-f0f6-48a4-bc9c-f389d4b06f77",
+    "ruta_local": "data/streaming/ejecuciones/beba4bd6-f0f6-48a4-bc9c-f389d4b06f77.json",
+    "estado": "completada",
+    "inicio_utc": "2026-11-19T03:09:02.189Z",
+    "fin_utc": "2026-11-19T03:09:23.304Z",
+    "software": {
+      "spark": "4.2.0",
+      "scala": "2.13.18",
+      "master": "local[2]",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0"
+    },
+    "configuracion": {
+      "spark_version": "4.2.0",
+      "scala_version": "2.13.18",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0",
+      "spark_master": "local[2]",
+      "driver_memory": "2g",
+      "shuffle_partitions": 2,
+      "trigger": "10 seconds",
+      "watermark": "1 minutes",
+      "window": "1 minutes",
+      "max_offsets_per_trigger": 10000,
+      "max_files_per_trigger": 4,
+      "bootstrap_servers": "kafka-disponibilidad:9092",
+      "topic": "citibike-disponibilidad-estaciones-v1",
+      "starting_offsets": {
+        "citibike-disponibilidad-estaciones-v1": {
+          "0": 3480,
+          "1": 3264,
+          "2": 3332
+        }
+      },
+      "output_dir": "data/streaming/verificacion_etapa2_v2/salidas",
+      "checkpoint_dir": "data/streaming/verificacion_etapa2_v2/checkpoints",
+      "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+      "max_catalogs_per_batch": 16,
+      "max_future_clock_seconds": 300
+    },
+    "u1": {
+      "ejecucion": "20261117T171917344468Z",
+      "referencia_sha256": "d77e574e70e56cc3de1f9a48f6fc3a51910731738dcb46d07e2f658c50e2d2e7",
+      "contratos": [
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 5,
+          "sha256": "171a65a28918dc36d707e2a20d4de30b76a75723a60dd3e012a6a897a2940243"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 10,
+          "sha256": "564c15442dcc5e908d94a3c4e0e30cac580ed2d630263ff4bb90160629dc2cdc"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 15,
+          "sha256": "75a037fd56f953a7f4c8808c7b4eee9e2eb8f9ef68fac5e42d7e623768567355"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 5,
+          "sha256": "6601634346427d936172c1005524b25c63016f6fa923d747ef3a5d1d0a5c0330"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 10,
+          "sha256": "5726314ae438125820b30c7d03bc326a9c0591e05c6e68af0bf736a6f5b6409c"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 15,
+          "sha256": "eeeed9bc71ffd1240537f36eed64a21dee506b3487e2d6a4fc58b5831a8e6bd1"
+        }
+      ]
+    },
+    "consultas": {
+      "disponibilidad_metricas": {
+        "id": "40688d6a-48e0-4e9d-9d1e-89dfeaaed11e",
+        "runId": "3ff35b05-b1c7-4bd2-aa3f-45f18496aea2",
+        "microbatches": []
+      },
+      "disponibilidad_predicciones": {
+        "id": "7caa122a-9806-4d11-97b9-d490c42f660f",
+        "runId": "9909fa75-f8bc-433f-a3d9-9f660afc8a08",
+        "microbatches": []
+      },
+      "disponibilidad_rechazados": {
+        "id": "1eb523c2-b734-42bc-8fba-a16574686b9d",
+        "runId": "583b978c-7363-4771-921d-1572958d33f3",
+        "microbatches": []
+      },
+      "disponibilidad_observaciones": {
+        "id": "8e549878-3f69-439b-9d63-db5e3bc38235",
+        "runId": "2514d183-1fdb-4582-83c0-313f7c47e885",
+        "microbatches": []
+      }
+    },
+    "errores": []
+  },
+  {
+    "ejecucion": "8f74298c-631d-4d6e-bc8c-dabe87d33cc6",
+    "ruta_local": "data/streaming/ejecuciones/8f74298c-631d-4d6e-bc8c-dabe87d33cc6.json",
+    "estado": "completada",
+    "inicio_utc": "2026-11-19T03:21:37.399Z",
+    "fin_utc": "2026-11-19T03:22:58.434Z",
+    "software": {
+      "spark": "4.2.0",
+      "scala": "2.13.18",
+      "master": "local[2]",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0"
+    },
+    "configuracion": {
+      "spark_version": "4.2.0",
+      "scala_version": "2.13.18",
+      "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0",
+      "spark_master": "local[2]",
+      "driver_memory": "2g",
+      "shuffle_partitions": 2,
+      "trigger": "10 seconds",
+      "watermark": "1 minutes",
+      "window": "1 minutes",
+      "max_offsets_per_trigger": 10000,
+      "max_files_per_trigger": 4,
+      "bootstrap_servers": "kafka-disponibilidad:9092",
+      "topic": "citibike-disponibilidad-estaciones-v1",
+      "starting_offsets": {
+        "citibike-disponibilidad-estaciones-v1": {
+          "0": 3480,
+          "1": 3264,
+          "2": 3332
+        }
+      },
+      "output_dir": "data/streaming/verificacion_etapa2_v2/salidas",
+      "checkpoint_dir": "data/streaming/verificacion_etapa2_v2/checkpoints",
+      "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+      "max_catalogs_per_batch": 16,
+      "max_future_clock_seconds": 300
+    },
+    "u1": {
+      "ejecucion": "20261117T171917344468Z",
+      "referencia_sha256": "d77e574e70e56cc3de1f9a48f6fc3a51910731738dcb46d07e2f658c50e2d2e7",
+      "contratos": [
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 5,
+          "sha256": "171a65a28918dc36d707e2a20d4de30b76a75723a60dd3e012a6a897a2940243"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 10,
+          "sha256": "564c15442dcc5e908d94a3c4e0e30cac580ed2d630263ff4bb90160629dc2cdc"
+        },
+        {
+          "tipo": "convencionales",
+          "horizonte_min": 15,
+          "sha256": "75a037fd56f953a7f4c8808c7b4eee9e2eb8f9ef68fac5e42d7e623768567355"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 5,
+          "sha256": "6601634346427d936172c1005524b25c63016f6fa923d747ef3a5d1d0a5c0330"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 10,
+          "sha256": "5726314ae438125820b30c7d03bc326a9c0591e05c6e68af0bf736a6f5b6409c"
+        },
+        {
+          "tipo": "electricas",
+          "horizonte_min": 15,
+          "sha256": "eeeed9bc71ffd1240537f36eed64a21dee506b3487e2d6a4fc58b5831a8e6bd1"
+        }
+      ]
+    },
+    "consultas": {
+      "disponibilidad_rechazados": {
+        "id": "1eb523c2-b734-42bc-8fba-a16574686b9d",
+        "runId": "e7e8995b-ca49-4f2b-94e0-eb34adecd9d6",
+        "microbatches": [
+          {
+            "batchId": 1,
+            "numInputRows": 2519,
+            "eventTime": {},
+            "durationMs": {
+              "addBatch": 1673,
+              "commitOffsets": 121,
+              "getBatch": 31,
+              "latestOffset": 94,
+              "queryPlanning": 191,
+              "triggerExecution": 2236,
+              "walCommit": 95
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "{\"logOffset\": 0}",
+                "endOffset": "{\"logOffset\": 1}",
+                "latestOffset": "null",
+                "numInputRows": 2519,
+                "inputRowsPerSecond": 251.9,
+                "processedRowsPerSecond": 1126.1,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": []
+          }
+        ]
+      },
+      "disponibilidad_predicciones": {
+        "id": "7caa122a-9806-4d11-97b9-d490c42f660f",
+        "runId": "fa42a57f-ca80-4918-bf1d-6936f1ff1764",
+        "microbatches": [
+          {
+            "batchId": 1,
+            "numInputRows": 2519,
+            "eventTime": {},
+            "durationMs": {
+              "addBatch": 2464,
+              "commitOffsets": 102,
+              "getBatch": 32,
+              "latestOffset": 93,
+              "queryPlanning": 206,
+              "triggerExecution": 3007,
+              "walCommit": 94
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "{\"logOffset\": 0}",
+                "endOffset": "{\"logOffset\": 1}",
+                "latestOffset": "null",
+                "numInputRows": 2519,
+                "inputRowsPerSecond": 251.9,
+                "processedRowsPerSecond": 837.4,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": []
+          }
+        ]
+      },
+      "disponibilidad_metricas": {
+        "id": "40688d6a-48e0-4e9d-9d1e-89dfeaaed11e",
+        "runId": "26a83233-d550-4c79-bf06-6e2a619fa2ba",
+        "microbatches": [
+          {
+            "batchId": 2,
+            "numInputRows": 2519,
+            "eventTime": {
+              "avg": "2026-11-19T03:19:31.444Z",
+              "max": "2026-11-19T03:19:31.444Z",
+              "min": "2026-11-19T03:19:31.444Z",
+              "watermark": "2026-11-19T02:53:43.655Z"
+            },
+            "durationMs": {
+              "addBatch": 2960,
+              "commitOffsets": 64,
+              "getBatch": 30,
+              "latestOffset": 93,
+              "queryPlanning": 261,
+              "triggerExecution": 3520,
+              "walCommit": 94
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "{\"logOffset\": 0}",
+                "endOffset": "{\"logOffset\": 1}",
+                "latestOffset": "null",
+                "numInputRows": 2519,
+                "inputRowsPerSecond": 251.9,
+                "processedRowsPerSecond": 715.6,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "stateStoreSave",
+                "numRowsTotal": 3,
+                "numRowsUpdated": 1,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 35,
+                "allRemovalsTimeMs": 101,
+                "commitTimeMs": 118,
+                "memoryUsedBytes": 1880,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 2,
+                  "loadedMapCacheMissCount": 2,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 1112
+                }
+              }
+            ]
+          },
+          {
+            "batchId": 3,
+            "numInputRows": 0,
+            "eventTime": {
+              "watermark": "2026-11-19T03:18:31.444Z"
+            },
+            "durationMs": {
+              "addBatch": 407,
+              "commitOffsets": 48,
+              "getBatch": 0,
+              "latestOffset": 6,
+              "queryPlanning": 37,
+              "triggerExecution": 583,
+              "walCommit": 77
+            },
+            "sources": [
+              {
+                "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/streaming/verificacion_etapa2_v2/salidas/observaciones]",
+                "startOffset": "{\"logOffset\": 1}",
+                "endOffset": "{\"logOffset\": 1}",
+                "latestOffset": "null",
+                "numInputRows": 0,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 0.0,
+                "metrics": {}
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "stateStoreSave",
+                "numRowsTotal": 1,
+                "numRowsUpdated": 0,
+                "numRowsRemoved": 2,
+                "allUpdatesTimeMs": 8,
+                "allRemovalsTimeMs": 74,
+                "commitTimeMs": 76,
+                "memoryUsedBytes": 1872,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 6,
+                  "loadedMapCacheMissCount": 2,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 584
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "disponibilidad_observaciones": {
+        "id": "8e549878-3f69-439b-9d63-db5e3bc38235",
+        "runId": "0213e56c-6fbd-4524-90a3-b8e25217c36b",
+        "microbatches": [
+          {
+            "batchId": 2,
+            "numInputRows": 2519,
+            "eventTime": {
+              "avg": "2026-11-19T03:19:31.444Z",
+              "max": "2026-11-19T03:19:31.444Z",
+              "min": "2026-11-19T03:19:31.444Z",
+              "watermark": "2026-11-19T02:53:43.655Z"
+            },
+            "durationMs": {
+              "addBatch": 17004,
+              "commitOffsets": 59,
+              "getBatch": 3,
+              "latestOffset": 1724,
+              "queryPlanning": 248,
+              "triggerExecution": 19186,
+              "walCommit": 106
+            },
+            "sources": [
+              {
+                "description": "KafkaV2[Subscribe[citibike-disponibilidad-estaciones-v1]]",
+                "startOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 5220, \"1\": 4898, \"2\": 4996}}",
+                "endOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 6090, \"1\": 5715, \"2\": 5828}}",
+                "latestOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 6090, \"1\": 5715, \"2\": 5828}}",
+                "numInputRows": 2519,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 131.2,
+                "metrics": {
+                  "avgOffsetsBehindLatest": "0.0",
+                  "maxOffsetsBehindLatest": "0",
+                  "minOffsetsBehindLatest": "0"
+                }
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "dedupeWithinWatermark",
+                "numRowsTotal": 22671,
+                "numRowsUpdated": 7557,
+                "numRowsRemoved": 0,
+                "allUpdatesTimeMs": 1593,
+                "allRemovalsTimeMs": 33,
+                "commitTimeMs": 468,
+                "memoryUsedBytes": 6057616,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 6,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 4,
+                  "loadedMapCacheMissCount": 9,
+                  "numDroppedDuplicateRows": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 4383864
+                }
+              }
+            ]
+          },
+          {
+            "batchId": 3,
+            "numInputRows": 0,
+            "eventTime": {
+              "watermark": "2026-11-19T03:18:31.444Z"
+            },
+            "durationMs": {
+              "addBatch": 271,
+              "commitOffsets": 56,
+              "getBatch": 0,
+              "latestOffset": 13,
+              "queryPlanning": 52,
+              "triggerExecution": 471,
+              "walCommit": 60
+            },
+            "sources": [
+              {
+                "description": "KafkaV2[Subscribe[citibike-disponibilidad-estaciones-v1]]",
+                "startOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 6090, \"1\": 5715, \"2\": 5828}}",
+                "endOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 6090, \"1\": 5715, \"2\": 5828}}",
+                "latestOffset": "{\"citibike-disponibilidad-estaciones-v1\": {\"0\": 6090, \"1\": 5715, \"2\": 5828}}",
+                "numInputRows": 0,
+                "inputRowsPerSecond": 0.0,
+                "processedRowsPerSecond": 0.0,
+                "metrics": {
+                  "avgOffsetsBehindLatest": "0.0",
+                  "maxOffsetsBehindLatest": "0",
+                  "minOffsetsBehindLatest": "0"
+                }
+              }
+            ],
+            "stateOperators": [
+              {
+                "operatorName": "dedupeWithinWatermark",
+                "numRowsTotal": 2519,
+                "numRowsUpdated": 0,
+                "numRowsRemoved": 5038,
+                "allUpdatesTimeMs": 0,
+                "allRemovalsTimeMs": 30,
+                "commitTimeMs": 85,
+                "memoryUsedBytes": 2122704,
+                "numRowsDroppedByWatermark": 0,
+                "numShufflePartitions": 2,
+                "numStateStoreInstances": 2,
+                "customMetrics": {
+                  "SnapshotLastUploaded.partition_0_default": -1,
+                  "SnapshotLastUploaded.partition_1_default": -1,
+                  "forceSnapshotCount": 0,
+                  "loadedMapCacheHitCount": 4,
+                  "loadedMapCacheMissCount": 4,
+                  "numDroppedDuplicateRows": 0,
+                  "numSnapshotsAutoRepaired": 0,
+                  "stateOnCurrentVersionSizeBytes": 661000
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "errores": []
+  }
+]

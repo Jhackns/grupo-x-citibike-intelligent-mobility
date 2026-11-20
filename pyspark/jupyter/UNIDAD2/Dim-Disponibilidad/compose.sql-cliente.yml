@@ -1,0 +1,4 @@
+services:
+  streaming-disponibilidad:
+    volumes:
+      - ./data/secretos/postgres_password:/run/secrets/postgres_password:ro

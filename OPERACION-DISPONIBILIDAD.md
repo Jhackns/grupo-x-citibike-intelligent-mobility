@@ -1,0 +1,33 @@
+# Operación local de Disponibilidad
+
+Ejecutar desde la raíz del repositorio con Bash, Docker Compose, flock y la .venv existente. El comando de ayuda es `./disponibilidad ayuda`. El estado y la comprobación previa son de lectura. La infraestructura propia usa los tres Compose de Disponibilidad U2. El procesamiento batch y el notebook usan el servicio compartido de pyspark/compose.yml.
+
+| Acción | Comando desde la raíz | Resultado esperado | Cómo terminar |
+|---|---|---|---|
+| Revisar entorno U2 | `./disponibilidad previo` | Configuraciones válidas, seis contratos originales U1, Docker y puertos host libres o propios | Finaliza solo |
+| Descargar un periodo UTC inclusivo | `./disponibilidad descargar --desde 2026-11-10 --hasta 2026-11-16 --env-file pyspark/.env.u2 --credencial secreta` | Compara con el manifiesto y descarga solo capturas pendientes. Cambiar ambas fechas según necesidad. Añadir `--dry-run` para inventario | Finaliza solo |
+| Iniciar o acceder a Jupyter/PySpark | `./disponibilidad jupyter` | Servicio compartido en [Jupyter](http://localhost:4487/tree/UNIDAD1/Dim-Disponibilidad/notebooks/01_disponibilidad_batch.ipynb), con ./jupyter montado en /opt | Cerrar el notebook o su kernel. El servicio compartido queda disponible para el equipo |
+| Preparar Silver, Gold y entrenar | `./disponibilidad entrenar --spark-master 'local[2]'` | Nueva ejecución mediante ejecutar_u1.py sobre el histórico local y sus cortes configurados. Requiere el servicio PySpark iniciado | Finaliza solo |
+| Reutilizar la entrega U1 | `./disponibilidad reutilizar` | Devuelve el directorio seleccionado después de verificar el manifiesto y los artefactos contra los hashes guardados. Reutiliza los resultados de aquella configuración sin iniciar Spark ni entrenar | Finaliza solo |
+| Iniciar infraestructura U2 | `./disponibilidad infra` | Espera a Kafka y PostgreSQL, verifica o crea el tópico, prepara esquema y vistas, inicia Prometheus y Grafana con sus exportadores | `./disponibilidad detener` tras cerrar el flujo |
+| Iniciar procesos continuos | `./disponibilidad flujo` | Lanzador en primer plano. Inicia colector, Spark Kafka, persistencia SQL y productor GBFS. Consulta cada 300 s respetando TTL | Ctrl+C en esa terminal y esperar el cierre |
+| Prueba breve alternativa | `./disponibilidad flujo prueba` | Mismo flujo con una sola captura. Espera confirmación SQL y termina sus procesos | Finaliza solo |
+| Revisar salud | `./disponibilidad estado` | Estado de contenedores, salud HTTP, procesos registrados y comprobación de PID | Finaliza solo |
+| Seguir logs | `./disponibilidad logs` | Sigue productor, Spark y SQL registrados. Abrir otra consola después del arranque del productor | Ctrl+C en la consola de logs |
+| Leer una muestra Kafka | `./disponibilidad muestra` | Un evento retenido, con grupo diagnóstico único y commit automático desactivado. Puede corresponder a una captura anterior | Finaliza solo |
+| Consultar última captura de operación | `./disponibilidad resumen` | ID, estaciones, ACK del productor y filas de observaciones y predicciones ya persistidas para esa captura. Requiere PostgreSQL activo | Finaliza solo |
+| Detener infraestructura | `./disponibilidad detener` | Detiene solo servicios de los Compose propios, con los cinco volúmenes y checkpoints conservados | Finaliza solo |
+
+**Acceso a Jupyter.** Introducir en el login el valor de JUPYTER_TOKEN de la configuración privada usada al crear el contenedor. Si Jupyter generó su propio token, obtenerlo desde el listado del servidor en una terminal privada y pegarlo solo en el navegador. En Linux con Wayland se puede copiar el token del servidor directamente al portapapeles, sin mostrarlo en consola:
+
+```bash
+docker exec lambda26-pyspark jupyter server list --json 2>/dev/null | python3 -c 'import sys,json; t=json.loads(next(sys.stdin))["token"]; assert t; sys.stdout.write(t)' | wl-copy
+```
+
+El [notebook principal](pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/notebooks/01_disponibilidad_batch.ipynb) permite trabajo interactivo. El [notebook ejecutado](pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/notebooks/archivo/01_historico_ampliado_20261117T171917344468Z.ipynb) conserva las salidas verificadas. Spark UI del servicio compartido está en http://localhost:4043 mientras exista una aplicación escuchando en 4040. El lanzador batch directo sin --nueva puede entrenar si cambia la huella. Para consultar exclusivamente resultados ya calculados, usar reutilizar.
+
+**Operación U2.** Mantener una sola consola de flujo. Usar otra para estado, muestra, resumen y logs. La operación tiene flow_id disponibilidad-operacion-v1 y configuraciones explícitas config/streaming-operacion.json y config/postgres-operacion.json. La primera ejecución consume desde latest y las siguientes retoman sus checkpoints. El flujo usa los seis contratos seleccionados y el mismo productor y consumidores de la entrega. Los informes de cada operación se conservan en data/operacion/. Una captura breve permite validar transporte y escritura. La auditoría histórica mantiene el 0 % de cobertura a 10 minutos en su cohorte primaria.
+
+**Interfaces.** [Grafana](http://127.0.0.1:13000/d/citibike-disponibilidad-u2) permite elegir disponibilidad-operacion-v1 después de procesar la primera captura. El usuario es disponibilidad_admin y su contraseña está en el archivo local protegido data/secretos/grafana_admin_password de U2. [Prometheus](http://127.0.0.1:19090/targets), [Pushgateway](http://127.0.0.1:19091) y [métricas](http://127.0.0.1:19108/metrics) usan los puertos del Compose propio. Kafka usa 127.0.0.1:19092 desde el host y kafka-disponibilidad:9092 desde Docker. PostgreSQL usa 127.0.0.1:15432 y postgres-disponibilidad:5432 respectivamente.
+
+**Validación local del 20 de noviembre de 2026 (UTC).** La captura `7e9743cd-aeb0-4a58-a298-4909a7919b20` produjo 2.519 estaciones, 2.519 confirmaciones Kafka, 2.519 observaciones SQL y 14.700 predicciones persistidas. Informe local de esta prueba en `pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/operacion/flujo-20261120T005519421706642Z.json`. Las cuatro interfaces HTTP respondieron 200. El diagnóstico leyó un evento retenido con un grupo independiente. Al detener el flujo y la infraestructura, los tres procesos quedaron inactivos y los puertos HTTP dejaron de responder. El servicio compartido lambda26-pyspark y los tres contenedores cloudshield preexistentes siguieron activos. El exportador Kafka de terceros terminó con código 2 al parar, igual que en la auditoría anterior. Esta prueba verifica la persistencia de predicciones. La evaluación a 15 minutos requiere observaciones futuras.

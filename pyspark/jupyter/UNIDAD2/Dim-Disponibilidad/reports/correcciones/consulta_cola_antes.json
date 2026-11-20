@@ -1,0 +1,4 @@
+{
+  "error": "Grafana HTTP 400: db query error: pq: canceling statement due to statement timeout",
+  "duracion_s": 30.045443352999428
+}

@@ -1,0 +1,609 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Subquery Scan",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Alias": "resumen",
+      "Startup Cost": 213037.18,
+      "Total Cost": 213038.93,
+      "Plan Rows": 6,
+      "Plan Width": 316,
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Subquery",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 213037.18,
+          "Total Cost": 213038.87,
+          "Plan Rows": 6,
+          "Plan Width": 396,
+          "Group Key": ["datos.flujo", "datos.tipo", "datos.horizonte_min", "datos.momento", "datos.instante_corte_utc"],
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Finalize",
+              "Parent Relationship": "InitPlan",
+              "Subplan Name": "CTE frontera",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 6655.15,
+              "Total Cost": 6657.06,
+              "Plan Rows": 7,
+              "Plan Width": 120,
+              "Group Key": ["flujos.flujo", "('auditoria_actual'::text)", "(statement_timestamp())", "ejecuciones.fin_utc", "ejecuciones.estado"],
+              "Plans": [
+                {
+                  "Node Type": "Gather Merge",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 6655.15,
+                  "Total Cost": 6656.78,
+                  "Plan Rows": 14,
+                  "Plan Width": 120,
+                  "Workers Planned": 2,
+                  "Plans": [
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 5655.13,
+                      "Total Cost": 5655.14,
+                      "Plan Rows": 7,
+                      "Plan Width": 120,
+                      "Sort Key": ["flujos.flujo", "('auditoria_actual'::text)", "(statement_timestamp())", "ejecuciones.fin_utc", "ejecuciones.estado"],
+                      "Plans": [
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Hashed",
+                          "Partial Mode": "Partial",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 5654.96,
+                          "Total Cost": 5655.03,
+                          "Plan Rows": 7,
+                          "Plan Width": 120,
+                          "Group Key": ["flujos.flujo", "('auditoria_actual'::text)", "(statement_timestamp())", "ejecuciones.fin_utc", "ejecuciones.estado"],
+                          "Planned Partitions": 0,
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Left",
+                              "Startup Cost": 359.69,
+                              "Total Cost": 5630.04,
+                              "Plan Rows": 1661,
+                              "Plan Width": 121,
+                              "Inner Unique": false,
+                              "Plans": [
+                                {
+                                  "Node Type": "Append",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": true,
+                                  "Async Capable": false,
+                                  "Startup Cost": 0.15,
+                                  "Total Cost": 14.29,
+                                  "Plan Rows": 2,
+                                  "Plan Width": 112,
+                                  "Subplans Removed": 0,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Nested Loop",
+                                      "Parent Relationship": "Member",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Join Type": "Left",
+                                      "Startup Cost": 6.11,
+                                      "Total Cost": 14.28,
+                                      "Plan Rows": 6,
+                                      "Plan Width": 112,
+                                      "Inner Unique": true,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Aggregate",
+                                          "Strategy": "Hashed",
+                                          "Partial Mode": "Simple",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 5.96,
+                                          "Total Cost": 6.01,
+                                          "Plan Rows": 6,
+                                          "Plan Width": 32,
+                                          "Group Key": ["flujos.flujo"],
+                                          "Planned Partitions": 0,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Append",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Async Capable": false,
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 5.94,
+                                              "Plan Rows": 6,
+                                              "Plan Width": 32,
+                                              "Subplans Removed": 0,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Member",
+                                                  "Parallel Aware": false,
+                                                  "Async Capable": false,
+                                                  "Relation Name": "flujos",
+                                                  "Alias": "flujos",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 2.66,
+                                                  "Plan Rows": 1,
+                                                  "Plan Width": 44,
+                                                  "Filter": "((flujo !~~ 'fixture-%'::text) AND (flujo = 'disponibilidad-correcciones-20261119-v1'::text))"
+                                                },
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Member",
+                                                  "Parallel Aware": false,
+                                                  "Async Capable": false,
+                                                  "Relation Name": "componentes",
+                                                  "Alias": "componentes",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 3.25,
+                                                  "Plan Rows": 5,
+                                                  "Plan Width": 39,
+                                                  "Filter": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Materialize",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 0.15,
+                                          "Total Cost": 8.17,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 72,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Index Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Async Capable": false,
+                                              "Scan Direction": "Forward",
+                                              "Index Name": "ejecuciones_pkey",
+                                              "Relation Name": "ejecuciones",
+                                              "Alias": "ejecuciones",
+                                              "Startup Cost": 0.15,
+                                              "Total Cost": 8.17,
+                                              "Plan Rows": 1,
+                                              "Plan Width": 72,
+                                              "Index Cond": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Index Scan",
+                                      "Parent Relationship": "Member",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Scan Direction": "Forward",
+                                      "Index Name": "ejecuciones_pkey",
+                                      "Relation Name": "ejecuciones",
+                                      "Alias": "ejecuciones_1",
+                                      "Startup Cost": 0.15,
+                                      "Total Cost": 8.17,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 112,
+                                      "Index Cond": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)",
+                                      "Filter": "(fin_utc IS NOT NULL)"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 359.54,
+                                  "Total Cost": 2981.96,
+                                  "Plan Rows": 569,
+                                  "Plan Width": 56,
+                                  "Inner Unique": true,
+                                  "Hash Cond": "((o.flujo = b.flujo) AND (o.batch_id = b.batch_id))",
+                                  "Join Filter": "(b.confirmado_utc <= (statement_timestamp()))",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Bitmap Heap Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Relation Name": "observaciones",
+                                      "Alias": "o",
+                                      "Startup Cost": 354.71,
+                                      "Total Cost": 2967.93,
+                                      "Plan Rows": 1708,
+                                      "Plan Width": 56,
+                                      "Recheck Cond": "(flujo = flujos.flujo)",
+                                      "Filter": "(captura_utc <= (statement_timestamp()))",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Bitmap Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Index Name": "observaciones_pkey",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 354.29,
+                                          "Plan Rows": 5125,
+                                          "Plan Width": 0,
+                                          "Index Cond": "(flujo = flujos.flujo)"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Startup Cost": 3.13,
+                                      "Total Cost": 3.13,
+                                      "Plan Rows": 113,
+                                      "Plan Width": 57,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Relation Name": "lotes",
+                                          "Alias": "b",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 3.13,
+                                          "Plan Rows": 113,
+                                          "Plan Width": 57
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "InitPlan",
+              "Subplan Name": "CTE datos",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Left",
+              "Startup Cost": 1007.07,
+              "Total Cost": 206379.91,
+              "Plan Rows": 6,
+              "Plan Width": 673,
+              "Inner Unique": true,
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 1007.07,
+                  "Total Cost": 206377.15,
+                  "Plan Rows": 6,
+                  "Plan Width": 633,
+                  "Inner Unique": false,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Left",
+                      "Startup Cost": 1001.11,
+                      "Total Cost": 206371.08,
+                      "Plan Rows": 1,
+                      "Plan Width": 633,
+                      "Inner Unique": true,
+                      "Plans": [
+                        {
+                          "Node Type": "Nested Loop",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 1000.97,
+                          "Total Cost": 206370.92,
+                          "Plan Rows": 1,
+                          "Plan Width": 662,
+                          "Inner Unique": true,
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 1000.55,
+                              "Total Cost": 206362.48,
+                              "Plan Rows": 1,
+                              "Plan Width": 626,
+                              "Inner Unique": true,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 1000.00,
+                                  "Total Cost": 206353.91,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 471,
+                                  "Inner Unique": false,
+                                  "Join Filter": "((p.origen_utc <= f.instante_corte_utc) AND (b_1.confirmado_utc <= f.instante_corte_utc))",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Nested Loop",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 1000.00,
+                                      "Total Cost": 206353.73,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 351,
+                                      "Inner Unique": true,
+                                      "Join Filter": "(b_1.batch_id = p.batch_id)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Gather",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 1000.00,
+                                          "Total Cost": 206349.95,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 351,
+                                          "Workers Planned": 2,
+                                          "Single Copy": false,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": true,
+                                              "Async Capable": false,
+                                              "Relation Name": "predicciones",
+                                              "Alias": "p",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 205349.85,
+                                              "Plan Rows": 1,
+                                              "Plan Width": 351,
+                                              "Filter": "((origen_utc >= '2026-11-19 23:16:04.412+00'::timestamp with time zone) AND (origen_utc <= '2026-11-19 23:16:04.413+00'::timestamp with time zone) AND (flujo = 'disponibilidad-correcciones-20261119-v1'::text) AND (tipo = 'convencionales'::text) AND ((horizonte_min)::text = '5'::text))"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Relation Name": "lotes",
+                                          "Alias": "b_1",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 3.41,
+                                          "Plan Rows": 30,
+                                          "Plan Width": 57,
+                                          "Filter": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "CTE Scan",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "CTE Name": "frontera",
+                                      "Alias": "f",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 0.16,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 120,
+                                      "Filter": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Index Scan",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Scan Direction": "Forward",
+                                  "Index Name": "evaluaciones_pkey",
+                                  "Relation Name": "evaluaciones",
+                                  "Alias": "e",
+                                  "Startup Cost": 0.55,
+                                  "Total Cost": 8.57,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 258,
+                                  "Index Cond": "((flujo = 'disponibilidad-correcciones-20261119-v1'::text) AND (prediccion_id = p.prediccion_id))"
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Index Scan",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Scan Direction": "Forward",
+                              "Index Name": "observaciones_pkey",
+                              "Relation Name": "observaciones",
+                              "Alias": "o_1",
+                              "Startup Cost": 0.42,
+                              "Total Cost": 8.44,
+                              "Plan Rows": 1,
+                              "Plan Width": 111,
+                              "Index Cond": "((flujo = 'disponibilidad-correcciones-20261119-v1'::text) AND (observacion_id = p.event_id))"
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "rondas_evaluacion_pkey",
+                          "Relation Name": "rondas_evaluacion",
+                          "Alias": "r",
+                          "Startup Cost": 0.14,
+                          "Total Cost": 0.16,
+                          "Plan Rows": 1,
+                          "Plan Width": 45,
+                          "Index Cond": "(id = e.ronda_id)"
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 5.96,
+                      "Total Cost": 6.01,
+                      "Plan Rows": 6,
+                      "Plan Width": 32,
+                      "Group Key": ["flujos_1.flujo"],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Append",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 0.00,
+                          "Total Cost": 5.94,
+                          "Plan Rows": 6,
+                          "Plan Width": 32,
+                          "Subplans Removed": 0,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Member",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "flujos",
+                              "Alias": "flujos_1",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2.66,
+                              "Plan Rows": 1,
+                              "Plan Width": 44,
+                              "Filter": "((flujo !~~ 'fixture-%'::text) AND (flujo = 'disponibilidad-correcciones-20261119-v1'::text))"
+                            },
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Member",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "componentes",
+                              "Alias": "componentes_1",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 3.25,
+                              "Plan Rows": 5,
+                              "Plan Width": 39,
+                              "Filter": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Materialize",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 0.00,
+                  "Total Cost": 2.55,
+                  "Plan Rows": 1,
+                  "Plan Width": 177,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "flujos",
+                      "Alias": "f_1",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 2.55,
+                      "Plan Rows": 1,
+                      "Plan Width": 177,
+                      "Filter": "(flujo = 'disponibilidad-correcciones-20261119-v1'::text)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 0.20,
+              "Total Cost": 0.21,
+              "Plan Rows": 6,
+              "Plan Width": 220,
+              "Sort Key": ["datos.flujo", "datos.tipo", "datos.horizonte_min", "datos.momento", "datos.instante_corte_utc"],
+              "Plans": [
+                {
+                  "Node Type": "CTE Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "CTE Name": "datos",
+                  "Alias": "datos",
+                  "Startup Cost": 0.00,
+                  "Total Cost": 0.12,
+                  "Plan Rows": 6,
+                  "Plan Width": 220
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "JIT": {
+      "Functions": 101,
+      "Options": {
+        "Inlining": false,
+        "Optimization": false,
+        "Expressions": true,
+        "Deforming": true
+      }
+    }
+  }
+]

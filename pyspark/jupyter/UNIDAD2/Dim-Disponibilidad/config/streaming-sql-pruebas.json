@@ -1,0 +1,5 @@
+{
+  "spark_master": "local[2]",
+  "driver_memory": "1g",
+  "shuffle_partitions": 2
+}

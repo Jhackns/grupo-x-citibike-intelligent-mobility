@@ -1,0 +1,863 @@
+{
+  "estado": "verificada",
+  "fecha_utc": "2026-11-19T23:44:31.552Z",
+  "spark": "4.2.0",
+  "master": "local[2]",
+  "ejecuciones": [
+    {
+      "trigger_s": 10,
+      "batch_id_a_45s": 4,
+      "progreso_a_45s": {
+        "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+        "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+        "name": null,
+        "timestamp": "2026-11-19T23:43:00.001Z",
+        "batchId": 4,
+        "batchDuration": 343,
+        "durationMs": {
+          "addBatch": 209,
+          "commitOffsets": 56,
+          "getBatch": 0,
+          "latestOffset": 3,
+          "queryPlanning": 13,
+          "triggerExecution": 342,
+          "walCommit": 53
+        },
+        "eventTime": {
+          "watermark": "2026-11-19T23:02:47.517Z"
+        },
+        "stateOperators": [
+          {
+            "operatorName": "dedupeWithinWatermark",
+            "numRowsTotal": 2,
+            "numRowsUpdated": 0,
+            "numRowsRemoved": 1,
+            "allUpdatesTimeMs": 0,
+            "allRemovalsTimeMs": 11,
+            "commitTimeMs": 93,
+            "memoryUsedBytes": 1784,
+            "numRowsDroppedByWatermark": 0,
+            "numShufflePartitions": 2,
+            "numStateStoreInstances": 2,
+            "customMetrics": {
+              "SnapshotLastUploaded.partition_0_default": -1,
+              "SnapshotLastUploaded.partition_1_default": -1,
+              "forceSnapshotCount": 0,
+              "loadedMapCacheHitCount": 12,
+              "loadedMapCacheMissCount": 4,
+              "numDroppedDuplicateRows": 0,
+              "numSnapshotsAutoRepaired": 0,
+              "stateOnCurrentVersionSizeBytes": 776
+            }
+          }
+        ],
+        "sources": [
+          {
+            "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+            "startOffset": "{\"logOffset\": 2}",
+            "endOffset": "{\"logOffset\": 2}",
+            "latestOffset": "null",
+            "numInputRows": 0,
+            "inputRowsPerSecond": 0.0,
+            "processedRowsPerSecond": 0.0,
+            "metrics": {}
+          }
+        ],
+        "sink": {
+          "description": "ForeachBatchSink",
+          "numOutputRows": -1,
+          "metrics": {}
+        },
+        "numInputRows": 0,
+        "inputRowsPerSecond": 0.0,
+        "processedRowsPerSecond": 0.0,
+        "observedMetrics": {}
+      },
+      "entrada_eventos": 5,
+      "salida_eventos_unicos": 3,
+      "originales_inalterados": true,
+      "tardios_descartados": 1,
+      "estado_eliminado": 1,
+      "progreso": [
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:42:18.763Z",
+          "batchId": 0,
+          "batchDuration": 14658,
+          "durationMs": {
+            "addBatch": 13218,
+            "commitOffsets": 53,
+            "getBatch": 111,
+            "latestOffset": 85,
+            "queryPlanning": 1019,
+            "triggerExecution": 14645,
+            "walCommit": 82
+          },
+          "eventTime": {
+            "avg": "2026-11-19T22:48:04.779Z",
+            "max": "2026-11-19T22:48:04.779Z",
+            "min": "2026-11-19T22:48:04.779Z",
+            "watermark": "1970-01-01T00:00:00.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 3,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 692,
+              "allRemovalsTimeMs": 5,
+              "commitTimeMs": 442,
+              "memoryUsedBytes": 2520,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 0,
+                "loadedMapCacheMissCount": 0,
+                "numDroppedDuplicateRows": 3,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 1656
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "null",
+              "endOffset": "{\"logOffset\": 0}",
+              "latestOffset": "null",
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.1,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.1,
+          "observedMetrics": {}
+        },
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:42:33.451Z",
+          "batchId": 1,
+          "batchDuration": 4480,
+          "durationMs": {
+            "addBatch": 4269,
+            "commitOffsets": 44,
+            "getBatch": 8,
+            "latestOffset": 55,
+            "queryPlanning": 36,
+            "triggerExecution": 4479,
+            "walCommit": 54
+          },
+          "eventTime": {
+            "avg": "2026-11-19T23:00:46.002Z",
+            "max": "2026-11-19T23:00:46.002Z",
+            "min": "2026-11-19T23:00:46.002Z",
+            "watermark": "2026-11-19T22:38:04.779Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 6,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 173,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 549,
+              "memoryUsedBytes": 3600,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 10,
+                "loadedMapCacheMissCount": 2,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 2256
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "{\"logOffset\": 0}",
+              "endOffset": "{\"logOffset\": 1}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.1,
+              "processedRowsPerSecond": 0.2,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.1,
+          "processedRowsPerSecond": 0.2,
+          "observedMetrics": {}
+        },
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:42:40.001Z",
+          "batchId": 2,
+          "batchDuration": 397,
+          "durationMs": {
+            "addBatch": 194,
+            "commitOffsets": 80,
+            "getBatch": 1,
+            "latestOffset": 6,
+            "queryPlanning": 47,
+            "triggerExecution": 397,
+            "walCommit": 57
+          },
+          "eventTime": {
+            "watermark": "2026-11-19T22:50:46.002Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 0,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 0,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 110,
+              "memoryUsedBytes": 1520,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 2,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 6,
+                "loadedMapCacheMissCount": 2,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 752
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "{\"logOffset\": 1}",
+              "endOffset": "{\"logOffset\": 1}",
+              "latestOffset": "null",
+              "numInputRows": 0,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.0,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 0,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.0,
+          "observedMetrics": {}
+        },
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:42:50.000Z",
+          "batchId": 3,
+          "batchDuration": 4390,
+          "durationMs": {
+            "addBatch": 4168,
+            "commitOffsets": 51,
+            "getBatch": 12,
+            "latestOffset": 57,
+            "queryPlanning": 44,
+            "triggerExecution": 4389,
+            "walCommit": 49
+          },
+          "eventTime": {
+            "avg": "2026-11-19T23:12:47.517Z",
+            "max": "2026-11-19T23:12:47.517Z",
+            "min": "2026-11-19T23:12:47.517Z",
+            "watermark": "2026-11-19T22:50:46.002Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 9,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 94,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 520,
+              "memoryUsedBytes": 4384,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 28,
+                "loadedMapCacheMissCount": 8,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 2976
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "{\"logOffset\": 1}",
+              "endOffset": "{\"logOffset\": 2}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.1,
+              "processedRowsPerSecond": 0.2,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.1,
+          "processedRowsPerSecond": 0.2,
+          "observedMetrics": {}
+        },
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:43:00.001Z",
+          "batchId": 4,
+          "batchDuration": 343,
+          "durationMs": {
+            "addBatch": 209,
+            "commitOffsets": 56,
+            "getBatch": 0,
+            "latestOffset": 3,
+            "queryPlanning": 13,
+            "triggerExecution": 342,
+            "walCommit": 53
+          },
+          "eventTime": {
+            "watermark": "2026-11-19T23:02:47.517Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 0,
+              "numRowsRemoved": 1,
+              "allUpdatesTimeMs": 0,
+              "allRemovalsTimeMs": 11,
+              "commitTimeMs": 93,
+              "memoryUsedBytes": 1784,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 2,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 12,
+                "loadedMapCacheMissCount": 4,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 776
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "{\"logOffset\": 2}",
+              "endOffset": "{\"logOffset\": 2}",
+              "latestOffset": "null",
+              "numInputRows": 0,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.0,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 0,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.0,
+          "observedMetrics": {}
+        },
+        {
+          "id": "b15dcfe9-7986-4f4f-b7c3-5c616da42f51",
+          "runId": "488ab948-4451-4d2e-98dc-9ddf42ccf14c",
+          "name": null,
+          "timestamp": "2026-11-19T23:43:10.000Z",
+          "batchId": 5,
+          "batchDuration": 632,
+          "durationMs": {
+            "addBatch": 420,
+            "commitOffsets": 56,
+            "getBatch": 12,
+            "latestOffset": 47,
+            "queryPlanning": 37,
+            "triggerExecution": 631,
+            "walCommit": 49
+          },
+          "eventTime": {
+            "avg": "2026-11-19T22:48:04.779Z",
+            "max": "2026-11-19T22:48:04.779Z",
+            "min": "2026-11-19T22:48:04.779Z",
+            "watermark": "2026-11-19T23:02:47.517Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 0,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 1,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 112,
+              "memoryUsedBytes": 1544,
+              "numRowsDroppedByWatermark": 1,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 2,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 14,
+                "loadedMapCacheMissCount": 4,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 752
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/entrada]",
+              "startOffset": "{\"logOffset\": 2}",
+              "endOffset": "{\"logOffset\": 3}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.1,
+              "processedRowsPerSecond": 1.6,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.1,
+          "processedRowsPerSecond": 1.6,
+          "observedMetrics": {}
+        }
+      ],
+      "checkpoint": "data/verificacion/s8-10-e7ed7fe6-53e0-400e-92dc-0ccd8cfaf586/checkpoint",
+      "hashes_originales": [
+        "e8b5468c598950d81557de7e9d062b068ed60e971e06e8eef3c6043555c21f8f",
+        "a51bea9905f92b4b65a1273db6cf21672422346967c449ac195c9ce86e393cbd",
+        "eb3ea84595adb9efc9bfa88fe2d26e17d5e7aa06c0d1bda278d08580adefbea9"
+      ]
+    },
+    {
+      "trigger_s": 30,
+      "batch_id_a_45s": 1,
+      "progreso_a_45s": {
+        "id": "40bd98f9-55db-4b6a-b825-f962f3c001ae",
+        "runId": "3651a893-e736-49ae-b921-45b20f4b59ae",
+        "name": null,
+        "timestamp": "2026-11-19T23:43:30.001Z",
+        "batchId": 1,
+        "batchDuration": 3500,
+        "durationMs": {
+          "addBatch": 3305,
+          "commitOffsets": 41,
+          "getBatch": 10,
+          "latestOffset": 55,
+          "queryPlanning": 30,
+          "triggerExecution": 3499,
+          "walCommit": 52
+        },
+        "eventTime": {
+          "avg": "2026-11-19T23:00:46.002Z",
+          "max": "2026-11-19T23:00:46.002Z",
+          "min": "2026-11-19T23:00:46.002Z",
+          "watermark": "2026-11-19T22:38:04.779Z"
+        },
+        "stateOperators": [
+          {
+            "operatorName": "dedupeWithinWatermark",
+            "numRowsTotal": 6,
+            "numRowsUpdated": 3,
+            "numRowsRemoved": 0,
+            "allUpdatesTimeMs": 77,
+            "allRemovalsTimeMs": 0,
+            "commitTimeMs": 319,
+            "memoryUsedBytes": 3600,
+            "numRowsDroppedByWatermark": 0,
+            "numShufflePartitions": 2,
+            "numStateStoreInstances": 6,
+            "customMetrics": {
+              "SnapshotLastUploaded.partition_0_default": -1,
+              "SnapshotLastUploaded.partition_1_default": -1,
+              "forceSnapshotCount": 0,
+              "loadedMapCacheHitCount": 10,
+              "loadedMapCacheMissCount": 2,
+              "numDroppedDuplicateRows": 0,
+              "numSnapshotsAutoRepaired": 0,
+              "stateOnCurrentVersionSizeBytes": 2256
+            }
+          }
+        ],
+        "sources": [
+          {
+            "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/entrada]",
+            "startOffset": "{\"logOffset\": 0}",
+            "endOffset": "{\"logOffset\": 1}",
+            "latestOffset": "null",
+            "numInputRows": 1,
+            "inputRowsPerSecond": 0.1,
+            "processedRowsPerSecond": 0.3,
+            "metrics": {}
+          }
+        ],
+        "sink": {
+          "description": "ForeachBatchSink",
+          "numOutputRows": -1,
+          "metrics": {}
+        },
+        "numInputRows": 1,
+        "inputRowsPerSecond": 0.1,
+        "processedRowsPerSecond": 0.3,
+        "observedMetrics": {}
+      },
+      "entrada_eventos": 5,
+      "salida_eventos_unicos": 3,
+      "originales_inalterados": true,
+      "tardios_descartados": 1,
+      "estado_eliminado": 1,
+      "progreso": [
+        {
+          "id": "40bd98f9-55db-4b6a-b825-f962f3c001ae",
+          "runId": "3651a893-e736-49ae-b921-45b20f4b59ae",
+          "name": null,
+          "timestamp": "2026-11-19T23:43:11.913Z",
+          "batchId": 0,
+          "batchDuration": 3748,
+          "durationMs": {
+            "addBatch": 3398,
+            "commitOffsets": 54,
+            "getBatch": 10,
+            "latestOffset": 52,
+            "queryPlanning": 177,
+            "triggerExecution": 3747,
+            "walCommit": 47
+          },
+          "eventTime": {
+            "avg": "2026-11-19T22:48:04.779Z",
+            "max": "2026-11-19T22:48:04.779Z",
+            "min": "2026-11-19T22:48:04.779Z",
+            "watermark": "1970-01-01T00:00:00.000Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 3,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 74,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 540,
+              "memoryUsedBytes": 2520,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 0,
+                "loadedMapCacheMissCount": 0,
+                "numDroppedDuplicateRows": 3,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 1656
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/entrada]",
+              "startOffset": "null",
+              "endOffset": "{\"logOffset\": 0}",
+              "latestOffset": "null",
+              "numInputRows": 2,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.5,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 2,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.5,
+          "observedMetrics": {}
+        },
+        {
+          "id": "40bd98f9-55db-4b6a-b825-f962f3c001ae",
+          "runId": "3651a893-e736-49ae-b921-45b20f4b59ae",
+          "name": null,
+          "timestamp": "2026-11-19T23:43:30.001Z",
+          "batchId": 1,
+          "batchDuration": 3500,
+          "durationMs": {
+            "addBatch": 3305,
+            "commitOffsets": 41,
+            "getBatch": 10,
+            "latestOffset": 55,
+            "queryPlanning": 30,
+            "triggerExecution": 3499,
+            "walCommit": 52
+          },
+          "eventTime": {
+            "avg": "2026-11-19T23:00:46.002Z",
+            "max": "2026-11-19T23:00:46.002Z",
+            "min": "2026-11-19T23:00:46.002Z",
+            "watermark": "2026-11-19T22:38:04.779Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 6,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 77,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 319,
+              "memoryUsedBytes": 3600,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 10,
+                "loadedMapCacheMissCount": 2,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 2256
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/entrada]",
+              "startOffset": "{\"logOffset\": 0}",
+              "endOffset": "{\"logOffset\": 1}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.1,
+              "processedRowsPerSecond": 0.3,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.1,
+          "processedRowsPerSecond": 0.3,
+          "observedMetrics": {}
+        },
+        {
+          "id": "40bd98f9-55db-4b6a-b825-f962f3c001ae",
+          "runId": "3651a893-e736-49ae-b921-45b20f4b59ae",
+          "name": null,
+          "timestamp": "2026-11-19T23:44:00.000Z",
+          "batchId": 2,
+          "batchDuration": 3283,
+          "durationMs": {
+            "addBatch": 3074,
+            "commitOffsets": 64,
+            "getBatch": 13,
+            "latestOffset": 43,
+            "queryPlanning": 38,
+            "triggerExecution": 3282,
+            "walCommit": 43
+          },
+          "eventTime": {
+            "avg": "2026-11-19T23:12:47.517Z",
+            "max": "2026-11-19T23:12:47.517Z",
+            "min": "2026-11-19T23:12:47.517Z",
+            "watermark": "2026-11-19T22:50:46.002Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 9,
+              "numRowsUpdated": 3,
+              "numRowsRemoved": 0,
+              "allUpdatesTimeMs": 64,
+              "allRemovalsTimeMs": 0,
+              "commitTimeMs": 320,
+              "memoryUsedBytes": 4384,
+              "numRowsDroppedByWatermark": 0,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 6,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 22,
+                "loadedMapCacheMissCount": 8,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 2976
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/entrada]",
+              "startOffset": "{\"logOffset\": 1}",
+              "endOffset": "{\"logOffset\": 2}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 0.3,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 0.3,
+          "observedMetrics": {}
+        },
+        {
+          "id": "40bd98f9-55db-4b6a-b825-f962f3c001ae",
+          "runId": "3651a893-e736-49ae-b921-45b20f4b59ae",
+          "name": null,
+          "timestamp": "2026-11-19T23:44:30.000Z",
+          "batchId": 3,
+          "batchDuration": 646,
+          "durationMs": {
+            "addBatch": 440,
+            "commitOffsets": 56,
+            "getBatch": 12,
+            "latestOffset": 48,
+            "queryPlanning": 39,
+            "triggerExecution": 645,
+            "walCommit": 41
+          },
+          "eventTime": {
+            "avg": "2026-11-19T22:48:04.779Z",
+            "max": "2026-11-19T22:48:04.779Z",
+            "min": "2026-11-19T22:48:04.779Z",
+            "watermark": "2026-11-19T23:02:47.517Z"
+          },
+          "stateOperators": [
+            {
+              "operatorName": "dedupeWithinWatermark",
+              "numRowsTotal": 2,
+              "numRowsUpdated": 0,
+              "numRowsRemoved": 1,
+              "allUpdatesTimeMs": 0,
+              "allRemovalsTimeMs": 12,
+              "commitTimeMs": 133,
+              "memoryUsedBytes": 1784,
+              "numRowsDroppedByWatermark": 1,
+              "numShufflePartitions": 2,
+              "numStateStoreInstances": 2,
+              "customMetrics": {
+                "SnapshotLastUploaded.partition_0_default": -1,
+                "SnapshotLastUploaded.partition_1_default": -1,
+                "forceSnapshotCount": 0,
+                "loadedMapCacheHitCount": 10,
+                "loadedMapCacheMissCount": 4,
+                "numDroppedDuplicateRows": 0,
+                "numSnapshotsAutoRepaired": 0,
+                "stateOnCurrentVersionSizeBytes": 776
+              }
+            }
+          ],
+          "sources": [
+            {
+              "description": "FileStreamSource[file:/opt/UNIDAD2/Dim-Disponibilidad/data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/entrada]",
+              "startOffset": "{\"logOffset\": 2}",
+              "endOffset": "{\"logOffset\": 3}",
+              "latestOffset": "null",
+              "numInputRows": 1,
+              "inputRowsPerSecond": 0.0,
+              "processedRowsPerSecond": 1.5,
+              "metrics": {}
+            }
+          ],
+          "sink": {
+            "description": "ForeachBatchSink",
+            "numOutputRows": -1,
+            "metrics": {}
+          },
+          "numInputRows": 1,
+          "inputRowsPerSecond": 0.0,
+          "processedRowsPerSecond": 1.5,
+          "observedMetrics": {}
+        }
+      ],
+      "checkpoint": "data/verificacion/s8-30-c256bd13-71b6-43b3-8788-40e81be320e6/checkpoint",
+      "hashes_originales": [
+        "e8b5468c598950d81557de7e9d062b068ed60e971e06e8eef3c6043555c21f8f",
+        "a51bea9905f92b4b65a1273db6cf21672422346967c449ac195c9ce86e393cbd",
+        "eb3ea84595adb9efc9bfa88fe2d26e17d5e7aa06c0d1bda278d08580adefbea9"
+      ]
+    }
+  ],
+  "procedencia": "reports/correcciones/muestra_replay_real.json",
+  "alcance": "Eventos API reales preservados; transporte/llegadas controladas por archivos. No es una llegada tardía espontánea del broker ni una prueba de carga."
+}

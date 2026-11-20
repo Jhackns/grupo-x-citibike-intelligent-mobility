@@ -1,0 +1,23 @@
+{
+  "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+  "bootstrap_servers": "127.0.0.1:19092",
+  "topic": "citibike-disponibilidad-estaciones-v1",
+  "partitions": 3,
+  "replication_factor": 1,
+  "retention_ms": 86400000,
+  "retention_bytes": 1073741824,
+  "poll_seconds": 300,
+  "information_refresh_seconds": 3600,
+  "types_refresh_seconds": 21600,
+  "index_refresh_seconds": 21600,
+  "http_timeout_seconds": 15,
+  "http_attempts": 3,
+  "retry_backoff_seconds": 0.5,
+  "publish_attempts": 3,
+  "confirmation_timeout_seconds": 40,
+  "kafka_retries": 3,
+  "kafka_request_timeout_ms": 10000,
+  "kafka_delivery_timeout_ms": 30000,
+  "kafka_max_block_ms": 10000,
+  "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json"
+}

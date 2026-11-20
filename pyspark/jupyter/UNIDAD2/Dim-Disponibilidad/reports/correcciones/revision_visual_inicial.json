@@ -1,0 +1,44 @@
+{
+  "inicio_utc": "2026-11-20T00:20:03.794Z",
+  "metodo": "Firefox real headless, perfil aislado; imágenes técnicas, no capturas personales",
+  "muestras": [
+    {
+      "nombre": "01-errores-periodo",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T22:48:04.779Z&to=2026-11-19T22:48:04.780Z&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=5",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\n2026-11-19 22:48:04 to 2026-11-19 22:48:04\nUTC\nRefresh\n1h\nErrores del subconjunto evaluado — n y periodo real\nn\nmae\nrmse\nsesgo\nnumerador\ndenominador\ncobertura_pct\nevaluadas_origen_inicio_utc\nevaluadas_origen_fin_utc\nevaluadas_objetivo_inicio_utc\nevaluadas_objetivo_fin_utc\ntipo\nhorizonte_min\nalcance\nflujo\nmomento\ninstante_corte_utc\n2450\n0.222041\n0.556960\n-0.008980\n2450\n2451\n99.96%\n2026-11-19 22:48:04\n2026-11-19 22:48:04\n2026-11-19 22:53:04\n2026-11-19 22:53:04\nconvencionales\n5\nErrores únicamente del subconjunto evaluado; consultar n y cobertura\ndisponibilidad-correcciones-20261119-v1\nauditoria_actual\n2026-11-20 00:20:10",
+      "archivo": "01-errores-periodo.png",
+      "fecha_utc": "2026-11-20T00:20:25.822Z"
+    },
+    {
+      "nombre": "02-cohorte10-cobertura",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T22:48:04.779Z&to=2026-11-19T22:48:04.780Z&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=10&refresh=1h&viewPanel=6",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n10\n2026-11-19 22:48:04 to 2026-11-19 22:48:04\nUTC\nRefresh\n1h\nCobertura madura — fin de prueba y auditoría actual\nmomento\nnumerador\ndenominador\ncobertura_pct\npredicciones\nevaluadas\nvencidas\npendientes\npendientes_inmaduras\npendientes_flujo_finalizado\npendientes_sin_avance_no_atribuido\npendientes_cerrables\npendientes_sin_avance\nvencidas_sin_captura\nvencidas_objetivo_no_elegible\nvencidas_trayecto\nvencidas_ambiguas\nvencidas_otras\norigen_inicio_utc\norigen_fin_utc\nevaluadas_origen_inicio_utc\nevaluadas_origen_fin_utc\nevaluadas_objetivo_inicio_utc\nevaluadas_objetivo_fin_utc\ninstante_corte_utc\ntipo\nhorizonte_min\nflujo\nauditoria_actual\n0\n2451\n0.00%\n2451\n0\n2451\n0\n0\n0\n0\n0\n0\n2451\n0\n0\n0\n0\n2026-11-19 22:48:04\n2026-11-19 22:48:04\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\n2026-11-20 00:20:27\nconvencionales\n10\ndisponibilidad-correcciones-20261119-v1\nfin_prueba\n0\n2451\n0.00%\n2451\n0\n2451\n0\n0\n0\n0\n0\n0\n2451\n0\n0\n0\n0\n2026-11-19 22:48:04\n2026-11-19 22:48:04\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\nSin datos / sin muestras\n2026-11-19 23:17:26\nconvencionales\n10\ndisponibilidad-correcciones-20261119-v1",
+      "archivo": "02-cohorte10-cobertura.png",
+      "fecha_utc": "2026-11-20T00:20:43.154Z"
+    },
+    {
+      "nombre": "03-cola-fin-vs-ahora",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T23:16:04.412Z&to=2026-11-19T23:16:04.413Z&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=6",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\n2026-11-19 23:16:04 to 2026-11-19 23:16:04\nUTC\nCancel\n1h\nCobertura madura — fin de prueba y auditoría actual",
+      "archivo": "03-cola-fin-vs-ahora.png",
+      "fecha_utc": "2026-11-20T00:21:00.286Z"
+    },
+    {
+      "nombre": "04-batch-fecha",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T22:48:04.779Z&to=2026-11-19T22:48:04.780Z&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=17",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\n2026-11-19 22:48:04 to 2026-11-19 22:48:04\nUTC\nRefresh\n1h\nKPIs batch — snapshot con fecha y n explícitos\nSin snapshot batch",
+      "archivo": "04-batch-fecha.png",
+      "fecha_utc": "2026-11-20T00:21:17.325Z"
+    },
+    {
+      "nombre": "05-sitio-local",
+      "url": "file:///home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/publicacion/site/index.html",
+      "texto_visible": "Citi Bike — Disponibilidad U2\nInicio\nProducto U2\nOperación\nResultados\nObservabilidad\nCostos\nCumplimiento\nPropuesta de brief\nEvidencia personal\n Search\n Previous\nNext \nDisponibilidad reportada de Citi Bike\nDisponibilidad reportada de Citi Bike\n\nPronóstico por estación de conteos convencionales y eléctricos a 5, 10 y 15 min. La exactitud física no está confirmada: elegibilidad no es garantía de verdad. Persistencia ganó en U1; U2 la aplica y evalúa con observaciones futuras, sin reentrenar. Resultados · Operación · Cumplimiento · Costos.\n\nSitio construido localmente para revisión. No acredita publicación externa, autoría personal ni sustentación. Las evidencias técnicas originales permanecen en reports/correcciones del repositorio.\n\nDocumentation built with MkDocs.",
+      "archivo": "05-sitio-local.png",
+      "fecha_utc": "2026-11-20T00:21:34.274Z"
+    }
+  ],
+  "browser": "160.0",
+  "estado": "capturas_realizadas",
+  "fin_utc": "2026-11-20T00:21:34.275Z"
+}

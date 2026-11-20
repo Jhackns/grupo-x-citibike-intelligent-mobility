@@ -1,0 +1,18 @@
+{
+  "fecha_medicion_referencia": "2026-11-19T23:31:02.426Z",
+  "tablas_bytes": {
+    "rechazos": 1720320,
+    "evaluaciones": 664174592,
+    "predicciones": 2130403328,
+    "observaciones": 545193984
+  },
+  "almacenamiento": {
+    "baseline_fecha": "2026-11-19T15:55:33.6508+00:00",
+    "baseline_bytes": 1834237952,
+    "actual_bytes": 3341492224,
+    "incremento_bytes": 1507254272,
+    "incremento_mib_por_captura": 53.238136574074076,
+    "nota": "Diferencia f\u00edsica aproximada de cuatro tablas compartidas; incluye \u00edndices/bloat, influida por vacuum. No incluye WAL, ni es tama\u00f1o l\u00f3gico exclusivo por flow."
+  },
+  "nota": "Congelada antes del ensayo complementario PromQL; no atribuir su nuevo espacio a las 27 capturas originales."
+}

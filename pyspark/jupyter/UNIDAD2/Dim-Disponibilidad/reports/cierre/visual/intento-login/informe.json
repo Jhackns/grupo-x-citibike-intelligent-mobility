@@ -1,0 +1,48 @@
+{
+  "inicio_utc": "2026-11-19T16:11:06.912Z",
+  "metodo": "Firefox headless real + WebDriver BiDi; sesión de auditoría aislada",
+  "muestras": [
+    {
+      "nombre": "01-historico",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T03:40:00.000Z&to=2026-11-19T04:40:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa3-vivo-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=",
+      "texto_visible": "Welcome to Grafana\nEmail or username\nPassword\nLog in\nForgot your password?\n Documentation Support CommunityOpen SourceGrafana v11.6.11 (72c5569cab)",
+      "captura": "01-historico.png",
+      "fecha_utc": "2026-11-19T16:11:31.375Z"
+    },
+    {
+      "nombre": "02-evaluacion",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T03:40:00.000Z&to=2026-11-19T04:40:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa3-vivo-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=",
+      "texto_visible": "Welcome to Grafana\nEmail or username\nPassword\nLog in\nForgot your password?\n Documentation Support CommunityOpen SourceGrafana v11.6.11 (72c5569cab)",
+      "captura": "02-evaluacion.png",
+      "fecha_utc": "2026-11-19T16:11:53.894Z"
+    },
+    {
+      "nombre": "03-filtro-estacion",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T03:40:00.000Z&to=2026-11-19T04:40:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa3-vivo-20261119-v1&var-estacion=2098359443836787630&var-tipo=electricas&var-horizonte=15&refresh=",
+      "texto_visible": "Welcome to Grafana\nEmail or username\nPassword\nLog in\nForgot your password?\n Documentation Support CommunityOpen SourceGrafana v11.6.11 (72c5569cab)",
+      "captura": "03-filtro-estacion.png",
+      "fecha_utc": "2026-11-19T16:12:16.396Z"
+    },
+    {
+      "nombre": "04-sin-muestras",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T15:10:00.000Z&to=2026-11-19T15:40:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa4-vivo-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=",
+      "texto_visible": "Welcome to Grafana\nEmail or username\nPassword\nLog in\nForgot your password?\n Documentation Support CommunityOpen SourceGrafana v11.6.11 (72c5569cab)",
+      "captura": "04-sin-muestras.png",
+      "fecha_utc": "2026-11-19T16:12:38.907Z"
+    },
+    {
+      "nombre": "05-sin-datos",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T00:00:00.000Z&to=2026-11-19T01:00:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa3-vivo-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=",
+      "texto_visible": "Welcome to Grafana\nEmail or username\nPassword\nLog in\nForgot your password?\n Documentation Support CommunityOpen SourceGrafana v11.6.11 (72c5569cab)",
+      "captura": "05-sin-datos.png",
+      "fecha_utc": "2026-11-19T16:13:01.282Z"
+    }
+  ],
+  "navegador": {
+    "nombre": "firefox",
+    "version": "160.0"
+  },
+  "estado": "intento_autenticacion_no_completada",
+  "fin_utc": "2026-11-19T16:13:01.282Z",
+  "nota": "Las primeras imágenes muestran login, no el dashboard. No acreditan revisión visual de paneles."
+}

@@ -1,0 +1,19 @@
+{
+  "inicio_utc": "2026-11-19T16:51:28.081Z",
+  "metodo": "Firefox headless real + WebDriver BiDi; sesión de auditoría aislada",
+  "muestras": [
+    {
+      "nombre": "12-estado-detenido-verificado",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=2026-11-19T03:40:00.000Z&to=2026-11-19T04:40:00.000Z&timezone=utc&var-flujo=disponibilidad-etapa3-vivo-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=1",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-etapa3-vivo-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\n2026-11-19 03:40:00 to 2026-11-19 04:40:00\nUTC\nRefresh\n1h\nEstado actual del flujo y relojes UTC\nflujo\nultima_captura_utc\nultima_actualizacion_utc\nedad_ultima_captura_s\nedad_fuente_ahora_s\nestado_flujo\nejecucion_u1\ndisponibilidad-etapa3-vivo-20261119-v1\n2026-11-19 04:20:00\n2026-11-19 04:19:46\n45095\n45109\nDETENIDO\n20261117T171917344468Z",
+      "captura": "12-estado-detenido-verificado.png",
+      "fecha_utc": "2026-11-19T16:51:48.459Z"
+    }
+  ],
+  "navegador": {
+    "nombre": "firefox",
+    "version": "160.0"
+  },
+  "estado": "capturas_realizadas",
+  "fin_utc": "2026-11-19T16:51:48.460Z"
+}

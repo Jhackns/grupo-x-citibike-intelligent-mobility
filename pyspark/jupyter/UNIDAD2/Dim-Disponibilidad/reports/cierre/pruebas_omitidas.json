@@ -1,0 +1,220 @@
+{
+  "pruebas": [
+    {
+      "prueba": "StreamingTests.test_01_paridad_calidad_u1",
+      "archivo": "tests/test_streaming.py",
+      "linea": 67,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/streaming/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "9bc9032d8daef31aad371bec25d36b15fffeaccb6d2bb9ca0de3079cef3970f5",
+      "test_no_modificado_despues_informe": false,
+      "verificacion_cierre": "Reejecutada en Docker: 4 OK, 0 omisiones, 26.356 s; local[2]; sin API/Kafka ni entrenamiento"
+    },
+    {
+      "prueba": "StreamingTests.test_02_predicciones_paridad_persistencia_u1",
+      "archivo": "tests/test_streaming.py",
+      "linea": 87,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/streaming/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "9bc9032d8daef31aad371bec25d36b15fffeaccb6d2bb9ca0de3079cef3970f5",
+      "test_no_modificado_despues_informe": false,
+      "verificacion_cierre": "Reejecutada en Docker: 4 OK, 0 omisiones, 26.356 s; local[2]; sin API/Kafka ni entrenamiento"
+    },
+    {
+      "prueba": "StreamingTests.test_03_reintento_sink_no_duplica",
+      "archivo": "tests/test_streaming.py",
+      "linea": 106,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/streaming/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "9bc9032d8daef31aad371bec25d36b15fffeaccb6d2bb9ca0de3079cef3970f5",
+      "test_no_modificado_despues_informe": false,
+      "verificacion_cierre": "Reejecutada en Docker: 4 OK, 0 omisiones, 26.356 s; local[2]; sin API/Kafka ni entrenamiento"
+    },
+    {
+      "prueba": "StreamingTests.test_04_duplicados_retrasos_estado_ventanas_y_reinicio",
+      "archivo": "tests/test_streaming.py",
+      "linea": 117,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/streaming/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "9bc9032d8daef31aad371bec25d36b15fffeaccb6d2bb9ca0de3079cef3970f5",
+      "test_no_modificado_despues_informe": false,
+      "verificacion_cierre": "Reejecutada en Docker: 4 OK, 0 omisiones, 26.356 s; local[2]; sin API/Kafka ni entrenamiento"
+    },
+    {
+      "prueba": "SQLTests.test_01_limite_inclusivo_y_desempate_anterior",
+      "archivo": "tests/test_postgres.py",
+      "linea": 76,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_02_no_saltar_objetivo_invalido",
+      "archivo": "tests/test_postgres.py",
+      "linea": 88,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_03_sin_objetivo_y_sin_avance",
+      "archivo": "tests/test_postgres.py",
+      "linea": 94,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_04_tardio_antes_de_cerrar_y_cierre_inmutable",
+      "archivo": "tests/test_postgres.py",
+      "linea": 103,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_05_horizonte_15_y_huecos",
+      "archivo": "tests/test_postgres.py",
+      "linea": 112,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_06_identidad_y_rollback",
+      "archivo": "tests/test_postgres.py",
+      "linea": 117,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_07_sink_spark_reintento_mismo_batch",
+      "archivo": "tests/test_postgres.py",
+      "linea": 129,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_08_extremo_positivo_y_continuidad_a_15_minutos",
+      "archivo": "tests/test_postgres.py",
+      "linea": 149,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_09_inactividad_intermedia_rompe_trayecto",
+      "archivo": "tests/test_postgres.py",
+      "linea": 157,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_10_rechazo_reloj_invalido_se_preserva_sin_cero",
+      "archivo": "tests/test_postgres.py",
+      "linea": 163,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_11_fuera_de_tolerancia_no_es_objetivo",
+      "archivo": "tests/test_postgres.py",
+      "linea": 171,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_12_sobre_invalido_no_oculta_captura_mas_cercana",
+      "archivo": "tests/test_postgres.py",
+      "linea": 177,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    },
+    {
+      "prueba": "SQLTests.test_13_evaluador_aplaza_si_ingesta_ocupada",
+      "archivo": "tests/test_postgres.py",
+      "linea": 183,
+      "motivo_omision_host": "pyspark.sql no está instalado en .venv; la carpeta pyspark/ no es una instalación",
+      "evidencia_docker": "reports/postgres/pruebas_sinteticas.json",
+      "estado_evidencia_previa": "OK sin omisiones",
+      "test_sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+      "test_no_modificado_despues_informe": true,
+      "verificacion_cierre": "Reutilizada evidencia válida: fuentes SQL/test anteriores al informe, 13 OK sin omisiones"
+    }
+  ],
+  "total": 17,
+  "criterio_reutilizacion": "Se repitieron solo las 4 pruebas Spark porque test_streaming.py era posterior al informe previo. Las 13 SQL conservan evidencia posterior a sus fuentes; no se repiten.",
+  "vigencia_sql": {
+    "informe_mtime_utc": "2026-11-19T04:19:13.004029+00:00",
+    "archivos": {
+      "tests/test_postgres.py": {
+        "sha256": "1093e711b90df933947ae3d115295584442f4fe59ec46591695b1dfc8945981f",
+        "anterior_informe": true
+      },
+      "src/disponibilidad_u2/postgres.py": {
+        "sha256": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+        "anterior_informe": true
+      },
+      "sql/001_disponibilidad.sql": {
+        "sha256": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023",
+        "anterior_informe": true
+      }
+    }
+  },
+  "ejecucion_streaming_cierre": {
+    "comando": ".venv/bin/python pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/lanzar_streaming.py --pruebas --spark-master 'local[2]'",
+    "codigo_salida": 0,
+    "duracion_suite_s": 26.356,
+    "pruebas": 4,
+    "fallos": 0,
+    "errores": 0,
+    "omitidas": 0,
+    "dependencias_descargadas": 0
+  }
+}

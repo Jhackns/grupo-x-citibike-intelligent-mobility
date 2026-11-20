@@ -1,0 +1,37 @@
+{
+  "pruebas": 4,
+  "fallos": 0,
+  "errores": 0,
+  "omitidas": 0,
+  "evidencia": {
+    "paridad": {
+      "muestras": 9,
+      "columnas_comparadas": 24,
+      "exceptAll_ambos_sentidos": 0
+    },
+    "predicciones": {
+      "contratos_cargados": 6,
+      "predicciones_fixture": 18,
+      "persistencia_u1_diferencias": 0,
+      "ids_deterministas": true,
+      "horizontes_segundos": [
+        300,
+        600,
+        900
+      ]
+    },
+    "reintento_foreachBatch": {
+      "filas_antes": 2,
+      "filas_despues": 2,
+      "mismo_batch_id": 0
+    },
+    "estado_y_ventanas": {
+      "eventos_unicos": 6,
+      "reinicio_sin_entradas_nuevas": 6,
+      "tardios_descartados": 2,
+      "estado_eliminado": 4,
+      "ultima_medicion_filas_estado": 2,
+      "primera_ventana_observaciones": 3
+    }
+  }
+}

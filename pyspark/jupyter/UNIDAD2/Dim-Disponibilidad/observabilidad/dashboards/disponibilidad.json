@@ -1,0 +1,1426 @@
+{
+  "id": null,
+  "uid": "citibike-disponibilidad-u2",
+  "title": "Citi Bike — Disponibilidad reportada y observabilidad",
+  "schemaVersion": 40,
+  "version": 2,
+  "editable": false,
+  "timezone": "utc",
+  "refresh": "30s",
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "tags": [
+    "citibike",
+    "disponibilidad",
+    "U2"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "flujo",
+        "label": "Ejecución SQL",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "disponibilidad-pg"
+        },
+        "query": "SELECT flujo AS __text,flujo AS __value FROM grafana_disponibilidad.flujos ORDER BY flujo",
+        "refresh": 1,
+        "current": {
+          "text": "disponibilidad-correcciones-20261119-v1",
+          "value": "disponibilidad-correcciones-20261119-v1"
+        }
+      },
+      {
+        "name": "estacion",
+        "label": "Estación",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "disponibilidad-pg"
+        },
+        "query": "SELECT 'Todas las estaciones' AS __text,'__all' AS __value UNION ALL SELECT station_id AS __text,station_id AS __value FROM grafana_disponibilidad.estaciones WHERE flujo IN (${flujo:sqlstring}) ORDER BY __text",
+        "refresh": 1,
+        "includeAll": false,
+        "current": {
+          "text": "Todas las estaciones",
+          "value": "__all"
+        }
+      },
+      {
+        "name": "tipo",
+        "label": "Tipo reportado",
+        "type": "custom",
+        "query": "convencionales,electricas",
+        "current": {
+          "text": "convencionales",
+          "value": "convencionales"
+        },
+        "options": [
+          {
+            "text": "convencionales",
+            "value": "convencionales",
+            "selected": true
+          },
+          {
+            "text": "electricas",
+            "value": "electricas",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "name": "horizonte",
+        "label": "Horizonte (min)",
+        "type": "custom",
+        "query": "5,10,15",
+        "current": {
+          "text": "5",
+          "value": "5"
+        },
+        "options": [
+          {
+            "text": "5",
+            "value": "5",
+            "selected": true
+          },
+          {
+            "text": "10",
+            "value": "10",
+            "selected": false
+          },
+          {
+            "text": "15",
+            "value": "15",
+            "selected": false
+          }
+        ]
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Estado actual del flujo y relojes UTC",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 5
+      },
+      "description": "Estado operativo actual, independiente del periodo histórico. DETENIDO no significa conteo cero. Antigüedad usa reloj actual.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "WITH f AS MATERIALIZED(SELECT * FROM grafana_disponibilidad.flujos WHERE flujo IN (${flujo:sqlstring})),\n s AS(SELECT flujo,count(*) n,count(activo) conocidos,bool_and(activo) activos,max(telemetria_antigua::int) antigua\n FROM grafana_disponibilidad.componentes WHERE componente IN ('productor','spark','sql') GROUP BY flujo)\n SELECT f.flujo,f.ultima_captura_utc,f.ultima_actualizacion_utc,\n extract(epoch FROM clock_timestamp()-f.ultima_captura_utc)::double precision edad_ultima_captura_s,\n extract(epoch FROM clock_timestamp()-f.ultima_actualizacion_utc)::double precision edad_fuente_ahora_s,\n CASE WHEN f.ultima_captura_utc IS NULL THEN 'SIN CAPTURAS'\n WHEN s.n IS NULL OR s.conocidos<3 THEN 'SIN TELEMETRIA'\n WHEN s.antigua=1 THEN 'TELEMETRIA ANTIGUA'\n WHEN NOT s.activos THEN 'DETENIDO'\n WHEN clock_timestamp()-f.ultima_captura_utc>make_interval(secs=>f.umbral_datos_s) THEN 'SIN CAPTURAS RECIENTES'\n ELSE 'ACTIVO' END estado_flujo,f.ejecucion_u1 FROM f LEFT JOIN s USING(flujo)",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 2,
+      "title": "Última disponibilidad reportada — hasta 100 estaciones",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 5,
+        "w": 12,
+        "h": 7
+      },
+      "description": "Último dato dentro del periodo seleccionado. ANTIGUA conserva el valor y su fecha; no representa disponibilidad física actual confirmada. Horizonte no aplica.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT DISTINCT ON(station_id) station_id,captura_utc,last_updated_utc,last_reported_utc,\n CASE WHEN ${tipo:sqlstring}='convencionales' THEN convencionales ELSE electricas END conteo_reportado,\n CASE WHEN ${tipo:sqlstring}='convencionales' THEN elegible_convencionales ELSE elegible_electricas END elegible,\n discrepancia,CASE WHEN clock_timestamp()-captura_utc>make_interval(secs=>f.umbral_datos_s) THEN 'ANTIGUA' ELSE 'RECIENTE' END vigencia\n FROM grafana_disponibilidad.observaciones JOIN grafana_disponibilidad.flujos f USING(flujo) WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND $__timeFilter(captura_utc)\n ORDER BY station_id,captura_utc DESC LIMIT 100",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 3,
+      "title": "Últimas predicciones — vigencia explícita",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 5,
+        "w": 12,
+        "h": 7
+      },
+      "description": "Fecha objetivo = captura + horizonte. CADUCADA no es un pronóstico actual. Hasta 100 estaciones.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT station_id,tipo,horizonte_min,origen_utc,objetivo_utc,valor_predicho,disponible_sql_utc,\n CASE WHEN objetivo_utc<clock_timestamp() THEN 'CADUCADA' ELSE 'VIGENTE' END vigencia,version_predictor\n FROM(SELECT DISTINCT ON(station_id,tipo,horizonte_min) * FROM grafana_disponibilidad.predicciones\n WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) ORDER BY station_id,tipo,horizonte_min,origen_utc DESC) p LIMIT 100",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 4,
+      "title": "Observado frente a predicho — fecha objetivo ideal",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 24,
+        "h": 8
+      },
+      "description": "Ambas series se alinean por fecha objetivo; no por last_reported. Observado ausente permanece NULL. Si selecciona todas las estaciones se muestran medias, no sumas.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras",
+          "custom": {
+            "drawStyle": "line",
+            "spanNulls": false,
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "showPoints": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT objetivo_utc AS time,avg(CASE WHEN estado='evaluada' THEN valor_predicho END) AS \"Predicho emparejado (media estaciones)\",\n avg(CASE WHEN estado='evaluada' THEN valor_observado END) AS \"Observado elegible (media estaciones)\"\n FROM grafana_disponibilidad.predicciones WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(objetivo_utc) GROUP BY objetivo_utc ORDER BY objetivo_utc",
+          "format": "time_series",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Errores del subconjunto evaluado — n y periodo real",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "w": 24,
+        "h": 7
+      },
+      "description": "MAE/RMSE/sesgo describen exclusivamente los n pares evaluados; el resto no tiene error conocido. Se muestran intervalos efectivos de origen/objetivo UTC y cobertura madura.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "n"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 60
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "mae"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "rmse"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sesgo"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "numerador"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "denominador"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^evaluadas_.*_utc$"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "WITH resumen AS (WITH cortes AS (\n      SELECT f.flujo,'auditoria_actual'::text momento,statement_timestamp() instante_corte_utc,\n       r.fin_utc,r.estado estado_ejecucion FROM grafana_disponibilidad.flujos f\n       LEFT JOIN grafana_disponibilidad.ejecuciones r USING(flujo) WHERE flujo IN (${flujo:sqlstring})\n      \n    ), frontera AS MATERIALIZED (\n      SELECT c.*,max(o.captura_utc) FILTER(WHERE o.contrato_valido) frontera_utc\n      FROM cortes c LEFT JOIN grafana_disponibilidad.instantes_observaciones o\n       ON o.flujo=c.flujo AND o.captura_utc<=c.instante_corte_utc AND o.confirmado_sql_utc<=c.instante_corte_utc\n      GROUP BY c.flujo,c.momento,c.instante_corte_utc,c.fin_utc,c.estado_ejecucion\n    ), datos AS MATERIALIZED (\n      SELECT p.*,f.momento,f.instante_corte_utc,f.fin_utc,f.estado_ejecucion,f.frontera_utc,\n       g.tardios_s,g.tolerancia_s,\n       CASE WHEN p.evaluacion_confirmada_utc<=f.instante_corte_utc THEN p.estado ELSE 'pendiente' END estado_corte\n      FROM frontera f JOIN grafana_disponibilidad.predicciones p USING(flujo)\n      JOIN grafana_disponibilidad.flujos g USING(flujo)\n      WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) AND p.disponible_sql_utc<=f.instante_corte_utc AND p.origen_utc<=f.instante_corte_utc\n    ), clasificada AS (\n      SELECT *,CASE WHEN estado_corte<>'pendiente' THEN estado_corte\n       WHEN cierre_no_antes_utc>instante_corte_utc THEN 'inmadura'\n       WHEN frontera_utc IS NULL OR objetivo_utc+make_interval(secs=>tolerancia_s)>frontera_utc-make_interval(secs=>tardios_s)\n        THEN CASE WHEN fin_utc<=instante_corte_utc THEN 'flujo_finalizado_sin_avance' ELSE 'sin_avance_no_atribuido' END\n       ELSE 'cerrable' END causa FROM datos\n    ) SELECT flujo,tipo,horizonte_min,momento,instante_corte_utc,\n      min(origen_utc) origen_inicio_utc,max(origen_utc) origen_fin_utc,\n      min(origen_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_origen_inicio_utc,\n      max(origen_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_origen_fin_utc,\n      min(objetivo_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_objetivo_inicio_utc,\n      max(objetivo_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_objetivo_fin_utc,\n      min(captura_objetivo_utc) FILTER(WHERE estado_corte='evaluada') observadas_inicio_utc,\n      max(captura_objetivo_utc) FILTER(WHERE estado_corte='evaluada') observadas_fin_utc,\n      count(*) predicciones,count(*) FILTER(WHERE estado_corte='evaluada') n,\n      count(*) FILTER(WHERE estado_corte='evaluada') evaluadas,\n      count(*) FILTER(WHERE estado_corte='vencida') vencidas,\n      count(*) FILTER(WHERE estado_corte='pendiente') pendientes,\n      count(*) FILTER(WHERE causa='inmadura') pendientes_inmaduras,\n      count(*) FILTER(WHERE causa IN ('flujo_finalizado_sin_avance','sin_avance_no_atribuido')) pendientes_sin_avance,\n      count(*) FILTER(WHERE causa='flujo_finalizado_sin_avance') pendientes_flujo_finalizado,\n      count(*) FILTER(WHERE causa='sin_avance_no_atribuido') pendientes_sin_avance_no_atribuido,\n      count(*) FILTER(WHERE causa='cerrable') pendientes_cerrables,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='sin_captura_objetivo_en_tolerancia') vencidas_sin_captura,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='objetivo_no_elegible') vencidas_objetivo_no_elegible,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='hueco_o_inactividad_en_trayecto') vencidas_trayecto,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='captura_objetivo_ambigua') vencidas_ambiguas,\n      count(*) FILTER(WHERE estado_corte='vencida' AND coalesce(motivo,'') NOT IN\n       ('sin_captura_objetivo_en_tolerancia','objetivo_no_elegible','hueco_o_inactividad_en_trayecto','captura_objetivo_ambigua')) vencidas_otras,\n      count(*) FILTER(WHERE estado_corte='evaluada' AND cierre_no_antes_utc<=instante_corte_utc) numerador,\n      count(*) FILTER(WHERE cierre_no_antes_utc<=instante_corte_utc) denominador,\n      100.0*count(*) FILTER(WHERE estado_corte='evaluada' AND cierre_no_antes_utc<=instante_corte_utc)\n       /nullif(count(*) FILTER(WHERE cierre_no_antes_utc<=instante_corte_utc),0) cobertura_pct,\n      avg(abs(error)) FILTER(WHERE estado_corte='evaluada') mae,\n      sqrt(avg(error*error) FILTER(WHERE estado_corte='evaluada')) rmse,\n      avg(error) FILTER(WHERE estado_corte='evaluada') sesgo,\n      'Errores únicamente del subconjunto evaluado; consultar n y cobertura'::text alcance\n     FROM clasificada GROUP BY flujo,tipo,horizonte_min,momento,instante_corte_utc\n     ORDER BY flujo,tipo,horizonte_min,momento) SELECT n,mae,rmse,sesgo,numerador,denominador,cobertura_pct,\n evaluadas_origen_inicio_utc,evaluadas_origen_fin_utc,evaluadas_objetivo_inicio_utc,evaluadas_objetivo_fin_utc,\n tipo,horizonte_min,alcance,flujo,momento,instante_corte_utc FROM resumen",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 6,
+      "title": "Cobertura madura — fin de prueba y auditoría actual",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 16,
+        "h": 6
+      },
+      "description": "Numerador: evaluadas maduras; denominador: predicciones maduras; sin maduras = NULL. Desglose de finalización del flujo, falta de captura, calidad futura y otras causas. No son errores globales.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "WITH resumen AS (WITH cortes AS (\n      SELECT f.flujo,'auditoria_actual'::text momento,statement_timestamp() instante_corte_utc,\n       r.fin_utc,r.estado estado_ejecucion FROM grafana_disponibilidad.flujos f\n       LEFT JOIN grafana_disponibilidad.ejecuciones r USING(flujo) WHERE flujo IN (${flujo:sqlstring})\n      UNION ALL SELECT flujo,'fin_prueba',fin_utc,fin_utc,estado FROM grafana_disponibilidad.ejecuciones WHERE fin_utc IS NOT NULL AND flujo IN (${flujo:sqlstring})\n    ), frontera AS MATERIALIZED (\n      SELECT c.*,max(o.captura_utc) FILTER(WHERE o.contrato_valido) frontera_utc\n      FROM cortes c LEFT JOIN grafana_disponibilidad.instantes_observaciones o\n       ON o.flujo=c.flujo AND o.captura_utc<=c.instante_corte_utc AND o.confirmado_sql_utc<=c.instante_corte_utc\n      GROUP BY c.flujo,c.momento,c.instante_corte_utc,c.fin_utc,c.estado_ejecucion\n    ), datos AS MATERIALIZED (\n      SELECT p.*,f.momento,f.instante_corte_utc,f.fin_utc,f.estado_ejecucion,f.frontera_utc,\n       g.tardios_s,g.tolerancia_s,\n       CASE WHEN p.evaluacion_confirmada_utc<=f.instante_corte_utc THEN p.estado ELSE 'pendiente' END estado_corte\n      FROM frontera f JOIN grafana_disponibilidad.predicciones p USING(flujo)\n      JOIN grafana_disponibilidad.flujos g USING(flujo)\n      WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) AND p.disponible_sql_utc<=f.instante_corte_utc AND p.origen_utc<=f.instante_corte_utc\n    ), clasificada AS (\n      SELECT *,CASE WHEN estado_corte<>'pendiente' THEN estado_corte\n       WHEN cierre_no_antes_utc>instante_corte_utc THEN 'inmadura'\n       WHEN frontera_utc IS NULL OR objetivo_utc+make_interval(secs=>tolerancia_s)>frontera_utc-make_interval(secs=>tardios_s)\n        THEN CASE WHEN fin_utc<=instante_corte_utc THEN 'flujo_finalizado_sin_avance' ELSE 'sin_avance_no_atribuido' END\n       ELSE 'cerrable' END causa FROM datos\n    ) SELECT flujo,tipo,horizonte_min,momento,instante_corte_utc,\n      min(origen_utc) origen_inicio_utc,max(origen_utc) origen_fin_utc,\n      min(origen_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_origen_inicio_utc,\n      max(origen_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_origen_fin_utc,\n      min(objetivo_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_objetivo_inicio_utc,\n      max(objetivo_utc) FILTER(WHERE estado_corte='evaluada') evaluadas_objetivo_fin_utc,\n      min(captura_objetivo_utc) FILTER(WHERE estado_corte='evaluada') observadas_inicio_utc,\n      max(captura_objetivo_utc) FILTER(WHERE estado_corte='evaluada') observadas_fin_utc,\n      count(*) predicciones,count(*) FILTER(WHERE estado_corte='evaluada') n,\n      count(*) FILTER(WHERE estado_corte='evaluada') evaluadas,\n      count(*) FILTER(WHERE estado_corte='vencida') vencidas,\n      count(*) FILTER(WHERE estado_corte='pendiente') pendientes,\n      count(*) FILTER(WHERE causa='inmadura') pendientes_inmaduras,\n      count(*) FILTER(WHERE causa IN ('flujo_finalizado_sin_avance','sin_avance_no_atribuido')) pendientes_sin_avance,\n      count(*) FILTER(WHERE causa='flujo_finalizado_sin_avance') pendientes_flujo_finalizado,\n      count(*) FILTER(WHERE causa='sin_avance_no_atribuido') pendientes_sin_avance_no_atribuido,\n      count(*) FILTER(WHERE causa='cerrable') pendientes_cerrables,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='sin_captura_objetivo_en_tolerancia') vencidas_sin_captura,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='objetivo_no_elegible') vencidas_objetivo_no_elegible,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='hueco_o_inactividad_en_trayecto') vencidas_trayecto,\n      count(*) FILTER(WHERE estado_corte='vencida' AND motivo='captura_objetivo_ambigua') vencidas_ambiguas,\n      count(*) FILTER(WHERE estado_corte='vencida' AND coalesce(motivo,'') NOT IN\n       ('sin_captura_objetivo_en_tolerancia','objetivo_no_elegible','hueco_o_inactividad_en_trayecto','captura_objetivo_ambigua')) vencidas_otras,\n      count(*) FILTER(WHERE estado_corte='evaluada' AND cierre_no_antes_utc<=instante_corte_utc) numerador,\n      count(*) FILTER(WHERE cierre_no_antes_utc<=instante_corte_utc) denominador,\n      100.0*count(*) FILTER(WHERE estado_corte='evaluada' AND cierre_no_antes_utc<=instante_corte_utc)\n       /nullif(count(*) FILTER(WHERE cierre_no_antes_utc<=instante_corte_utc),0) cobertura_pct,\n      avg(abs(error)) FILTER(WHERE estado_corte='evaluada') mae,\n      sqrt(avg(error*error) FILTER(WHERE estado_corte='evaluada')) rmse,\n      avg(error) FILTER(WHERE estado_corte='evaluada') sesgo,\n      'Errores únicamente del subconjunto evaluado; consultar n y cobertura'::text alcance\n     FROM clasificada GROUP BY flujo,tipo,horizonte_min,momento,instante_corte_utc\n     ORDER BY flujo,tipo,horizonte_min,momento) SELECT momento,numerador,denominador,cobertura_pct,\n predicciones,evaluadas,vencidas,pendientes,pendientes_inmaduras,pendientes_flujo_finalizado,\n pendientes_sin_avance_no_atribuido,pendientes_cerrables,pendientes_sin_avance,\n vencidas_sin_captura,vencidas_objetivo_no_elegible,vencidas_trayecto,vencidas_ambiguas,vencidas_otras,\n origen_inicio_utc,origen_fin_utc,evaluadas_origen_inicio_utc,evaluadas_origen_fin_utc,\n evaluadas_objetivo_inicio_utc,evaluadas_objetivo_fin_utc,instante_corte_utc,tipo,horizonte_min,flujo FROM resumen",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 7,
+      "title": "Vencidas — motivos conservados",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 16,
+        "y": 27,
+        "w": 8,
+        "h": 6
+      },
+      "description": "No se modificó ±30 s. El informe auditó las 19.572 vencidas de etapa 3 sin encontrar falsos faltantes.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT motivo,count(*) n FROM grafana_disponibilidad.predicciones\n WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) AND estado='vencida' GROUP BY motivo ORDER BY n DESC",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 8,
+      "title": "Calidad: observaciones, rechazos y discrepancias",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 33,
+        "w": 12,
+        "h": 6
+      },
+      "description": "Rechazos están incluidos en observaciones. Discrepancias no invalidan automáticamente. Nulos se cuentan como calidad desconocida; horizonte no aplica.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT count(*) observaciones,count(*) FILTER(WHERE rechazado_total_o_parcial) rechazos_totales_o_parciales,\n count(*) FILTER(WHERE NOT CASE WHEN ${tipo:sqlstring}='convencionales' THEN elegible_convencionales ELSE elegible_electricas END) no_elegibles_tipo,\n count(*) FILTER(WHERE discrepancia) discrepantes,count(*) FILTER(WHERE discrepancia=false) sin_discrepancias,\n count(*) FILTER(WHERE discrepancia IS NULL) calidad_desconocida\n FROM grafana_disponibilidad.observaciones WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND $__timeFilter(captura_utc) HAVING count(*)>0",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 9,
+      "title": "Captura → predicción confirmada en PostgreSQL",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 33,
+        "w": 12,
+        "h": 6
+      },
+      "description": "Confirmación post-commit es una cota superior de visibilidad. Incluye espera/backlog; no incluye el margen deliberado de evaluación ni la duración total de prueba.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras",
+          "custom": {
+            "drawStyle": "line",
+            "spanNulls": false,
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "showPoints": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT to_timestamp(floor(extract(epoch FROM origen_utc)/300)*300) AS time,\n avg(latencia_sql_s) AS \"Media captura a SQL (s)\",\n percentile_cont(0.95) WITHIN GROUP(ORDER BY latencia_sql_s) AS \"P95 captura a SQL (s)\"\n FROM grafana_disponibilidad.predicciones WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) GROUP BY time ORDER BY time",
+          "format": "time_series",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "Errores por cambios y discrepancias",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 39,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Estratos de origen/objetivo disponibles solo después de evaluar. No se usan como predictores ni se presentan como exactitud física.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT CASE WHEN cambio THEN 'con_cambios' ELSE 'sin_cambios' END periodo,\n estrato_discrepancia,count(*) AS n,avg(abs(error)) mae,sqrt(avg(error*error)) rmse,avg(error) sesgo\n FROM grafana_disponibilidad.predicciones WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) AND estado='evaluada'\n GROUP BY cambio,estrato_discrepancia ORDER BY periodo,estrato_discrepancia",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 11,
+      "title": "Trazabilidad del emparejamiento — 100 resueltos",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "disponibilidad-pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 39,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Muestra la captura realmente observada y el horizonte efectivo. Vencidas sin resultado conservan NULL.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin datos / sin muestras"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_utc$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cobertura_pct"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^(mae|rmse|sesgo)$"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "disponibilidad-pg"
+          },
+          "rawSql": "SELECT station_id,tipo,horizonte_min,origen_utc,objetivo_utc,captura_objetivo_utc,\n horizonte_efectivo_s,error_emparejamiento_s,valor_predicho,valor_observado,estado,motivo\n FROM grafana_disponibilidad.predicciones WHERE flujo IN (${flujo:sqlstring}) AND ('__all' IN (${estacion:sqlstring}) OR station_id IN (${estacion:sqlstring})) AND tipo IN (${tipo:sqlstring}) AND horizonte_min::text IN (${horizonte:sqlstring}) AND $__timeFilter(origen_utc) AND estado<>'pendiente' ORDER BY objetivo_utc DESC LIMIT 100",
+          "format": "table",
+          "editorMode": "code",
+          "rawQuery": true
+        }
+      ],
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "Técnica: componentes de la ejecución observada",
+      "gridPos": {
+        "x": 0,
+        "y": 47,
+        "w": 12,
+        "h": 7
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "disponibilidad-prom"
+      },
+      "description": "Telemetría de la ejecución registrada, no del modelo histórico seleccionado. 0 = proceso/servicio detenido; serie ausente = sin telemetría.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin telemetría",
+          "custom": {
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "disponibilidad_componente_up",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "{{componente}}"
+        },
+        {
+          "refId": "B",
+          "expr": "up{job=\"disponibilidad-aplicaciones\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "scrape colector"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "Productor: confirmaciones, consultas y fallos",
+      "gridPos": {
+        "x": 12,
+        "y": 47,
+        "w": 12,
+        "h": 7
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "disponibilidad-prom"
+      },
+      "description": "Counters del productor observado. ACK confirmado, no mero envío. Sin etiquetas de estación, evento o ejecución.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin telemetría",
+          "custom": {
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "rate((disponibilidad_productor_eventos_confirmados_total == disponibilidad_productor_eventos_confirmados_total)[2m:5s])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "ACK/s"
+        },
+        {
+          "refId": "B",
+          "expr": "rate((disponibilidad_productor_consultas_total == disponibilidad_productor_consultas_total)[2m:5s])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "consultas/s"
+        },
+        {
+          "refId": "C",
+          "expr": "disponibilidad_productor_fallos_publicacion_total",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "fallos publicación"
+        },
+        {
+          "refId": "D",
+          "expr": "disponibilidad_productor_reintentos_http_total",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "reintentos HTTP"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "Kafka: offsets y backlog estimado por partición",
+      "gridPos": {
+        "x": 0,
+        "y": 54,
+        "w": 12,
+        "h": 7
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "disponibilidad-prom"
+      },
+      "description": "Backlog estimado con offsets de Spark y última muestra Kafka; no es consumer-group lag ni exactly-once. Si faltan datos o no se alinean temporalmente, NaN.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin telemetría",
+          "custom": {
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "kafka_topic_partition_current_offset{topic=\"citibike-disponibilidad-estaciones-v1\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "offset {{partition}}"
+        },
+        {
+          "refId": "B",
+          "expr": "disponibilidad_kafka_backlog_estimado_eventos",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "backlog estimado {{partition}}"
+        },
+        {
+          "refId": "C",
+          "expr": "kafka_brokers",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "brokers"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "Spark: microbatches y estado",
+      "gridPos": {
+        "x": 12,
+        "y": 54,
+        "w": 12,
+        "h": 7
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "disponibilidad-prom"
+      },
+      "description": "Progreso Structured Streaming. Métricas de ejecución no son conteos de eventos de negocio únicos. Son gauges de último lote, no counters acumulados.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin telemetría",
+          "custom": {
+            "spanNulls": false
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "disponibilidad_spark_duracion_lote_seconds",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "lote s {{consulta}}"
+        },
+        {
+          "refId": "B",
+          "expr": "disponibilidad_spark_filas_estado",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "estado filas {{consulta}}"
+        },
+        {
+          "refId": "C",
+          "expr": "disponibilidad_spark_descartes_watermark_ultimo_lote",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "legendFormat": "tardíos último lote {{consulta}}"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "text",
+      "title": "Contrato y alcance",
+      "gridPos": {
+        "x": 0,
+        "y": 61,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "Conteos **reportados** por tipo: 1 bicycle/human, 2 bicycle/electric_assist. Persistencia seleccionada U1 **20261117T171917344468Z**; no necesita entrenamiento. Exactitud física no confirmada. Filtros estación/tipo/horizonte/periodo aplican a negocio; técnica muestra la ejecución observada; el snapshot batch solo responde a tipo y declara su fecha fija. UTC; datos antiguos y nulos se indican explícitamente. Paneles no acreditan generalización semanal o estacional."
+      }
+    },
+    {
+      "id": 17,
+      "type": "stat",
+      "title": "KPIs batch — snapshot con fecha y n explícitos",
+      "gridPos": {
+        "x": 0,
+        "y": 72,
+        "w": 24,
+        "h": 6
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "disponibilidad-prom"
+      },
+      "description": "Dos KPIs batch de la captura 8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a del 19/11/2026. Fuente exacta: reports/correcciones/kpis_batch.json. Solo el filtro tipo aplica; estación, flujo y horizonte no cambian este snapshot. La edad indica que no es inventario actual.",
+      "fieldConfig": {
+        "defaults": {
+          "noValue": "Sin snapshot batch"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value_and_name",
+        "colorMode": "none",
+        "graphMode": "none"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "expr": "disponibilidad_batch_bicicletas_media{job=\"disponibilidad_batch\",tipo=~\"${tipo:regex}\"}",
+          "instant": true,
+          "legendFormat": "Media en estaciones elegibles — batch"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "expr": "disponibilidad_batch_fraccion_sin_bicicletas{job=\"disponibilidad_batch\",tipo=~\"${tipo:regex}\"}",
+          "instant": true,
+          "legendFormat": "Fracción elegibles sin bicicletas (0–1) — batch"
+        },
+        {
+          "refId": "C",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "expr": "time()-disponibilidad_batch_datos_timestamp_seconds{job=\"disponibilidad_batch\",tipo=~\"${tipo:regex}\"}",
+          "instant": true,
+          "legendFormat": "Edad snapshot batch (s)"
+        },
+        {
+          "refId": "D",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "expr": "disponibilidad_batch_estaciones_elegibles{job=\"disponibilidad_batch\",tipo=~\"${tipo:regex}\"}",
+          "instant": true,
+          "legendFormat": "n estaciones elegibles — batch"
+        },
+        {
+          "refId": "E",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "disponibilidad-prom"
+          },
+          "expr": "disponibilidad_batch_datos_timestamp_seconds{job=\"disponibilidad_batch\",tipo=~\"${tipo:regex}\"}*1000",
+          "instant": true,
+          "legendFormat": "Fecha snapshot UTC"
+        }
+      ]
+    }
+  ]
+}

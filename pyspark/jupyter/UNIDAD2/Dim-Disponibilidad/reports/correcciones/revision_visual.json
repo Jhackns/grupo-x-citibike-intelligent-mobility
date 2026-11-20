@@ -1,0 +1,30 @@
+{
+  "antecedentes": [
+    "revision_visual_inicial.json",
+    "revision_visual_intermedia.json",
+    "revision_visual_cola_corregida.json"
+  ],
+  "inicio_utc": "2026-11-20T00:34:23.052Z",
+  "metodo": "Firefox real headless, perfil aislado; imágenes técnicas, no capturas personales",
+  "muestras": [
+    {
+      "nombre": "06-flujo-detenido",
+      "url": "http://127.0.0.1:13000/d/citibike-disponibilidad-u2?orgId=1&from=now-2d&to=now&timezone=utc&var-flujo=disponibilidad-correcciones-20261119-v1&var-estacion=__all&var-tipo=convencionales&var-horizonte=5&refresh=1h&viewPanel=1",
+      "texto_visible": "Skip to main content\nGrafana\nHome\nBookmarks\nStarred\nDashboards\nExplore\nDrilldown\nNew!\nAlerting\nConnections\nAdministration\nHome\nDashboards\nCiti Bike Disponibilidad\nCiti Bike — Disponibilidad reportada y observabilidad\nView panel\nSearch or jump to...\nctrl+k\nBack to dashboard\nExport \nShare\nEjecución SQL\ndisponibilidad-correcciones-20261119-v1\nEstación\nTodas las estaciones\nTipo reportado\nconvencionales\nHorizonte (min)\n5\nLast 2 days\nUTC\nRefresh\n1h\nEstado actual del flujo y relojes UTC\nflujo\nultima_captura_utc\nultima_actualizacion_utc\nedad_ultima_captura_s\nedad_fuente_ahora_s\nestado_flujo\nejecucion_u1\ndisponibilidad-correcciones-20261119-v1\n2026-11-19 23:16:04\n2026-11-19 23:15:06\n4705\n4763\nDETENIDO\n20261117T171917344468Z",
+      "archivo": "06-flujo-detenido.png",
+      "fecha_utc": "2026-11-20T00:34:44.251Z"
+    }
+  ],
+  "browser": "160.0",
+  "estado": "revisada_visualmente",
+  "fin_utc": "2026-11-20T00:34:44.252Z",
+  "revision_humana_asistida": "Imágenes inspeccionadas por el agente con view_image; no sustituye capturas personales del estudiante.",
+  "hallazgos": {
+    "panel5": "n2450, MAE/RMSE/sesgo, numerador2450/denominador2451, intervalos UTC visibles; tabla ancha requiere scroll horizontal para últimas columnas.",
+    "panel6_10min": "0/2451, errores ausentes y fechas evaluadas Sin datos, dos cortes.",
+    "panel6_ultima_captura": "Corregido timeout demostrado. Auditoría0/2451 pendientes por apagado; fin prueba0/0 cobertura NULL y2451 inmaduras.",
+    "panel17": "snapshot convencionales media7.47, fracción0.184, n2451 y fecha2026-11-19 22:48:04 UTC, edad explícita. Periodo anterior a publicación indica Sin snapshot; no es cero.",
+    "panel1": "DETENIDO con telemetría reciente; al expirar colector, TELEMETRIA ANTIGUA. Captura/fuente conservan fechas antiguas.",
+    "sitio": "Índice MkDocs local renderizado; no publicación externa."
+  }
+}

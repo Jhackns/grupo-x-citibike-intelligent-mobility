@@ -1,0 +1,30 @@
+{
+  "fecha_utc": "2026-11-19T04:26:55.486Z",
+  "flujo": "disponibilidad-etapa3-vivo-20261119-v1",
+  "tablas": {
+    "lotes": {
+      "n": 27,
+      "hash": "53217bbfe5c62c7f32ea07dd23d30d96"
+    },
+    "rechazos": {
+      "n": 2113,
+      "hash": "4b7fcb753fb007ee0958b49327eadfd7"
+    },
+    "evaluaciones": {
+      "n": 410514,
+      "hash": "37693c486c97d3ae8358c1cfb8dd54fd"
+    },
+    "predicciones": {
+      "n": 410514,
+      "hash": "c7a5f3eb6850248bd41e6804bc829a27"
+    },
+    "observaciones": {
+      "n": 70532,
+      "hash": "094863b9ad7b2ecc6a93b8552cdd89c9"
+    },
+    "rondas_evaluacion": {
+      "n": 28,
+      "hash": "1176e7afbc42b1ba31fe61eab4ebdf36"
+    }
+  }
+}

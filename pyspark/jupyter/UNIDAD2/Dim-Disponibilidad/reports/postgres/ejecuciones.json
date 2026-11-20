@@ -1,0 +1,1114 @@
+[
+  {
+    "inicio_utc": "2026-11-19T03:45:41.434Z",
+    "fin_utc": "2026-11-19T03:45:46.910Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "82072d331f788a62894e797fced6ad9b83bdac35470dc0b442cdf57f89f264f7",
+      "src/disponibilidad_u2/postgres.py": "44eb240798b83040232199961ef6021afce5f4cdb4d83c5e983902b62d65c448",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "65eaea7a-c126-4938-b4fa-9409a9db99bb.json",
+    "query_id": null,
+    "run_id": null,
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 20000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": null,
+    "progreso": [],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T03:49:11.583Z",
+    "estado": "en_curso",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "82072d331f788a62894e797fced6ad9b83bdac35470dc0b442cdf57f89f264f7",
+      "src/disponibilidad_u2/postgres.py": "44eb240798b83040232199961ef6021afce5f4cdb4d83c5e983902b62d65c448",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "e0b0e5e7-9d17-4879-8b68-95b92767b132.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "32e432e3-fa04-4801-8461-e2bd11dcb3f4",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 20000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 0,
+    "progreso": [],
+    "nota": "Detenido externamente con Docker stop; exit143 observado, no acredita cierre de aplicación."
+  },
+  {
+    "inicio_utc": "2026-11-19T03:55:11.740Z",
+    "fin_utc": "2026-11-19T03:59:30.748Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "d9ab56fb55eb677c045f604e38a458b7fd0efb0018b8cec5a2732fb7cbcebeb8",
+      "src/disponibilidad_u2/postgres.py": "04077675ccd98fbc127c1c8b65c130bf13842904900694567ee807936d1b1b8c",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "128abcf8-ae5a-473c-8110-4c66ede7dfa4.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "20fd2f61-9f16-4710-bc08-dd507355a677",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 20000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 0,
+    "progreso": [
+      {
+        "batchId": 4,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 17467,
+          "commitOffsets": 51,
+          "getBatch": 59,
+          "latestOffset": 122,
+          "queryPlanning": 853,
+          "triggerExecution": 18699,
+          "walCommit": 70
+        }
+      },
+      {
+        "batchId": 5,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7727,
+          "commitOffsets": 45,
+          "getBatch": 18,
+          "latestOffset": 125,
+          "queryPlanning": 40,
+          "triggerExecution": 8079,
+          "walCommit": 88
+        }
+      },
+      {
+        "batchId": 6,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 16,
+          "triggerExecution": 20
+        }
+      },
+      {
+        "batchId": 6,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 12,
+          "triggerExecution": 15
+        }
+      },
+      {
+        "batchId": 6,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 11,
+          "triggerExecution": 14
+        }
+      },
+      {
+        "batchId": 6,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7895,
+          "commitOffsets": 46,
+          "getBatch": 18,
+          "latestOffset": 123,
+          "queryPlanning": 15,
+          "triggerExecution": 8183,
+          "walCommit": 73
+        }
+      },
+      {
+        "batchId": 7,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 18,
+          "triggerExecution": 21
+        }
+      },
+      {
+        "batchId": 7,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 18,
+          "triggerExecution": 20
+        }
+      },
+      {
+        "batchId": 7,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 17,
+          "triggerExecution": 21
+        }
+      },
+      {
+        "batchId": 7,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7494,
+          "commitOffsets": 40,
+          "getBatch": 26,
+          "latestOffset": 98,
+          "queryPlanning": 37,
+          "triggerExecution": 7782,
+          "walCommit": 65
+        }
+      },
+      {
+        "batchId": 8,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 17,
+          "triggerExecution": 20
+        }
+      },
+      {
+        "batchId": 8,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 18,
+          "triggerExecution": 22
+        }
+      },
+      {
+        "batchId": 8,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 14,
+          "triggerExecution": 17
+        }
+      },
+      {
+        "batchId": 8,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7098,
+          "commitOffsets": 40,
+          "getBatch": 31,
+          "latestOffset": 100,
+          "queryPlanning": 31,
+          "triggerExecution": 7402,
+          "walCommit": 77
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:00:35.381Z",
+    "fin_utc": "2026-11-19T04:14:11.288Z",
+    "estado": "fallida",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [
+      {
+        "tipo": "Py4JJavaError",
+        "sqlstate": "55P03",
+        "detalle_sql": "canceling statement due to lock timeout"
+      }
+    ],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "d92ee87fc210ab79502ddcb47ae2fa90c6561d690c3bebc1d11b3df7c265a5af",
+      "src/disponibilidad_u2/postgres.py": "e157aa9220f4af724ba1ce1cc53db1c1dbd0272323655f5c21135f3c916b484c",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "14bb764f-1fb5-4bd5-baec-13ea554b4752.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "45bcc909-4563-48b8-a18f-5ed4008d6523",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 20000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 44002,
+    "progreso": [
+      {
+        "batchId": 9,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 14892,
+          "commitOffsets": 66,
+          "getBatch": 22,
+          "latestOffset": 137,
+          "queryPlanning": 651,
+          "triggerExecution": 15895,
+          "walCommit": 65
+        }
+      },
+      {
+        "batchId": 10,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 26,
+          "triggerExecution": 30
+        }
+      },
+      {
+        "batchId": 10,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7923,
+          "commitOffsets": 48,
+          "getBatch": 37,
+          "latestOffset": 120,
+          "queryPlanning": 20,
+          "triggerExecution": 8243,
+          "walCommit": 65
+        }
+      },
+      {
+        "batchId": 11,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 21,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 11,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 30,
+          "triggerExecution": 34
+        }
+      },
+      {
+        "batchId": 11,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 19,
+          "triggerExecution": 22
+        }
+      },
+      {
+        "batchId": 11,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 8044,
+          "commitOffsets": 54,
+          "getBatch": 30,
+          "latestOffset": 134,
+          "queryPlanning": 49,
+          "triggerExecution": 8443,
+          "walCommit": 95
+        }
+      },
+      {
+        "batchId": 12,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 20,
+          "triggerExecution": 22
+        }
+      },
+      {
+        "batchId": 12,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 24,
+          "triggerExecution": 27
+        }
+      },
+      {
+        "batchId": 12,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 28
+        }
+      },
+      {
+        "batchId": 12,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7062,
+          "commitOffsets": 49,
+          "getBatch": 23,
+          "latestOffset": 106,
+          "queryPlanning": 33,
+          "triggerExecution": 7360,
+          "walCommit": 66
+        }
+      },
+      {
+        "batchId": 13,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 17,
+          "triggerExecution": 21
+        }
+      },
+      {
+        "batchId": 13,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 21,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 13,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 25
+        }
+      },
+      {
+        "batchId": 13,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 25
+        }
+      },
+      {
+        "batchId": 13,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 7903,
+          "commitOffsets": 48,
+          "getBatch": 30,
+          "latestOffset": 94,
+          "queryPlanning": 41,
+          "triggerExecution": 8205,
+          "walCommit": 68
+        }
+      },
+      {
+        "batchId": 14,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 15,
+          "triggerExecution": 17
+        }
+      },
+      {
+        "batchId": 14,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 21,
+          "triggerExecution": 23
+        }
+      },
+      {
+        "batchId": 14,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 25
+        }
+      },
+      {
+        "batchId": 14,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 27
+        }
+      },
+      {
+        "batchId": 14,
+        "numInputRows": 1554,
+        "durationMs": {
+          "addBatch": 6337,
+          "commitOffsets": 50,
+          "getBatch": 23,
+          "latestOffset": 136,
+          "queryPlanning": 30,
+          "triggerExecution": 6677,
+          "walCommit": 80
+        }
+      },
+      {
+        "batchId": 15,
+        "numInputRows": 965,
+        "durationMs": {
+          "addBatch": 13504,
+          "commitOffsets": 45,
+          "getBatch": 26,
+          "latestOffset": 86,
+          "queryPlanning": 28,
+          "triggerExecution": 13777,
+          "walCommit": 71
+        }
+      },
+      {
+        "batchId": 16,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 16,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 30,
+          "triggerExecution": 31
+        }
+      },
+      {
+        "batchId": 16,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 16,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 8514,
+          "commitOffsets": 47,
+          "getBatch": 31,
+          "latestOffset": 125,
+          "queryPlanning": 27,
+          "triggerExecution": 8824,
+          "walCommit": 60
+        }
+      },
+      {
+        "batchId": 17,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 18,
+          "triggerExecution": 19
+        }
+      },
+      {
+        "batchId": 17,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 17,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 17,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 27,
+          "triggerExecution": 28
+        }
+      },
+      {
+        "batchId": 17,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 8369,
+          "commitOffsets": 53,
+          "getBatch": 25,
+          "latestOffset": 133,
+          "queryPlanning": 27,
+          "triggerExecution": 8698,
+          "walCommit": 75
+        }
+      },
+      {
+        "batchId": 18,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 23
+        }
+      },
+      {
+        "batchId": 18,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 18,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 10812,
+          "commitOffsets": 52,
+          "getBatch": 22,
+          "latestOffset": 95,
+          "queryPlanning": 19,
+          "triggerExecution": 11082,
+          "walCommit": 68
+        }
+      },
+      {
+        "batchId": 19,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 17,
+          "triggerExecution": 18
+        }
+      },
+      {
+        "batchId": 19,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 21,
+          "triggerExecution": 22
+        }
+      },
+      {
+        "batchId": 19,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 39,
+          "triggerExecution": 39
+        }
+      },
+      {
+        "batchId": 19,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 10166,
+          "commitOffsets": 48,
+          "getBatch": 23,
+          "latestOffset": 142,
+          "queryPlanning": 22,
+          "triggerExecution": 10482,
+          "walCommit": 68
+        }
+      },
+      {
+        "batchId": 20,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 23
+        }
+      },
+      {
+        "batchId": 20,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 11,
+          "triggerExecution": 11
+        }
+      },
+      {
+        "batchId": 20,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 26,
+          "triggerExecution": 27
+        }
+      },
+      {
+        "batchId": 20,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 10491,
+          "commitOffsets": 52,
+          "getBatch": 27,
+          "latestOffset": 94,
+          "queryPlanning": 28,
+          "triggerExecution": 10778,
+          "walCommit": 75
+        }
+      },
+      {
+        "batchId": 21,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 24,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 21,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 27,
+          "triggerExecution": 27
+        }
+      },
+      {
+        "batchId": 21,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 10101,
+          "commitOffsets": 52,
+          "getBatch": 23,
+          "latestOffset": 90,
+          "queryPlanning": 28,
+          "triggerExecution": 10376,
+          "walCommit": 64
+        }
+      },
+      {
+        "batchId": 22,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 22,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 22,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 23,
+          "triggerExecution": 24
+        }
+      },
+      {
+        "batchId": 22,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 24,
+          "triggerExecution": 25
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:18:34.355Z",
+    "fin_utc": "2026-11-19T04:21:56.876Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "d92ee87fc210ab79502ddcb47ae2fa90c6561d690c3bebc1d11b3df7c265a5af",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "3ea3af75-a626-4b70-91fb-8546c9ce12d8.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "2dab049c-e7ff-4d4c-ad99-9e8102c8fa39",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 32000,
+    "progreso": [
+      {
+        "batchId": 22,
+        "numInputRows": 0,
+        "durationMs": {
+          "addBatch": 11844,
+          "commitOffsets": 85,
+          "getBatch": 39,
+          "queryPlanning": 737,
+          "triggerExecution": 12750
+        }
+      },
+      {
+        "batchId": 23,
+        "numInputRows": 5038,
+        "durationMs": {
+          "addBatch": 32713,
+          "commitOffsets": 47,
+          "getBatch": 31,
+          "latestOffset": 137,
+          "queryPlanning": 71,
+          "triggerExecution": 33129,
+          "walCommit": 69
+        }
+      },
+      {
+        "batchId": 24,
+        "numInputRows": 5038,
+        "durationMs": {
+          "addBatch": 20657,
+          "commitOffsets": 45,
+          "getBatch": 14,
+          "latestOffset": 50,
+          "queryPlanning": 25,
+          "triggerExecution": 20862,
+          "walCommit": 50
+        }
+      },
+      {
+        "batchId": 25,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 11657,
+          "commitOffsets": 51,
+          "getBatch": 19,
+          "latestOffset": 72,
+          "queryPlanning": 19,
+          "triggerExecution": 11874,
+          "walCommit": 48
+        }
+      },
+      {
+        "batchId": 26,
+        "numInputRows": 2519,
+        "durationMs": {
+          "addBatch": 10677,
+          "commitOffsets": 45,
+          "getBatch": 29,
+          "latestOffset": 120,
+          "queryPlanning": 23,
+          "triggerExecution": 10995,
+          "walCommit": 77
+        }
+      },
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 39,
+          "triggerExecution": 42
+        }
+      },
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 42,
+          "triggerExecution": 45
+        }
+      },
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 28,
+          "triggerExecution": 31
+        }
+      },
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 30,
+          "triggerExecution": 32
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:22:10.639Z",
+    "fin_utc": "2026-11-19T04:24:06.522Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "ddf92749e6da3c08fcafac65d293aab2ca8721157894f2f35484c755d77a0ffe",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "f4ca50ec-6b35-48f2-be27-fe755d85806c.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "1b760e4c-a73f-4c0d-a641-38450ea08385",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 51104,
+    "progreso": [
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 2,
+          "triggerExecution": 39
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:25:03.798Z",
+    "fin_utc": "2026-11-19T04:25:32.319Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "ddf92749e6da3c08fcafac65d293aab2ca8721157894f2f35484c755d77a0ffe",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "a573e04c-2240-4527-88b2-56bc14e17f38.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "669f4401-75c4-48fd-845d-d3affc4250bc",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 0,
+    "progreso": [
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 2,
+          "triggerExecution": 31
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:26:48.014Z",
+    "fin_utc": "2026-11-19T04:29:17.246Z",
+    "estado": "fallida",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [
+      {
+        "tipo": "Py4JJavaError",
+        "sqlstate": "57014",
+        "detalle_sql": "canceling statement due to statement timeout"
+      }
+    ],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "ddf92749e6da3c08fcafac65d293aab2ca8721157894f2f35484c755d77a0ffe",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "f1541ac0-da5a-488d-93a7-b601683d2462.json",
+    "query_id": null,
+    "run_id": null,
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": null,
+    "progreso": [],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:29:26.000Z",
+    "fin_utc": "2026-11-19T04:29:47.198Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "ddf92749e6da3c08fcafac65d293aab2ca8721157894f2f35484c755d77a0ffe",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "890ea8e9-52d3-4093-b27f-fa452ede118b.json",
+    "query_id": "3b74fd62-a69f-46fe-9d0e-98f2a34dfe61",
+    "run_id": "dd2dfbfa-ce80-479d-80ac-81759ada60e7",
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": 0,
+    "progreso": [
+      {
+        "batchId": 27,
+        "numInputRows": 0,
+        "durationMs": {
+          "latestOffset": 1,
+          "triggerExecution": 27
+        }
+      }
+    ],
+    "nota": null
+  },
+  {
+    "inicio_utc": "2026-11-19T04:31:49.181Z",
+    "fin_utc": "2026-11-19T04:34:56.176Z",
+    "estado": "completada",
+    "software": {
+      "spark": "4.2.0",
+      "master": "local[2]",
+      "postgresql": "17.11",
+      "jdbc": "42.7.14"
+    },
+    "errores": [],
+    "codigo_sha256": {
+      "ejecutar_persistencia.py": "ddf92749e6da3c08fcafac65d293aab2ca8721157894f2f35484c755d77a0ffe",
+      "src/disponibilidad_u2/postgres.py": "d4aff30852a095a00f89f7a886953d112b20a34540e99d8ad95def8b88b922f8",
+      "sql/001_disponibilidad.sql": "b21a39a1d4540fbfa3472bab419c12689b91581f96e95798ffc91dfd906f1023"
+    },
+    "archivo": "8a730302-6e46-48f4-9794-ceae8f8f0249.json",
+    "query_id": null,
+    "run_id": null,
+    "configuracion_sql": {
+      "flow_id": "disponibilidad-etapa3-vivo-20261119-v1",
+      "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+      "user": "disponibilidad_owner",
+      "password_file": "/run/secrets/postgres_password",
+      "jdbc_package": "org.postgresql:postgresql:42.7.14",
+      "checkpoint_dir": "data/sql/verificacion_etapa3/checkpoint",
+      "trigger": "10 seconds",
+      "batch_rows": 500,
+      "evaluation_poll_seconds": 10,
+      "evaluation_limit": 4000,
+      "late_seconds": 600,
+      "tolerance_seconds": 30,
+      "gap_seconds": 450,
+      "retries": 3
+    },
+    "evaluaciones_cerradas": null,
+    "progreso": [],
+    "nota": null
+  }
+]

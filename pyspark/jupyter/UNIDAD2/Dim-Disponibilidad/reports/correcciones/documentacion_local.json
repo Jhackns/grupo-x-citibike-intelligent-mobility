@@ -1,0 +1,12 @@
+{
+  "fecha_utc": "2026-11-20T00:42:12.175945+00:00",
+  "comando": ".venv/bin/python -m mkdocs build --strict -f pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/mkdocs-u2.yml",
+  "exit_code": 0,
+  "paginas_html": 10,
+  "indice_existe": true,
+  "destino": "pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/data/publicacion/site",
+  "publicado": false,
+  "recursos_cloud_creados_contratados_desplegados": false,
+  "costo_usd_mes_solo_estimacion": 144,
+  "ultima_construccion_duracion_s": 0.09
+}

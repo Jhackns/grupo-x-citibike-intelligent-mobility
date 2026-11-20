@@ -1,0 +1,217 @@
+{
+  "inicio_utc": "2026-11-19T15:40:48.392Z",
+  "estado": "fallida",
+  "errores": [
+    {
+      "tipo": "AssertionError",
+      "detalle": ""
+    }
+  ],
+  "grafana": {
+    "version": "11.6.11",
+    "postgres_health": "OK",
+    "prometheus_health": "OK",
+    "dashboard_uid": "citibike-disponibilidad-u2",
+    "paneles": 16,
+    "json_provisionado_coincide": true
+  },
+  "privilegios": {
+    "rol": "disponibilidad_grafana",
+    "solo_lectura": "on",
+    "lee_vista": true,
+    "escribe_base": false,
+    "crea": false,
+    "temporales": false
+  },
+  "intento_escritura": "rechazado",
+  "comparaciones_historicas": [
+    {
+      "tipo": "convencionales",
+      "horizonte": 5,
+      "metricas": {
+        "n": 21996,
+        "mae": 0.05255501000181851,
+        "rmse": 0.24626690893139597,
+        "sesgo": 0.002000363702491362
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 21996,
+        "vencidas": 9779,
+        "pendientes": 36644,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 36644,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 32.14896446893407
+      },
+      "vencidas": [
+        {
+          "motivo": "sin_captura_objetivo_en_tolerancia",
+          "n": 9777
+        },
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte": 10,
+      "metricas": {
+        "n": 21995,
+        "mae": 0.09706751534439645,
+        "rmse": 0.35583660055190947,
+        "sesgo": 0.006501477608547397
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 21995,
+        "vencidas": 4,
+        "pendientes": 46420,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 46420,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 32.14750288662506
+      },
+      "vencidas": [
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 4
+        }
+      ]
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte": 15,
+      "metricas": {
+        "n": 9776,
+        "mae": 0.13850245499181668,
+        "rmse": 0.4417825816249081,
+        "sesgo": 0.006751227495908347
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 9776,
+        "vencidas": 3,
+        "pendientes": 58640,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 58640,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 14.288428652859587
+      },
+      "vencidas": [
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 3
+        }
+      ]
+    },
+    {
+      "tipo": "electricas",
+      "horizonte": 5,
+      "metricas": {
+        "n": 21996,
+        "mae": 0.16839425350063647,
+        "rmse": 0.49456033549101897,
+        "sesgo": -0.0072740498272413166
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 21996,
+        "vencidas": 9779,
+        "pendientes": 36644,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 36644,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 32.14896446893407
+      },
+      "vencidas": [
+        {
+          "motivo": "sin_captura_objetivo_en_tolerancia",
+          "n": 9777
+        },
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "tipo": "electricas",
+      "horizonte": 10,
+      "metricas": {
+        "n": 21995,
+        "mae": 0.29734030461468514,
+        "rmse": 0.7050623945600686,
+        "sesgo": -0.013275744487383495
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 21995,
+        "vencidas": 4,
+        "pendientes": 46420,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 46420,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 32.14750288662506
+      },
+      "vencidas": [
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 4
+        }
+      ]
+    },
+    {
+      "tipo": "electricas",
+      "horizonte": 15,
+      "metricas": {
+        "n": 9776,
+        "mae": 0.39177577741407527,
+        "rmse": 0.8481229877154172,
+        "sesgo": -0.02229950900163666
+      },
+      "cobertura": {
+        "predicciones": 68419,
+        "evaluadas": 9776,
+        "vencidas": 3,
+        "pendientes": 58640,
+        "pendientes_inmaduras": 0,
+        "pendientes_sin_avance": 58640,
+        "pendientes_cerrables": 0,
+        "cobertura_pct": 14.288428652859587
+      },
+      "vencidas": [
+        {
+          "motivo": "objetivo_no_elegible",
+          "n": 3
+        }
+      ]
+    }
+  ],
+  "calidad": {
+    "observaciones": 70532,
+    "rechazos_totales_o_parciales": 2113,
+    "no_elegibles_tipo": 2113,
+    "discrepantes": 1487,
+    "sin_discrepancias": 69045,
+    "calidad_desconocida": 0
+  },
+  "filtros": {
+    "estacion": "66dc7b10-0aca-11e7-82f6-3863bb44ef7c",
+    "metricas_grafana": {
+      "n": 9,
+      "mae": 0,
+      "rmse": 0,
+      "sesgo": 0
+    },
+    "metricas_sql": {
+      "n": 9,
+      "mae": 0
+    },
+    "periodo_reducido_predicciones": 14667,
+    "inexistente_sin_filas": true
+  },
+  "fin_utc": "2026-11-19T15:41:57.072Z"
+}

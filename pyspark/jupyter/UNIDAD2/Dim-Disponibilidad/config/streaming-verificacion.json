@@ -1,0 +1,15 @@
+{
+  "spark_master": "local[2]",
+  "shuffle_partitions": 2,
+  "watermark": "1 minutes",
+  "window": "1 minutes",
+  "starting_offsets": {
+    "citibike-disponibilidad-estaciones-v1": {
+      "0": 3480,
+      "1": 3264,
+      "2": 3332
+    }
+  },
+  "output_dir": "data/streaming/verificacion_etapa2_v2/salidas",
+  "checkpoint_dir": "data/streaming/verificacion_etapa2_v2/checkpoints"
+}

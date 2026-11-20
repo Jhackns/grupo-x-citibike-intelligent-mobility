@@ -1,0 +1,233 @@
+{
+  "estado": "verificada",
+  "fecha_utc": "2026-11-19T03:24:38.596Z",
+  "output_dir": "data/streaming/verificacion_etapa2_v2/salidas",
+  "checkpoint_dir": "data/streaming/verificacion_etapa2_v2/checkpoints",
+  "capturas": {
+    "b2def812-793f-4e66-9e02-7a08286a83a4": 2519,
+    "711ed0d6-0ca5-4677-bd13-1449df7cd112": 2519,
+    "c669df96-9bac-4edd-8a4a-ede88b233afc": 2519
+  },
+  "observaciones": 7557,
+  "rechazados_totales_o_parciales": 226,
+  "elegibles_por_tipo": {
+    "convencionales": 7331,
+    "electricas": 7331
+  },
+  "predicciones": 43986,
+  "event_id_y_prediccion_id_unicos": true,
+  "persistencia_y_horizontes_diferencias": 0,
+  "contratos_originales_recargados": 6,
+  "ejecucion_u1": "20261117T171917344468Z",
+  "latencia_captura_a_calidad": {
+    "min_s": 156.55576705932617,
+    "max_s": 629.5011239051819,
+    "media_s": 448.40800499916077
+  },
+  "conteos_prediccion": [
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "count": 2443
+    },
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "count": 2443
+    },
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "count": 2443
+    },
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "count": 2443
+    },
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "count": 2443
+    },
+    {
+      "capture_id": "711ed0d6-0ca5-4677-bd13-1449df7cd112",
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "count": 2443
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "count": 2444
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "count": 2444
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "count": 2444
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "count": 2444
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "count": 2444
+    },
+    {
+      "capture_id": "b2def812-793f-4e66-9e02-7a08286a83a4",
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "count": 2444
+    },
+    {
+      "capture_id": "c669df96-9bac-4edd-8a4a-ede88b233afc",
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "count": 2444
+    }
+  ],
+  "ventanas_finalizadas": [
+    {
+      "ventana_inicio_utc": "2026-11-19 02:53:00",
+      "ventana_fin_utc": "2026-11-19 02:54:00",
+      "observaciones": 2519,
+      "elegibles_convencionales": 2443,
+      "elegibles_electricas": 2443,
+      "contratos_invalidos": 0,
+      "rechazo_total": 76,
+      "observaciones_discrepantes": 81,
+      "latencia_procesamiento_media_s": 629.5011239051819
+    },
+    {
+      "ventana_inicio_utc": "2026-11-19 02:54:00",
+      "ventana_fin_utc": "2026-11-19 02:55:00",
+      "observaciones": 2519,
+      "elegibles_convencionales": 2444,
+      "elegibles_electricas": 2444,
+      "contratos_invalidos": 0,
+      "rechazo_total": 75,
+      "observaciones_discrepantes": 100,
+      "latencia_procesamiento_media_s": 559.1671240329742
+    }
+  ],
+  "esquemas": {
+    "observaciones": "struct<station_id:string,last_reported:bigint,captura_utc:timestamp,json_original:string,kafka_key:string,kafka_topic:string,kafka_partition:int,kafka_offset:bigint,kafka_timestamp:timestamp,kafka_timestamp_type:int,event_id:string,capture_id:string,captured_at_original:string,source:struct<system:string,gbfs_index_url:string,feed_url:string,gbfs_version:string>,catalogs:struct<vehicle_types:struct<catalog_id:string,feed_url:string,gbfs_version:string,captured_at_utc:string,last_updated_original:bigint,last_updated_utc:string,ttl:bigint,archivo_relativo:string>,station_information:struct<catalog_id:string,feed_url:string,gbfs_version:string,captured_at_utc:string,last_updated_original:bigint,last_updated_utc:string,ttl:bigint,archivo_relativo:string>>,ingestion_issues:array<string>,last_updated:bigint,last_updated_utc_original:string,last_reported_utc_original:string,_catalog_data:array<struct<vehicle_type_id:string,form_factor:string,propulsion_type:string>>,catalog_version:string,num_bikes_available:bigint,num_ebikes_available:bigint,num_bikes_disabled:bigint,num_docks_available:bigint,num_docks_disabled:bigint,is_installed:bigint,is_renting:bigint,is_returning:bigint,num_scooters_available:bigint,num_scooters_unavailable:bigint,vehicle_types_available:array<struct<vehicle_type_id:string,count:bigint>>,last_updated_original_json:string,last_reported_original_json:string,errores_contrato:array<string>,contrato_valido:boolean,tiempo_evento:timestamp,_clave_dedup:string,archivo_origen:string,filas_misma_captura:bigint,variantes_misma_captura:bigint,variantes_mismo_reporte:bigint,convencionales_tipo:bigint,electricas_tipo:bigint,regla_version:string,umbral_frescura_s:int,fecha_captura_utc:date,edad_reporte_s:bigint,edad_feed_s:double,q_catalogo_ambiguo:boolean,q_tipos_desconocidos:boolean,q_array_tipos_invalido:boolean,q_discrepancia_total:boolean,q_discrepancia_electricas:boolean,q_discrepancia_convencionales:boolean,q_cantidad_negativa:boolean,q_conflicto_captura:boolean,q_cambio_mismo_reporte:boolean,q_reporte_anomalo_86400:boolean,q_reporte_antiguo:boolean,q_estacion_inactiva:boolean,q_devoluciones_cerradas:boolean,motivos_invalidez:array<string>,registro_invalido:boolean,motivos_no_elegible_convencionales:array<string>,motivos_no_elegible_electricas:array<string>,elegible_convencionales:boolean,elegible_electricas:boolean,objetivo_convencionales:bigint,objetivo_electricas:bigint,aceptado_silver:boolean,tipo_registro:string,motivos_exclusion:array<string>,catalogo_modelo_compatible:boolean,motivos_pred_convencionales:array<string>,elegible_pred_convencionales:boolean,motivos_pred_electricas:array<string>,elegible_pred_electricas:boolean,procesado_utc:timestamp,latencia_procesamiento_s:double,alcance_diagnostico_mismo_reporte:string>",
+    "predicciones": "struct<prediccion_id:string,event_id:string,capture_id:string,station_id:string,origen_utc:timestamp,objetivo_utc:timestamp,tipo:string,horizonte_min:int,valor_predicho:double,predictor:string,version_predictor:string,contrato_sha256:string,ejecucion_u1:string,catalog_version:string,kafka_topic:string,kafka_partition:int,kafka_offset:bigint,kafka_timestamp:timestamp,procesado_utc:timestamp,q_catalogo_ambiguo:boolean,q_tipos_desconocidos:boolean,q_array_tipos_invalido:boolean,q_discrepancia_total:boolean,q_discrepancia_electricas:boolean,q_discrepancia_convencionales:boolean,q_cantidad_negativa:boolean,q_conflicto_captura:boolean,q_cambio_mismo_reporte:boolean,q_reporte_anomalo_86400:boolean,q_reporte_antiguo:boolean,q_estacion_inactiva:boolean,q_devoluciones_cerradas:boolean,motivos_invalidez:array<string>,motivos_no_elegible_convencionales:array<string>,motivos_no_elegible_electricas:array<string>,elegible_convencionales:boolean,elegible_electricas:boolean,motivos_exclusion:array<string>,motivos_pred_convencionales:array<string>,elegible_pred_convencionales:boolean,motivos_pred_electricas:array<string>,elegible_pred_electricas:boolean>"
+  },
+  "muestra_predicciones": [
+    {
+      "prediccion_id": "a8061b5a56ef3014506228935c77a0d2efa618c1ad4c2cad4962145f85f7825a",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 02:58:33.321000",
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    },
+    {
+      "prediccion_id": "d929e6ee9029e3eb887c04b674c31d6fcb4075480213d090b111f6d39a0e8b2b",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 03:03:33.321000",
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    },
+    {
+      "prediccion_id": "d7ef964b76c887530e7b50cec3733887a847957eb769b1638a4a10106b492fdb",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 03:08:33.321000",
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    },
+    {
+      "prediccion_id": "16211cbc7b7e18cb3696e180a372ac9541fbf155415a055e890fe27f2ff3091d",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 02:58:33.321000",
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    },
+    {
+      "prediccion_id": "25023dc9e076c73246a944c0236cb8592ac1d26ac2705822c1597108ac8baf86",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 03:03:33.321000",
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    },
+    {
+      "prediccion_id": "4031ff9352592826f4f7a3591a042f9805725e92342801777116e2ba562d1a4d",
+      "event_id": "78a3db2f-b099-5e05-9230-14524ee80073",
+      "station_id": "002e6e9f-ced2-47b0-bc7e-ccf38c3b4b0f",
+      "origen_utc": "2026-11-19 02:53:33.321000",
+      "objetivo_utc": "2026-11-19 03:08:33.321000",
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "valor_predicho": 1.0,
+      "version_predictor": "modelado-v2-regularizacion-interpretacion"
+    }
+  ]
+}

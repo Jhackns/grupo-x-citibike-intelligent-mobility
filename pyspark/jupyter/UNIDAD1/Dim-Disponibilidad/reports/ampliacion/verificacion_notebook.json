@@ -1,0 +1,123 @@
+{
+  "ejecucion": "20261117T171917344468Z",
+  "fuente": "20261117T171917344468Z",
+  "notebook_sha256": "b3f2bfe830d02d2823dd2ffa9ecde0cb783c8451e88c924ab769ff7e28ac7c5f",
+  "notebook_archivado": "notebooks/archivo/01_historico_ampliado_20261117T171917344468Z.ipynb",
+  "codecells": 11,
+  "errores": 0,
+  "celdas": [
+    "u1-02",
+    "u1-03",
+    "u1-03a",
+    "u1-04",
+    "u1-06",
+    "u1-08",
+    "u1-10",
+    "u1-12",
+    "u1-13",
+    "u1-15",
+    "u1-16"
+  ],
+  "gold_version": "gold-v3-emparejamiento-estrecho",
+  "registro_candidatos": 15908802,
+  "recargas_ganadores": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.07996534806326551
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.14172652648810524
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.19407588412626214
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.18320924966548874
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.3052861634837306
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0,
+      "MAE_reproducido": 0.4034366386342407
+    }
+  ],
+  "recargas_referencias": [
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 5,
+      "candidato": "lr_sin_regularizar",
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 10,
+      "candidato": "lr_sin_regularizar",
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    },
+    {
+      "tipo": "convencionales",
+      "horizonte_min": 15,
+      "candidato": "lr_sin_regularizar",
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 5,
+      "candidato": "lr_sin_regularizar",
+      "n": 1399056,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 10,
+      "candidato": "lr_sin_regularizar",
+      "n": 1396457,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    },
+    {
+      "tipo": "electricas",
+      "horizonte_min": 15,
+      "candidato": "lr_sin_regularizar",
+      "n": 1393862,
+      "nulos": 0,
+      "max_diferencia": 0.0
+    }
+  ]
+}

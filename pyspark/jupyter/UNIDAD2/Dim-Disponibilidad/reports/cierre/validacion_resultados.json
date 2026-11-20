@@ -1,0 +1,14 @@
+{
+  "fecha_utc": "2026-11-19T16:58:55.623029+00:00",
+  "estado": "verificada",
+  "combinaciones": 12,
+  "estados_reconciliados": true,
+  "cobertura_corta_cierre_null": true,
+  "metricas_historicas_coinciden": 6,
+  "latencias_sin_negativos": true,
+  "entradas_sha256": {
+    "resultados.json": "f05202cf0de8dffabc5fcd69134c5110dbbf7b75e6d3549c19b17c009f0eb07f",
+    "cobertura_al_cierre.json": "8e5209324f18a4294747b33363e1d322555f3cfee47d00596afee303734ef7f4",
+    "latencias.json": "3ab22ccf1aa96cb55b14a9975f6255268cd2d9ec518475133973fe16428f6d8b"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "estado": "publicado_localmente",
+  "fecha_utc": "2026-11-19T23:22:56.171Z",
+  "flujo": "disponibilidad-correcciones-20261119-v1",
+  "capture_id": "8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a",
+  "destino": "Pushgateway local propio",
+  "datos": [
+    {
+      "tipo": "convencionales",
+      "elegibles": 2451,
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T22:48:04.779+00:00",
+      "captura_epoch": 1795128484.779,
+      "bicicletas_media": 7.470012239902081,
+      "fraccion_sin_bicicletas": 0.18441452468380254
+    },
+    {
+      "tipo": "electricas",
+      "elegibles": 2451,
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T22:48:04.779+00:00",
+      "captura_epoch": 1795128484.779,
+      "bicicletas_media": 5.73765809873521,
+      "fraccion_sin_bicicletas": 0.20685434516523868
+    }
+  ],
+  "alcance": "Snapshot batch fijo, no inventario físico actual ni inferencia continua; no hubo publicación externa"
+}

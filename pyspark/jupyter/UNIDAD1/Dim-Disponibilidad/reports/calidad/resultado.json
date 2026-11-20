@@ -1,0 +1,864 @@
+{
+  "ejecucion_utc": "20261117T040700694357Z",
+  "version": "silver-v2-tipos-gbfs",
+  "destino": "/opt/UNIDAD1/Dim-Disponibilidad/data/silver/20261117T040700694357Z",
+  "investigacion": {
+    "discrepancias": {
+      "discrepancias": 27067,
+      "coincide_scooters": 0,
+      "coincide_disabled": 2425
+    },
+    "campos_scooters_sin_evidencia_operativa": {
+      "num_scooters_available_positivos": 0,
+      "num_scooters_unavailable_positivos": 0
+    },
+    "deltas": [
+      {
+        "delta_total_tipos": -16,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": -14,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": -13,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": -12,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": -11,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": -8,
+        "count": 4
+      },
+      {
+        "delta_total_tipos": -7,
+        "count": 2
+      },
+      {
+        "delta_total_tipos": -6,
+        "count": 5
+      },
+      {
+        "delta_total_tipos": -5,
+        "count": 3
+      },
+      {
+        "delta_total_tipos": -4,
+        "count": 14
+      },
+      {
+        "delta_total_tipos": -3,
+        "count": 83
+      },
+      {
+        "delta_total_tipos": -2,
+        "count": 766
+      },
+      {
+        "delta_total_tipos": -1,
+        "count": 11846
+      },
+      {
+        "delta_total_tipos": 1,
+        "count": 13371
+      },
+      {
+        "delta_total_tipos": 2,
+        "count": 849
+      },
+      {
+        "delta_total_tipos": 3,
+        "count": 79
+      },
+      {
+        "delta_total_tipos": 4,
+        "count": 18
+      },
+      {
+        "delta_total_tipos": 5,
+        "count": 6
+      },
+      {
+        "delta_total_tipos": 6,
+        "count": 2
+      },
+      {
+        "delta_total_tipos": 8,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 9,
+        "count": 3
+      },
+      {
+        "delta_total_tipos": 10,
+        "count": 4
+      },
+      {
+        "delta_total_tipos": 11,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 12,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 16,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 28,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 33,
+        "count": 1
+      },
+      {
+        "delta_total_tipos": 58,
+        "count": 1
+      }
+    ],
+    "conflictos_entre_capturas": 58,
+    "conflictos_dentro_captura": 0,
+    "cambios_por_campo": {
+      "variantes_num_bikes_available": 50,
+      "variantes_num_ebikes_available": 41,
+      "variantes_num_bikes_disabled": 47,
+      "variantes_vehicle_types_available": 51,
+      "variantes_is_installed": 1,
+      "variantes_is_renting": 51,
+      "variantes_is_returning": 51
+    },
+    "edades_por_estados": [
+      {
+        "is_installed": 1,
+        "is_renting": 1,
+        "is_returning": 1,
+        "filas": 707793,
+        "p50_p95_edad_s": [
+          57,
+          130
+        ],
+        "mayor_450s": 31,
+        "mayor_900s": 2,
+        "mayor_86400s": 0
+      },
+      {
+        "is_installed": 1,
+        "is_renting": 0,
+        "is_returning": 0,
+        "filas": 2907,
+        "p50_p95_edad_s": [
+          17492,
+          2263784
+        ],
+        "mayor_450s": 1954,
+        "mayor_900s": 1903,
+        "mayor_86400s": 453
+      },
+      {
+        "is_installed": 0,
+        "is_renting": 0,
+        "is_returning": 0,
+        "filas": 15006,
+        "p50_p95_edad_s": [
+          1794219211,
+          1794263645
+        ],
+        "mayor_450s": 14866,
+        "mayor_900s": 14862,
+        "mayor_86400s": 14794
+      }
+    ],
+    "estacion_parcial": {
+      "observaciones": 234,
+      "ausencias": 54,
+      "estados": [
+        {
+          "is_installed": 1,
+          "is_renting": 1,
+          "is_returning": 1,
+          "count": 163
+        },
+        {
+          "is_installed": 0,
+          "is_renting": 0,
+          "is_returning": 0,
+          "count": 71
+        }
+      ],
+      "limites_ausencia": {
+        "primera": "2026-11-10 19:30:02.071000",
+        "ultima": "2026-11-10 23:55:01.713000"
+      }
+    },
+    "perfil_discrepancias": {
+      "electricas": {
+        "escalar_ausente": 0,
+        "escalar_cero": 159132,
+        "tipo2_ausente": 0,
+        "tipo2_cero": 159326,
+        "ambas_presentes": 725706,
+        "coinciden": 704786,
+        "difieren": 20920,
+        "escalar_mayor": 11282,
+        "escalar_menor": 9638
+      },
+      "por_hora_local": [
+        {
+          "hora_nueva_york": 0,
+          "observaciones": 30240,
+          "discrepancias": 492,
+          "positivas": 273,
+          "negativas": 219,
+          "porcentaje": 1.627
+        },
+        {
+          "hora_nueva_york": 1,
+          "observaciones": 30240,
+          "discrepancias": 195,
+          "positivas": 134,
+          "negativas": 61,
+          "porcentaje": 0.6448
+        },
+        {
+          "hora_nueva_york": 2,
+          "observaciones": 30240,
+          "discrepancias": 170,
+          "positivas": 112,
+          "negativas": 58,
+          "porcentaje": 0.5622
+        },
+        {
+          "hora_nueva_york": 3,
+          "observaciones": 30240,
+          "discrepancias": 162,
+          "positivas": 121,
+          "negativas": 41,
+          "porcentaje": 0.5357
+        },
+        {
+          "hora_nueva_york": 4,
+          "observaciones": 30240,
+          "discrepancias": 152,
+          "positivas": 128,
+          "negativas": 24,
+          "porcentaje": 0.5026
+        },
+        {
+          "hora_nueva_york": 5,
+          "observaciones": 30240,
+          "discrepancias": 297,
+          "positivas": 179,
+          "negativas": 118,
+          "porcentaje": 0.9821
+        },
+        {
+          "hora_nueva_york": 6,
+          "observaciones": 30240,
+          "discrepancias": 699,
+          "positivas": 413,
+          "negativas": 286,
+          "porcentaje": 2.3115
+        },
+        {
+          "hora_nueva_york": 7,
+          "observaciones": 30240,
+          "discrepancias": 1708,
+          "positivas": 866,
+          "negativas": 842,
+          "porcentaje": 5.6481
+        },
+        {
+          "hora_nueva_york": 8,
+          "observaciones": 30240,
+          "discrepancias": 1972,
+          "positivas": 1070,
+          "negativas": 902,
+          "porcentaje": 6.5212
+        },
+        {
+          "hora_nueva_york": 9,
+          "observaciones": 30240,
+          "discrepancias": 1783,
+          "positivas": 893,
+          "negativas": 890,
+          "porcentaje": 5.8962
+        },
+        {
+          "hora_nueva_york": 10,
+          "observaciones": 30240,
+          "discrepancias": 857,
+          "positivas": 473,
+          "negativas": 384,
+          "porcentaje": 2.834
+        },
+        {
+          "hora_nueva_york": 11,
+          "observaciones": 30240,
+          "discrepancias": 1362,
+          "positivas": 677,
+          "negativas": 685,
+          "porcentaje": 4.504
+        },
+        {
+          "hora_nueva_york": 12,
+          "observaciones": 30240,
+          "discrepancias": 1065,
+          "positivas": 571,
+          "negativas": 494,
+          "porcentaje": 3.5218
+        },
+        {
+          "hora_nueva_york": 13,
+          "observaciones": 30240,
+          "discrepancias": 1401,
+          "positivas": 775,
+          "negativas": 626,
+          "porcentaje": 4.6329
+        },
+        {
+          "hora_nueva_york": 14,
+          "observaciones": 30234,
+          "discrepancias": 1253,
+          "positivas": 655,
+          "negativas": 598,
+          "porcentaje": 4.1443
+        },
+        {
+          "hora_nueva_york": 15,
+          "observaciones": 30228,
+          "discrepancias": 1786,
+          "positivas": 917,
+          "negativas": 869,
+          "porcentaje": 5.9084
+        },
+        {
+          "hora_nueva_york": 16,
+          "observaciones": 30228,
+          "discrepancias": 1699,
+          "positivas": 881,
+          "negativas": 818,
+          "porcentaje": 5.6206
+        },
+        {
+          "hora_nueva_york": 17,
+          "observaciones": 30228,
+          "discrepancias": 2515,
+          "positivas": 1304,
+          "negativas": 1211,
+          "porcentaje": 8.3201
+        },
+        {
+          "hora_nueva_york": 18,
+          "observaciones": 30228,
+          "discrepancias": 2288,
+          "positivas": 1125,
+          "negativas": 1163,
+          "porcentaje": 7.5691
+        },
+        {
+          "hora_nueva_york": 19,
+          "observaciones": 30240,
+          "discrepancias": 1780,
+          "positivas": 929,
+          "negativas": 851,
+          "porcentaje": 5.8862
+        },
+        {
+          "hora_nueva_york": 20,
+          "observaciones": 30240,
+          "discrepancias": 1028,
+          "positivas": 535,
+          "negativas": 493,
+          "porcentaje": 3.3995
+        },
+        {
+          "hora_nueva_york": 21,
+          "observaciones": 30240,
+          "discrepancias": 1194,
+          "positivas": 653,
+          "negativas": 541,
+          "porcentaje": 3.9484
+        },
+        {
+          "hora_nueva_york": 22,
+          "observaciones": 30240,
+          "discrepancias": 770,
+          "positivas": 408,
+          "negativas": 362,
+          "porcentaje": 2.5463
+        },
+        {
+          "hora_nueva_york": 23,
+          "observaciones": 30240,
+          "discrepancias": 439,
+          "positivas": 247,
+          "negativas": 192,
+          "porcentaje": 1.4517
+        }
+      ],
+      "por_estados": [
+        {
+          "is_installed": 1,
+          "is_renting": 1,
+          "is_returning": 1,
+          "observaciones": 707793,
+          "discrepancias": 27049,
+          "positivas": 14322,
+          "negativas": 12727,
+          "porcentaje": 3.8216
+        },
+        {
+          "is_installed": 1,
+          "is_renting": 0,
+          "is_returning": 0,
+          "observaciones": 2907,
+          "discrepancias": 18,
+          "positivas": 17,
+          "negativas": 1,
+          "porcentaje": 0.6192
+        },
+        {
+          "is_installed": 0,
+          "is_renting": 0,
+          "is_returning": 0,
+          "observaciones": 15006,
+          "discrepancias": 0,
+          "positivas": 0,
+          "negativas": 0,
+          "porcentaje": 0.0
+        }
+      ],
+      "por_antiguedad": [
+        {
+          "edad_grupo": "0_450s",
+          "observaciones": 708855,
+          "discrepancias": 27060,
+          "positivas": 14335,
+          "negativas": 12725,
+          "porcentaje": 3.8174
+        },
+        {
+          "edad_grupo": "451_900s",
+          "observaciones": 84,
+          "discrepancias": 6,
+          "positivas": 4,
+          "negativas": 2,
+          "porcentaje": 7.1429
+        },
+        {
+          "edad_grupo": "901_86400s",
+          "observaciones": 1520,
+          "discrepancias": 1,
+          "positivas": 0,
+          "negativas": 1,
+          "porcentaje": 0.0658
+        },
+        {
+          "edad_grupo": "mayor_24h",
+          "observaciones": 15247,
+          "discrepancias": 0,
+          "positivas": 0,
+          "negativas": 0,
+          "porcentaje": 0.0
+        }
+      ],
+      "estaciones_con_discrepancias": 2124,
+      "top_estaciones": [
+        {
+          "station_id": "b0bac4ef-bb57-4598-a433-75c281170d5b",
+          "observaciones": 288,
+          "discrepancias": 288,
+          "positivas": 288,
+          "negativas": 0,
+          "porcentaje": 100.0
+        },
+        {
+          "station_id": "f72a253f-3cef-4da8-9591-0cbd3a692162",
+          "observaciones": 288,
+          "discrepancias": 195,
+          "positivas": 190,
+          "negativas": 5,
+          "porcentaje": 67.7083
+        },
+        {
+          "station_id": "66dcf640-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 189,
+          "positivas": 186,
+          "negativas": 3,
+          "porcentaje": 65.625
+        },
+        {
+          "station_id": "c466f15e-715f-411e-904e-1a71fb574cdd",
+          "observaciones": 288,
+          "discrepancias": 152,
+          "positivas": 137,
+          "negativas": 15,
+          "porcentaje": 52.7778
+        },
+        {
+          "station_id": "1862008939006380034",
+          "observaciones": 288,
+          "discrepancias": 118,
+          "positivas": 117,
+          "negativas": 1,
+          "porcentaje": 40.9722
+        },
+        {
+          "station_id": "904930bd-2671-4695-9c1a-8a894b041129",
+          "observaciones": 288,
+          "discrepancias": 116,
+          "positivas": 109,
+          "negativas": 7,
+          "porcentaje": 40.2778
+        },
+        {
+          "station_id": "2171919049376995084",
+          "observaciones": 288,
+          "discrepancias": 113,
+          "positivas": 106,
+          "negativas": 7,
+          "porcentaje": 39.2361
+        },
+        {
+          "station_id": "66de1a1f-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 104,
+          "positivas": 94,
+          "negativas": 10,
+          "porcentaje": 36.1111
+        },
+        {
+          "station_id": "66db33fc-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 88,
+          "positivas": 74,
+          "negativas": 14,
+          "porcentaje": 30.5556
+        },
+        {
+          "station_id": "66dc8025-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 83,
+          "positivas": 43,
+          "negativas": 40,
+          "porcentaje": 28.8194
+        },
+        {
+          "station_id": "66dbc982-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 77,
+          "positivas": 53,
+          "negativas": 24,
+          "porcentaje": 26.7361
+        },
+        {
+          "station_id": "66db6387-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 76,
+          "positivas": 37,
+          "negativas": 39,
+          "porcentaje": 26.3889
+        },
+        {
+          "station_id": "1975518396279321266",
+          "observaciones": 288,
+          "discrepancias": 74,
+          "positivas": 35,
+          "negativas": 39,
+          "porcentaje": 25.6944
+        },
+        {
+          "station_id": "66de2625-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 74,
+          "positivas": 64,
+          "negativas": 10,
+          "porcentaje": 25.6944
+        },
+        {
+          "station_id": "2206780035495797216",
+          "observaciones": 288,
+          "discrepancias": 73,
+          "positivas": 73,
+          "negativas": 0,
+          "porcentaje": 25.3472
+        },
+        {
+          "station_id": "66dbe571-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 73,
+          "positivas": 56,
+          "negativas": 17,
+          "porcentaje": 25.3472
+        },
+        {
+          "station_id": "66dc120f-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 73,
+          "positivas": 40,
+          "negativas": 33,
+          "porcentaje": 25.3472
+        },
+        {
+          "station_id": "c638ec67-9ac0-416f-944f-619926144931",
+          "observaciones": 288,
+          "discrepancias": 71,
+          "positivas": 61,
+          "negativas": 10,
+          "porcentaje": 24.6528
+        },
+        {
+          "station_id": "66dc78c4-0aca-11e7-82f6-3863bb44ef7c",
+          "observaciones": 288,
+          "discrepancias": 67,
+          "positivas": 36,
+          "negativas": 31,
+          "porcentaje": 23.2639
+        },
+        {
+          "station_id": "1869743938848725856",
+          "observaciones": 288,
+          "discrepancias": 66,
+          "positivas": 35,
+          "negativas": 31,
+          "porcentaje": 22.9167
+        }
+      ],
+      "ejemplos_positivos": [
+        {
+          "station_id": "0f45bcf6-7028-4584-a51e-4129847dbebc",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268681,
+          "num_bikes_available": 37,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 18
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 18
+            }
+          ],
+          "num_ebikes_available": 19,
+          "convencionales_catalogo": 18,
+          "electricas_catalogo": 18,
+          "delta_total_tipos": 1
+        },
+        {
+          "station_id": "1057229c-f8f8-4014-80cd-f40421c61cf0",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268697,
+          "num_bikes_available": 2,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 1
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 0
+            }
+          ],
+          "num_ebikes_available": 0,
+          "convencionales_catalogo": 1,
+          "electricas_catalogo": 0,
+          "delta_total_tipos": 1
+        },
+        {
+          "station_id": "1786697166576476490",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268684,
+          "num_bikes_available": 36,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 18
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 17
+            }
+          ],
+          "num_ebikes_available": 17,
+          "convencionales_catalogo": 18,
+          "electricas_catalogo": 17,
+          "delta_total_tipos": 1
+        }
+      ],
+      "ejemplos_negativos": [
+        {
+          "station_id": "00d3e65e-b614-4408-aaa9-939ed96ce645",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268704,
+          "num_bikes_available": 38,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 10
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 29
+            }
+          ],
+          "num_ebikes_available": 29,
+          "convencionales_catalogo": 10,
+          "electricas_catalogo": 29,
+          "delta_total_tipos": -1
+        },
+        {
+          "station_id": "067d5007-bda5-4697-b0a2-ccc2837f295c",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268667,
+          "num_bikes_available": 3,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 1
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 3
+            }
+          ],
+          "num_ebikes_available": 2,
+          "convencionales_catalogo": 1,
+          "electricas_catalogo": 3,
+          "delta_total_tipos": -1
+        },
+        {
+          "station_id": "0cb63737-64c9-42a9-9479-280d49ed015a",
+          "archivo_origen": "file:///opt/UNIDAD1/Dim-Disponibilidad/data/raw/station_status/2026-11-10/2026-11-10T00-00-02-493Z-1460434f-810c-4a26-b1bb-86338bed5401.json.gz",
+          "captura_utc": "2026-11-10 00:00:02.493000",
+          "last_updated": 1794268724,
+          "last_reported": 1794268648,
+          "num_bikes_available": 21,
+          "vehicle_types_available": [
+            {
+              "vehicle_type_id": "1",
+              "count": 21
+            },
+            {
+              "vehicle_type_id": "2",
+              "count": 1
+            }
+          ],
+          "num_ebikes_available": 0,
+          "convencionales_catalogo": 21,
+          "electricas_catalogo": 1,
+          "delta_total_tipos": -1
+        }
+      ]
+    }
+  },
+  "reconciliacion": {
+    "entrada": 725706,
+    "aceptados": 707762,
+    "excluidos": 17944,
+    "schema_verificado": true,
+    "multiconjunto_reconciliado": true
+  },
+  "elegibilidad": [
+    {
+      "tipo_registro": "activo",
+      "aceptado_silver": true,
+      "elegible_convencionales": true,
+      "elegible_electricas": true,
+      "count": 707762
+    },
+    {
+      "tipo_registro": "inactivo",
+      "aceptado_silver": false,
+      "elegible_convencionales": false,
+      "elegible_electricas": false,
+      "count": 17913
+    },
+    {
+      "tipo_registro": "activo",
+      "aceptado_silver": false,
+      "elegible_convencionales": false,
+      "elegible_electricas": false,
+      "count": 31
+    }
+  ],
+  "incidencias_no_aditivas": [
+    {
+      "motivo": "reporte_antiguo",
+      "count": 16851
+    },
+    {
+      "motivo": "tiempo_reporte_no_utilizable",
+      "count": 13199
+    },
+    {
+      "motivo": "estacion_no_alquila",
+      "count": 17913
+    }
+  ],
+  "combinaciones_disjuntas_exclusion": [
+    {
+      "motivos_exclusion": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "count": 3621
+    },
+    {
+      "motivos_exclusion": [
+        "reporte_antiguo"
+      ],
+      "count": 31
+    },
+    {
+      "motivos_exclusion": [
+        "estacion_no_alquila",
+        "tiempo_reporte_no_utilizable",
+        "reporte_antiguo"
+      ],
+      "count": 13199
+    },
+    {
+      "motivos_exclusion": [
+        "estacion_no_alquila"
+      ],
+      "count": 1093
+    }
+  ],
+  "partition_filters_verificados": true,
+  "impacto_discrepancias": [
+    {
+      "aceptado_silver": false,
+      "elegible_convencionales": false,
+      "elegible_electricas": false,
+      "count": 20
+    },
+    {
+      "aceptado_silver": true,
+      "elegible_convencionales": true,
+      "elegible_electricas": true,
+      "count": 27047
+    }
+  ]
+}

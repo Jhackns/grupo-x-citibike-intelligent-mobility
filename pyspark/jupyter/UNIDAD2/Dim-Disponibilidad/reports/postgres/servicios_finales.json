@@ -1,0 +1,35 @@
+{
+  "comprobado_utc": "2026-11-19T04:43:37.395811+00:00",
+  "productor": "terminado con 28 capturas completas y exit 0",
+  "spark_etapa2": "terminado limpiamente, exit 0",
+  "consumidor_sql": "terminado; drenado, reinicios y verificacion final completos",
+  "contenedores_propios_activos": [],
+  "postgres": {
+    "nombre": "citibike-disponibilidad-postgres",
+    "estado": "exited",
+    "codigo_salida": 0,
+    "volumen": "citibike-disponibilidad-postgres_postgres_data",
+    "volumen_conservado": true
+  },
+  "kafka": {
+    "nombre": "citibike-disponibilidad-kafka",
+    "estado": "exited",
+    "codigo_salida": 143,
+    "volumen": "citibike-disponibilidad_kafka_data",
+    "volumen_conservado": true
+  },
+  "checkpoints_conservados": [
+    "data/streaming/verificacion_etapa3/checkpoints/ingesta/metadata",
+    "data/streaming/verificacion_etapa3/checkpoints/rechazados/metadata",
+    "data/streaming/verificacion_etapa3/checkpoints/predicciones/metadata",
+    "data/streaming/verificacion_etapa3/checkpoints/metricas/metadata",
+    "data/sql/verificacion_etapa3/checkpoint/metadata"
+  ],
+  "otros_contenedores_activos": [
+    "lambda26-pyspark",
+    "cloudshield-web-1",
+    "cloudshield-backend-1",
+    "cloudshield-db-1"
+  ],
+  "down_v_o_borrado_de_checkpoints": false
+}

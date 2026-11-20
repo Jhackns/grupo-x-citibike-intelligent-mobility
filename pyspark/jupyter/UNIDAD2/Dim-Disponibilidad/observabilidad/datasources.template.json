@@ -1,0 +1,9 @@
+{
+  "apiVersion": 1,
+  "datasources": [
+    {"name":"Disponibilidad PostgreSQL","uid":"disponibilidad-pg","type":"postgres","url":"postgres-disponibilidad:5432","user":"disponibilidad_grafana","access":"proxy","editable":false,
+     "jsonData":{"database":"disponibilidad_u2","sslmode":"disable","postgresVersion":1700,"timescaledb":false,"maxOpenConns":3,"maxIdleConns":2,"connMaxLifetime":300},
+     "secureJsonData":{"password":"RENDERIZAR_DESDE_ARCHIVO_LOCAL"}},
+    {"name":"Disponibilidad Prometheus","uid":"disponibilidad-prom","type":"prometheus","access":"proxy","url":"http://prometheus-disponibilidad:9090","editable":false,"jsonData":{"timeInterval":"5s"}}
+  ]
+}

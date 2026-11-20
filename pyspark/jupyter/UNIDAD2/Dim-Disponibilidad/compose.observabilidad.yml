@@ -1,0 +1,89 @@
+name: citibike-disponibilidad-observabilidad
+services:
+  preparar-grafana:
+    image: grafana/grafana@sha256:ef40abf9a6465c5ec7564bcdf3aa11969a192e494f24b761c671c4ee0c08a665
+    user: "0:0"
+    entrypoint: [/bin/sh, -ec]
+    command: ["chown -R 1000:1000 /var/lib/grafana"]
+    volumes: [grafana_data:/var/lib/grafana]
+    restart: "no"
+    network_mode: none
+  grafana-disponibilidad:
+    image: grafana/grafana@sha256:ef40abf9a6465c5ec7564bcdf3aa11969a192e494f24b761c671c4ee0c08a665
+    container_name: citibike-disponibilidad-grafana
+    user: "1000:1000"
+    depends_on:
+      preparar-grafana:
+        condition: service_completed_successfully
+    environment:
+      GF_SECURITY_ADMIN_USER: disponibilidad_admin
+      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GF_METRICS_ENABLED: "true"
+      GF_LOG_LEVEL: warn
+    ports: ["127.0.0.1:13000:3000"]
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./data/observabilidad/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./observabilidad/provisioning:/etc/grafana/provisioning/dashboards:ro
+      - ./observabilidad/dashboards:/etc/grafana/dashboards:ro
+      - ./data/secretos/grafana_admin_password:/run/secrets/grafana_admin_password:ro
+    networks: [propia]
+    mem_limit: 384m
+    cpus: 0.75
+    restart: "no"
+  prometheus-disponibilidad:
+    image: prom/prometheus@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996
+    container_name: citibike-disponibilidad-prometheus
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention.time=7d", "--storage.tsdb.retention.size=256MB"]
+    ports: ["127.0.0.1:19090:9090"]
+    volumes:
+      - ./observabilidad/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observabilidad/alertas.yml:/etc/prometheus/alertas.yml:ro
+      - prometheus_data:/prometheus
+    networks: [propia]
+    mem_limit: 256m
+    cpus: 0.5
+    restart: "no"
+  exporter-disponibilidad:
+    image: lambda26-pyspark-pyspark
+    container_name: citibike-disponibilidad-metricas
+    entrypoint: [python3, /app/servir_metricas.py]
+    volumes:
+      - ./servir_metricas.py:/app/servir_metricas.py:ro
+      - ./data/observabilidad/metricas:/estado:ro
+    ports: ["127.0.0.1:19108:9108"]
+    networks: [propia]
+    mem_limit: 128m
+    cpus: 0.25
+    restart: "no"
+  kafka-exporter-disponibilidad:
+    image: danielqsj/kafka-exporter@sha256:9b67b273d1e54052e7ce77c46ecd1c6619fdee7e2ed26717e6272806fbc94150
+    container_name: citibike-disponibilidad-kafka-exporter
+    command: ["--kafka.server=kafka-disponibilidad:9092", "--topic.filter=^citibike-disponibilidad-estaciones-v1$", "--group.filter=^disponibilidad-verificacion$", "--log.level=warn"]
+    networks: [propia]
+    mem_limit: 128m
+    cpus: 0.25
+    restart: "no"
+  pushgateway-disponibilidad:
+    image: prom/pushgateway@sha256:91a56b89b97dd8a5e1e4fa8b5bbbd86dd57a87a2a3cee3a3ce3368b40ef158ef
+    container_name: citibike-disponibilidad-pushgateway
+    command: ["--persistence.file=/data/metricas.db", "--persistence.interval=5s"]
+    ports: ["127.0.0.1:19091:9091"]
+    volumes: [pushgateway_data:/data]
+    networks: [propia]
+    mem_limit: 128m
+    cpus: 0.25
+    restart: "no"
+networks:
+  propia:
+    external: true
+    name: citibike-disponibilidad_default
+volumes:
+  grafana_data:
+  prometheus_data:
+  pushgateway_data:

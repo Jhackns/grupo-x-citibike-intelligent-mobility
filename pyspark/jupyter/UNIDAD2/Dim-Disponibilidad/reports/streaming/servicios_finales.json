@@ -1,0 +1,31 @@
+{
+  "comprobado_utc": "2026-11-19T03:28:08.487992+00:00",
+  "productor_prueba": "terminado; ambas ejecuciones acotadas completadas",
+  "consumidor_prueba": "terminado; ultima aplicacion completada y contenedor transitorio eliminado",
+  "contenedores_propios_activos": [],
+  "broker": {
+    "nombre": "citibike-disponibilidad-kafka",
+    "estado": "exited",
+    "codigo_salida": 143,
+    "accion": "docker compose -f pyspark/jupyter/UNIDAD2/Dim-Disponibilidad/compose.kafka.yml stop kafka-disponibilidad",
+    "volumen": "citibike-disponibilidad_kafka_data",
+    "volumen_no_eliminado": true
+  },
+  "preparar_volumen": {
+    "estado": "exited",
+    "codigo_salida": 0
+  },
+  "otros_contenedores_activos": [
+    "lambda26-pyspark",
+    "cloudshield-web-1",
+    "cloudshield-backend-1",
+    "cloudshield-db-1"
+  ],
+  "checkpoints_conservados": {
+    "ingesta": true,
+    "rechazados": true,
+    "predicciones": true,
+    "metricas": true
+  },
+  "down_v_ejecutado": false
+}

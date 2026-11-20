@@ -1,0 +1,30 @@
+{
+  "inicio_utc": "2026-11-19T23:18:34.108Z",
+  "estado": "verificada",
+  "apagado": {
+    "duracion_s": 0.7813317620002636,
+    "exit_code": 0,
+    "oom_killed": false
+  },
+  "alerta_real": [
+    {
+      "labels": {
+        "alertname": "DisponibilidadTelemetriaAusente",
+        "dimension": "disponibilidad",
+        "instance": "exporter-disponibilidad:9108",
+        "job": "disponibilidad-aplicaciones",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Seis scrapes de 5 s; el archivo también caduca a los 30 s. No equivale a disponibilidad cero.",
+        "summary": "Exportador o colector sin telemetría válida durante 30 s"
+      },
+      "state": "firing",
+      "activeAt": "2026-11-19T23:18:40.858737301Z",
+      "value": "0e+00"
+    }
+  ],
+  "fin_utc": "2026-11-19T23:19:28.263Z",
+  "metricas_tras_reinicio": true,
+  "alerta_resuelta": true
+}

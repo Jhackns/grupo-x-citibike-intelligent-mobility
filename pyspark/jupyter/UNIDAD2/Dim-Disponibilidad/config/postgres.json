@@ -1,0 +1,16 @@
+{
+  "flow_id": "disponibilidad-principal-v1",
+  "jdbc_url": "jdbc:postgresql://postgres-disponibilidad:5432/disponibilidad_u2?connectTimeout=10&socketTimeout=120&ApplicationName=disponibilidad-u2",
+  "user": "disponibilidad_owner",
+  "password_file": "/run/secrets/postgres_password",
+  "jdbc_package": "org.postgresql:postgresql:42.7.14",
+  "checkpoint_dir": "data/sql/principal/checkpoint",
+  "trigger": "10 seconds",
+  "batch_rows": 500,
+  "evaluation_poll_seconds": 10,
+  "evaluation_limit": 4000,
+  "late_seconds": 600,
+  "tolerance_seconds": 30,
+  "gap_seconds": 450,
+  "retries": 3
+}

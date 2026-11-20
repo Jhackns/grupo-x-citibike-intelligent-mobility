@@ -1,0 +1,14 @@
+{
+  "fecha_utc": "2026-11-19T16:58:09.688694+00:00",
+  "estado": "verificada",
+  "u1_archivos": 10169,
+  "u1_cambios": [],
+  "u1_altas": [],
+  "protegidos_sha256": 9,
+  "protegidos_cambiados": [],
+  "secretos_en_informes_publicos": [],
+  "entrenamientos_nuevos": 0,
+  "capturas_api_nuevas": 0,
+  "fecha_comprobacion_final_utc": "2026-11-19T17:24:07.483523+00:00",
+  "enlaces_locales_informes_verificados": true
+}

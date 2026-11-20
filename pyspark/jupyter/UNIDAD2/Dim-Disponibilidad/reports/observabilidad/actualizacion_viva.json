@@ -1,0 +1,157 @@
+{
+  "estado": "verificada",
+  "muestras": [
+    {
+      "fecha_utc": "2026-11-19T15:20:25.575Z",
+      "cobertura": [
+        {
+          "predicciones": 7328,
+          "evaluadas": 0,
+          "vencidas": 0,
+          "pendientes": 7328,
+          "pendientes_inmaduras": 7328,
+          "pendientes_sin_avance": 0,
+          "pendientes_cerrables": 0,
+          "cobertura_pct": 0
+        }
+      ],
+      "estado": [
+        {
+          "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+          "ultima_captura_utc": 1795101517402,
+          "ultima_actualizacion_utc": 1795101486000,
+          "edad_ultima_captura_s": 108.172617,
+          "edad_fuente_ahora_s": 139.574623,
+          "estado_flujo": "DETENIDO",
+          "ejecucion_u1": "20261117T171917344468Z"
+        }
+      ]
+    },
+    {
+      "fecha_utc": "2026-11-19T15:20:35.880Z",
+      "cobertura": [
+        {
+          "predicciones": 7328,
+          "evaluadas": 0,
+          "vencidas": 0,
+          "pendientes": 7328,
+          "pendientes_inmaduras": 7328,
+          "pendientes_sin_avance": 0,
+          "pendientes_cerrables": 0,
+          "cobertura_pct": 0
+        }
+      ],
+      "estado": [
+        {
+          "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+          "ultima_captura_utc": 1795101517402,
+          "ultima_actualizacion_utc": 1795101486000,
+          "edad_ultima_captura_s": 118.476402,
+          "edad_fuente_ahora_s": 149.878414,
+          "estado_flujo": "TELEMETRIA ANTIGUA",
+          "ejecucion_u1": "20261117T171917344468Z"
+        }
+      ]
+    },
+    {
+      "fecha_utc": "2026-11-19T15:21:37.683Z",
+      "cobertura": [
+        {
+          "predicciones": 7328,
+          "evaluadas": 0,
+          "vencidas": 0,
+          "pendientes": 7328,
+          "pendientes_inmaduras": 7328,
+          "pendientes_sin_avance": 0,
+          "pendientes_cerrables": 0,
+          "cobertura_pct": 0
+        }
+      ],
+      "estado": [
+        {
+          "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+          "ultima_captura_utc": 1795101517402,
+          "ultima_actualizacion_utc": 1795101486000,
+          "edad_ultima_captura_s": 180.280313,
+          "edad_fuente_ahora_s": 211.68232,
+          "estado_flujo": "DETENIDO",
+          "ejecucion_u1": "20261117T171917344468Z"
+        }
+      ]
+    },
+    {
+      "fecha_utc": "2026-11-19T15:22:08.522Z",
+      "cobertura": [
+        {
+          "predicciones": 7328,
+          "evaluadas": 0,
+          "vencidas": 0,
+          "pendientes": 7328,
+          "pendientes_inmaduras": 7328,
+          "pendientes_sin_avance": 0,
+          "pendientes_cerrables": 0,
+          "cobertura_pct": 0
+        }
+      ],
+      "estado": [
+        {
+          "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+          "ultima_captura_utc": 1795101517402,
+          "ultima_actualizacion_utc": 1795101486000,
+          "edad_ultima_captura_s": 211.119344,
+          "edad_fuente_ahora_s": 242.521348,
+          "estado_flujo": "SIN CAPTURAS RECIENTES",
+          "ejecucion_u1": "20261117T171917344468Z"
+        }
+      ]
+    },
+    {
+      "fecha_utc": "2026-11-19T15:22:44.780Z",
+      "cobertura": [
+        {
+          "predicciones": 9771,
+          "evaluadas": 0,
+          "vencidas": 0,
+          "pendientes": 9771,
+          "pendientes_inmaduras": 9771,
+          "pendientes_sin_avance": 0,
+          "pendientes_cerrables": 0,
+          "cobertura_pct": 0
+        }
+      ],
+      "estado": [
+        {
+          "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+          "ultima_captura_utc": 1795101728650,
+          "ultima_actualizacion_utc": 1795101725000,
+          "edad_ultima_captura_s": 36.130099,
+          "edad_fuente_ahora_s": 39.780104,
+          "estado_flujo": "ACTIVO",
+          "ejecucion_u1": "20261117T171917344468Z"
+        }
+      ]
+    }
+  ],
+  "detenido": [
+    {
+      "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+      "ultima_captura_utc": 1795101728650,
+      "ultima_actualizacion_utc": 1795101725000,
+      "edad_ultima_captura_s": 69.389968,
+      "edad_fuente_ahora_s": 73.039977,
+      "estado_flujo": "DETENIDO",
+      "ejecucion_u1": "20261117T171917344468Z"
+    }
+  ],
+  "metricas_sin_muestras": [
+    {
+      "n": 0,
+      "mae": null,
+      "rmse": null,
+      "sesgo": null
+    }
+  ],
+  "estacion_inexistente": [],
+  "predicciones_vigentes": 100,
+  "nota": "API real → Kafka → Spark → SQL → consulta Grafana. No se esperaron etiquetas a 15 minutos de esta nueva prueba."
+}

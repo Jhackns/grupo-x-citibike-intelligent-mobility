@@ -1,0 +1,17 @@
+{
+  "python_nuevas_dependencias": [],
+  "jdbc": "org.postgresql:postgresql:42.7.14",
+  "jars": [
+    {
+      "archivo": "org.postgresql_postgresql-42.7.14.jar",
+      "bytes": 1221004,
+      "sha256": "73914527305a40cce504b0d3d90b23caf565136912d607ae8ae7c5895512332c"
+    },
+    {
+      "archivo": "org.checkerframework_checker-qual-3.55.1.jar",
+      "bytes": 241885,
+      "sha256": "857658c8bdcbff794949a8d9922f88d63ee3751c203c7cd7d21ea97f9e745288"
+    }
+  ],
+  "imagen_postgres": "postgres@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b"
+}

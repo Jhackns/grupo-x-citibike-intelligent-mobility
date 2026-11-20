@@ -1,0 +1,116 @@
+{
+  "version": "u2-ingesta-1.0.0",
+  "inicio_utc": "2026-11-18T02:22:12.881Z",
+  "estado": "completada",
+  "accion": "topico",
+  "errores": [],
+  "id": "2026-11-18T02-22-12.881Z-9cbc76f6",
+  "configuracion": {
+    "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+    "bootstrap_servers": "127.0.0.1:19092",
+    "topic": "citibike-disponibilidad-estaciones-v1",
+    "partitions": 3,
+    "replication_factor": 1,
+    "retention_ms": 86400000,
+    "retention_bytes": 1073741824,
+    "poll_seconds": 300,
+    "information_refresh_seconds": 3600,
+    "types_refresh_seconds": 21600,
+    "index_refresh_seconds": 21600,
+    "http_timeout_seconds": 15,
+    "http_attempts": 3,
+    "retry_backoff_seconds": 0.5,
+    "publish_attempts": 3,
+    "confirmation_timeout_seconds": 40,
+    "kafka_retries": 3,
+    "kafka_request_timeout_ms": 10000,
+    "kafka_delivery_timeout_ms": 30000,
+    "kafka_max_block_ms": 10000,
+    "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json"
+  },
+  "software": {
+    "python": "3.14.10",
+    "kafka_python": "3.0.11"
+  },
+  "codigo_sha256": {
+    "ejecutar_u2.py": "4015736ca3824afeb3af2904e0bdf7a1b17e62950b2c80f80afc525484e83210",
+    "src/disponibilidad_u2/__init__.py": "e8a2af2e0853ef13019a66b78fde85786bc93178336b6cb9a5bfd1f784bd62c7",
+    "src/disponibilidad_u2/configuracion.py": "2715960a1aa4508e1032e5e24284e9390a3d9f704e51503201debd756c5536d4",
+    "src/disponibilidad_u2/contrato.py": "bfe0081c87488df139bbafecddca7ad40e64db17c31b0948e16a5014cc32f70d",
+    "src/disponibilidad_u2/gbfs.py": "4eb9284eff741a390edba4da03d9cdb381822a955d0b09c3c11ed10b4e27a59f",
+    "src/disponibilidad_u2/kafka_io.py": "76b3f6ff9f208f6f932ea2f0a851705688b40ba6c3a988aebc5450dc167ef4fd",
+    "src/disponibilidad_u2/productor.py": "743142156a8e936177b1e60e3aa2911f1017610939b81a51449ac4c6faa64313",
+    "src/disponibilidad_u2/referencia_u1.py": "628723056809823409c99a0fabe18539c6a71b9f0ea58e2ffdae864712a071ee",
+    "src/disponibilidad_u2/utilidades.py": "66826b2bd88112658bf06ee99457b1781066aee59e0e7311e223fee9f158f62f",
+    "src/disponibilidad_u2/verificacion.py": "76b0cdce51844c37802b3c7fdb1bb829d3bc13b30f1311adce2768112164ff4e"
+  },
+  "u1": {
+    "ejecucion_id": "20261117T171917344468Z",
+    "referencia": "/home/miguel/proyec-bigdata/grupo-x-citibike-intelligent-mobility/pyspark/jupyter/UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+    "contratos_originales_verificados": 6,
+    "contratos": [
+      {
+        "tipo": "convencionales",
+        "horizonte_min": 5,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_5min/contrato.json",
+        "candidato": "persistencia"
+      },
+      {
+        "tipo": "convencionales",
+        "horizonte_min": 10,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_10min/contrato.json",
+        "candidato": "persistencia"
+      },
+      {
+        "tipo": "convencionales",
+        "horizonte_min": 15,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/convencionales_15min/contrato.json",
+        "candidato": "persistencia"
+      },
+      {
+        "tipo": "electricas",
+        "horizonte_min": 5,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_5min/contrato.json",
+        "candidato": "persistencia"
+      },
+      {
+        "tipo": "electricas",
+        "horizonte_min": 10,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_10min/contrato.json",
+        "candidato": "persistencia"
+      },
+      {
+        "tipo": "electricas",
+        "horizonte_min": 15,
+        "ruta_original": "data/ejecuciones/20261117T171917344468Z/modelos/seleccionados/electricas_15min/contrato.json",
+        "candidato": "persistencia"
+      }
+    ],
+    "inferencia_implementada": false
+  },
+  "topic": {
+    "topic": "citibike-disponibilidad-estaciones-v1",
+    "partitions": 3,
+    "replication_factor": 1,
+    "config": {
+      "retention.ms": "86400000",
+      "retention.bytes": "1073741824",
+      "cleanup.policy": "delete",
+      "min.insync.replicas": "1"
+    },
+    "created": false,
+    "bootstrap_servers": "127.0.0.1:19092"
+  },
+  "fin_utc": "2026-11-18T02:22:13.109Z",
+  "duracion_s": 0.22809652899741195,
+  "contadores": {
+    "consultas": 0,
+    "capturas": 0,
+    "eventos_confirmados": 0,
+    "fallos_http": 0,
+    "fallos_captura": 0,
+    "fallos_publicacion": 0,
+    "reintentos_http": 0,
+    "reintentos_publicacion": 0
+  }
+}

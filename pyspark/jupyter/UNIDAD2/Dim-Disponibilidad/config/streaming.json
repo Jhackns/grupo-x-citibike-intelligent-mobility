@@ -1,0 +1,21 @@
+{
+  "spark_version": "4.2.0",
+  "scala_version": "2.13.18",
+  "kafka_package": "org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0",
+  "spark_master": "local[4]",
+  "driver_memory": "2g",
+  "shuffle_partitions": 4,
+  "trigger": "10 seconds",
+  "watermark": "10 minutes",
+  "window": "5 minutes",
+  "max_offsets_per_trigger": 10000,
+  "max_files_per_trigger": 4,
+  "bootstrap_servers": "kafka-disponibilidad:9092",
+  "topic": "citibike-disponibilidad-estaciones-v1",
+  "starting_offsets": "latest",
+  "output_dir": "data/streaming/principal/salidas",
+  "checkpoint_dir": "data/streaming/principal/checkpoints",
+  "u1_reference": "../../UNIDAD1/Dim-Disponibilidad/config/ejecucion_seleccionada.json",
+  "max_catalogs_per_batch": 16,
+  "max_future_clock_seconds": 300
+}

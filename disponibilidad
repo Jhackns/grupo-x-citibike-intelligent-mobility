@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo=$(cd "$(dirname "$0")" && pwd)
+a="$repo/pyspark/jupyter/UNIDAD1/Dim-Disponibilidad"
+b="$repo/pyspark/jupyter/UNIDAD2/Dim-Disponibilidad"
+py="$repo/.venv/bin/python"
+export PYTHONDONTWRITEBYTECODE=1
+compose() { docker compose -f "$b/compose.$1.yml" "${@:2}"; }
+config=(--config "$b/config/streaming-operacion.json" --config-sql "$b/config/postgres-operacion.json")
+consumidores() { docker ps --filter label=com.docker.compose.project=citibike-disponibilidad-streaming --format '{{.Names}}'; }
+accion=${1:-ayuda}
+shift || true
+case "$accion" in
+  descargar) exec "$py" "$a/src/extraccion.py" "$@" ;;
+  entrenar) exec "$py" "$a/ejecutar_u1.py" --nueva "$@" ;;
+  reutilizar|previo|resumen|muestra|logs|estado) exec "$py" "$b/operacion.py" "$accion" "$@" ;;
+  jupyter)
+    if [[ $(docker inspect -f '{{.State.Running}}' lambda26-pyspark 2>/dev/null || true) != true ]]; then
+      docker compose -f "$repo/pyspark/compose.yml" up -d --no-recreate pyspark
+    fi
+    echo 'http://localhost:4487/tree/UNIDAD1/Dim-Disponibilidad/notebooks/01_disponibilidad_batch.ipynb' ;;
+  infra)
+    "$py" "$b/operacion.py" previo
+    "$py" "$b/preparar_postgres.py"
+    compose kafka up -d --wait kafka-disponibilidad
+    compose postgres up -d --wait postgres-disponibilidad
+    "$py" "$b/ejecutar_u2.py" topico --crear
+    if [[ $(docker exec citibike-disponibilidad-postgres psql -XAtq -U disponibilidad_owner -d disponibilidad_u2 -c "SELECT to_regclass('disponibilidad.esquema') IS NOT NULL") != t ]]; then
+      "$py" "$b/lanzar_streaming.py" --sql --inicializar "${config[@]}" --informe data/sql/inicializacion_operacion.json
+    fi
+    "$py" "$b/preparar_observabilidad.py"
+    compose observabilidad up -d ;;
+  flujo|detener)
+    mkdir -p "$b/data/operacion"
+    exec 9>"$b/data/operacion/flujo.lock"
+    flock -n 9 || { echo 'Flujo en marcha. Terminar primero con Ctrl+C en su consola.' >&2; exit 1; }
+    activos=$(consumidores)
+    [[ -z $activos ]] || { echo 'Hay consumidores activos. Revisar estado antes de continuar.' >&2; exit 1; }
+    if [[ $accion == detener ]]; then
+      compose observabilidad stop
+      compose postgres stop postgres-disponibilidad
+      compose kafka stop kafka-disponibilidad
+    else
+      [[ $# == 0 || ( $# == 1 && $1 == prueba ) ]] || exit 2
+      args=()
+      if [[ $# == 1 ]]; then args=(--capturas 1); fi
+      exec "$py" "$b/ejecutar_observado.py" "${config[@]}" --spark-master 'local[2]' "${args[@]}" --informe "$b/data/operacion/flujo-$(date -u +%Y%m%dT%H%M%S%NZ).json"
+    fi ;;
+  ayuda) echo 'descargar entrenar reutilizar jupyter previo infra flujo [prueba] estado logs muestra resumen detener' ;;
+  *) exit 2 ;;
+esac

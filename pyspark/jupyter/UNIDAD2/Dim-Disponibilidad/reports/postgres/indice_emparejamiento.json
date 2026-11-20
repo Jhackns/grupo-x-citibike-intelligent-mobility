@@ -1,0 +1,12 @@
+{
+  "comprobacion": "EXPLAIN FORMAT JSON de búsqueda por flujo, estación y banda UTC, sin ANALYZE",
+  "fecha_utc": "2026-11-19T04:07:32Z",
+  "flujo": "disponibilidad-etapa3-vivo-20261119-v1",
+  "tabla": "disponibilidad.observaciones",
+  "nodo_observado": "Index Only Scan",
+  "indice": "observaciones_estacion_tiempo",
+  "condiciones_indexadas": ["flujo", "station_id", "captura_utc >= 2026-11-19T04:00:00Z", "captura_utc <= 2026-11-19T04:01:00Z"],
+  "orden_residual": ["abs(captura_utc - instante_ideal)", "captura_utc", "observacion_id"],
+  "limit": 1,
+  "nota": "Confirma la selección de índice del plan; no mide tiempos ni demuestra escalabilidad."
+}

@@ -1,0 +1,24 @@
+{
+  "flujo": "disponibilidad-correcciones-20261119-v1",
+  "muestra_local": "data/verificacion/replay_real.json",
+  "registros": 3,
+  "station_id": "00284700-9d22-42ce-8485-113fed9879c1",
+  "events": [
+    {
+      "event_id": "891523fd-61c8-53fa-b063-f2ee11d26a4f",
+      "capture_id": "8ff5bace-0ecf-499d-aa8a-bf43d57a3a0a",
+      "captura_utc": "2026-11-19T22:48:04.779Z"
+    },
+    {
+      "event_id": "93e14a85-8a01-5067-9aa0-d7ade77af76c",
+      "capture_id": "97169a49-34c3-4249-80b5-c11441a6f40d",
+      "captura_utc": "2026-11-19T23:00:46.002Z"
+    },
+    {
+      "event_id": "df35eac1-f0d1-5a63-a043-0eda1860e74a",
+      "capture_id": "c06cf034-448f-41d3-8e3b-46c4ee3f406b",
+      "captura_utc": "2026-11-19T23:12:47.517Z"
+    }
+  ],
+  "nota": "Datos reales originales, selecci\u00f3n por cobertura/tiempo, llegadas controladas en archivo; no se cambian cantidades ni timestamps."
+}

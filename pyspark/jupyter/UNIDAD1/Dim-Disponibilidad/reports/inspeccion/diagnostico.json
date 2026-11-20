@@ -1,0 +1,368 @@
+{
+  "estructura": {
+    "station_information": {
+      "archivos": 1,
+      "raiz": [
+        "data",
+        "last_updated",
+        "ttl",
+        "version"
+      ],
+      "data": [
+        "stations"
+      ],
+      "campos": {
+        "capacity": [
+          "int"
+        ],
+        "is_charging": [
+          "bool"
+        ],
+        "lat": [
+          "float"
+        ],
+        "lon": [
+          "float"
+        ],
+        "name": [
+          "str"
+        ],
+        "region_id": [
+          "str"
+        ],
+        "rental_uris": [
+          "dict"
+        ],
+        "short_name": [
+          "str"
+        ],
+        "station_id": [
+          "str"
+        ]
+      },
+      "errores": []
+    },
+    "station_status": {
+      "archivos": 288,
+      "raiz": [
+        "data",
+        "last_updated",
+        "ttl",
+        "version"
+      ],
+      "data": [
+        "stations"
+      ],
+      "campos": {
+        "is_installed": [
+          "int"
+        ],
+        "is_renting": [
+          "int"
+        ],
+        "is_returning": [
+          "int"
+        ],
+        "last_reported": [
+          "int"
+        ],
+        "num_bikes_available": [
+          "int"
+        ],
+        "num_bikes_disabled": [
+          "int"
+        ],
+        "num_docks_available": [
+          "int"
+        ],
+        "num_docks_disabled": [
+          "int"
+        ],
+        "num_ebikes_available": [
+          "int"
+        ],
+        "num_scooters_available": [
+          "int"
+        ],
+        "num_scooters_unavailable": [
+          "int"
+        ],
+        "station_id": [
+          "str"
+        ],
+        "vehicle_types_available": [
+          "list"
+        ]
+      },
+      "errores": []
+    },
+    "vehicle_types": {
+      "archivos": 1,
+      "raiz": [
+        "data",
+        "last_updated",
+        "ttl",
+        "version"
+      ],
+      "data": [
+        "vehicle_types"
+      ],
+      "campos": {
+        "form_factor": [
+          "str"
+        ],
+        "max_range_meters": [
+          "float"
+        ],
+        "propulsion_type": [
+          "str"
+        ],
+        "vehicle_type_id": [
+          "str"
+        ]
+      },
+      "errores": []
+    }
+  },
+  "diagnostico": {
+    "filas": 725706,
+    "archivos_status": 288,
+    "estaciones": 2520,
+    "periodo": {
+      "archivo_min_utc": "2026-11-10 00:00:02.493000",
+      "archivo_max_utc": "2026-11-10 23:55:01.713000",
+      "feed_min_utc": "2026-11-09 23:58:44",
+      "feed_max_utc": "2026-11-10 23:54:05",
+      "reporte_min_utc": "1970-01-02 00:00:00",
+      "reporte_max_utc": "2026-11-10 23:53:49"
+    },
+    "nulos": {
+      "archivo_origen": 0,
+      "captura_utc": 0,
+      "last_updated": 0,
+      "last_updated_utc": 0,
+      "ttl": 0,
+      "version": 0,
+      "station_id": 0,
+      "num_bikes_available": 0,
+      "num_ebikes_available": 0,
+      "num_bikes_disabled": 0,
+      "num_docks_available": 0,
+      "num_docks_disabled": 0,
+      "is_installed": 0,
+      "is_renting": 0,
+      "is_returning": 0,
+      "last_reported": 0,
+      "num_scooters_available": 20667,
+      "num_scooters_unavailable": 20667,
+      "vehicle_types_available": 0,
+      "captura_nueva_york": 0,
+      "fecha_nueva_york": 0,
+      "last_reported_utc": 0
+    },
+    "feeds_invalidos": {
+      "json_corrupto": 0,
+      "array_nulo": 0,
+      "array_vacio": 0,
+      "captura_no_parseable": 0
+    },
+    "duplicados_exactos_exceso_en_archivo": 0,
+    "claves_estacion_captura_repetidas": 0,
+    "conflictos_estacion_captura": 0,
+    "claves_estacion_reporte_repetidas": 359,
+    "conflictos_estacion_mismo_last_reported": 58,
+    "indicadores": {
+      "cantidades_negativas": 0,
+      "electrica_mayor_total": 0,
+      "suma_tipos_distinta_total": 27067,
+      "electrica_distinta_catalogo": 20920,
+      "convencional_distinta_resta": 7673,
+      "conteo_tipos_nulo_negativo": 0,
+      "tipos_repetidos_en_estacion": 0,
+      "tipos_no_resueltos": 0,
+      "estado_no_binario": 0,
+      "no_operativa": 17913,
+      "reporte_mas_15min": 16767,
+      "reporte_mas_24h": 15247,
+      "reporte_posterior_feed": 0,
+      "feed_mas_15min_antes_archivo": 0,
+      "feed_posterior_archivo": 0
+    },
+    "compatibilidad": {
+      "station_information": {
+        "filas": 2520,
+        "ids_distintos": 2520,
+        "ids_nulos": 0,
+        "ids_repetidos": 0
+      },
+      "vehicle_types": {
+        "filas": 2,
+        "ids_distintos": 2,
+        "ids_nulos": 0,
+        "ids_repetidos": 0
+      },
+      "tipos_con_propulsion_ambigua": 0,
+      "estaciones_status_sin_information": 0,
+      "estaciones_information_sin_status": 0,
+      "tipos_status_sin_catalogo": 0,
+      "catalogo_observado": [
+        {
+          "vehicle_type_id": "1",
+          "propulsion_type": "human"
+        },
+        {
+          "vehicle_type_id": "2",
+          "propulsion_type": "electric_assist"
+        }
+      ]
+    },
+    "cadencia_archivo": {
+      "intervalos": 287,
+      "min_s": 295.93299984931946,
+      "max_s": 304.2890000343323,
+      "media_s": 299.99728223006485,
+      "p50_p95_s": [
+        300.07100009918213,
+        301.3619999885559
+      ],
+      "huecos_mayores_450s": 0
+    },
+    "cadencia_feed": {
+      "intervalos": 287,
+      "min_s": 284.0,
+      "max_s": 321.0,
+      "media_s": 300.0731707317073,
+      "p50_p95_s": [
+        300.0,
+        302.0
+      ],
+      "huecos_mayores_450s": 0
+    },
+    "cadencia_reportes_estacion": {
+      "intervalos": 706130,
+      "min_s": 3.0,
+      "max_s": 1794249520.0,
+      "media_s": 10463.877288884483,
+      "p50_p95_s": [
+        303.0,
+        365.0
+      ],
+      "huecos_mayores_450s": 1976
+    },
+    "cadencia_observaciones_estacion": {
+      "intervalos": 723186,
+      "min_s": 295.93299984931946,
+      "max_s": 304.2890000343323,
+      "media_s": 299.9972819538433,
+      "p50_p95_s": [
+        300.07100009918213,
+        301.3619999885559
+      ],
+      "huecos_mayores_450s": 0
+    },
+    "retrocesos_feed_en_orden_captura": 0,
+    "feeds_reutilizados": 0,
+    "cobertura_estaciones": {
+      "min_capturas": 234,
+      "max_capturas": 288,
+      "estaciones_cobertura_parcial": 1
+    },
+    "ejemplos_discrepancias": [
+      {
+        "station_id": "2171919049376995084",
+        "captura_utc": "2026-11-10 18:40:01.621000",
+        "num_bikes_available": 26,
+        "num_ebikes_available": 19,
+        "convencionales_catalogo": 6,
+        "electricas_catalogo": 19,
+        "vehicle_types_available": [
+          {
+            "vehicle_type_id": "1",
+            "count": 6
+          },
+          {
+            "vehicle_type_id": "2",
+            "count": 19
+          }
+        ]
+      },
+      {
+        "station_id": "66dd45c7-0aca-11e7-82f6-3863bb44ef7c",
+        "captura_utc": "2026-11-10 18:40:01.621000",
+        "num_bikes_available": 2,
+        "num_ebikes_available": 0,
+        "convencionales_catalogo": 1,
+        "electricas_catalogo": 0,
+        "vehicle_types_available": [
+          {
+            "vehicle_type_id": "1",
+            "count": 1
+          },
+          {
+            "vehicle_type_id": "2",
+            "count": 0
+          }
+        ]
+      },
+      {
+        "station_id": "66db41bf-0aca-11e7-82f6-3863bb44ef7c",
+        "captura_utc": "2026-11-10 18:40:01.621000",
+        "num_bikes_available": 32,
+        "num_ebikes_available": 20,
+        "convencionales_catalogo": 12,
+        "electricas_catalogo": 19,
+        "vehicle_types_available": [
+          {
+            "vehicle_type_id": "1",
+            "count": 12
+          },
+          {
+            "vehicle_type_id": "2",
+            "count": 19
+          }
+        ]
+      },
+      {
+        "station_id": "18eccc71-66be-4e4c-8335-095a9bf0df94",
+        "captura_utc": "2026-11-10 18:40:01.621000",
+        "num_bikes_available": 11,
+        "num_ebikes_available": 1,
+        "convencionales_catalogo": 10,
+        "electricas_catalogo": 0,
+        "vehicle_types_available": [
+          {
+            "vehicle_type_id": "1",
+            "count": 10
+          },
+          {
+            "vehicle_type_id": "2",
+            "count": 0
+          }
+        ]
+      },
+      {
+        "station_id": "66dde69c-0aca-11e7-82f6-3863bb44ef7c",
+        "captura_utc": "2026-11-10 18:40:01.621000",
+        "num_bikes_available": 10,
+        "num_ebikes_available": 10,
+        "convencionales_catalogo": 0,
+        "electricas_catalogo": 9,
+        "vehicle_types_available": [
+          {
+            "vehicle_type_id": "1",
+            "count": 0
+          },
+          {
+            "vehicle_type_id": "2",
+            "count": 9
+          }
+        ]
+      }
+    ],
+    "capacidad": {
+      "capacidad_ausente": 0,
+      "bicis_mas_docks_superan_capacidad": 22615
+    }
+  },
+  "spark": "4.2.0"
+}

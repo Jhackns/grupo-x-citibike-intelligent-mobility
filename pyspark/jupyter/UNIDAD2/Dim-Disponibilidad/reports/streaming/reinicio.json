@@ -1,0 +1,54 @@
+{
+  "estado": "verificado",
+  "conteos_iguales": {
+    "capturas": {
+      "b2def812-793f-4e66-9e02-7a08286a83a4": 2519,
+      "711ed0d6-0ca5-4677-bd13-1449df7cd112": 2519
+    },
+    "observaciones": 5038,
+    "rechazados_totales_o_parciales": 151,
+    "elegibles_por_tipo": {
+      "convencionales": 4887,
+      "electricas": 4887
+    },
+    "predicciones": 29322,
+    "event_id_y_prediccion_id_unicos": true,
+    "latencia_captura_a_calidad": {
+      "min_s": 559.1671240329742,
+      "max_s": 629.5011239051819,
+      "media_s": 594.3341239690781
+    }
+  },
+  "parquet_hashes_iguales": true,
+  "archivos_parquet": 8,
+  "consultas": {
+    "disponibilidad_metricas": {
+      "id": "40688d6a-48e0-4e9d-9d1e-89dfeaaed11e",
+      "runId_antes": "122dc11f-48fc-4cae-98d7-40732c1f231b",
+      "runId_despues": "3ff35b05-b1c7-4bd2-aa3f-45f18496aea2",
+      "nuevas_filas_reportadas": 0
+    },
+    "disponibilidad_predicciones": {
+      "id": "7caa122a-9806-4d11-97b9-d490c42f660f",
+      "runId_antes": "35a2c49d-3edb-4337-a374-244c4ab78281",
+      "runId_despues": "9909fa75-f8bc-433f-a3d9-9f660afc8a08",
+      "nuevas_filas_reportadas": 0
+    },
+    "disponibilidad_rechazados": {
+      "id": "1eb523c2-b734-42bc-8fba-a16574686b9d",
+      "runId_antes": "580f06bc-3733-4d17-a835-be347f09bf41",
+      "runId_despues": "583b978c-7363-4771-921d-1572958d33f3",
+      "nuevas_filas_reportadas": 0
+    },
+    "disponibilidad_observaciones": {
+      "id": "8e549878-3f69-439b-9d63-db5e3bc38235",
+      "runId_antes": "543a68f2-82cc-482b-a5dd-08e3768761c3",
+      "runId_despues": "2514d183-1fdb-4582-83c0-313f7c47e885",
+      "nuevas_filas_reportadas": 0
+    }
+  },
+  "ejecuciones": [
+    "2026-11-19T03:04:16.962Z",
+    "2026-11-19T03:09:23.304Z"
+  ]
+}

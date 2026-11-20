@@ -1,0 +1,14 @@
+{
+  "desde": "2026-11-09",
+  "hasta": "2026-11-16",
+  "inicio_modelado_utc": "2026-11-10 00:00:00",
+  "corte_validacion_utc": "2026-11-14 00:00:00",
+  "corte_prueba_utc": "2026-11-15 00:00:00",
+  "fin_exclusivo_utc": "2026-11-17 00:00:00",
+  "max_edad_s": 450,
+  "hueco_max_s": 450,
+  "tolerancia_s": 30,
+  "spark_master": "local[4]",
+  "driver_memory": "4g",
+  "shuffle_partitions": 32
+}

@@ -1,0 +1,14 @@
+{
+  "fecha_utc": "2026-11-19T16:00:48.731147+00:00",
+  "entorno": "venv local; sin servicios ni datos reales",
+  "estado": "verificada",
+  "total": 44,
+  "omitidas": 17,
+  "correctas": 27,
+  "fallos": 0,
+  "errores": 0,
+  "motivos_omision": [
+    "Ejecutar --sql --pruebas-sql en Docker",
+    "Ejecutar con spark-submit en Docker"
+  ]
+}

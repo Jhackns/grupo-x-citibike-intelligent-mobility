@@ -1,0 +1,24 @@
+{
+  "fecha_utc": "2026-11-20T00:42:12.175945+00:00",
+  "u1_archivos_comprobados": 10169,
+  "u1_cambios": [],
+  "nucleo_archivos_comprobados": 6,
+  "nucleo_cambios": [],
+  "validacion_sintactica_archivos": {
+    "*.py": 48,
+    "*.json": 96
+  },
+  "errores": [],
+  "coincidencias_secretos_en_versionables": [],
+  "salidas_excluidas_git": {
+    "data/publicacion/site/index.html": true,
+    "data/secretos/grafana_admin_password": true,
+    "data/streaming/correcciones_u2": true,
+    "data/sql/correcciones_u2/checkpoint": true
+  },
+  "cambios_tracked": [
+    ".gitignore"
+  ],
+  "commits_push": false,
+  "colectores_propios_activos": []
+}

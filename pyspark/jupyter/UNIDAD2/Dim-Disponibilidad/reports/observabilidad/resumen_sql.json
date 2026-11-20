@@ -1,0 +1,16 @@
+{
+  "flujo": "disponibilidad-etapa4-vivo-20261119-v1",
+  "rechazos": 382,
+  "fecha_utc": "2026-11-19T15:55:33.6508+00:00",
+  "evaluaciones": {
+    "pendiente": 73278
+  },
+  "predicciones": 73278,
+  "observaciones": 12595,
+  "tamano_tablas_bytes": {
+    "rechazos": 1024000,
+    "evaluaciones": 377618432,
+    "predicciones": 1157431296,
+    "observaciones": 298164224
+  }
+}

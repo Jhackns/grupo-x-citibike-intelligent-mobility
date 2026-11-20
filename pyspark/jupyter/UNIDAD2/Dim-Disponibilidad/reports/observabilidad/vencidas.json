@@ -1,0 +1,565 @@
+{
+  "motivos": [
+    {
+      "n": 19554,
+      "motivo": "sin_captura_objetivo_en_tolerancia"
+    },
+    {
+      "n": 18,
+      "motivo": "objetivo_no_elegible"
+    }
+  ],
+  "invalidas": [
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:04:35.445+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1161,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:51:16.403+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:05:49.056+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1281,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T03:54:34.039+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 5,
+      "edad_reporte_s": 560,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T03:54:34.039+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 5,
+      "edad_reporte_s": 560,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T03:56:55.152+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 5,
+      "edad_reporte_s": 740,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:00:08.896+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 920,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:00:08.896+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 920,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T03:56:55.152+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 5,
+      "edad_reporte_s": 740,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:51:16.403+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:01:14.24+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 920,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:51:16.403+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:01:14.24+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 920,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:02:18.736+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 1040,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:02:18.736+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 10,
+      "edad_reporte_s": 1040,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:50:03.928+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:04:35.445+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1161,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:51:16.403+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:05:49.056+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1281,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:07:04.448+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1340,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 0,
+      "origen_utc": "2026-11-19T03:52:19.631+00:00",
+      "station_id": "2098359443836787630",
+      "captura_utc": "2026-11-19T04:07:04.448+00:00",
+      "is_installed": 1,
+      "is_returning": 0,
+      "horizonte_min": 15,
+      "edad_reporte_s": 1340,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "estacion_no_alquila",
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "convencionales",
+      "is_renting": 1,
+      "origen_utc": "2026-11-19T03:59:05.107+00:00",
+      "station_id": "2177015776583073844",
+      "captura_utc": "2026-11-19T04:09:17.776+00:00",
+      "is_installed": 1,
+      "is_returning": 1,
+      "horizonte_min": 10,
+      "edad_reporte_s": 492,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    },
+    {
+      "tipo": "electricas",
+      "is_renting": 1,
+      "origen_utc": "2026-11-19T03:59:05.107+00:00",
+      "station_id": "2177015776583073844",
+      "captura_utc": "2026-11-19T04:09:17.776+00:00",
+      "is_installed": 1,
+      "is_returning": 1,
+      "horizonte_min": 10,
+      "edad_reporte_s": 492,
+      "contrato_valido": true,
+      "motivos_electricas": [
+        "reporte_antiguo"
+      ],
+      "elegible_electricas": false,
+      "motivos_convencionales": [
+        "reporte_antiguo"
+      ],
+      "elegible_convencionales": false
+    }
+  ],
+  "fechas_captura": [
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:50:03.928+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:51:16.403+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:52:19.631+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:53:23.036+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:54:34.039+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:55:42.76+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:56:55.152+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:57:59.543+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T03:59:05.107+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:00:08.896+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:01:14.24+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:02:18.736+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:03:25.251+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:04:35.445+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:05:49.056+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:07:04.448+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:08:09.849+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:09:17.776+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:10:24.935+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:11:31.209+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:12:35.092+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:13:41.132+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:14:43.384+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:15:45.397+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:16:47.438+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:17:52.639+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:18:55.363+00:00"
+    },
+    {
+      "estaciones": 2519,
+      "captura_utc": "2026-11-19T04:20:00.139+00:00"
+    }
+  ],
+  "falsos_faltantes": 0,
+  "sin_cercana_450s": 0,
+  "faltantes_por_cohorte": [
+    {
+      "n": 4888,
+      "origen_utc": "2026-11-19T03:59:05.107+00:00",
+      "objetivo_utc": "2026-11-19T04:04:05.107+00:00",
+      "horizonte_min": 5,
+      "maximo_desfase_s": 30.338,
+      "minimo_desfase_s": 30.338,
+      "candidatos_en_banda": 0
+    },
+    {
+      "n": 4888,
+      "origen_utc": "2026-11-19T03:55:42.76+00:00",
+      "objetivo_utc": "2026-11-19T04:00:42.76+00:00",
+      "horizonte_min": 5,
+      "maximo_desfase_s": 31.48,
+      "minimo_desfase_s": 31.48,
+      "candidatos_en_banda": 0
+    },
+    {
+      "n": 4888,
+      "origen_utc": "2026-11-19T04:00:08.896+00:00",
+      "objetivo_utc": "2026-11-19T04:05:08.896+00:00",
+      "horizonte_min": 5,
+      "maximo_desfase_s": 33.451,
+      "minimo_desfase_s": 33.451,
+      "candidatos_en_banda": 0
+    },
+    {
+      "n": 4890,
+      "origen_utc": "2026-11-19T03:51:16.403+00:00",
+      "objetivo_utc": "2026-11-19T03:56:16.403+00:00",
+      "horizonte_min": 5,
+      "maximo_desfase_s": 33.643,
+      "minimo_desfase_s": 33.643,
+      "candidatos_en_banda": 0
+    }
+  ],
+  "invalidas_elegibles_por_error": 0,
+  "estado": "verificada",
+  "comprobado_utc": "2026-11-19T14:57:21.981Z",
+  "flujo": "disponibilidad-etapa3-vivo-20261119-v1",
+  "conclusion": "Sin defecto demostrado: banda temporal sin captura o calidad futura no elegible. Se conservan tolerancia y evaluaciones originales."
+}

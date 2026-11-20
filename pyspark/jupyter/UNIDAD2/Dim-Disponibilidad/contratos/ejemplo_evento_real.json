@@ -1,0 +1,75 @@
+{
+  "capture_id": "e6cbdb35-dc80-4165-8cd2-78d4a583227e",
+  "captured_at_utc": "2026-11-18T02:29:31.298Z",
+  "catalogs": {
+    "station_information": {
+      "archivo_relativo": "catalogos/station_information/335bd4751f2d2e63c38f79fda1e1e9d50e15db79563c94b79db2a99198ace728.json",
+      "captured_at_utc": "2026-11-18T02:29:28.357Z",
+      "catalog_id": "335bd4751f2d2e63c38f79fda1e1e9d50e15db79563c94b79db2a99198ace728",
+      "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_information.json",
+      "gbfs_version": "2.3",
+      "last_updated_original": 1794968914,
+      "last_updated_utc": "2026-11-18T02:28:34.000Z",
+      "ttl": 60
+    },
+    "vehicle_types": {
+      "archivo_relativo": "catalogos/vehicle_types/7e3d2c0e86f8110583c113fa34744c5c8ae94fb693a3de3845c74f53a051babe.json",
+      "captured_at_utc": "2026-11-18T02:29:29.063Z",
+      "catalog_id": "7e3d2c0e86f8110583c113fa34744c5c8ae94fb693a3de3845c74f53a051babe",
+      "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/vehicle_types.json",
+      "gbfs_version": "2.3",
+      "last_updated_original": 1794968913,
+      "last_updated_utc": "2026-11-18T02:28:33.000Z",
+      "ttl": 60
+    }
+  },
+  "event_id": "63841c72-3395-5853-b48c-1e6a4c3b6d0b",
+  "ingestion_issues": [],
+  "last_reported_original": 86400,
+  "last_reported_utc": "1970-01-02T00:00:00.000Z",
+  "last_updated_original": 1794968917,
+  "last_updated_utc": "2026-11-18T02:28:37.000Z",
+  "schema_version": "citibike.disponibilidad.v1",
+  "source": {
+    "feed_url": "https://gbfs.lyft.com/gbfs/2.3/bkn/en/station_status.json",
+    "gbfs_index_url": "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json",
+    "gbfs_version": "2.3",
+    "system": "citibike"
+  },
+  "station": {
+    "is_installed": 0,
+    "is_renting": 0,
+    "is_returning": 0,
+    "last_reported": 86400,
+    "num_bikes_available": 0,
+    "num_bikes_disabled": 0,
+    "num_docks_available": 0,
+    "num_docks_disabled": 0,
+    "num_ebikes_available": 0,
+    "station_id": "66dc292c-0aca-11e7-82f6-3863bb44ef7c",
+    "vehicle_types_available": [
+      {
+        "count": 0,
+        "vehicle_type_id": "1"
+      },
+      {
+        "count": 0,
+        "vehicle_type_id": "2"
+      }
+    ]
+  },
+  "station_id": "66dc292c-0aca-11e7-82f6-3863bb44ef7c",
+  "u1_catalog_compatible": true,
+  "vehicle_types_catalog": [
+    {
+      "form_factor": "bicycle",
+      "propulsion_type": "human",
+      "vehicle_type_id": "1"
+    },
+    {
+      "form_factor": "bicycle",
+      "propulsion_type": "electric_assist",
+      "vehicle_type_id": "2"
+    }
+  ]
+}

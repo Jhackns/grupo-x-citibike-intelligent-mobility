@@ -1,0 +1,31 @@
+groups:
+  - name: disponibilidad-propia
+    interval: 5s
+    rules:
+      - alert: DisponibilidadTelemetriaAusente
+        expr: up{job="disponibilidad-aplicaciones"} == 0
+        for: 30s
+        labels:
+          severity: warning
+          dimension: disponibilidad
+        annotations:
+          summary: "Exportador o colector sin telemetría válida durante 30 s"
+          description: "Seis scrapes de 5 s; el archivo también caduca a los 30 s. No equivale a disponibilidad cero."
+      - alert: DisponibilidadCapturasSinAvance
+        expr: '(time() - max(disponibilidad_productor_ultima_confirmacion_timestamp_seconds) > max(disponibilidad_captura_umbral_antiguedad_seconds)) and on() (max(disponibilidad_componente_up{componente="productor"}) == 1)'
+        for: 30s
+        labels:
+          severity: warning
+          dimension: disponibilidad
+        annotations:
+          summary: "Productor vivo sin confirmaciones recientes"
+          description: "Umbral = 2*max(intervalo configurado, TTL)+30 s: 150 s en ensayo 60 s/TTL60; 630 s con consulta de 300 s."
+      - alert: DisponibilidadBacklogSostenido
+        expr: '(sum(disponibilidad_kafka_backlog_estimado_eventos) > 2*max(disponibilidad_captura_estaciones_ultima)) and on() (max(disponibilidad_componente_up{componente="spark"}) == 1)'
+        for: 2m
+        labels:
+          severity: warning
+          dimension: disponibilidad
+        annotations:
+          summary: "Más de dos capturas en backlog estimado durante 2 min"
+          description: "Se basa en las estaciones realmente confirmadas (2519 en el ensayo), sin IDs como etiquetas. Backlog ausente no es cero ni confirmación SQL."
